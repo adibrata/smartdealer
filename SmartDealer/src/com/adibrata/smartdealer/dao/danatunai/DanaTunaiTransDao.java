@@ -61,8 +61,6 @@ public class DanaTunaiTransDao implements DanaTunaiService{
 		try {
 			danaTunai.setDtmCrt(dtmupd.getTime());
 			danaTunai.setDtmUpd(dtmupd.getTime());
-		
-			
 			session.save(danaTunai);
 			session.getTransaction().commit();
 
@@ -79,9 +77,30 @@ public class DanaTunaiTransDao implements DanaTunaiService{
 	 * @see com.adibrata.smartdealer.service.danatunai.DanaTunaiTransactions#Paging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<Customer> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	/* (non-Javadoc)
@@ -109,9 +128,21 @@ public class DanaTunaiTransDao implements DanaTunaiService{
 	}
 
 	@Override
-	public List<DanaTunai> View(long id) {
+	public DanaTunai viewDanaTunai(long id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		DanaTunai danaTunai = null;
+		try {
+			danaTunai = (DanaTunai) session.get(DanaTunai.class, id);
 
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return danaTunai;
+	}
 }

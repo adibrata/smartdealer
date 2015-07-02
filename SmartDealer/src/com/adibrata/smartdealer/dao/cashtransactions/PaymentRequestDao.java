@@ -62,17 +62,20 @@ public class PaymentRequestDao implements PaymentRequestService {
 	 */
 
 	@Override
-	public void SavePaymentRequest(PayReqHdr payReqHdr, PayReqDtl payReqDtl) {
+	public void SavePaymentRequest(PayReqHdr payReqHdr,
+			List<PayReqDtl> lstpayReqDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			payReqHdr.setDtmCrt(dtmupd.getTime());
 			payReqHdr.setDtmUpd(dtmupd.getTime());
-			payReqDtl.setDtmCrt(dtmupd.getTime());
-			payReqDtl.setDtmUpd(dtmupd.getTime());
-			session.save(payReqHdr);
-
-			session.save(payReqDtl);
+			for (PayReqDtl arow : lstpayReqDtl) {
+				PayReqDtl payReqDtl = new PayReqDtl();
+				payReqDtl = arow;
+				payReqDtl.setDtmCrt(dtmupd.getTime());
+				payReqDtl.setDtmUpd(dtmupd.getTime());
+				session.save(payReqHdr);
+			}
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
@@ -94,8 +97,7 @@ public class PaymentRequestDao implements PaymentRequestService {
 	 * #PurchaseInvoicePaging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List PurchaseInvoicePaging(int CurrentPage, String WhereCond,
-			String SortBy) {
+	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -105,10 +107,10 @@ public class PaymentRequestDao implements PaymentRequestService {
 	 * 
 	 * @see
 	 * com.adibrata.smartdealer.service.cashtransactions.PaymentRequestService
-	 * #PurchaseInvoicePagingTotalRecord(java.lang.String)
+	 * #TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double PurchaseInvoicePagingTotalRecord(String WherCond) {
+	public double TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

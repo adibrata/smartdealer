@@ -18,6 +18,7 @@ import org.hibernate.Session;
 
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
+import com.adibrata.smartdealer.service.repair.RepairService;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -25,7 +26,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
-public class RepairEntryDao {
+public class RepairEntryDao implements RepairService {
 
 	/**
 	 * 
@@ -54,6 +55,65 @@ public class RepairEntryDao {
 					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
+	}
+
+	@Override
+	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls) {
+		// TODO Auto-generated method stub
+		session.getTransaction().begin();
+		try {
+			serviceHdr.setDtmCrt(dtmupd.getTime());
+			serviceHdr.setDtmUpd(dtmupd.getTime());
+			session.save(serviceHdr);
+			for (ServiceDtl arow : lstserviceDtls) {
+				ServiceDtl returSalesDtl = new ServiceDtl();
+				returSalesDtl = arow;
+				returSalesDtl.setDtmCrt(dtmupd.getTime());
+				returSalesDtl.setDtmUpd(dtmupd.getTime());
+				session.save(returSalesDtl);
+			}
+			session.getTransaction().commit();
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+	}
+
+	@Override
+	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double TotalRecord(String WherCond) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ServiceHdr View(long id) {
+		// TODO Auto-generated method stub
+		ServiceHdr serviceHdr = null;
+		try {
+			serviceHdr = (ServiceHdr) session.get(ServiceHdr.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return serviceHdr;
 	}
 
 }

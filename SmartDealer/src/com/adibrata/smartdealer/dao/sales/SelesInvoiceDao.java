@@ -61,35 +61,10 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 	}
 
 	@Override
-	public void Save() {
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-			/*
-			 * returSalesHdr.setDtmCrt(dtmupd.getTime());
-			 * returSalesHdr.setDtmUpd(dtmupd.getTime()); returSalesDtl
-			 * .setDtmCrt(dtmupd.getTime());
-			 * returSalesDtl.setDtmUpd(dtmupd.getTime());
-			 * session.save(returSalesHdr); session.save(returSalesDtl);
-			 */
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	@Override
 	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
-		
+
 	}
 
 	@Override
@@ -111,6 +86,35 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return countResults;
+	}
+
+	@Override
+	public void Save(SalesInvoice salesInvoice) {
+		// TODO Auto-generated method stub
+		session.getTransaction().begin();
+		try {
+
+			salesInvoice.setDtmCrt(dtmupd.getTime());
+			salesInvoice.setDtmUpd(dtmupd.getTime());
+			session.save(salesInvoice);
+
+			session.getTransaction().commit();
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+	}
+
+	@Override
+	public SalesOrderHdr View(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -595,10 +595,10 @@ public class JournalPosting {
  * } _rdr.Close();
  * 
  * if (_conn.State == ConnectionState.Closed) { _conn.Open(); } } } sb.Clear();
- * sb.Append("Select TrxDesc from MS_JrnlTrx with (nolock) where ID = @Id @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO)");
+ * sb.Append("Select TrxDesc from MS_JrnlTrx with (nolock) where ID = @Id @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO)");
  * using (SqlConnection _conn = new SqlConnection("context connection=true")) {
  * if (_conn.State == ConnectionState.Closed) { _conn.Open(); } using (_cmd =
- * _conn.CreateCommand()) { _cmd.Parameters.AddWithValue("@Id @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO)",
+ * _conn.CreateCommand()) { _cmd.Parameters.AddWithValue("@Id @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO)",
  * _ent.JournalTransactionID); _cmd.CommandText = sb.ToString();
  * 
  * 

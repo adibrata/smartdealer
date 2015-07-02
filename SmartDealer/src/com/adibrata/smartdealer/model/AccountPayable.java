@@ -68,7 +68,7 @@ public class AccountPayable implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.AUTO) 
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;

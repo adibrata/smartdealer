@@ -13,6 +13,6 @@ import com.adibrata.smartdealer.model.*;
 public interface PettyCashService {
 	public void SavePettyCash (PettyCashHdr pettycashhdr, PettyCashDtl pettycashdtl);
 	public List<Object[]>  PurchaseInvoicePaging(int CurrentPage, String WhereCond, String SortBy);
-	public double PurchaseInvoicePagingTotalRecord(String WherCond);
+	public double TotalRecord(String WherCond);
 	
 }

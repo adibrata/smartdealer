@@ -61,17 +61,20 @@ public class OtherDisburseDao implements OtherDisburseService {
 	 * com.adibrata.smartdealer.model.OtherDsbDtl)
 	 */
 	@Override
-	public void Save(OtherDsbHdr otherDsbHdr, OtherDsbDtl otherDsbDtl) {
+	public void Save(OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> lstotherDsbDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			otherDsbHdr.setDtmCrt(dtmupd.getTime());
 			otherDsbHdr.setDtmUpd(dtmupd.getTime());
-			otherDsbDtl.setDtmCrt(dtmupd.getTime());
-			otherDsbDtl.setDtmUpd(dtmupd.getTime());
 			session.save(otherDsbHdr);
-			session.save(otherDsbDtl);
 
+			for (OtherDsbDtl arow : lstotherDsbDtl) {
+				OtherDsbDtl otherDsbDtl = new OtherDsbDtl();
+				otherDsbDtl.setDtmCrt(dtmupd.getTime());
+				otherDsbDtl.setDtmUpd(dtmupd.getTime());
+				session.save(otherDsbDtl);
+			}
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
@@ -102,12 +105,27 @@ public class OtherDisburseDao implements OtherDisburseService {
 	 * (non-Javadoc)
 	 * 
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherDisburse#
-	 * PurchaseInvoicePagingTotalRecord(java.lang.String)
+	 * TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double PurchaseInvoicePagingTotalRecord(String WherCond) {
+	public double TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		return 0;
+		long countResults = 0;
+		try {
+			String countQ = "Select count (id) " + strStatement;
+			Query countQuery = session.createQuery(countQ);
+			countResults = (long) countQuery.uniqueResult();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return countResults;
 	}
 
 }

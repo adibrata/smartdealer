@@ -52,49 +52,7 @@ public class SalesReturDao implements SalesReturnService {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.sales.SalesReturn#Save(com.adibrata.
-	 * smartdealer.model.ReturSalesHdr,
-	 * com.adibrata.smartdealer.model.ReturSalesDtl)
-	 */
-	@Override
-	public void Save(ReturSalesHdr returSalesHdr, ReturSalesDtl returSalesDtl) {
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-			returSalesHdr.setDtmCrt(dtmupd.getTime());
-			returSalesHdr.setDtmUpd(dtmupd.getTime());
-			returSalesDtl.setDtmCrt(dtmupd.getTime());
-			returSalesDtl.setDtmUpd(dtmupd.getTime());
-			session.save(returSalesHdr);
-			session.save(returSalesDtl);
-			session.getTransaction().commit();
 
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.sales.SalesReturn#Paging(int,
-	 * java.lang.String, java.lang.String)
-	 */
-	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -122,6 +80,45 @@ public class SalesReturDao implements SalesReturnService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return countResults;
+	}
+
+	@Override
+	public void Save(ReturSalesHdr returSalesHdr,
+			List<ReturSalesDtl> lstreturSalesDtl) {
+		// TODO Auto-generated method stub
+		session.getTransaction().begin();
+		try {
+			returSalesHdr.setDtmCrt(dtmupd.getTime());
+			returSalesHdr.setDtmUpd(dtmupd.getTime());
+			session.save(returSalesHdr);
+			for (ReturSalesDtl arow : lstreturSalesDtl) {
+				ReturSalesDtl  returSalesDtl = new ReturSalesDtl();
+				returSalesDtl = arow;
+				returSalesDtl.setDtmCrt(dtmupd.getTime());
+				returSalesDtl.setDtmUpd(dtmupd.getTime());
+				session.save(returSalesDtl);
+			}
+			session.getTransaction().commit();
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		
+	}
+
+
+
+	@Override
+	public List<ReturSalesHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

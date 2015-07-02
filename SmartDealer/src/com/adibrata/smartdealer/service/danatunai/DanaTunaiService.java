@@ -14,8 +14,8 @@ import com.adibrata.smartdealer.model.*;
 public interface DanaTunaiService {
 	public void Save(DanaTunai danaTunai);
 
-	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy);
 
 	public long TotalRecord(String WherCond);
-	public List<DanaTunai> View(long id);
+	public DanaTunai viewDanaTunai(long id);
 }

@@ -90,10 +90,31 @@ public class EntrustTransactionsDao implements EntrustService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Object[]> Paging(int CurrentPage, String WhereCond,
+	public List<Supplier> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<Supplier> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	/*
@@ -106,13 +127,64 @@ public class EntrustTransactionsDao implements EntrustService {
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		return 0;
+		long countResults = 0;
+		try {
+			String countQ = "Select count (id) " + strStatement;
+			Query countQuery = session.createQuery(countQ);
+			countResults = (long) countQuery.uniqueResult();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return countResults;
 	}
 
 	@Override
-	public List<Object[]> View(long id) {
+	public EntrustHdr viewEntrusHdr(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		EntrustHdr entrustHdr = null;
+		try {
+			entrustHdr = (EntrustHdr) session.get(EntrustHdr.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return entrustHdr;
+	}
+
+	@Override
+	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<EntrustDtl> list = null;
+		try {
+			hql.append(strStatement);
+	
+			Query selectQuery = session.createQuery(hql.toString());
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

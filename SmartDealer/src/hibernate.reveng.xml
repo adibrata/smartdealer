@@ -67,4 +67,6 @@
 	<table-filter match-catalog="SmartDealer" match-name="TrxSeqNo" />
 	<table-filter match-catalog="SmartDealer" match-name="Workshop" />
 	<table-filter match-catalog="SmartDealer" match-name="ZipCode" />
+	<table-filter match-catalog="SmartDealer" match-name="ServiceHdr" />
+	<table-filter match-catalog="SmartDealer" match-name="ServiceDtl" />
 </hibernate-reverse-engineering>

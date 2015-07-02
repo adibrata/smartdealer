@@ -126,9 +126,22 @@ public class CustomerDao implements CustomerMaintService {
 	}
 
 	@Override
-	public List<Customer> View(long id) {
+	public Customer View(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		Customer customer = null;
+		try {
+			customer = (Customer) session.get(Customer.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return customer;
 	}
 
 }

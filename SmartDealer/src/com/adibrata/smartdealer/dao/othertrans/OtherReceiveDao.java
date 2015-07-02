@@ -53,16 +53,21 @@ public class OtherReceiveDao implements OtherReceiveService{
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save(com.adibrata.smartdealer.model.OtherRcvHdr, com.adibrata.smartdealer.model.OtherRcvDtl)
 	 */
 	@Override
-	public void Save(OtherRcvHdr otherRcvHdr, OtherRcvDtl otherRcvDtl) {
+	public void Save(OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> lstotherRcvDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			otherRcvHdr.setDtmCrt(dtmupd.getTime());
 			otherRcvHdr.setDtmUpd(dtmupd.getTime());
-			otherRcvDtl .setDtmCrt(dtmupd.getTime());
-			otherRcvDtl.setDtmUpd(dtmupd.getTime());
 			session.save(otherRcvHdr);
-			session.save(otherRcvDtl);
+			for (OtherRcvDtl arow : lstotherRcvDtl) {
+				OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
+				otherRcvDtl.setDtmCrt(dtmupd.getTime());
+				otherRcvDtl.setDtmUpd(dtmupd.getTime());
+				
+				session.save(otherRcvDtl);	
+			}
+			
 			
 			session.getTransaction().commit();
 
@@ -85,12 +90,27 @@ public class OtherReceiveDao implements OtherReceiveService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#PurchaseInvoicePagingTotalRecord(java.lang.String)
+	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double PurchaseInvoicePagingTotalRecord(String WherCond) {
+	public double TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		return 0;
+		long countResults = 0;
+		try {
+			String countQ = "Select count (id) " + strStatement;
+			Query countQuery = session.createQuery(countQ);
+			countResults = (long) countQuery.uniqueResult();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return countResults;
 	}
 
 }

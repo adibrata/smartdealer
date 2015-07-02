@@ -18,5 +18,5 @@ public interface CustomerMaintService {
 	
 	public List<Customer>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
-	public List<Customer> View(long id);
+	public Customer View(long id);
 }

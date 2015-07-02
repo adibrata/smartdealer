@@ -38,7 +38,9 @@
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
         <mapping class="com.adibrata.smartdealer.model.OtherRcvHdr" />
+        <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.Stock" />
+        <mapping class="com.adibrata.smartdealer.model.ServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.MasterTable" />
         <mapping class="com.adibrata.smartdealer.model.PayHistHdr" />
         <mapping class="com.adibrata.smartdealer.model.PayReqHdr" />

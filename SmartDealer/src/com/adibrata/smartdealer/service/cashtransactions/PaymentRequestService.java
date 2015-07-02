@@ -12,8 +12,8 @@ import com.adibrata.smartdealer.model.*;
  */
 
 public interface PaymentRequestService {
-	public void SavePaymentRequest (PayReqHdr payReqHdr, PayReqDtl payReqDtl);
-	public List<Object[]>  PurchaseInvoicePaging(int CurrentPage, String WhereCond, String SortBy);
-	public double PurchaseInvoicePagingTotalRecord(String WherCond);
+	public void SavePaymentRequest (PayReqHdr payReqHdr, List<PayReqDtl> payReqDtl);
+	public List<Object[]> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public double TotalRecord(String WherCond);
 	
 }

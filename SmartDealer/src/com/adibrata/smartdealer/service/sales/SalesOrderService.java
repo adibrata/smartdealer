@@ -11,7 +11,10 @@ import com.adibrata.smartdealer.model.*;
  *
  */
 public interface SalesOrderService {
-	public void Save(SalesOrderHdr salesOrderHdr, SalesOrderDtl salesOrderDtl);
-	public List Paging(int CurrentPage, String WhereCond, String SortBy);
+	public void Save(SalesOrderHdr salesOrderHdr, List<SalesOrderDtl> salesOrderDtl);
+	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
+	public Customer viewCustomer (long id);
+	public SalesOrderHdr viewSalesOrderHdr (long id);
+	public List<SalesOrderDtl> viewSalesOrderDtls(SalesOrderHdr salesOrderHdr);
 }

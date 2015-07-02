@@ -17,5 +17,5 @@ public interface PVDisbursementService {
 	public List<Object[]>  Paging(int CurrentPage, String WhereCond, String SortBy);
 
 	public long TotalRecord(String WherCond);
-	public List<Object[]> View(long id);
+	public PaymentVoucher View(long id);
 }

@@ -149,7 +149,7 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}

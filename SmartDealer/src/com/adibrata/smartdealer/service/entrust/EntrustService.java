@@ -16,6 +16,7 @@ public interface EntrustService {
 	
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
-	public List<Object[]> View(long id);
+	public EntrustHdr viewEntrusHdr(long id);
+	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr);
 	
 }

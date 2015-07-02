@@ -10,7 +10,8 @@ import com.adibrata.smartdealer.model.*;
  *
  */
 public interface SalesInvoiceService {
-	public void Save();
-	public List Paging(int CurrentPage, String WhereCond, String SortBy);
+	public void Save(SalesInvoice salesInvoice);
+	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
+	public SalesOrderHdr View (long id);
 }

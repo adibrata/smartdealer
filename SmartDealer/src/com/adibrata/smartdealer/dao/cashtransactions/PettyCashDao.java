@@ -88,10 +88,10 @@ public class PettyCashDao implements PettyCashService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#PurchaseInvoicePagingTotalRecord(java.lang.String)
+	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double PurchaseInvoicePagingTotalRecord(String WherCond) {
+	public double TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -13,7 +13,7 @@ import java.util.List;
 import com.adibrata.smartdealer.model.*;
 
 public interface OtherReceiveService {
-	public void Save (OtherRcvHdr otherRcvHdr, OtherRcvDtl otherRcvDtl);
+	public void Save (OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> otherRcvDtl);
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
-	public double PurchaseInvoicePagingTotalRecord(String WherCond);
+	public double TotalRecord(String WherCond);
 }

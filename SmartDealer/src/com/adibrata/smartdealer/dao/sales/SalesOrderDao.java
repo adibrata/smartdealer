@@ -58,7 +58,8 @@ public class SalesOrderDao implements SalesOrderService {
 	 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Save()
 	 */
 	@Override
-	public void Save(SalesOrderHdr salesOrderHdr, SalesOrderDtl salesOrderDtl) {
+	public void Save(SalesOrderHdr salesOrderHdr,
+			List<SalesOrderDtl> lstsalesOrderDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		String transno = "";
@@ -69,10 +70,14 @@ public class SalesOrderDao implements SalesOrderService {
 			salesOrderHdr.setSono(transno);
 			salesOrderHdr.setDtmCrt(dtmupd.getTime());
 			salesOrderHdr.setDtmUpd(dtmupd.getTime());
-			salesOrderDtl.setDtmCrt(dtmupd.getTime());
-			salesOrderDtl.setDtmUpd(dtmupd.getTime());
 			session.save(salesOrderHdr);
-			session.save(salesOrderDtl);
+			for (SalesOrderDtl arow : lstsalesOrderDtl) {
+				SalesOrderDtl salesOrderDtl = new SalesOrderDtl();
+				salesOrderDtl = arow;
+				salesOrderDtl.setDtmCrt(dtmupd.getTime());
+				salesOrderDtl.setDtmUpd(dtmupd.getTime());
+				session.save(salesOrderDtl);
+			}
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
@@ -93,7 +98,42 @@ public class SalesOrderDao implements SalesOrderService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Customer> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<Customer> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.sales.SalesTransactions#TotalRecord(
+	 * java.lang.String)
+	 */
+	@Override
+	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {
@@ -113,17 +153,65 @@ public class SalesOrderDao implements SalesOrderService {
 		return countResults;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.sales.SalesTransactions#TotalRecord(
-	 * java.lang.String)
-	 */
 	@Override
-	public long TotalRecord(String WherCond) {
+	public SalesOrderHdr viewSalesOrderHdr(long id) {
 		// TODO Auto-generated method stub
-		return 0;
+		SalesOrderHdr salesOrderHdr = null;
+		try {
+			salesOrderHdr = (SalesOrderHdr) session
+					.get(SalesOrderHdr.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return salesOrderHdr;
 	}
 
+	@Override
+	public Customer viewCustomer(long id) {
+		// TODO Auto-generated method stub
+		Customer customer = null;
+		try {
+			customer = (Customer) session.get(Customer.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return customer;
+	}
+
+	@Override
+	public List<SalesOrderDtl> viewSalesOrderDtls(SalesOrderHdr salesOrderHdr) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<SalesOrderDtl> list = null;
+		try {
+			hql.append(strStatement);
+			Query selectQuery = session.createQuery(hql.toString());
+
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
 }

@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
  *
  */
 public interface OtherDisburseService {
-	public void Save (OtherDsbHdr otherDsbHdr, OtherDsbDtl otherDsbDtl);
+	public void Save (OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> otherDsbDtl);
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
-	public double PurchaseInvoicePagingTotalRecord(String WherCond);
+	public double TotalRecord(String WherCond);
 }
