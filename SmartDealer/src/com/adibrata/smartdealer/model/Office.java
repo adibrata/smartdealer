@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 2, 2015 12:05:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 2, 2015 6:38:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -65,6 +65,7 @@ public class Office implements java.io.Serializable {
 			0);
 	private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
 			0);
+	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 
 	public Office() {
 	}
@@ -88,7 +89,7 @@ public class Office implements java.io.Serializable {
 			Set<PayReqHdr> payReqHdrs,
 			Set<AccountPayable> accountPayablesForOfficeId,
 			Set<AccountPayable> accountPayablesForOfficeDisbId,
-			Set<ReturPurchaseHdr> returPurchaseHdrs) {
+			Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.officeCode = officeCode;
@@ -126,9 +127,10 @@ public class Office implements java.io.Serializable {
 		this.accountPayablesForOfficeId = accountPayablesForOfficeId;
 		this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
 		this.returPurchaseHdrs = returPurchaseHdrs;
+		this.serviceHdrs = serviceHdrs;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -465,6 +467,15 @@ public class Office implements java.io.Serializable {
 
 	public void setReturPurchaseHdrs(Set<ReturPurchaseHdr> returPurchaseHdrs) {
 		this.returPurchaseHdrs = returPurchaseHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<ServiceHdr> getServiceHdrs() {
+		return this.serviceHdrs;
+	}
+
+	public void setServiceHdrs(Set<ServiceHdr> serviceHdrs) {
+		this.serviceHdrs = serviceHdrs;
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 2, 2015 12:05:04 PM by Hibernate Tools 4.3.1
+// Generated Jul 2, 2015 6:38:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -67,6 +67,7 @@ public class Partner implements java.io.Serializable {
 	private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(
 			0);
 	private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
+	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 	private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
 			0);
 	private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
@@ -110,7 +111,7 @@ public class Partner implements java.io.Serializable {
 			Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais,
 			Set<MasterTable> masterTables, Set<Workshop> workshops,
 			Set<AssetServiceHdr> assetServiceHdrs,
-			Set<PaymentVoucher> paymentVouchers,
+			Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 			Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs,
@@ -164,6 +165,7 @@ public class Partner implements java.io.Serializable {
 		this.workshops = workshops;
 		this.assetServiceHdrs = assetServiceHdrs;
 		this.paymentVouchers = paymentVouchers;
+		this.serviceHdrs = serviceHdrs;
 		this.returPurchaseHdrs = returPurchaseHdrs;
 		this.salesInvoices = salesInvoices;
 		this.salesOrderHdrs = salesOrderHdrs;
@@ -181,7 +183,7 @@ public class Partner implements java.io.Serializable {
 		this.offices = offices;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "PartnerCode", unique = true, nullable = false, length = 20)
 	public String getPartnerCode() {
 		return this.partnerCode;
@@ -578,6 +580,15 @@ public class Partner implements java.io.Serializable {
 
 	public void setPaymentVouchers(Set<PaymentVoucher> paymentVouchers) {
 		this.paymentVouchers = paymentVouchers;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+	public Set<ServiceHdr> getServiceHdrs() {
+		return this.serviceHdrs;
+	}
+
+	public void setServiceHdrs(Set<ServiceHdr> serviceHdrs) {
+		this.serviceHdrs = serviceHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
