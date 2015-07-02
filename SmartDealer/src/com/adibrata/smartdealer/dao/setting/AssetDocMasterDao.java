@@ -168,7 +168,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		session.getTransaction().begin();
 		try {
 
-			session.del(assetDocMaster);
+			session.delete(assetDocMaster);
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {

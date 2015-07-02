@@ -121,7 +121,7 @@ public class JournalSchemeDao implements JournalSchemeService {
 			coaSchmHdr.setDtmCrt(dtmupd.getTime());
 			coaSchmHdr.setDtmUpd(dtmupd.getTime());
 
-			session.del(coaSchmHdr);
+			session.delete(coaSchmHdr);
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {

@@ -151,7 +151,7 @@ public class BankAccountDao implements BankAccountService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(bankAccount);
+			session.delete(bankAccount);
 					
 			session.getTransaction().commit();
 

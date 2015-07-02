@@ -87,7 +87,7 @@ public class ZipCodeDao implements ZipCodeService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(zipcode);
+			session.delete(zipcode);
 			
 			session.getTransaction().commit();
 

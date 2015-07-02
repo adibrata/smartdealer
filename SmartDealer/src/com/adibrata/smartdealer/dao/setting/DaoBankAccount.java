@@ -37,7 +37,7 @@ public class DaoBankAccount {
 		session.save(stock);
 
 		stock.setID(4);
-		session.del(stock);
+		session.delete(stock);
 		
 		
 	

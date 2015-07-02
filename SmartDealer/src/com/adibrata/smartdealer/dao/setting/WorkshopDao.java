@@ -87,7 +87,7 @@ public class WorkshopDao implements WorkshopService{
 		session.getTransaction().begin();
 		try {
 			
-			session.del(workshop);
+			session.delete(workshop);
 			
 			session.getTransaction().commit();
 

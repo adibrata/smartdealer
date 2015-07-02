@@ -95,7 +95,7 @@ public class DealerDao implements DealerService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(supplier);
+			session.delete(supplier);
 			
 			session.getTransaction().commit();
 

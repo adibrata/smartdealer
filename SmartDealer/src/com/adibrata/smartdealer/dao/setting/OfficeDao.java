@@ -173,7 +173,7 @@ public class OfficeDao implements OfficeService {
 		session.getTransaction().begin();
 		try {
 
-			session.del(office);
+			session.delete(office);
 
 			session.getTransaction().commit();
 

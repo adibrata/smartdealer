@@ -152,7 +152,7 @@ public class AssetMasterDao implements AssetMasterService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(assetMaster);
+			session.delete(assetMaster);
 			
 			session.getTransaction().commit();
 

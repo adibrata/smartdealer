@@ -97,7 +97,7 @@ public class MasterDao implements MasterService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(masterTable);
+			session.delete(masterTable);
 			
 			session.getTransaction().commit();
 

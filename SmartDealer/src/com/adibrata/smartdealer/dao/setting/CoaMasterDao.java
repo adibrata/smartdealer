@@ -148,7 +148,7 @@ public class CoaMasterDao implements COAMasterService {
 		session.getTransaction().begin();
 		try {
 
-			session.del(coamaster);
+			session.delete(coamaster);
 					
 			session.getTransaction().commit();
 

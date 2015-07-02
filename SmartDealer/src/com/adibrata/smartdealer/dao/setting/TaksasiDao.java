@@ -148,7 +148,7 @@ public class TaksasiDao implements TaksasiService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(taksasi);
+			session.delete(taksasi);
 			
 			session.getTransaction().commit();
 
