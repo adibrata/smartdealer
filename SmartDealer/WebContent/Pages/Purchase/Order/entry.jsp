@@ -11,8 +11,8 @@
 	function add(){
 		document.getElementById("mode").value="add";
 	}
-	function delete(){
-		document.getElementById("mode").value="delete";
+	function del(){
+		document.getElementById("mode").value="del";
 	}
 	function save(){
 		document.getElementById("mode").value="save";
@@ -171,7 +171,7 @@
 											<th>Purchase<br>Price</th>
 											<th>Tax</th>
 											<th>Total<br>Purchase</th>
-											<th><button type="submit" onclick="delete()">Delete</button></th>
+											<th><button type="submit" onclick="del()">del</button></th>
 										</tr>
 									<s:iterator>
 										<tr>

@@ -14,8 +14,8 @@
 	function edit(){
 		document.getElementById("mode").value="edit";
 	}
-	function delete(){
-		document.getElementById("mode").value="delete";
+	function del(){
+		document.getElementById("mode").value="del";
 	}
 	function add(){
 		document.getElementById("mode").value="add";
@@ -32,7 +32,7 @@
 					</td>
 					<td>
 						<select>
-							<option value="">Parameter</option>
+							<option value="0">Pilih</option>
 							<option value="name">Name</option>
 							<option value="address">Address</option>
 							<option value="rt">RT</option>
@@ -70,8 +70,8 @@
 						<br>
 						<table border="1">
 							<tr>
-								<th>Name</th>
-								<th>Address</th>
+								<th>Nama</th>
+								<th>Alamat</th>
 								<th>RT</th>
 								<th>RW</th>
 								<th>Kelurahan</th>
@@ -87,7 +87,7 @@
 								<th>Handphone</th>
 								<th>Full Address</th>
 								<th><button type="submit" onclick="edit()">Edit</button></th>
-								<th><button type="submit" onclick="delete()">Delete</button></th>
+								<th><button type="submit" onclick="del()">del</button></th>
 							</tr>
 						<s:iterator value="">
 							<tr id="row_<s:property value="id"/>">

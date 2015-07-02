@@ -14,8 +14,8 @@
 	function edit(){
 		document.getElementById("mode").value="edit";
 	}
-	function delete(){
-		document.getElementById("mode").value="delete";
+	function del(){
+		document.getElementById("mode").value="del";
 	}
 	function add(){
 		document.getElementById("mode").value="add";
@@ -66,7 +66,7 @@
 								<th>Name</th>
 								<th>Min. Price</th>
 								<th><button type="submit" onclick="edit()">Edit</button></th>
-								<th><button type="submit" onclick="delete()">Delete</button></th>
+								<th><button type="submit" onclick="del()">del</button></th>
 							</tr>
 						<s:iterator value="">
 							<tr id="row_<s:property value="id"/>">
