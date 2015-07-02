@@ -8,17 +8,17 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	function add(){
-		document.getElementById("mode").value="add";
+	function tambah(){
+		document.getElementById("mode").value="tambah";
 	}
 	function del(){
 		document.getElementById("mode").value="del";
 	}
-	function save(){
-		document.getElementById("mode").value="save";
+	function simpan(){
+		document.getElementById("mode").value="simpan";
 	}
-	function back(){
-		document.getElementById("mode").value="back";
+	function kembali(){
+		document.getElementById("mode").value="kembali";
 	}
 </script>
 <body>
@@ -117,7 +117,7 @@
 				</tr>
 				<tr>
 					<td align="right" colspan="2">
-						<button type="submit" onclick="add()">Add</button>
+						<button type="submit" onclick="tambah()">Add</button>
 					</td>
 				</tr>
 				<tr>
@@ -184,8 +184,8 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<button type="submit" onclick="save()">Save</button>
-						<button type="submit" onclick="back()">Back</button>
+						<button type="submit" onclick="simpan()">Save</button>
+						<button type="submit" onclick="kembali()">Back</button>
 					</td>
 				</tr>
 			</table>
