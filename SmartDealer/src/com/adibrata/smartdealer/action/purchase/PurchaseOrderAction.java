@@ -3,7 +3,7 @@ package com.adibrata.smartdealer.action.purchase;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-public class PurchaseAction extends ActionSupport implements Preparable{
+public class PurchaseOrderAction extends ActionSupport implements Preparable{
 
 	/**
 	 *
