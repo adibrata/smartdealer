@@ -20,11 +20,129 @@ import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.SalesOrderService;
 import com.adibrata.smartdealer.service.sales.SalesReturnService;
 
-
-public class SalesReturAction extends ActionSupport implements Preparable{
+public class SalesReturAction extends ActionSupport implements Preparable {
 	private String mode;
 	private SalesReturnService salesReturnService;
-	
+	private Partner partner;
+	private Office office;
+
+	private ReturSalesHdr returSalesHdr;
+	private ReturSalesDtl returSalesDtl;
+	private List<ReturSalesHdr> lstReturSalesHdr;
+	private List<ReturSalesDtl> lstReturSalesDtl;
+
+	/**
+	 * @return the mode
+	 */
+	public String getMode() {
+		return mode;
+	}
+
+	/**
+	 * @return the salesReturnService
+	 */
+	public SalesReturnService getSalesReturnService() {
+		return salesReturnService;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the returSalesHdr
+	 */
+	public ReturSalesHdr getReturSalesHdr() {
+		return returSalesHdr;
+	}
+
+	/**
+	 * @return the returSalesDtl
+	 */
+	public ReturSalesDtl getReturSalesDtl() {
+		return returSalesDtl;
+	}
+
+	/**
+	 * @return the lstReturSalesHdr
+	 */
+	public List<ReturSalesHdr> getLstReturSalesHdr() {
+		return lstReturSalesHdr;
+	}
+
+	/**
+	 * @return the lstReturSalesDtl
+	 */
+	public List<ReturSalesDtl> getLstReturSalesDtl() {
+		return lstReturSalesDtl;
+	}
+
+	/**
+	 * @param mode the mode to set
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	/**
+	 * @param salesReturnService the salesReturnService to set
+	 */
+	public void setSalesReturnService(SalesReturnService salesReturnService) {
+		this.salesReturnService = salesReturnService;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param returSalesHdr the returSalesHdr to set
+	 */
+	public void setReturSalesHdr(ReturSalesHdr returSalesHdr) {
+		this.returSalesHdr = returSalesHdr;
+	}
+
+	/**
+	 * @param returSalesDtl the returSalesDtl to set
+	 */
+	public void setReturSalesDtl(ReturSalesDtl returSalesDtl) {
+		this.returSalesDtl = returSalesDtl;
+	}
+
+	/**
+	 * @param lstReturSalesHdr the lstReturSalesHdr to set
+	 */
+	public void setLstReturSalesHdr(List<ReturSalesHdr> lstReturSalesHdr) {
+		this.lstReturSalesHdr = lstReturSalesHdr;
+	}
+
+	/**
+	 * @param lstReturSalesDtl the lstReturSalesDtl to set
+	 */
+	public void setLstReturSalesDtl(List<ReturSalesDtl> lstReturSalesDtl) {
+		this.lstReturSalesDtl = lstReturSalesDtl;
+	}
+
 	public SalesReturAction() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,7 +150,7 @@ public class SalesReturAction extends ActionSupport implements Preparable{
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

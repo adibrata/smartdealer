@@ -25,6 +25,117 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 
 	private String mode;
 	private SalesOrderService salesOrderService;
+	private SalesOrderHdr salesOrderHdr;
+	private SalesOrderDtl salesOrderDtl;
+	private Partner partner;
+	private Office office;
+	private List<SalesOrderHdr> lstSalesOrderHdr;
+	private List<SalesOrderDtl> lstSalesOrderDtl;
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the salesOrderService
+	 */
+	public SalesOrderService getSalesOrderService() {
+		return salesOrderService;
+	}
+
+	/**
+	 * @return the salesOrderHdr
+	 */
+	public SalesOrderHdr getSalesOrderHdr() {
+		return salesOrderHdr;
+	}
+
+	/**
+	 * @return the salesOrderDtl
+	 */
+	public SalesOrderDtl getSalesOrderDtl() {
+		return salesOrderDtl;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstSalesOrderHdr
+	 */
+	public List<SalesOrderHdr> getLstSalesOrderHdr() {
+		return lstSalesOrderHdr;
+	}
+
+	/**
+	 * @return the lstSalesOrderDtl
+	 */
+	public List<SalesOrderDtl> getLstSalesOrderDtl() {
+		return lstSalesOrderDtl;
+	}
+
+	/**
+	 * @param salesOrderService the salesOrderService to set
+	 */
+	public void setSalesOrderService(SalesOrderService salesOrderService) {
+		this.salesOrderService = salesOrderService;
+	}
+
+	/**
+	 * @param salesOrderHdr the salesOrderHdr to set
+	 */
+	public void setSalesOrderHdr(SalesOrderHdr salesOrderHdr) {
+		this.salesOrderHdr = salesOrderHdr;
+	}
+
+	/**
+	 * @param salesOrderDtl the salesOrderDtl to set
+	 */
+	public void setSalesOrderDtl(SalesOrderDtl salesOrderDtl) {
+		this.salesOrderDtl = salesOrderDtl;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstSalesOrderHdr the lstSalesOrderHdr to set
+	 */
+	public void setLstSalesOrderHdr(List<SalesOrderHdr> lstSalesOrderHdr) {
+		this.lstSalesOrderHdr = lstSalesOrderHdr;
+	}
+
+	/**
+	 * @param lstSalesOrderDtl the lstSalesOrderDtl to set
+	 */
+	public void setLstSalesOrderDtl(List<SalesOrderDtl> lstSalesOrderDtl) {
+		this.lstSalesOrderDtl = lstSalesOrderDtl;
+	}
 
 	public SalesOrderAction() {
 		// TODO Auto-generated constructor stub

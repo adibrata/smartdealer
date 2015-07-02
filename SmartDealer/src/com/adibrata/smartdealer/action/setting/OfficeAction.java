@@ -28,7 +28,89 @@ public class OfficeAction extends ActionSupport implements Preparable {
 	private static final long serialVersionUID = 1L;
 
 	private String mode;
+	private Partner partner;
+	private Office office;
+	private List<Office> lstoffice;
 	private OfficeService officeService;
+	private List<Office> lstOffice;
+	
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstoffice
+	 */
+	public List<Office> getLstoffice() {
+		return lstoffice;
+	}
+
+	/**
+	 * @return the officeService
+	 */
+	public OfficeService getOfficeService() {
+		return officeService;
+	}
+
+	/**
+	 * @return the lstOffice
+	 */
+	public List<Office> getLstOffice() {
+		return lstOffice;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstoffice the lstoffice to set
+	 */
+	public void setLstoffice(List<Office> lstoffice) {
+		this.lstoffice = lstoffice;
+	}
+
+	/**
+	 * @param officeService the officeService to set
+	 */
+	public void setOfficeService(OfficeService officeService) {
+		this.officeService = officeService;
+	}
+
+	/**
+	 * @param lstOffice the lstOffice to set
+	 */
+	public void setLstOffice(List<Office> lstOffice) {
+		this.lstOffice = lstOffice;
+	}
 
 	@Override
 	public void prepare() throws Exception {

@@ -27,9 +27,89 @@ public class WorkshopAction extends ActionSupport implements Preparable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
 	private String mode;
+	private Workshop workshop;
 	private WorkshopService workshopService;
+	private Partner partner;
+	private Office office;
+	private List<Workshop> lstWorkshop;
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the workshop
+	 */
+	public Workshop getWorkshop() {
+		return workshop;
+	}
+
+	/**
+	 * @return the workshopService
+	 */
+	public WorkshopService getWorkshopService() {
+		return workshopService;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstWorkshop
+	 */
+	public List<Workshop> getLstWorkshop() {
+		return lstWorkshop;
+	}
+
+	/**
+	 * @param workshop the workshop to set
+	 */
+	public void setWorkshop(Workshop workshop) {
+		this.workshop = workshop;
+	}
+
+	/**
+	 * @param workshopService the workshopService to set
+	 */
+	public void setWorkshopService(WorkshopService workshopService) {
+		this.workshopService = workshopService;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstWorkshop the lstWorkshop to set
+	 */
+	public void setLstWorkshop(List<Workshop> lstWorkshop) {
+		this.lstWorkshop = lstWorkshop;
+	}
 
 	@Override
 	public void prepare() throws Exception {

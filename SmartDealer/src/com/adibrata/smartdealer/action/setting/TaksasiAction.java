@@ -27,9 +27,89 @@ public class TaksasiAction extends ActionSupport implements Preparable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
 	private String mode;
+	private Taksasi taksasi;
 	private TaksasiService taksasiService;
+	private Partner partner;
+	private Office office;
+	private List<Taksasi> lstTaksasi;
+ 
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the taksasi
+	 */
+	public Taksasi getTaksasi() {
+		return taksasi;
+	}
+
+	/**
+	 * @return the taksasiService
+	 */
+	public TaksasiService getTaksasiService() {
+		return taksasiService;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstTaksasi
+	 */
+	public List<Taksasi> getLstTaksasi() {
+		return lstTaksasi;
+	}
+
+	/**
+	 * @param taksasi the taksasi to set
+	 */
+	public void setTaksasi(Taksasi taksasi) {
+		this.taksasi = taksasi;
+	}
+
+	/**
+	 * @param taksasiService the taksasiService to set
+	 */
+	public void setTaksasiService(TaksasiService taksasiService) {
+		this.taksasiService = taksasiService;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstTaksasi the lstTaksasi to set
+	 */
+	public void setLstTaksasi(List<Taksasi> lstTaksasi) {
+		this.lstTaksasi = lstTaksasi;
+	}
 
 	@Override
 	public void prepare() throws Exception {

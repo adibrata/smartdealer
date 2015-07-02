@@ -2,6 +2,7 @@ package com.adibrata.smartdealer.action.entrust;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import com.sun.org.apache.bcel.internal.generic.LSTORE;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,87 @@ public class EntrustAction extends ActionSupport implements Preparable {
 
 	private String mode;
 	private EntrustService entrustService;
-	
+	private Partner partner;
+	private Office office;
+	private List<EntrustHdr> lstEntrustHdr;
+	private List<EntrustDtl> lstEntrustDtl;
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the entrustService
+	 */
+	public EntrustService getEntrustService() {
+		return entrustService;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstEntrustHdr
+	 */
+	public List<EntrustHdr> getLstEntrustHdr() {
+		return lstEntrustHdr;
+	}
+
+	/**
+	 * @return the lstEntrustDtl
+	 */
+	public List<EntrustDtl> getLstEntrustDtl() {
+		return lstEntrustDtl;
+	}
+
+	/**
+	 * @param entrustService the entrustService to set
+	 */
+	public void setEntrustService(EntrustService entrustService) {
+		this.entrustService = entrustService;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstEntrustHdr the lstEntrustHdr to set
+	 */
+	public void setLstEntrustHdr(List<EntrustHdr> lstEntrustHdr) {
+		this.lstEntrustHdr = lstEntrustHdr;
+	}
+
+	/**
+	 * @param lstEntrustDtl the lstEntrustDtl to set
+	 */
+	public void setLstEntrustDtl(List<EntrustDtl> lstEntrustDtl) {
+		this.lstEntrustDtl = lstEntrustDtl;
+	}
 
 	@Override
 	public void prepare() throws Exception {

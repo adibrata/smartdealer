@@ -29,6 +29,87 @@ public class DealerAction extends ActionSupport implements Preparable {
 
 	private String mode;
 	private DealerService dealerService;
+	private Supplier supplier;
+	private Partner partner;
+	private Office office;
+	private List<Supplier> lstDealer;
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the dealerService
+	 */
+	public DealerService getDealerService() {
+		return dealerService;
+	}
+
+	/**
+	 * @return the supplier
+	 */
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstDealer
+	 */
+	public List<Supplier> getLstDealer() {
+		return lstDealer;
+	}
+
+	/**
+	 * @param dealerService the dealerService to set
+	 */
+	public void setDealerService(DealerService dealerService) {
+		this.dealerService = dealerService;
+	}
+
+	/**
+	 * @param supplier the supplier to set
+	 */
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param lstDealer the lstDealer to set
+	 */
+	public void setLstDealer(List<Supplier> lstDealer) {
+		this.lstDealer = lstDealer;
+	}
 
 	@Override
 	public void prepare() throws Exception {

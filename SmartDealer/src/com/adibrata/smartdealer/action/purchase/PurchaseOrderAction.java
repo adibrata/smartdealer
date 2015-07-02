@@ -29,10 +29,61 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable{
 	 */
 	
 	private static final long serialVersionUID = 1L;
+	private Partner partner;
+	private Office office;
 
 	private String mode;
 	private PurchaseOrderService purchaseOrderService;
 	
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the purchaseOrderService
+	 */
+	public PurchaseOrderService getPurchaseOrderService() {
+		return purchaseOrderService;
+	}
+
+	/**
+	 * @param partner the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param purchaseOrderService the purchaseOrderService to set
+	 */
+	public void setPurchaseOrderService(PurchaseOrderService purchaseOrderService) {
+		this.purchaseOrderService = purchaseOrderService;
+	}
+
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
