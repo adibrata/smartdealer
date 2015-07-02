@@ -1,6 +1,0 @@
-<?page title="Purchase Invoice" contentType="text/html;charset=UTF-8"?>
-<zk>
-<window title="Purchase Invoice" border="normal">
-<include src="../../UserControl/PurchaseTransactionList.zul"></include>
-</window>
-</zk>

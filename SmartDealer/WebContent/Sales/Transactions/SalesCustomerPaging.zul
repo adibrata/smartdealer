@@ -1,6 +1,0 @@
-<?page title="Sales Transactions" contentType="text/html;charset=UTF-8"?>
-<zk>
-<window title="Sales Transactions" border="normal">
-<include src="../../UserControl/CustomerList.zul"></include>
-</window>
-</zk>
