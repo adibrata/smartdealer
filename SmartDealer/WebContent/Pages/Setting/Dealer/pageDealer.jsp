@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	function cari(){
-		document.getElementById("mode").value="cari";
+	function search(){
+		document.getElementById("mode").value="search";
 	}
 	function edit(){
 		document.getElementById("mode").value="edit";
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<button type="submit" onclick="cari()">Search</button>
+						<button type="submit" onclick="search()">Search</button>
 					</td>
 				</tr>
 				<tr>

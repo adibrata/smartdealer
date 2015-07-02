@@ -116,7 +116,7 @@ public class EmailHelper implements Runnable {
 			
 
 			// Send message
-			// Tambahkan thread mode --> Not Yet
+			// addkan thread mode --> Not Yet
 			Transport.send(message);
 			
 

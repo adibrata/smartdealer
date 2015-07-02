@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	function simpan(){
-		document.getElementById("mode").value="simpan";
+	function save(){
+		document.getElementById("mode").value="save";
 	}
 	function back(){
 		document.getElementById("mode").value="back";
@@ -47,7 +47,7 @@
 				<tr>
 					<td colspan="2" align="right">
 						<br>
-						<button type="submit" onclick="simpan()">Save</button>
+						<button type="submit" onclick="save()">Save</button>
 						<button type="submit" onclick="back()">Back</button>
 					</td>
 				</tr>

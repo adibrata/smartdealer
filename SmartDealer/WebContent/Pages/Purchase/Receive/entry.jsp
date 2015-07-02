@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	function simpan(){
-		document.getElementById("mode").value="simpan";
+	function save(){
+		document.getElementById("mode").value="save";
 	}
-	function kembali(){
-		document.getElementById("mode").value="kembali";
+	function back(){
+		document.getElementById("mode").value="back";
 	}
 </script>
 <body>
@@ -159,8 +159,8 @@
 				</tr>
 				<tr>
 					<td colspan="4" align="right">
-						<button type="submit" onclick="simpan()">Save</button>
-						<button type="submit" onclick="kembali()">Back</button>
+						<button type="submit" onclick="save()">Save</button>
+						<button type="submit" onclick="back()">Back</button>
 					</td>
 				</tr>
 			</table>
