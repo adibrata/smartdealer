@@ -109,7 +109,7 @@ public class UserRegisterDao implements UserService {
 		session.getTransaction().begin();
 		try {
 
-			session.del(msUser);
+			session.delete(msUser);
 
 			session.getTransaction().commit();
 

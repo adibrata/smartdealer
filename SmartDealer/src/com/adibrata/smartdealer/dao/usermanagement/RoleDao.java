@@ -88,7 +88,7 @@ public class RoleDao implements RoleService{
 		session.getTransaction().begin();
 		try {
 
-			session.del(msRole);
+			session.delete(msRole);
 					
 			session.getTransaction().commit();
 

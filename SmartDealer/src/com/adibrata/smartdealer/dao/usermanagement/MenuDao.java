@@ -87,7 +87,7 @@ public class MenuDao  implements MenuService{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			session.del(msMenu);
+			session.delete(msMenu);
 					
 			session.getTransaction().commit();
 

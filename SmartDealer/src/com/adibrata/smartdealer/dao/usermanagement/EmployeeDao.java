@@ -86,7 +86,7 @@ public class EmployeeDao implements EmployeeService {
 		session.getTransaction().begin();
 		try {
 			
-			session.del(employee);
+			session.delete(employee);
 					
 			session.getTransaction().commit();
 
