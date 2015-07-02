@@ -25,29 +25,49 @@ import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 public class CoaMasterDao implements COAMasterService {
-	String userupd; 
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public CoaMasterDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#Save(com.adibrata.smartdealer.model.Coamaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.COAMaster#Save(com.adibrata.
+	 * smartdealer.model.Coamaster)
 	 */
 
-
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.COAMaster#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Coamaster> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Coamaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Coamaster> list = null;
@@ -62,7 +82,7 @@ public class CoaMasterDao implements COAMasterService {
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -73,20 +93,24 @@ public class CoaMasterDao implements COAMasterService {
 		return list;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#TotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.COAMaster#TotalRecord(java.lang
+	 * .String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -97,8 +121,12 @@ public class CoaMasterDao implements COAMasterService {
 		return countResults;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#SaveAdd(com.adibrata.smartdealer.model.Coamaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.COAMaster#SaveAdd(com.adibrata
+	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
 	public void SaveAdd(Coamaster coamaster) {
@@ -108,30 +136,36 @@ public class CoaMasterDao implements COAMasterService {
 			coamaster.setDtmCrt(dtmupd.getTime());
 			coamaster.setDtmUpd(dtmupd.getTime());
 			session.save(coamaster);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#SaveEdit(com.adibrata.smartdealer.model.Coamaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.COAMaster#SaveEdit(com.adibrata
+	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
 	public void SaveEdit(Coamaster coamaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			coamaster.setDtmUpd(dtmupd.getTime());
 			session.update(coamaster);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
@@ -139,24 +173,30 @@ public class CoaMasterDao implements COAMasterService {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#Savedel(com.adibrata.smartdealer.model.Coamaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.COAMaster#SaveDel(com.adibrata
+	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void Savedel(Coamaster coamaster) {
+	public void SaveDel(Coamaster coamaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
 			session.delete(coamaster);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
@@ -166,13 +206,15 @@ public class CoaMasterDao implements COAMasterService {
 		// TODO Auto-generated method stub
 		Coamaster coamaster = null;
 		try {
-			coamaster =  (Coamaster) session.get(Coamaster.class, id);
-			
+			coamaster = (Coamaster) session.get(Coamaster.class, id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return coamaster;

@@ -24,20 +24,41 @@ import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.service.othertransactions.*;
-public class OtherDisburseDao implements OtherDisburseService{
-	String userupd; 
+
+public class OtherDisburseDao implements OtherDisburseService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
+	String strStatement;
+	StringBuilder hql = new StringBuilder();
+	int pagesize;
 
 	public OtherDisburseDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.othertransactions.OtherDisburse#Save(com.adibrata.smartdealer.model.OtherDsbHdr, com.adibrata.smartdealer.model.OtherDsbDtl)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.othertransactions.OtherDisburse#Save
+	 * (com.adibrata.smartdealer.model.OtherDsbHdr,
+	 * com.adibrata.smartdealer.model.OtherDsbDtl)
 	 */
 	@Override
 	public void Save(OtherDsbHdr otherDsbHdr, OtherDsbDtl otherDsbDtl) {
@@ -46,24 +67,30 @@ public class OtherDisburseDao implements OtherDisburseService{
 		try {
 			otherDsbHdr.setDtmCrt(dtmupd.getTime());
 			otherDsbHdr.setDtmUpd(dtmupd.getTime());
-			otherDsbDtl .setDtmCrt(dtmupd.getTime());
+			otherDsbDtl.setDtmCrt(dtmupd.getTime());
 			otherDsbDtl.setDtmUpd(dtmupd.getTime());
 			session.save(otherDsbHdr);
 			session.save(otherDsbDtl);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.othertransactions.OtherDisburse#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.othertransactions.OtherDisburse#Paging
+	 * (int, java.lang.String, java.lang.String)
 	 */
 	@Override
 	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
@@ -71,8 +98,11 @@ public class OtherDisburseDao implements OtherDisburseService{
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.othertransactions.OtherDisburse#PurchaseInvoicePagingTotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.othertransactions.OtherDisburse#
+	 * PurchaseInvoicePagingTotalRecord(java.lang.String)
 	 */
 	@Override
 	public double PurchaseInvoicePagingTotalRecord(String WherCond) {

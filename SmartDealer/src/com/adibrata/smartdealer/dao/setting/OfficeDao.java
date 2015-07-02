@@ -36,9 +36,20 @@ public class OfficeDao implements OfficeService {
 
 	public OfficeDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		pagesize = HibernateHelper.getPagesize();
-		strStatement = " from Office ";
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/*
@@ -164,11 +175,11 @@ public class OfficeDao implements OfficeService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.adibrata.smartdealer.service.setting.OfficeService#Savedel(com
+	 * com.adibrata.smartdealer.service.setting.OfficeService#SaveDel(com
 	 * .adibrata.smartdealer.model.Office)
 	 */
 	@Override
-	public void Savedel(Office office) {
+	public void SaveDel(Office office) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

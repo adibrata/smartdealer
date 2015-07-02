@@ -30,15 +30,29 @@ public class AccountPayableDao implements SelectionService{
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
-
+	String strStatement;
+	StringBuilder hql = new StringBuilder();
+	int pagesize;
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	
 
 	public AccountPayableDao(String userupd) {
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 		// TODO Auto-generated constructor stub
 	}
 
@@ -69,8 +83,29 @@ public class AccountPayableDao implements SelectionService{
 	 */
 	@Override
 	public List<AccountPayable>  Paging(int CurrentPage, String WhereCond, String SortBy) {
-		// TODO Auto-generated method stub
-		return null;
+		// 		TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<AccountPayable> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	/* (non-Javadoc)

@@ -23,23 +23,40 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
-public class MasterDao implements MasterService{
-	String userupd; 
+
+public class MasterDao implements MasterService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public MasterDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
-	
-
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#SaveAdd(com.adibrata.smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.Master#SaveAdd(com.adibrata.
+	 * smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
 	public void SaveAdd(MasterType masterType, MasterTable masterTable) {
@@ -49,74 +66,87 @@ public class MasterDao implements MasterService{
 			masterTable.setDtmCrt(dtmupd.getTime());
 			masterTable.setDtmUpd(dtmupd.getTime());
 			session.save(masterTable);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-
-
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#SaveEdit(com.adibrata.smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.Master#SaveEdit(com.adibrata
+	 * .smartdealer.model.MasterType,
+	 * com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
 	public void SaveEdit(MasterType masterType, MasterTable masterTable) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			masterTable.setDtmUpd(dtmupd.getTime());
 			session.update(masterTable);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-
-
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#Savedel(com.adibrata.smartdealer.model.MasterTable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.Master#SaveDel(com.adibrata.
+	 * smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void Savedel(MasterTable masterTable) {
+	public void SaveDel(MasterTable masterTable) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
 			session.delete(masterTable);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-
-
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.Master#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<MasterTable> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MasterTable> list = null;
@@ -131,7 +161,7 @@ public class MasterDao implements MasterService{
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -142,20 +172,24 @@ public class MasterDao implements MasterService{
 		return list;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#TotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.Master#TotalRecord(java.lang
+	 * .String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -166,15 +200,11 @@ public class MasterDao implements MasterService{
 		return countResults;
 	}
 
-
-
 	@Override
 	public List<MasterType> ListMasterType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public MasterTable View(long id) {

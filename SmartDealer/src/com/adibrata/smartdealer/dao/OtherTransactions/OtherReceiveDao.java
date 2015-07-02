@@ -28,11 +28,25 @@ public class OtherReceiveDao implements OtherReceiveService{
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
-
+	String strStatement;
+	StringBuilder hql = new StringBuilder();
+	int pagesize;
 	public OtherReceiveDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/* (non-Javadoc)

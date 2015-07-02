@@ -2,6 +2,7 @@
  * 
  */
 package com.adibrata.smartdealer.dao.setting;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,24 +24,42 @@ import util.adibrata.support.transno.GetTransNo;
  * @author Henry
  *
  */
-public class DealerDao implements DealerService{
-	String userupd; 
+public class DealerDao implements DealerService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	/**
 	 * 
 	 */
 	public DealerDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#SaveAdd(com.adibrata.smartdealer.model.Supplier)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.DealerService#SaveAdd(com.adibrata
+	 * .smartdealer.model.Supplier)
 	 */
 	@Override
 	public void SaveAdd(Supplier supplier) {
@@ -50,69 +69,87 @@ public class DealerDao implements DealerService{
 			supplier.setDtmCrt(dtmupd.getTime());
 			supplier.setDtmUpd(dtmupd.getTime());
 			session.save(supplier);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#SaveEdit(com.adibrata.smartdealer.model.Supplier)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.DealerService#SaveEdit(com.adibrata
+	 * .smartdealer.model.Supplier)
 	 */
 	@Override
 	public void SaveEdit(Supplier supplier) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			supplier.setDtmUpd(dtmupd.getTime());
 			session.update(supplier);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#Savedel(com.adibrata.smartdealer.model.Supplier)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.DealerService#SaveDel(com.adibrata
+	 * .smartdealer.model.Supplier)
 	 */
-	
+
 	@Override
-	public void Savedel(Supplier supplier) {
+	public void SaveDel(Supplier supplier) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
 			session.delete(supplier);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.DealerService#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public  List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Supplier> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Supplier> list = null;
@@ -127,7 +164,7 @@ public class DealerDao implements DealerService{
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -138,20 +175,24 @@ public class DealerDao implements DealerService{
 		return list;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#TotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.DealerService#TotalRecord(java
+	 * .lang.String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -167,13 +208,15 @@ public class DealerDao implements DealerService{
 		// TODO Auto-generated method stub
 		Supplier supplier = null;
 		try {
-			supplier =  (Supplier) session.get(Supplier.class, id);
-			
+			supplier = (Supplier) session.get(Supplier.class, id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return supplier;

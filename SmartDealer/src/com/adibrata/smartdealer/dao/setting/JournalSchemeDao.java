@@ -37,6 +37,8 @@ public class JournalSchemeDao implements JournalSchemeService {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from CoaSchmHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
@@ -109,12 +111,11 @@ public class JournalSchemeDao implements JournalSchemeService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.JournalScheme#Savedel(com
+	 * @see com.adibrata.smartdealer.service.setting.JournalScheme#SaveDel(com
 	 * .adibrata.smartdealer.service.setting.JournalScheme)
 	 */
 	@Override
-	public void SavedelHeader(CoaSchmHdr coaSchmHdr) {
+	public void SaveDelHeader(CoaSchmHdr coaSchmHdr) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -225,7 +226,7 @@ public class JournalSchemeDao implements JournalSchemeService {
 				coaschmdtl.setCoacode(aRow.getCoacode());
 				coaschmdtl.setCoaMasterId(aRow.getId());
 				coaschmdtl.setCoaSchmHdr(coaSchmHdr);
-				
+
 				coaschmdtl.setUsrCrt(coaSchmHdr.getUsrCrt());
 				coaschmdtl.setUsrUpd(coaSchmHdr.getUsrUpd());
 				coaschmdtl.setDtmCrt(dtmupd.getTime());

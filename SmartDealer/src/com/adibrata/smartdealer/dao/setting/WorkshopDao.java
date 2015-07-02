@@ -31,7 +31,20 @@ public class WorkshopDao implements WorkshopService{
 	int pagesize;
 	public WorkshopDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 	/* (non-Javadoc)
 	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveAdd(com.adibrata.smartdealer.model.Workshop)
@@ -79,10 +92,10 @@ public class WorkshopDao implements WorkshopService{
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#Savedel(com.adibrata.smartdealer.model.Workshop)
+	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveDel(com.adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
-	public void Savedel(Workshop workshop) {
+	public void SaveDel(Workshop workshop) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 public interface RoleService {
 	public void SaveAdd(MsRole msRole);
 	public void SaveEdit(MsRole msRole);
-	public void Savedel(MsRole msRole);
+	public void SaveDel(MsRole msRole);
 	public List<MsRole>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
 	public MsRole View(long Id);

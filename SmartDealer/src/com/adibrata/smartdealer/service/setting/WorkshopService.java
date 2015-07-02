@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 public interface WorkshopService {
 	public void SaveAdd(Workshop workshop);
 	public void SaveEdit(Workshop workshop);
-	public void Savedel(Workshop workshop);
+	public void SaveDel(Workshop workshop);
 	public  List<Workshop> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
 	public Workshop View(long id);

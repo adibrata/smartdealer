@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 public interface ZipCodeService {
 	public void SaveAdd(ZipCode zipcode);
 	public void SaveEdit(ZipCode zipcode);
-	public void Savedel(ZipCode zipcode);
+	public void SaveDel(ZipCode zipcode);
 	public List<ZipCode> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
 	public ZipCode View(long id);

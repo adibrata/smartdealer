@@ -34,8 +34,20 @@ public class AssetMasterDao implements AssetMasterService{
 	
 	public AssetMasterDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
 
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -144,10 +156,10 @@ public class AssetMasterDao implements AssetMasterService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Savedel(com.adibrata.smartdealer.service.setting.AssetMaster)
+	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata.smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void Savedel(AssetMaster assetMaster) {
+	public void SaveDel(AssetMaster assetMaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

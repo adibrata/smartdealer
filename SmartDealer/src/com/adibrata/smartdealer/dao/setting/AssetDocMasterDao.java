@@ -32,11 +32,23 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	
+
 	public AssetDocMasterDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/*
@@ -46,7 +58,8 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AssetDocMaster> list = null;
@@ -61,7 +74,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -82,14 +95,14 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -110,7 +123,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	@Override
 	public void SaveAdd(AssetDocMaster assetDocMaster) {
 		// TODO Auto-generated method stub
-		
+
 		session.getTransaction().begin();
 		try {
 			assetDocMaster.setDtmCrt(dtmupd.getTime());
@@ -122,8 +135,10 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
@@ -140,7 +155,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			assetDocMaster.setDtmUpd(dtmupd.getTime());
 			session.update(assetDocMaster);
 
@@ -149,8 +164,10 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
@@ -158,12 +175,11 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.AssetDocument#Savedel(com
+	 * @see com.adibrata.smartdealer.service.setting.AssetDocument#SaveDel(com
 	 * .adibrata.smartdealer.service.setting.AssetDocument)
 	 */
 	@Override
-	public void Savedel(AssetDocMaster assetDocMaster) {
+	public void SaveDel(AssetDocMaster assetDocMaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -174,8 +190,10 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
@@ -184,13 +202,16 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	public AssetDocMaster View(long id) {
 		AssetDocMaster assetDocMaster = null;
 		try {
-			assetDocMaster =  (AssetDocMaster) session.get(AssetDocMaster.class, id);
-			
+			assetDocMaster = (AssetDocMaster) session.get(AssetDocMaster.class,
+					id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return assetDocMaster;

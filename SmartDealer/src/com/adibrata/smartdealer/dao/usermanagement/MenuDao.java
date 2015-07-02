@@ -21,21 +21,41 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.usermanagement.MenuService;
-public class MenuDao  implements MenuService{
-	String userupd; 
+
+public class MenuDao implements MenuService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public MenuDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from MsMenu ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#SaveAdd(com.adibrata.smartdealer.model.MsMenu)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.usermanagement.MenuService#SaveAdd(com
+	 * .adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
 	public void SaveAdd(MsMenu msMenu) {
@@ -45,20 +65,27 @@ public class MenuDao  implements MenuService{
 			msMenu.setDtmCrt(dtmupd.getTime());
 			msMenu.setDtmUpd(dtmupd.getTime());
 			session.save(msMenu);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		
+
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#SaveEdit(com.adibrata.smartdealer.model.MsMenu)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.usermanagement.MenuService#SaveEdit(
+	 * com.adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
 	public void SaveEdit(MsMenu msMenu) {
@@ -68,59 +95,78 @@ public class MenuDao  implements MenuService{
 			msMenu.setDtmCrt(dtmupd.getTime());
 			msMenu.setDtmUpd(dtmupd.getTime());
 			session.update(msMenu);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#Savedel(com.adibrata.smartdealer.model.MsMenu)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.usermanagement.MenuService#SaveDel(com
+	 * .adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
-	public void Savedel(MsMenu msMenu) {
+	public void SaveDel(MsMenu msMenu) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			session.delete(msMenu);
-					
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#Paging(int, java.lang.String, java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.usermanagement.MenuService#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public  List<MsMenu> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<MsMenu> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#TotalRecord(java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.usermanagement.MenuService#TotalRecord
+	 * (java.lang.String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -136,6 +182,5 @@ public class MenuDao  implements MenuService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 }

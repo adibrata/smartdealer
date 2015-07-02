@@ -21,26 +21,45 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.setting.TaksasiService;
-public class TaksasiDao implements TaksasiService{
-	String userupd; 
+
+public class TaksasiDao implements TaksasiService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public TaksasiDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.adibrata.smartdealer.service.setting.Taksasi#Save()
 	 */
-	
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Taksasi#Paging(int, java.lang.String, java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.Taksasi#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public List<Taksasi> Paging(int CurrentPage, String WhereCond, String SortBy) {
@@ -58,7 +77,7 @@ public class TaksasiDao implements TaksasiService{
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -69,20 +88,24 @@ public class TaksasiDao implements TaksasiService{
 		return list;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Taksasi#TotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.Taksasi#TotalRecord(java.lang
+	 * .String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -93,8 +116,12 @@ public class TaksasiDao implements TaksasiService{
 		return countResults;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.TaksasiService#SaveAdd(com.adibrata.smartdealer.model.Taksasi)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.TaksasiService#SaveAdd(com.adibrata
+	 * .smartdealer.model.Taksasi)
 	 */
 	@Override
 	public void SaveAdd(Taksasi taksasi) {
@@ -104,20 +131,26 @@ public class TaksasiDao implements TaksasiService{
 			taksasi.setDtmCrt(dtmupd.getTime());
 			taksasi.setDtmUpd(dtmupd.getTime());
 			session.save(taksasi);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.TaksasiService#SaveEdit(com.adibrata.smartdealer.model.Taksasi)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.TaksasiService#SaveEdit(com.
+	 * adibrata.smartdealer.model.Taksasi)
 	 */
 	@Override
 	public void SaveEdit(Taksasi taksasi) {
@@ -127,36 +160,44 @@ public class TaksasiDao implements TaksasiService{
 			taksasi.setDtmCrt(dtmupd.getTime());
 			taksasi.setDtmUpd(dtmupd.getTime());
 			session.update(taksasi);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.TaksasiService#Savedel(com.adibrata.smartdealer.model.Taksasi)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.TaksasiService#SaveDel(com.adibrata
+	 * .smartdealer.model.Taksasi)
 	 */
 	@Override
-	public void Savedel(Taksasi taksasi) {
+	public void SaveDel(Taksasi taksasi) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
 			session.delete(taksasi);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
@@ -166,13 +207,15 @@ public class TaksasiDao implements TaksasiService{
 		// TODO Auto-generated method stub
 		Taksasi taksasi = null;
 		try {
-			taksasi =  (Taksasi) session.get(Taksasi.class, id);
-			
+			taksasi = (Taksasi) session.get(Taksasi.class, id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return taksasi;

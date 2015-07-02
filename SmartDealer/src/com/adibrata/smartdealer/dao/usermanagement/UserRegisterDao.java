@@ -33,8 +33,20 @@ public class UserRegisterDao implements UserService {
 	int pagesize;
 	public UserRegisterDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-	
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from MsUser ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/*
@@ -101,10 +113,10 @@ public class UserRegisterDao implements UserService {
 	 * (non-Javadoc)
 	 * 
 	 * @see com.adibrata.smartdealer.service.usermanagement.UserRegisterService#
-	 * Savedel(com.adibrata.smartdealer.model.MsUser)
+	 * SaveDel(com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void Savedel(MsUser msUser) {
+	public void SaveDel(MsUser msUser) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

@@ -30,11 +30,26 @@ public class SalesOrderDao implements SalesOrderService {
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
+	String strStatement;
+	StringBuilder hql = new StringBuilder();
+	int pagesize;
 
 	public SalesOrderDao() {
 		// TODO Auto-generated constructor stub
-		session = HibernateHelper.getSessionFactory().openSession();
-		this.userupd = userupd;
+		try {
+			session = HibernateHelper.getSessionFactory().openSession();
+			pagesize = HibernateHelper.getPagesize();
+			strStatement = " from Office ";
+
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
 	}
 
 	/*
@@ -80,7 +95,22 @@ public class SalesOrderDao implements SalesOrderService {
 	@Override
 	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		long countResults = 0;
+		try {
+			String countQ = "Select count (id) " + strStatement;
+			Query countQuery = session.createQuery(countQ);
+			countResults = (long) countQuery.uniqueResult();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return countResults;
 	}
 
 	/*
