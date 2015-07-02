@@ -12,7 +12,7 @@ import com.adibrata.smartdealer.model.*;
 public interface MasterService {
 	public void SaveAdd(MasterType masterType, MasterTable masterTable);
 	public void SaveEdit(MasterType masterType, MasterTable masterTable);
-	public void SaveDelete(MasterTable masterTable);
+	public void Savedel(MasterTable masterTable);
 	
 	public List<MasterTable> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

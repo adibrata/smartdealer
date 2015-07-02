@@ -79,15 +79,15 @@ public class WorkshopDao implements WorkshopService{
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveDelete(com.adibrata.smartdealer.model.Workshop)
+	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#Savedel(com.adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
-	public void SaveDelete(Workshop workshop) {
+	public void Savedel(Workshop workshop) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			
-			session.delete(workshop);
+			session.del(workshop);
 			
 			session.getTransaction().commit();
 

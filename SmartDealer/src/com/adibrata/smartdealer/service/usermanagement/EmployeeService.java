@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 public interface EmployeeService {
 	public void SaveAdd(Employee employee);
 	public void SaveEdit(Employee employee);
-	public void SaveDelete(Employee employee);
+	public void Savedel(Employee employee);
 	public List<Employee>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
 	

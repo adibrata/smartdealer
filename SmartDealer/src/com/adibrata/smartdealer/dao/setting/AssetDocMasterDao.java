@@ -159,16 +159,16 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.adibrata.smartdealer.service.setting.AssetDocument#SaveDelete(com
+	 * com.adibrata.smartdealer.service.setting.AssetDocument#Savedel(com
 	 * .adibrata.smartdealer.service.setting.AssetDocument)
 	 */
 	@Override
-	public void SaveDelete(AssetDocMaster assetDocMaster) {
+	public void Savedel(AssetDocMaster assetDocMaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(assetDocMaster);
+			session.del(assetDocMaster);
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {

@@ -28,8 +28,8 @@ public class EntrustAction extends ActionSupport implements Preparable{
 			if (mode.equals("add")){
 				return "add";
 			}
-			if (mode.equals("delete")){
-				return "delete";
+			if (mode.equals("del")){
+				return "del";
 			}
 			if (mode.equals("save")){
 				return "save";
@@ -55,8 +55,8 @@ public class EntrustAction extends ActionSupport implements Preparable{
 			if (mode.equals("add")){
 				return "add";
 			}
-			if (mode.equals("delete")){
-				return "delete";
+			if (mode.equals("del")){
+				return "del";
 			}
 			if (mode.equals("save")){
 				return "save";

@@ -9,7 +9,7 @@
 			<result name="search">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Order/entry.jsp</result>
 			<result name="add">/Pages/Purchase/Order/entry.jsp</result>
-			<result name="delete">/Pages/Purchase/Order/entry.jsp</result>
+			<result name="del">/Pages/Purchase/Order/entry.jsp</result>
 			<result name="save">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="back">/Pages/Purchase/Order/paging.jsp</result>
 		</action>
@@ -25,7 +25,7 @@
 			<result name="search">/Pages/Purchase/Retur/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Retur/entry.jsp</result>
 			<result name="add">/Pages/Purchase/Retur/entry.jsp</result>
-			<result name="delete">/Pages/Purchase/Retur/entry.jsp</result>
+			<result name="del">/Pages/Purchase/Retur/entry.jsp</result>
 			<result name="save">/Pages/Purchase/Retur/paging.jsp</result>
 			<result name="back">/Pages/Purchase/Retur/paging.jsp</result>
 		</action>

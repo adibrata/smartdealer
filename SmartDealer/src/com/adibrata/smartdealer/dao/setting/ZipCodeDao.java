@@ -79,15 +79,15 @@ public class ZipCodeDao implements ZipCodeService{
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.ZipCodeService#SaveDelete(com.adibrata.smartdealer.model.ZipCode)
+	 * @see com.adibrata.smartdealer.service.setting.ZipCodeService#Savedel(com.adibrata.smartdealer.model.ZipCode)
 	 */
 	@Override
-	public void SaveDelete(ZipCode zipcode) {
+	public void Savedel(ZipCode zipcode) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(zipcode);
+			session.del(zipcode);
 			
 			session.getTransaction().commit();
 

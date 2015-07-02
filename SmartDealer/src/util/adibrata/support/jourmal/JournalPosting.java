@@ -346,7 +346,7 @@ public class JournalPosting {
  * stock.setFirstName("BCA"); stock.setLastName("BANK CENTRAL ASIA");
  * session.save(stock);
  * 
- * stock.setID(4); session.delete(stock);
+ * stock.setID(4); session.del(stock);
  * 
  * 
  * 

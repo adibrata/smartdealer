@@ -164,16 +164,16 @@ public class OfficeDao implements OfficeService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.adibrata.smartdealer.service.setting.OfficeService#SaveDelete(com
+	 * com.adibrata.smartdealer.service.setting.OfficeService#Savedel(com
 	 * .adibrata.smartdealer.model.Office)
 	 */
 	@Override
-	public void SaveDelete(Office office) {
+	public void Savedel(Office office) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(office);
+			session.del(office);
 
 			session.getTransaction().commit();
 

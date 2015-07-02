@@ -80,14 +80,14 @@ public class MenuDao  implements MenuService{
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#SaveDelete(com.adibrata.smartdealer.model.MsMenu)
+	 * @see com.adibrata.smartdealer.service.usermanagement.MenuService#Savedel(com.adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
-	public void SaveDelete(MsMenu msMenu) {
+	public void Savedel(MsMenu msMenu) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			session.delete(msMenu);
+			session.del(msMenu);
 					
 			session.getTransaction().commit();
 

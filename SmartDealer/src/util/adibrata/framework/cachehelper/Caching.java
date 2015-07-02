@@ -146,12 +146,12 @@ public class Caching <K, T>{
 		try
 		{
 			long now = System.currentTimeMillis();
-			ArrayList<K> deleteKey = null;
+			ArrayList<K> delKey = null;
 
 			synchronized (LRUCacheMap) {
 				MapIterator itr = LRUCacheMap.mapIterator();
 
-				deleteKey = new ArrayList<K>((LRUCacheMap.size() / 2) + 1);
+				delKey = new ArrayList<K>((LRUCacheMap.size() / 2) + 1);
 				K key = null;
 				CacheObjects c = null;
 
@@ -160,12 +160,12 @@ public class Caching <K, T>{
 					c = (CacheObjects) itr.getValue();
 
 					if (c != null && (now > (lngtimeToLive + c.lastAccessed))) {
-						deleteKey.add(key);
+						delKey.add(key);
 					}
 				}
 			}
 
-			for (K key : deleteKey) {
+			for (K key : delKey) {
 				synchronized (LRUCacheMap) {
 					LRUCacheMap.remove(key);
 				}

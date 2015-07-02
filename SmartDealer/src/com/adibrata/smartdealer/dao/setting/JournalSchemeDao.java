@@ -110,18 +110,18 @@ public class JournalSchemeDao implements JournalSchemeService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.adibrata.smartdealer.service.setting.JournalScheme#SaveDelete(com
+	 * com.adibrata.smartdealer.service.setting.JournalScheme#Savedel(com
 	 * .adibrata.smartdealer.service.setting.JournalScheme)
 	 */
 	@Override
-	public void SaveDeleteHeader(CoaSchmHdr coaSchmHdr) {
+	public void SavedelHeader(CoaSchmHdr coaSchmHdr) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			coaSchmHdr.setDtmCrt(dtmupd.getTime());
 			coaSchmHdr.setDtmUpd(dtmupd.getTime());
 
-			session.delete(coaSchmHdr);
+			session.del(coaSchmHdr);
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {

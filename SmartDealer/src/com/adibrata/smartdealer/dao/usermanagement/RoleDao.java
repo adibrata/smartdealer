@@ -80,15 +80,15 @@ public class RoleDao implements RoleService{
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.RoleService#SaveDelete(com.adibrata.smartdealer.model.MsRole)
+	 * @see com.adibrata.smartdealer.service.usermanagement.RoleService#Savedel(com.adibrata.smartdealer.model.MsRole)
 	 */
 	@Override
-	public void SaveDelete(MsRole msRole) {
+	public void Savedel(MsRole msRole) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(msRole);
+			session.del(msRole);
 					
 			session.getTransaction().commit();
 

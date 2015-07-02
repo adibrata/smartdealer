@@ -143,15 +143,15 @@ public class BankAccountDao implements BankAccountService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.BankAccount#SaveDelete(com.adibrata.smartdealer.service.setting.BankAccount)
+	 * @see com.adibrata.smartdealer.service.setting.BankAccount#Savedel(com.adibrata.smartdealer.service.setting.BankAccount)
 	 */
 	@Override
-	public void SaveDelete(BankAccount bankAccount) {
+	public void Savedel(BankAccount bankAccount) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(bankAccount);
+			session.del(bankAccount);
 					
 			session.getTransaction().commit();
 

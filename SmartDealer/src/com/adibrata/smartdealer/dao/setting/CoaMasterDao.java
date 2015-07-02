@@ -140,15 +140,15 @@ public class CoaMasterDao implements COAMasterService {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.COAMaster#SaveDelete(com.adibrata.smartdealer.model.Coamaster)
+	 * @see com.adibrata.smartdealer.service.setting.COAMaster#Savedel(com.adibrata.smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveDelete(Coamaster coamaster) {
+	public void Savedel(Coamaster coamaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(coamaster);
+			session.del(coamaster);
 					
 			session.getTransaction().commit();
 

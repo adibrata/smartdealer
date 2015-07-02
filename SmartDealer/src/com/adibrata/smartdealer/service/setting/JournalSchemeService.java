@@ -18,7 +18,7 @@ public interface JournalSchemeService {
 
 	public void SaveEditHeader(CoaSchmHdr coaSchmHdr);
 
-	public void SaveDeleteHeader(CoaSchmHdr coaSchmHdr);
+	public void SavedelHeader(CoaSchmHdr coaSchmHdr);
 
 	public void SaveDetail(CoaSchmHdr coaSchmHdr, List<Coamaster> coamaster);
 

@@ -78,15 +78,15 @@ public class EmployeeDao implements EmployeeService {
 		}
 	}
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.usermanagement.EmployeeService#SaveDelete(com.adibrata.smartdealer.model.Employee)
+	 * @see com.adibrata.smartdealer.service.usermanagement.EmployeeService#Savedel(com.adibrata.smartdealer.model.Employee)
 	 */
 	@Override
-	public void SaveDelete(Employee employee) {
+	public void Savedel(Employee employee) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			
-			session.delete(employee);
+			session.del(employee);
 					
 			session.getTransaction().commit();
 

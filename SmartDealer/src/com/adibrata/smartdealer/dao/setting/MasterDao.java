@@ -89,15 +89,15 @@ public class MasterDao implements MasterService{
 
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.Master#SaveDelete(com.adibrata.smartdealer.model.MasterTable)
+	 * @see com.adibrata.smartdealer.service.setting.Master#Savedel(com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveDelete(MasterTable masterTable) {
+	public void Savedel(MasterTable masterTable) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(masterTable);
+			session.del(masterTable);
 			
 			session.getTransaction().commit();
 

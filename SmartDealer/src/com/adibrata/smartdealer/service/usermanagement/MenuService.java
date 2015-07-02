@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 public interface MenuService {
 	public void SaveAdd(MsMenu msMenu);
 	public void SaveEdit(MsMenu msMenu);
-	public void SaveDelete(MsMenu msMenu);
+	public void Savedel(MsMenu msMenu);
 	public List<MsMenu>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
 	public String MenuRender ();

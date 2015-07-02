@@ -15,7 +15,7 @@ public interface AssetDocMasterService {
 	
 	public void SaveAdd(AssetDocMaster assetDocMaster);
 	public void SaveEdit(AssetDocMaster assetDocMaster);
-	public void SaveDelete(AssetDocMaster assetDocMaster);
+	public void Savedel(AssetDocMaster assetDocMaster);
 	
 	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

@@ -86,16 +86,16 @@ public class DealerDao implements DealerService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.DealerService#SaveDelete(com.adibrata.smartdealer.model.Supplier)
+	 * @see com.adibrata.smartdealer.service.setting.DealerService#Savedel(com.adibrata.smartdealer.model.Supplier)
 	 */
 	
 	@Override
-	public void SaveDelete(Supplier supplier) {
+	public void Savedel(Supplier supplier) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(supplier);
+			session.del(supplier);
 			
 			session.getTransaction().commit();
 

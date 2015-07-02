@@ -140,15 +140,15 @@ public class TaksasiDao implements TaksasiService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.TaksasiService#SaveDelete(com.adibrata.smartdealer.model.Taksasi)
+	 * @see com.adibrata.smartdealer.service.setting.TaksasiService#Savedel(com.adibrata.smartdealer.model.Taksasi)
 	 */
 	@Override
-	public void SaveDelete(Taksasi taksasi) {
+	public void Savedel(Taksasi taksasi) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(taksasi);
+			session.del(taksasi);
 			
 			session.getTransaction().commit();
 

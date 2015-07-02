@@ -101,15 +101,15 @@ public class UserRegisterDao implements UserService {
 	 * (non-Javadoc)
 	 * 
 	 * @see com.adibrata.smartdealer.service.usermanagement.UserRegisterService#
-	 * SaveDelete(com.adibrata.smartdealer.model.MsUser)
+	 * Savedel(com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void SaveDelete(MsUser msUser) {
+	public void Savedel(MsUser msUser) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(msUser);
+			session.del(msUser);
 
 			session.getTransaction().commit();
 

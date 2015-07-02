@@ -26,8 +26,8 @@ public class AssetDocAction extends ActionSupport implements Preparable{
 			if (mode.equals("edit")){
 				return "edit";
 			}
-			if (mode.equals("delete")){
-				return "delete";
+			if (mode.equals("del")){
+				return "del";
 			}
 			if (mode.equals("add")){
 				return "add";

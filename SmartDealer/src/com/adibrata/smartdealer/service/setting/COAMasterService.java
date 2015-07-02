@@ -14,7 +14,7 @@ public interface COAMasterService {
 	
 	public void SaveAdd(Coamaster coamaster);
 	public void SaveEdit(Coamaster coamaster);
-	public void SaveDelete(Coamaster coamaster);
+	public void Savedel(Coamaster coamaster);
 	
 	public List<Coamaster>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

@@ -16,7 +16,7 @@ public interface DealerService {
 
 	public void SaveAdd(Supplier supplier);
 	public void SaveEdit(Supplier supplier);
-	public void SaveDelete(Supplier supplier);
+	public void Savedel(Supplier supplier);
 	
 	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

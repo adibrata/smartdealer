@@ -144,15 +144,15 @@ public class AssetMasterDao implements AssetMasterService{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveDelete(com.adibrata.smartdealer.service.setting.AssetMaster)
+	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Savedel(com.adibrata.smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void SaveDelete(AssetMaster assetMaster) {
+	public void Savedel(AssetMaster assetMaster) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 
-			session.delete(assetMaster);
+			session.del(assetMaster);
 			
 			session.getTransaction().commit();
 
