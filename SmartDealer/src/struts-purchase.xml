@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="purchase" extends="smartdealer-package" namespace="/">
+		<action name="purchase_order" class="com.adibrata.smartdealer.action.PurchaseAction" method="order">
+			<result name="paging">/pages/purchase/order/paging.jsp</result>
+			<result name="search">/pages/purchase/order/paging.jsp</result>
+			<result name="entry">/pages/purchase/order/entry.jsp</result>
+			<result name="add">/pages/purchase/order/entry.jsp</result>
+			<result name="hapus">/pages/purchase/order/entry.jsp</result>
+			<result name="save">/pages/purchase/order/paging.jsp</result>
+			<result name="back">/pages/purchase/order/paging.jsp</result>
+		</action>
+		<action name="purchase_receive" class="com.adibrata.smartdealer.action.PurchaseAction" method="receive">
+			<result name="paging">/pages/purchase/receive/paging.jsp</result>
+			<result name="search">/pages/purchase/receive/paging.jsp</result>
+			<result name="entry">/pages/purchase/receive/entry.jsp</result>
+			<result name="save">/pages/purchase/receive/paging.jsp</result>
+			<result name="back">/pages/purchase/receive/paging.jsp</result>
+		</action>
+		<action name="purchase_retur" class="com.adibrata.smartdealer.action.PurchaseAction" method="retur">
+			<result name="paging">/pages/purchase/retur/paging.jsp</result>
+			<result name="search">/pages/purchase/retur/paging.jsp</result>
+			<result name="entry">/pages/purchase/retur/entry.jsp</result>
+			<result name="add">/pages/purchase/retur/entry.jsp</result>
+			<result name="hapus">/pages/purchase/retur/entry.jsp</result>
+			<result name="save">/pages/purchase/retur/paging.jsp</result>
+			<result name="back">/pages/purchase/retur/paging.jsp</result>
+		</action>
+	</package>
+</struts>

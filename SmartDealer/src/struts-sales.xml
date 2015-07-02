@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="sales" extends="smartdealer-package" namespace="/">
+		<action name="sales_order" class="com.adibrata.smartdealer.action.SalesAction" method="order">
+			<result name="paging">/pages/sales/order/paging.jsp</result>
+			<result name="search">/pages/sales/order/paging.jsp</result>
+			<result name="entry">/pages/sales/order/entry.jsp</result>
+			<result name="add">/pages/sales/order/entry.jsp</result>
+			<result name="hapus">/pages/sales/order/entry.jsp</result>
+			<result name="save">/pages/sales/order/paging.jsp</result>
+			<result name="back">/pages/sales/order/paging.jsp</result>
+		</action>
+		<action name="sales_retur" class="com.adibrata.smartdealer.action.SalesAction" method="retur">
+			<result name="paging">/pages/sales/retur/paging.jsp</result>
+			<result name="search">/pages/sales/retur/paging.jsp</result>
+			<result name="entry">/pages/sales/retur/entry.jsp</result>
+			<result name="add">/pages/sales/retur/entry.jsp</result>
+			<result name="hapus">/pages/sales/retur/entry.jsp</result>
+			<result name="save">/pages/sales/retur/paging.jsp</result>
+			<result name="back">/pages/sales/retur/paging.jsp</result>
+		</action>
+	</package>
+</struts>
