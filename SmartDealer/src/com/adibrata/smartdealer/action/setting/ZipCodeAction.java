@@ -26,8 +26,8 @@ public class ZipCodeAction extends ActionSupport implements Preparable{
 			if (mode.equals("edit")){
 				return "edit";
 			}
-			if (mode.equals("hapus")){
-				return "hapus";
+			if (mode.equals("delete")){
+				return "delete";
 			}
 			if (mode.equals("add")){
 				return "add";

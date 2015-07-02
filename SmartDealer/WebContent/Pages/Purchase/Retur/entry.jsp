@@ -11,8 +11,8 @@
 	function add(){
 		document.getElementById("mode").value="add";
 	}
-	function hapus(){
-		document.getElementById("mode").value="hapus";
+	function delete(){
+		document.getElementById("mode").value="delete";
 	}
 	function save(){
 		document.getElementById("mode").value="save";
@@ -136,7 +136,7 @@
 								<th>Manufacturing<br>Month</th>
 								<th>Manufacturing<br>Year</th>
 								<th>Aging<br>(month)</th>
-								<th><button type="submit" onclick="hapus()">Delete</button></th>
+								<th><button type="submit" onclick="delete()">Delete</button></th>
 							</tr>
 						<s:iterator>
 							<tr>

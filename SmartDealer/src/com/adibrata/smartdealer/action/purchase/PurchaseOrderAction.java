@@ -1,9 +1,9 @@
-package com.adibrata.smartdealer.action.sales;
+package com.adibrata.smartdealer.action.purchase;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-public class SalesAction extends ActionSupport implements Preparable{
+public class PurchaseAction extends ActionSupport implements Preparable{
 
 	/**
 	 *
@@ -37,6 +37,21 @@ public class SalesAction extends ActionSupport implements Preparable{
 			}
 			if (mode.equals("back")){
 				return "back";
+			}
+		}
+		else{
+			return "paging";
+		}
+		return mode;
+	}
+
+	public String receive(){
+		if (mode != null){
+			if (mode.equals("search")){
+				return "search";
+			}
+			if (mode.equals("entry")){
+				return "entry";
 			}
 		}
 		else{

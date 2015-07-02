@@ -1,9 +1,13 @@
-package com.adibrata.smartdealer.action.purchase;
-
+package com.adibrata.smartdealer.action.sales;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-public class PurchaseAction extends ActionSupport implements Preparable{
+public class SalesOrderAction extends ActionSupport implements Preparable{
+
+	public SalesOrderAction() {
+		// TODO Auto-generated constructor stub
+	}
+
 
 	/**
 	 *
@@ -45,21 +49,6 @@ public class PurchaseAction extends ActionSupport implements Preparable{
 		return mode;
 	}
 
-	public String receive(){
-		if (mode != null){
-			if (mode.equals("search")){
-				return "search";
-			}
-			if (mode.equals("entry")){
-				return "entry";
-			}
-		}
-		else{
-			return "paging";
-		}
-		return mode;
-	}
-
 	public String retur(){
 		if (mode != null){
 			if (mode.equals("search")){
@@ -71,8 +60,8 @@ public class PurchaseAction extends ActionSupport implements Preparable{
 			if (mode.equals("add")){
 				return "add";
 			}
-			if (mode.equals("hapus")){
-				return "hapus";
+			if (mode.equals("delete")){
+				return "delete";
 			}
 			if (mode.equals("save")){
 				return "save";
@@ -94,5 +83,4 @@ public class PurchaseAction extends ActionSupport implements Preparable{
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-
 }

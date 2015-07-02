@@ -14,8 +14,8 @@
 	function edit(){
 		document.getElementById("mode").value="edit";
 	}
-	function hapus(){
-		document.getElementById("mode").value="hapus";
+	function delete(){
+		document.getElementById("mode").value="delete";
 	}
 	function add(){
 		document.getElementById("mode").value="add";
@@ -89,7 +89,7 @@
 								<th>Handphone</th>
 								<th>Full Address</th>
 								<th><button type="submit" onclick="edit()">Edit</button></th>
-								<th><button type="submit" onclick="hapus()">Delete</button></th>
+								<th><button type="submit" onclick="delete()">Delete</button></th>
 							</tr>
 						<s:iterator value="">
 							<tr id="row_<s:property value="id"/>">

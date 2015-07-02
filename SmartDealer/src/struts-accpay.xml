@@ -8,7 +8,7 @@
 			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
-			<result name="hapus">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="delete">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
@@ -18,7 +18,7 @@
 			<result name="page">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="search">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
-			<result name="hapus">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="delete">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="back">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="add">/pages/setting/assetmaster/addAssetMaster.jsp</result>
@@ -28,7 +28,7 @@
 			<result name="page">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
-			<result name="hapus">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="delete">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
@@ -38,7 +38,7 @@
 			<result name="page">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="search">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
-			<result name="hapus">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="delete">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="save">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="back">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="add">/pages/setting/dealer/addDealer.jsp</result>
@@ -48,7 +48,7 @@
 			<result name="page">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
 			<result name="search">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
 			<result name="edit">/pages/setting/jurnalScheme/editJurnalSchHdr.jsp</result>
-			<result name="hapus">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
+			<result name="delete">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
 			<result name="save">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
 			<result name="back">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
 			<result name="add">/pages/setting/jurnalScheme/addJurnalSchHdr.jsp</result>
@@ -60,7 +60,7 @@
 			<result name="page">/pages/setting/master/pageMaster.jsp</result>
 			<result name="search">/pages/setting/master/pageMaster.jsp</result>
 			<result name="edit">/pages/setting/master/editMaster.jsp</result>
-			<result name="hapus">/pages/setting/master/pageMaster.jsp</result>
+			<result name="delete">/pages/setting/master/pageMaster.jsp</result>
 			<result name="save">/pages/setting/master/pageMaster.jsp</result>
 			<result name="back">/pages/setting/master/pageMaster.jsp</result>
 			<result name="add">/pages/setting/master/addMaster.jsp</result>
@@ -70,7 +70,7 @@
 			<result name="page">/pages/setting/office/pageOffice.jsp</result>
 			<result name="search">/pages/setting/office/pageOffice.jsp</result>
 			<result name="edit">/pages/setting/office/editOffice.jsp</result>
-			<result name="hapus">/pages/setting/office/pageOffice.jsp</result>
+			<result name="delete">/pages/setting/office/pageOffice.jsp</result>
 			<result name="save">/pages/setting/office/pageOffice.jsp</result>
 			<result name="back">/pages/setting/office/pageOffice.jsp</result>
 			<result name="add">/pages/setting/office/addOffice.jsp</result>
@@ -80,7 +80,7 @@
 			<result name="page">/pages/setting/workshop/pageWorkshop.jsp</result>
 			<result name="search">/pages/setting/workshop/pageWorkshop.jsp</result>
 			<result name="edit">/pages/setting/workshop/editWorkshop.jsp</result>
-			<result name="hapus">/pages/setting/workshop/pageWorkshop.jsp</result>
+			<result name="delete">/pages/setting/workshop/pageWorkshop.jsp</result>
 			<result name="save">/pages/setting/workshop/pageWorkshop.jsp</result>
 			<result name="back">/pages/setting/workshop/pageWorkshop.jsp</result>
 			<result name="add">/pages/setting/workshop/addWorkshop.jsp</result>
@@ -90,7 +90,7 @@
 			<result name="page">/pages/setting/zipCode/pageZipCode.jsp</result>
 			<result name="search">/pages/setting/zipCode/pageZipCode.jsp</result>
 			<result name="edit">/pages/setting/zipCode/editZipCode.jsp</result>
-			<result name="hapus">/pages/setting/zipCode/pageZipCode.jsp</result>
+			<result name="delete">/pages/setting/zipCode/pageZipCode.jsp</result>
 			<result name="save">/pages/setting/zipCode/pageZipCode.jsp</result>
 			<result name="back">/pages/setting/zipCode/pageZipCode.jsp</result>
 			<result name="add">/pages/setting/zipCode/addZipCode.jsp</result>
@@ -100,7 +100,7 @@
 			<result name="page">/pages/setting/taksasi/pageTaksasi.jsp</result>
 			<result name="search">/pages/setting/taksasi/pageTaksasi.jsp</result>
 			<result name="edit">/pages/setting/taksasi/editTaksasi.jsp</result>
-			<result name="hapus">/pages/setting/taksasi/pageTaksasi.jsp</result>
+			<result name="delete">/pages/setting/taksasi/pageTaksasi.jsp</result>
 			<result name="save">/pages/setting/taksasi/pageTaksasi.jsp</result>
 			<result name="back">/pages/setting/taksasi/pageTaksasi.jsp</result>
 			<result name="add">/pages/setting/taksasi/addTaksasi.jsp</result>
