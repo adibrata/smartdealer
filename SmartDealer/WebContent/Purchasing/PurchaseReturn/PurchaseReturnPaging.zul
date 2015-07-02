@@ -1,0 +1,6 @@
+<?page title="Menu Retur Pembelian" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Retur Pembelian" border="normal">
+New Content Here!
+</window>
+</zk>

@@ -1,0 +1,6 @@
+<?page title="Purchase Transactions" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+<include src="../../UserControl/DealerList.zul"></include>
+
+</zk>

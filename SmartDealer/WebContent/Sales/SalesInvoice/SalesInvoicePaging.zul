@@ -1,0 +1,6 @@
+<?page title="Sales Invoice Transactions" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Sales Invoice Transactions" border="normal">
+<include src="../../UserControl/SalesTransactionList.zul"></include>
+</window>
+</zk>

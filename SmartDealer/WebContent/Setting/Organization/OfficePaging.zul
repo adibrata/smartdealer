@@ -1,0 +1,101 @@
+<?page title="OfficeSetting" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Office Setting" border="normal">
+<grid mold="paging" pageSize="4" id="grdOffice">
+        <auxhead>
+            <auxheader colspan="4" label="List Office" />
+        </auxhead>
+         <auxhead sclass="category-center">
+            <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+            <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+            <auxheader label="Detail Master Setting" colspan="3" />
+        </auxhead>
+        <columns>
+            <column hflex="1">Name</column>
+            <column hflex="2">Address</column>
+         </columns>
+        <rows sclass="narrow">
+            <row>
+                
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+        </rows>
+    </grid>
+    	<groupbox vflex="true" closable="false"
+				sclass="z-demo-config">
+				<grid>
+					<columns>
+						<column width="25%" />
+						<column width="75%" />
+					</columns>
+					<rows>
+						<row>
+							<button label="Add" id="btnAdd"
+								width="125px" />
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+</window>
+</zk>

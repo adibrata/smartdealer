@@ -1,0 +1,43 @@
+<?page title="Master Setting" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Master Setting" border="normal">
+		<grid>
+			<columns>
+				<column width="25%" />
+				<column width="75%" />
+				<column width="25%" />
+				<column width="75%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Master Type" width="150px" />
+					<combobox id="cmbMasterType" value="" width="150px"
+						tabindex="1" />
+					<label />
+					<label />
+				</row>
+				<row>
+					<label value="Master Code" width="150px" />
+					<textbox id="txtMasterCode" value="" width="150px" tabindex="2" />
+					<label value="Master Value" width="150px" />
+					<textbox id="txtMasterValue" value="" width="150px" tabindex="2" />
+				</row>
+			</rows>
+		</grid>
+		<groupbox vflex="true" closable="false"
+			sclass="z-demo-config">
+			<grid>
+				<columns>
+					<column width="25%" />
+					<column width="75%" />
+				</columns>
+				<rows>
+					<row>
+						<button label="Save" id="btnSave" width="125px" />
+						<button label="Back" id="btnBack" width="125px" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</window>
+</zk>

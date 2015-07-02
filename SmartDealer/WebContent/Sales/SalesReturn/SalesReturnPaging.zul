@@ -1,0 +1,6 @@
+<?page title="Menu Retur Penjualan" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Menu Retur Penjualan" border="normal">
+New Content Here!
+</window>
+</zk>

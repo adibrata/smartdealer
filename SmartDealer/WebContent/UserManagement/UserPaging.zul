@@ -1,0 +1,88 @@
+<?page title="User Setting" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="User Setting" border="normal">
+
+<grid mold="paging" pageSize="4" id="grdUser">
+        <auxhead>
+            <auxheader colspan="4" label="List User" />
+        </auxhead>
+         <auxhead sclass="category-center">
+            <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+            <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+             <auxheader colspan="1">
+                <image src="../../img/funnel.png" />
+                <textbox instant="true" width="100px" />
+            </auxheader>
+            <auxheader label="Detail Master Setting" colspan="3" />
+        </auxhead>
+        <columns>
+            <column hflex="1">User Name</column>
+            <column hflex="2">Position</column>
+         </columns>
+        <rows sclass="narrow">
+            <row>
+                
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+            <row>
+                <label value="xxx10xxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+                <label value="xxxxxx20xxxxxx" />
+            </row>
+        </rows>
+    </grid>
+
+</window>
+</zk>

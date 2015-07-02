@@ -1,0 +1,6 @@
+<?page title="Entrust Out Transaction" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Entrust Out Transaction" border="normal">
+<include src="../../UserControl/DealerList.zul"></include>
+</window>
+</zk>
