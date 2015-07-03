@@ -41,11 +41,12 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	private String searchvalue;
 	private long id;
 
-	private String documentCode;
-	private String documentName;
+	private String assetdocumentcode;
+	private String assetdocumentname;
 	private String assetType;
 	private String usrUpd;
 	private String usrCrt;
+	private int pageNumber;
 
 	/**
 	 * 
@@ -58,6 +59,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		this.setPartner(partner);
 		this.setOffice(office);
 		this.setAssetDocMaster(assetDocMaster);
+		if (this.pageNumber == 0)
+			this.pageNumber = 1;
 
 		// TODO Auto-generated constructor stub
 	}
@@ -69,36 +72,65 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		if (mode != null) {
 			switch (strMode) {
 			case "search":
-				return strMode;
+				strMode = Paging();
 			case "edit":
-				return strMode;
+
 			case "del":
 				return SaveDelete();
 			case "add":
-				return SaveAdd();
+
+				strMode = SaveAdd();
 			case "saveadd":
-				return strMode;
+				strMode = SaveAdd();
 			case "saveedit":
-				return SaveEdit();
+				strMode = SaveEdit();
 			case "back":
-				return "search";
+
 			default:
 				return "failed";
 			}
+		} else {
+			strMode = "first";
 		}
 		return strMode;
 	}
 
-	private List<AssetDocMaster> Paging() {
+	private String Paging() {
 
-		return null;
+		String status = "";
+		try {
+			String wherecond = "";
+			if (this.getSearchcriteria().contains("%"))
 
+				wherecond = this.getSearchvalue() + " like "
+						+ this.getSearchcriteria();
+			else
+				wherecond = this.getSearchvalue() + " = "
+						+ this.getSearchcriteria();
+
+			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
+					this.getPageNumber(), wherecond, "");
+
+			status = "Success";
+		} catch (Exception exp) {
+			status = "Failed";
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
 	}
 
 	private String SaveAdd() {
 		String status = "";
 		try {
-
+			AssetDocMaster assetDocMaster = new AssetDocMaster();
+			assetDocMaster.setDocumentCode(this.getDocumentCode());
+			assetDocMaster.setDocumentName(this.getDocumentName());
+			this.assetDocMasterService.SaveAdd(assetDocMaster);
 			status = "Success";
 		} catch (Exception exp) {
 			status = "Failed";
@@ -116,9 +148,10 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		String status = "";
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
+			assetDocMaster.setId(this.getId());
 			assetDocMaster.setDocumentCode(this.getDocumentCode());
 			assetDocMaster.setDocumentName(this.getDocumentName());
-
+			this.assetDocMasterService.SaveEdit(assetDocMaster);
 			status = "Success";
 		} catch (Exception exp) {
 			status = "Failed";
@@ -324,7 +357,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	 *            the documentCode to set
 	 */
 	public void setDocumentCode(String documentCode) {
-		this.documentCode = documentCode;
+		this.assetdocumentcode = documentCode;
 	}
 
 	/**
@@ -332,7 +365,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	 *            the documentName to set
 	 */
 	public void setDocumentName(String documentName) {
-		this.documentName = documentName;
+		this.assetdocumentname = documentName;
 	}
 
 	/**
@@ -350,5 +383,37 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	public void setUsrUpd(String usrUpd) {
 		this.usrUpd = usrUpd;
 	}
+
+	public String getUsrCrt() {
+		return usrCrt;
+	}
+
+	public void setUsrCrt(String usrCrt) {
+		this.usrCrt = usrCrt;
+	}
+
+	/**
+	 * @return the pageNumber
+	 */
+	public int getPageNumber() {
+		return pageNumber;
+	}
+
+	/**
+	 * @return the searchBy
+	 */
+
+	/**
+	 * @param pageNumber
+	 *            the pageNumber to set
+	 */
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+
+	/**
+	 * @param searchBy
+	 *            the searchBy to set
+	 */
 
 }

@@ -4,12 +4,12 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="Setting" extends="smartDealer-package"
-		namespace="/Setting">
-		<action name="Assetdoc"
-			class="com.adibrata.smartDealer.action.Setting.AssetdocAction"
+	<package name="Setting" extends="smartdealer-package"
+		namespace="/">
+		<action name="assetdoc"
+			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
 			method="execute">
-			<result name="page">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
@@ -19,10 +19,10 @@
 			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 		</action>
 
-		<action name="Assetmaster"
-			class="com.adibrata.smartDealer.action.Setting.AssetmasterAction"
+		<action name="assetmaster"
+			class="com.adibrata.smartdealer.action.setting.AssetMasterAction"
 			method="execute">
-			<result name="page">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="start">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
 			<result name="search">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
@@ -40,10 +40,10 @@
 			</result>
 		</action>
 
-		<action name="BankAccount"
-			class="com.adibrata.smartDealer.action.Setting.BankAccountAction"
+	<action name="bankaccount"
+			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
 			method="execute">
-			<result name="page">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="start">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="search">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
@@ -61,9 +61,9 @@
 			</result>
 		</action>
 
-		<action name="Dealer"
-			class="com.adibrata.smartDealer.action.Setting.DealerAction" method="execute">
-			<result name="page">/Pages/Setting/Dealer/pageDealer.jsp</result>
+		<action name="dealer"
+			class="com.adibrata.smartdealer.action.setting.DealerAction" method="execute">
+			<result name="start">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
@@ -73,10 +73,10 @@
 			<result name="saveedit">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
 
-		<action name="JurnalScheme"
-			class="com.adibrata.smartDealer.action.Setting.JurnalSchemeAction"
+		<action name="jurnalscheme"
+			class="com.adibrata.smartdealer.action.setting.JurnalSchemeAction"
 			method="execute">
-			<result name="page">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="start">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 			<result name="search">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
@@ -98,9 +98,9 @@
 			</result>
 		</action>
 
-		<action name="Master"
-			class="com.adibrata.smartDealer.action.Setting.MasterAction" method="execute">
-			<result name="page">/Pages/Setting/Master/pageMaster.jsp</result>
+		<action name="master"
+			class="com.adibrata.smartdealer.action.setting.MasterAction" method="execute">
+			<result name="start">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="search">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
@@ -109,9 +109,9 @@
 			<result name="add">/Pages/Setting/Master/addMaster.jsp</result>
 			<result name="saveedit">/Pages/Setting/Master/pageMaster.jsp</result>
 		</action>
-		<action name="Office"
-			class="com.adibrata.smartDealer.action.Setting.OfficeAction" method="execute">
-			<result name="page">/Pages/Setting/Office/pageOffice.jsp</result>
+		<action name="office"
+			class="com.adibrata.smartdealer.action.setting.OfficeAction" method="execute">
+			<result name="start">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="search">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
@@ -120,10 +120,10 @@
 			<result name="add">/Pages/Setting/Office/addOffice.jsp</result>
 			<result name="saveedit">/Pages/Setting/Office/pageOffice.jsp</result>
 		</action>
-		<action name="Workshop"
-			class="com.adibrata.smartDealer.action.Setting.WorkshopAction"
+		<action name="workshop"
+			class="com.adibrata.smartdealer.action.setting.WorkshopAction"
 			method="execute">
-			<result name="page">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="start">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="search">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
@@ -132,9 +132,9 @@
 			<result name="add">/Pages/Setting/Workshop/addWorkshop.jsp</result>
 			<result name="saveedit">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 		</action>
-		<action name="ZipCode"
-			class="com.adibrata.smartDealer.action.Setting.ZipCodeAction" method="execute">
-			<result name="page">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+		<action name="zipcode"
+			class="com.adibrata.smartdealer.action.setting.ZipCodeAction" method="execute">
+			<result name="start">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="search">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
@@ -144,9 +144,9 @@
 			<result name="saveedit">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 		</action>
 
-		<action name="Taksasi"
-			class="com.adibrata.smartDealer.action.Setting.TaksasiAction" method="execute">
-			<result name="page">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+		<action name="taksasi"
+			class="com.adibrata.smartdealer.action.setting.TaksasiAction" method="execute">
+			<result name="start">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
 			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>

@@ -112,12 +112,17 @@ public class LoginAction extends ActionSupport implements Preparable {
 		}
 		return mode;
 	}
+	
+	public String home(){
+		return SUCCESS;
+	}
 
 	public String getMode() {
 		return mode;
 	}
 
 	public void setMode(String mode) {
+
 		this.mode = mode;
 	}
 
