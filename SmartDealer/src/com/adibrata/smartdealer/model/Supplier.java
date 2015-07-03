@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 2, 2015 6:38:03 PM by Hibernate Tools 4.3.1
+// Generated Jul 3, 2015 10:35:01 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -30,6 +30,7 @@ public class Supplier implements java.io.Serializable {
 	private String rt;
 	private String rw;
 	private String kelurahan;
+	private String kecamatan;
 	private String city;
 	private String zipcode;
 	private String type;
@@ -61,12 +62,12 @@ public class Supplier implements java.io.Serializable {
 	}
 
 	public Supplier(long id, Partner partner, String name, String address,
-			String rt, String rw, String kelurahan, String city,
-			String zipcode, String type, String areaPhone1, String phoneNo1,
-			String areaPhone2, String phoneNo2, String areaFax, String faxNo,
-			String handphone, String fullAddress, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<Stock> stocks,
-			Set<PurchaseOrderHdr> purchaseOrderHdrs,
+			String rt, String rw, String kelurahan, String kecamatan,
+			String city, String zipcode, String type, String areaPhone1,
+			String phoneNo1, String areaPhone2, String phoneNo2,
+			String areaFax, String faxNo, String handphone, String fullAddress,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Set<Stock> stocks, Set<PurchaseOrderHdr> purchaseOrderHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<PurchaseInvoice> purchaseInvoices) {
 		this.id = id;
@@ -76,6 +77,7 @@ public class Supplier implements java.io.Serializable {
 		this.rt = rt;
 		this.rw = rw;
 		this.kelurahan = kelurahan;
+		this.kecamatan = kecamatan;
 		this.city = city;
 		this.zipcode = zipcode;
 		this.type = type;
@@ -97,7 +99,7 @@ public class Supplier implements java.io.Serializable {
 		this.purchaseInvoices = purchaseInvoices;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -160,6 +162,15 @@ public class Supplier implements java.io.Serializable {
 
 	public void setKelurahan(String kelurahan) {
 		this.kelurahan = kelurahan;
+	}
+
+	@Column(name = "Kecamatan", length = 50)
+	public String getKecamatan() {
+		return this.kecamatan;
+	}
+
+	public void setKecamatan(String kecamatan) {
+		this.kecamatan = kecamatan;
 	}
 
 	@Column(name = "City", length = 50)

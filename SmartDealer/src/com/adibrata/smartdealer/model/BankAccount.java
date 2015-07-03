@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 2, 2015 6:38:03 PM by Hibernate Tools 4.3.1
+// Generated Jul 3, 2015 10:35:01 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,8 +27,22 @@ public class BankAccount implements java.io.Serializable {
 	private long id;
 	private Partner partner;
 	private Long officeId;
+	private String bankName;
 	private String bankAccountCode;
 	private String bankAccountName;
+	private String address;
+	private String rt;
+	private String rw;
+	private String kelurahan;
+	private String kecamatan;
+	private String city;
+	private String zipCode;
+	private String areaPhone1;
+	private String phoneNo1;
+	private String areaPhone2;
+	private String phoneNo2;
+	private String areaFax;
+	private String faxNo;
 	private BigDecimal endingBalance;
 	private String coacode;
 	private Long seqNo;
@@ -48,15 +62,33 @@ public class BankAccount implements java.io.Serializable {
 	}
 
 	public BankAccount(long id, Partner partner, Long officeId,
-			String bankAccountCode, String bankAccountName,
-			BigDecimal endingBalance, String coacode, Long seqNo,
-			Character resetFlag, String formatSeqNo, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt, Set<PayReqHdr> payReqHdrs) {
+			String bankName, String bankAccountCode, String bankAccountName,
+			String address, String rt, String rw, String kelurahan,
+			String kecamatan, String city, String zipCode, String areaPhone1,
+			String phoneNo1, String areaPhone2, String phoneNo2,
+			String areaFax, String faxNo, BigDecimal endingBalance,
+			String coacode, Long seqNo, Character resetFlag,
+			String formatSeqNo, Date dtmUpd, String usrUpd, Date dtmCrt,
+			String usrCrt, Set<PayReqHdr> payReqHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
+		this.bankName = bankName;
 		this.bankAccountCode = bankAccountCode;
 		this.bankAccountName = bankAccountName;
+		this.address = address;
+		this.rt = rt;
+		this.rw = rw;
+		this.kelurahan = kelurahan;
+		this.kecamatan = kecamatan;
+		this.city = city;
+		this.zipCode = zipCode;
+		this.areaPhone1 = areaPhone1;
+		this.phoneNo1 = phoneNo1;
+		this.areaPhone2 = areaPhone2;
+		this.phoneNo2 = phoneNo2;
+		this.areaFax = areaFax;
+		this.faxNo = faxNo;
 		this.endingBalance = endingBalance;
 		this.coacode = coacode;
 		this.seqNo = seqNo;
@@ -69,7 +101,7 @@ public class BankAccount implements java.io.Serializable {
 		this.payReqHdrs = payReqHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -98,6 +130,15 @@ public class BankAccount implements java.io.Serializable {
 		this.officeId = officeId;
 	}
 
+	@Column(name = "BankName", length = 50)
+	public String getBankName() {
+		return this.bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
 	@Column(name = "BankAccountCode", length = 20)
 	public String getBankAccountCode() {
 		return this.bankAccountCode;
@@ -114,6 +155,123 @@ public class BankAccount implements java.io.Serializable {
 
 	public void setBankAccountName(String bankAccountName) {
 		this.bankAccountName = bankAccountName;
+	}
+
+	@Column(name = "Address", length = 50)
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@Column(name = "Rt", length = 3)
+	public String getRt() {
+		return this.rt;
+	}
+
+	public void setRt(String rt) {
+		this.rt = rt;
+	}
+
+	@Column(name = "Rw", length = 3)
+	public String getRw() {
+		return this.rw;
+	}
+
+	public void setRw(String rw) {
+		this.rw = rw;
+	}
+
+	@Column(name = "Kelurahan", length = 20)
+	public String getKelurahan() {
+		return this.kelurahan;
+	}
+
+	public void setKelurahan(String kelurahan) {
+		this.kelurahan = kelurahan;
+	}
+
+	@Column(name = "Kecamatan", length = 20)
+	public String getKecamatan() {
+		return this.kecamatan;
+	}
+
+	public void setKecamatan(String kecamatan) {
+		this.kecamatan = kecamatan;
+	}
+
+	@Column(name = "City", length = 20)
+	public String getCity() {
+		return this.city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Column(name = "ZipCode", length = 12)
+	public String getZipCode() {
+		return this.zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	@Column(name = "AreaPhone1", length = 4)
+	public String getAreaPhone1() {
+		return this.areaPhone1;
+	}
+
+	public void setAreaPhone1(String areaPhone1) {
+		this.areaPhone1 = areaPhone1;
+	}
+
+	@Column(name = "PhoneNo1", length = 20)
+	public String getPhoneNo1() {
+		return this.phoneNo1;
+	}
+
+	public void setPhoneNo1(String phoneNo1) {
+		this.phoneNo1 = phoneNo1;
+	}
+
+	@Column(name = "AreaPhone2", length = 4)
+	public String getAreaPhone2() {
+		return this.areaPhone2;
+	}
+
+	public void setAreaPhone2(String areaPhone2) {
+		this.areaPhone2 = areaPhone2;
+	}
+
+	@Column(name = "PhoneNo2", length = 20)
+	public String getPhoneNo2() {
+		return this.phoneNo2;
+	}
+
+	public void setPhoneNo2(String phoneNo2) {
+		this.phoneNo2 = phoneNo2;
+	}
+
+	@Column(name = "AreaFax", length = 4)
+	public String getAreaFax() {
+		return this.areaFax;
+	}
+
+	public void setAreaFax(String areaFax) {
+		this.areaFax = areaFax;
+	}
+
+	@Column(name = "FaxNo", length = 20)
+	public String getFaxNo() {
+		return this.faxNo;
+	}
+
+	public void setFaxNo(String faxNo) {
+		this.faxNo = faxNo;
 	}
 
 	@Column(name = "EndingBalance", precision = 17)

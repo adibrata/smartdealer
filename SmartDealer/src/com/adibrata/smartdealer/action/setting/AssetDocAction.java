@@ -40,13 +40,13 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	private String searchcriteria;
 	private String searchvalue;
 	private long id;
-
-	private String assetdocumentcode;
-	private String assetdocumentname;
-	private String assetType;
 	private String usrUpd;
 	private String usrCrt;
 	private int pageNumber;
+	
+	private String assetdocumentcode;
+	private String assetdocumentname;
+	private String assetType;
 
 	/**
 	 * 
@@ -101,7 +101,6 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		try {
 			String wherecond = "";
 			if (this.getSearchcriteria().contains("%"))
-
 				wherecond = this.getSearchvalue() + " like "
 						+ this.getSearchcriteria();
 			else
@@ -128,12 +127,12 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		String status = "";
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
-			assetDocMaster.setDocumentCode(this.getDocumentCode());
-			assetDocMaster.setDocumentName(this.getDocumentName());
+			assetDocMaster.setDocumentCode(this.getAssetdocumentcode());
+			assetDocMaster.setDocumentName(this.getAssetdocumentname());
 			this.assetDocMasterService.SaveAdd(assetDocMaster);
-			status = "Success";
+			status = SUCCESS;
 		} catch (Exception exp) {
-			status = "Failed";
+			status = ERROR;
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -149,8 +148,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
 			assetDocMaster.setId(this.getId());
-			assetDocMaster.setDocumentCode(this.getDocumentCode());
-			assetDocMaster.setDocumentName(this.getDocumentName());
+			assetDocMaster.setDocumentCode(this.getAssetdocumentcode());
+			assetDocMaster.setDocumentName(this.getAssetdocumentname());
 			this.assetDocMasterService.SaveEdit(assetDocMaster);
 			status = "Success";
 		} catch (Exception exp) {
@@ -168,7 +167,10 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	private String SaveDelete() {
 		String status = "";
 		try {
-
+			AssetDocMaster assetDocMaster = new AssetDocMaster();
+			assetDocMaster.setId(this.getId());
+		
+			this.assetDocMasterService.SaveDel(assetDocMaster);
 			status = "Success";
 		} catch (Exception exp) {
 			status = "Failed";
@@ -319,23 +321,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the documentCode
 	 */
-	public String getDocumentCode() {
-		return documentCode;
-	}
 
-	/**
-	 * @return the documentName
-	 */
-	public String getDocumentName() {
-		return documentName;
-	}
-
-	/**
-	 * @return the assetType
-	 */
-	public String getAssetType() {
-		return assetType;
-	}
 
 	/**
 	 * @return the usrUpd
@@ -368,14 +354,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		this.assetdocumentname = documentName;
 	}
 
-	/**
-	 * @param assetType
-	 *            the assetType to set
-	 */
-	public void setAssetType(String assetType) {
-		this.assetType = assetType;
-	}
-
+	
 	/**
 	 * @param usrUpd
 	 *            the usrUpd to set
@@ -409,6 +388,42 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	 */
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
+	}
+
+	/**
+	 * @return the assetdocumentcode
+	 */
+	public String getAssetdocumentcode() {
+		return assetdocumentcode;
+	}
+
+	/**
+	 * @param assetdocumentcode the assetdocumentcode to set
+	 */
+	public void setAssetdocumentcode(String assetdocumentcode) {
+		this.assetdocumentcode = assetdocumentcode;
+	}
+
+	/**
+	 * @return the assetdocumentname
+	 */
+	public String getAssetdocumentname() {
+		return assetdocumentname;
+	}
+
+	/**
+	 * @param assetdocumentname the assetdocumentname to set
+	 */
+	public void setAssetdocumentname(String assetdocumentname) {
+		this.assetdocumentname = assetdocumentname;
+	}
+
+	public String getAssetType() {
+		return assetType;
+	}
+
+	public void setAssetType(String assetType) {
+		this.assetType = assetType;
 	}
 
 	/**

@@ -37,7 +37,152 @@ public class MasterAction extends ActionSupport implements Preparable {
 	private List<MasterType> lstMasterType;
 
 	private List<MasterTable> lstMasterTable;
+	private String searchcriteria;
+	private String searchvalue;
+	private int pageNumber;
+	private String usrUpd;
+	private String usrCrt;
+	private String message;
+	private long id;
+
+	private String masterCode;
+	private String masterValue;
+	private Integer isActive;
+
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+				strMode = Paging();
+			case "edit":
+
+			case "del":
+				return SaveDelete();
+			case "add":
+
+				strMode = SaveAdd();
+			case "saveadd":
+				strMode = SaveAdd();
+			case "saveedit":
+				strMode = SaveEdit();
+			case "back":
+
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "first";
+		}
+		return strMode;
+	}
+
+	private String Paging() {
+
+		String status = "";
+		try {
+			String wherecond = "";
+			if (this.getSearchcriteria().contains("%"))
+				wherecond = this.getSearchvalue() + " like "
+						+ this.getSearchcriteria();
+			else
+				wherecond = this.getSearchvalue() + " = "
+						+ this.getSearchcriteria();
+
+			this.lstMasterTable = this.masterService.Paging(
+					this.getPageNumber(), wherecond, "");
+
+			status = "Success";
+		} catch (Exception exp) {
+			status = "Failed";
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+
+	private String SaveAdd() {
+		String status = "";
+		try {
+			MasterTable masterTable = new MasterTable();
+
+			masterTable.setMasterCode(this.getMasterCode());
+			masterTable.setMasterValue(this.getMasterValue());
+			masterTable.setMasterType(this.getMasterType());
+
+			MasterType mastertype = new MasterType();
+
+			this.masterService.SaveAdd(mastertype, masterTable);
+			status = SUCCESS;
+		} catch (Exception exp) {
+			status = ERROR;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+
+	private String SaveEdit() {
+		String status = "";
+		try {
+			MasterTable masterTable = new MasterTable();
+			masterTable.setId(this.getId());
+			masterTable.setMasterCode(this.getMasterCode());
+			masterTable.setMasterValue(this.getMasterValue());
+			masterTable.setMasterType(this.getMasterType());
+
+			MasterType mastertype = new MasterType();
+
+			this.masterService.SaveAdd(mastertype, masterTable);
+			status = SUCCESS;
+		} catch (Exception exp) {
+			status = ERROR;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+
+	private String SaveDelete() {
+		String status = "";
+		try {
+			MasterTable masterTable = new MasterTable();
+			masterTable.setId(this.getId());
 	
+
+			this.masterService.SaveDel(masterTable);
+			status = SUCCESS;
+		} catch (Exception exp) {
+			status = ERROR;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
 
 	/**
 	 * @return the serialversionuid
@@ -96,87 +241,59 @@ public class MasterAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param masterType the masterType to set
+	 * @param masterType
+	 *            the masterType to set
 	 */
 	public void setMasterType(MasterType masterType) {
 		this.masterType = masterType;
 	}
 
 	/**
-	 * @param masterTable the masterTable to set
+	 * @param masterTable
+	 *            the masterTable to set
 	 */
 	public void setMasterTable(MasterTable masterTable) {
 		this.masterTable = masterTable;
 	}
 
 	/**
-	 * @param masterService the masterService to set
+	 * @param masterService
+	 *            the masterService to set
 	 */
 	public void setMasterService(MasterService masterService) {
 		this.masterService = masterService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param lstMasterType the lstMasterType to set
+	 * @param lstMasterType
+	 *            the lstMasterType to set
 	 */
 	public void setLstMasterType(List<MasterType> lstMasterType) {
 		this.lstMasterType = lstMasterType;
 	}
 
 	/**
-	 * @param lstMasterTable the lstMasterTable to set
+	 * @param lstMasterTable
+	 *            the lstMasterTable to set
 	 */
 	public void setLstMasterTable(List<MasterTable> lstMasterTable) {
 		this.lstMasterTable = lstMasterTable;
-	}
-
-	@Override
-	public void prepare() throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	public String execute() {
-		if (mode != null) {
-			if (mode.equals("search")) {
-				return "search";
-			}
-			if (mode.equals("edit")) {
-				return "edit";
-			}
-			if (mode.equals("del")) {
-				return "del";
-			}
-			if (mode.equals("add")) {
-				return "add";
-			}
-			if (mode.equals("save")) {
-				return "save";
-			}
-			if (mode.equals("save")) {
-				return "save";
-			}
-			if (mode.equals("back")) {
-				return "back";
-			}
-		} else {
-			return "page";
-		}
-		return mode;
 	}
 
 	public String getMode() {
@@ -185,6 +302,156 @@ public class MasterAction extends ActionSupport implements Preparable {
 
 	public void setMode(String mode) {
 		this.mode = mode;
+	}
+
+	/**
+	 * @return the searchcriteria
+	 */
+	public String getSearchcriteria() {
+		return searchcriteria;
+	}
+
+	/**
+	 * @return the searchvalue
+	 */
+	public String getSearchvalue() {
+		return searchvalue;
+	}
+
+	/**
+	 * @return the pageNumber
+	 */
+	public int getPageNumber() {
+		return pageNumber;
+	}
+
+	/**
+	 * @return the usrUpd
+	 */
+	public String getUsrUpd() {
+		return usrUpd;
+	}
+
+	/**
+	 * @return the usrCrt
+	 */
+	public String getUsrCrt() {
+		return usrCrt;
+	}
+
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * @param searchcriteria
+	 *            the searchcriteria to set
+	 */
+	public void setSearchcriteria(String searchcriteria) {
+		this.searchcriteria = searchcriteria;
+	}
+
+	/**
+	 * @param searchvalue
+	 *            the searchvalue to set
+	 */
+	public void setSearchvalue(String searchvalue) {
+		this.searchvalue = searchvalue;
+	}
+
+	/**
+	 * @param pageNumber
+	 *            the pageNumber to set
+	 */
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+
+	/**
+	 * @param usrUpd
+	 *            the usrUpd to set
+	 */
+	public void setUsrUpd(String usrUpd) {
+		this.usrUpd = usrUpd;
+	}
+
+	/**
+	 * @param usrCrt
+	 *            the usrCrt to set
+	 */
+	public void setUsrCrt(String usrCrt) {
+		this.usrCrt = usrCrt;
+	}
+
+	/**
+	 * @param message
+	 *            the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	/**
+	 * @return the masterCode
+	 */
+	public String getMasterCode() {
+		return masterCode;
+	}
+
+	/**
+	 * @return the masterValue
+	 */
+	public String getMasterValue() {
+		return masterValue;
+	}
+
+	/**
+	 * @return the isActive
+	 */
+	public Integer getIsActive() {
+		return isActive;
+	}
+
+	/**
+	 * @param masterCode
+	 *            the masterCode to set
+	 */
+	public void setMasterCode(String masterCode) {
+		this.masterCode = masterCode;
+	}
+
+	/**
+	 * @param masterValue
+	 *            the masterValue to set
+	 */
+	public void setMasterValue(String masterValue) {
+		this.masterValue = masterValue;
+	}
+
+	/**
+	 * @param isActive
+	 *            the isActive to set
+	 */
+	public void setIsActive(Integer isActive) {
+		this.isActive = isActive;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

@@ -5,9 +5,9 @@
 <struts>
 
 	<package name="usermanagement" extends="smartdealer-package"
-		namespace="/usermanagement">
-		<action name="assetdoc"
-			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
+		namespace="/setting">
+		<action name="employee"
+			class="com.adibrata.smartdealer.action.usermanagement.EmployeeAction"
 			method="execute">
 			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>

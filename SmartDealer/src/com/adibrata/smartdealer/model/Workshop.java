@@ -1,12 +1,12 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 2, 2015 6:38:03 PM by Hibernate Tools 4.3.1
+// Generated Jul 3, 2015 10:35:01 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -23,6 +23,7 @@ public class Workshop implements java.io.Serializable {
 	private long id;
 	private Partner partner;
 	private String workshopCode;
+	private String name;
 	private String address;
 	private String rt;
 	private String rw;
@@ -30,6 +31,14 @@ public class Workshop implements java.io.Serializable {
 	private String kecamatan;
 	private String city;
 	private String zipCode;
+	private String areaPhone1;
+	private String phoneNo1;
+	private String areaPhone2;
+	private String phoneNo2;
+	private String areaFax;
+	private String faxNo;
+	private String handphone;
+	private String fullAddress;
 	private String usrCrt;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -42,13 +51,16 @@ public class Workshop implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Workshop(long id, Partner partner, String workshopCode,
+	public Workshop(long id, Partner partner, String workshopCode, String name,
 			String address, String rt, String rw, String kelurahan,
-			String kecamatan, String city, String zipCode, String usrCrt,
-			Date dtmUpd, String usrUpd, Date dtmCrt) {
+			String kecamatan, String city, String zipCode, String areaPhone1,
+			String phoneNo1, String areaPhone2, String phoneNo2,
+			String areaFax, String faxNo, String handphone, String fullAddress,
+			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt) {
 		this.id = id;
 		this.partner = partner;
 		this.workshopCode = workshopCode;
+		this.name = name;
 		this.address = address;
 		this.rt = rt;
 		this.rw = rw;
@@ -56,13 +68,21 @@ public class Workshop implements java.io.Serializable {
 		this.kecamatan = kecamatan;
 		this.city = city;
 		this.zipCode = zipCode;
+		this.areaPhone1 = areaPhone1;
+		this.phoneNo1 = phoneNo1;
+		this.areaPhone2 = areaPhone2;
+		this.phoneNo2 = phoneNo2;
+		this.areaFax = areaFax;
+		this.faxNo = faxNo;
+		this.handphone = handphone;
+		this.fullAddress = fullAddress;
 		this.usrCrt = usrCrt;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -89,6 +109,15 @@ public class Workshop implements java.io.Serializable {
 
 	public void setWorkshopCode(String workshopCode) {
 		this.workshopCode = workshopCode;
+	}
+
+	@Column(name = "Name", length = 50)
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(name = "Address", length = 50)
@@ -152,6 +181,78 @@ public class Workshop implements java.io.Serializable {
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	@Column(name = "AreaPhone1", length = 4)
+	public String getAreaPhone1() {
+		return this.areaPhone1;
+	}
+
+	public void setAreaPhone1(String areaPhone1) {
+		this.areaPhone1 = areaPhone1;
+	}
+
+	@Column(name = "PhoneNo1", length = 20)
+	public String getPhoneNo1() {
+		return this.phoneNo1;
+	}
+
+	public void setPhoneNo1(String phoneNo1) {
+		this.phoneNo1 = phoneNo1;
+	}
+
+	@Column(name = "AreaPhone2", length = 4)
+	public String getAreaPhone2() {
+		return this.areaPhone2;
+	}
+
+	public void setAreaPhone2(String areaPhone2) {
+		this.areaPhone2 = areaPhone2;
+	}
+
+	@Column(name = "PhoneNo2", length = 20)
+	public String getPhoneNo2() {
+		return this.phoneNo2;
+	}
+
+	public void setPhoneNo2(String phoneNo2) {
+		this.phoneNo2 = phoneNo2;
+	}
+
+	@Column(name = "AreaFax", length = 4)
+	public String getAreaFax() {
+		return this.areaFax;
+	}
+
+	public void setAreaFax(String areaFax) {
+		this.areaFax = areaFax;
+	}
+
+	@Column(name = "FaxNo", length = 20)
+	public String getFaxNo() {
+		return this.faxNo;
+	}
+
+	public void setFaxNo(String faxNo) {
+		this.faxNo = faxNo;
+	}
+
+	@Column(name = "Handphone", length = 20)
+	public String getHandphone() {
+		return this.handphone;
+	}
+
+	public void setHandphone(String handphone) {
+		this.handphone = handphone;
+	}
+
+	@Column(name = "FullAddress", length = 500)
+	public String getFullAddress() {
+		return this.fullAddress;
+	}
+
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
 	}
 
 	@Column(name = "UsrCrt", length = 50)
