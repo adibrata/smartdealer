@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -54,7 +54,7 @@ public class MsMenu implements java.io.Serializable {
 		this.msMenuRoles = msMenuRoles;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;

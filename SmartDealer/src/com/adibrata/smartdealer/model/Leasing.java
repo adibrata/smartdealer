@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -68,7 +68,7 @@ public class Leasing implements java.io.Serializable {
 		this.danaTunais = danaTunais;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
