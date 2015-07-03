@@ -2,9 +2,10 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
 <struts>
 	<package name="Setting" extends="smartDealer-package"
-		namespace="/">
+		namespace="/Setting">
 		<action name="Assetdoc"
 			class="com.adibrata.smartDealer.action.Setting.AssetdocAction"
 			method="execute">
@@ -12,12 +13,12 @@
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="save">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="back">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
-			<result name="save">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 		</action>
-		
+
 		<action name="Assetmaster"
 			class="com.adibrata.smartDealer.action.Setting.AssetmasterAction"
 			method="execute">
@@ -29,16 +30,16 @@
 			</result>
 			<result name="del">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
-			<result name="save">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="saveadd">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
 			<result name="back">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
 			<result name="add">/Pages/Setting/Assetmaster/addAssetmaster.jsp
 			</result>
-			<result name="save">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="saveedit">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
 			</result>
 		</action>
-		
+
 		<action name="BankAccount"
 			class="com.adibrata.smartDealer.action.Setting.BankAccountAction"
 			method="execute">
@@ -50,28 +51,28 @@
 			</result>
 			<result name="del">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
-			<result name="save">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="saveadd">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="back">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="add">/Pages/Setting/BankAccount/addBankAccount.jsp
 			</result>
-			<result name="save">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="saveedit">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 		</action>
-		
+
 		<action name="Dealer"
 			class="com.adibrata.smartDealer.action.Setting.DealerAction" method="execute">
 			<result name="page">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="save">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="saveadd">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="back">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="add">/Pages/Setting/Dealer/addDealer.jsp</result>
-			<result name="save">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="saveedit">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
-		
+
 		<action name="JurnalScheme"
 			class="com.adibrata.smartDealer.action.Setting.JurnalSchemeAction"
 			method="execute">
@@ -83,30 +84,30 @@
 			</result>
 			<result name="del">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
-			<result name="save">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="saveadd">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 			<result name="back">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 			<result name="add">/Pages/Setting/JurnalScheme/addJurnalSchHdr.jsp
 			</result>
-			<result name="save">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="saveedit">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 			<result name="detail">/Pages/Setting/JurnalScheme/pageJurnalSchDtl.jsp
 			</result>
 			<result name="saveDetail">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 		</action>
-		
+
 		<action name="Master"
 			class="com.adibrata.smartDealer.action.Setting.MasterAction" method="execute">
 			<result name="page">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="search">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="save">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="saveadd">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="back">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="add">/Pages/Setting/Master/addMaster.jsp</result>
-			<result name="save">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="saveedit">/Pages/Setting/Master/pageMaster.jsp</result>
 		</action>
 		<action name="Office"
 			class="com.adibrata.smartDealer.action.Setting.OfficeAction" method="execute">
@@ -114,10 +115,10 @@
 			<result name="search">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="save">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="saveadd">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="back">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="add">/Pages/Setting/Office/addOffice.jsp</result>
-			<result name="save">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="saveedit">/Pages/Setting/Office/pageOffice.jsp</result>
 		</action>
 		<action name="Workshop"
 			class="com.adibrata.smartDealer.action.Setting.WorkshopAction"
@@ -126,10 +127,10 @@
 			<result name="search">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="save">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="saveadd">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="back">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="add">/Pages/Setting/Workshop/addWorkshop.jsp</result>
-			<result name="save">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="saveedit">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 		</action>
 		<action name="ZipCode"
 			class="com.adibrata.smartDealer.action.Setting.ZipCodeAction" method="execute">
@@ -137,21 +138,22 @@
 			<result name="search">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="save">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="saveadd">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="back">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="add">/Pages/Setting/ZipCode/addZipCode.jsp</result>
-			<result name="save">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="saveedit">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 		</action>
+
 		<action name="Taksasi"
 			class="com.adibrata.smartDealer.action.Setting.TaksasiAction" method="execute">
 			<result name="page">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
 			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="save">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="saveadd">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="back">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="add">/Pages/Setting/Taksasi/addTaksasi.jsp</result>
-			<result name="save">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="saveedit">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -61,9 +61,31 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 	}
 
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		StringBuilder hql = new StringBuilder();
+		List<SalesOrderHdr> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 
 	}
 
@@ -114,7 +136,20 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 	@Override
 	public SalesOrderHdr View(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		SalesOrderHdr salesOrderHdr = null;
+		try {
+			salesOrderHdr = (SalesOrderHdr) session.get(Taksasi.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return salesOrderHdr;
 	}
 
 }

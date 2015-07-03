@@ -4,9 +4,15 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
-	<include file="/struts-login.xml"></include>
-	<include file="/struts-purchase.xml"></include>
-	<include file="/struts-sales.xml"></include>
+	<include file="/struts-accpay.xml"></include>
+	<include file="/struts-cashtransaction.xml"></include>
+	<include file="/struts-customer.xml"></include>
+	<include file="/struts-danatunai.xml"></include>
 	<include file="/struts-entrust.xml"></include>
-	<include file="/struts-setting.xml"></include>
+	<include file="/struts-othertransactions.xml"></include>
+	<include file="/struts-purchase.xml"></include>
+	<include file="/struts-repair.xml"></include>
+	<include file="/struts-report.xml"></include>
+	<include file="/struts-sales.xml"></include>
+	<include file="/struts-usermanagemetn.xml"></include>
 </struts>

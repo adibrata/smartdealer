@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
@@ -11,8 +11,15 @@
 	 <bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
-	PARAMETER
-   
+	<!-- PARAMETER -->
+	
+    <bean id="selectionService" class="Impl.KaryawanImpl" />
+    <bean id="pvDisbursementService" class="Impl.BarangImpl" />
+    
+	<bean id="kodebarangImpl" class="Impl.KodeBarangImpl" />
+	<bean id="kelasImpl" class="Impl.KelasImpl" />
+	<bean id="jurusanImpl" class="Impl.JurusanImpl" />
+	<bean id="mahasiswaImpl" class="Impl.MahasiswaImpl" />
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -40,4 +47,4 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
-</beans> -->
+</beans>

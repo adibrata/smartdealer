@@ -60,8 +60,8 @@
 								<th>Document<br>Code</th>
 								<th>Document<br>Name</th>
 								<th>Asset<br>Type</th>
-								<th><button type="submit" onclick="edit()">Edit</button></th>
-								<th><button type="submit" onclick="del()">del</button></th>								
+								<th><button type="submit" onclick="edit()">Ubah</button></th>
+								<th><button type="submit" onclick="del()">Hapus</button></th>								
 							</tr>
 						<s:iterator value="">
 							<tr id="row_<s:property value="id"/>">

@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.Preparable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
@@ -17,6 +18,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 
+import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.SalesOrderService;
 import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
@@ -34,7 +36,118 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	private AssetDocMaster assetDocMaster;
 	private Partner partner;
 	private Office office;
-	private List<AssetDocMaster> lstassetAssetDocMasters;
+	private List<AssetDocMaster> lstAssetDocMasters;
+	private String searchcriteria;
+	private String searchvalue;
+	private long id;
+
+	private String documentCode;
+	private String documentName;
+	private String assetType;
+	private String usrUpd;
+	private String usrCrt;
+
+	/**
+	 * 
+	 */
+	public AssetDocAction() {
+		Partner partner = new Partner();
+		Office office = new Office();
+		AssetDocMaster assetDocMaster = new AssetDocMaster();
+
+		this.setPartner(partner);
+		this.setOffice(office);
+		this.setAssetDocMaster(assetDocMaster);
+
+		// TODO Auto-generated constructor stub
+	}
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+				return strMode;
+			case "edit":
+				return strMode;
+			case "del":
+				return SaveDelete();
+			case "add":
+				return SaveAdd();
+			case "saveadd":
+				return strMode;
+			case "saveedit":
+				return SaveEdit();
+			case "back":
+				return "search";
+			default:
+				return "failed";
+			}
+		}
+		return strMode;
+	}
+
+	private List<AssetDocMaster> Paging() {
+
+		return null;
+
+	}
+
+	private String SaveAdd() {
+		String status = "";
+		try {
+
+			status = "Success";
+		} catch (Exception exp) {
+			status = "Failed";
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+
+	private String SaveEdit() {
+		String status = "";
+		try {
+			AssetDocMaster assetDocMaster = new AssetDocMaster();
+			assetDocMaster.setDocumentCode(this.getDocumentCode());
+			assetDocMaster.setDocumentName(this.getDocumentName());
+
+			status = "Success";
+		} catch (Exception exp) {
+			status = "Failed";
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+
+	private String SaveDelete() {
+		String status = "";
+		try {
+
+			status = "Success";
+		} catch (Exception exp) {
+			status = "Failed";
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
 
 	/**
 	 * @return the serialversionuid
@@ -74,8 +187,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the lstassetAssetDocMasters
 	 */
-	public List<AssetDocMaster> getLstassetAssetDocMasters() {
-		return lstassetAssetDocMasters;
+	public List<AssetDocMaster> getLstAssetDocMasters() {
+		return lstAssetDocMasters;
 	}
 
 	/**
@@ -115,9 +228,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	 * @param lstassetAssetDocMasters
 	 *            the lstassetAssetDocMasters to set
 	 */
-	public void setLstassetAssetDocMasters(
-			List<AssetDocMaster> lstassetAssetDocMasters) {
-		this.lstassetAssetDocMasters = lstassetAssetDocMasters;
+	public void setLstAssetDocMasters(List<AssetDocMaster> lstAssetDocMasters) {
+		this.lstAssetDocMasters = lstAssetDocMasters;
 	}
 
 	@Override
@@ -134,59 +246,109 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		this.mode = mode;
 	}
 
-	public String execute() {
-		if (mode != null) {
-			if (mode.equals("search")) {
-				return "search";
-			}
-			if (mode.equals("edit")) {
-				return "edit";
-			}
-			if (mode.equals("del")) {
-				return "del";
-			}
-			if (mode.equals("add")) {
-				return "add";
-			}
-			if (mode.equals("saveadd")) {
-				return "save";
-			}
-			if (mode.equals("saveedit")) {
-				return "save";
-			}
-			if (mode.equals("back")) {
-				return "back";
-			}
-		} else {
-			return "page";
-		}
-		return mode;
+	/**
+	 * @return the searchcriteria
+	 */
+	public String getSearchcriteria() {
+		return searchcriteria;
 	}
 
-	private void SaveAdd() {
-		try {
-
-		} catch (Exception exp) {
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
+	/**
+	 * @return the searchvalue
+	 */
+	public String getSearchvalue() {
+		return searchvalue;
 	}
 
-	private void SaveEdit() {
-		try {
+	/**
+	 * @param searchcriteria
+	 *            the searchcriteria to set
+	 */
+	public void setSearchcriteria(String searchcriteria) {
+		this.searchcriteria = searchcriteria;
+	}
 
-		} catch (Exception exp) {
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
+	/**
+	 * @param searchvalue
+	 *            the searchvalue to set
+	 */
+	public void setSearchvalue(String searchvalue) {
+		this.searchvalue = searchvalue;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @return the documentCode
+	 */
+	public String getDocumentCode() {
+		return documentCode;
+	}
+
+	/**
+	 * @return the documentName
+	 */
+	public String getDocumentName() {
+		return documentName;
+	}
+
+	/**
+	 * @return the assetType
+	 */
+	public String getAssetType() {
+		return assetType;
+	}
+
+	/**
+	 * @return the usrUpd
+	 */
+	public String getUsrUpd() {
+		return usrUpd;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param documentCode
+	 *            the documentCode to set
+	 */
+	public void setDocumentCode(String documentCode) {
+		this.documentCode = documentCode;
+	}
+
+	/**
+	 * @param documentName
+	 *            the documentName to set
+	 */
+	public void setDocumentName(String documentName) {
+		this.documentName = documentName;
+	}
+
+	/**
+	 * @param assetType
+	 *            the assetType to set
+	 */
+	public void setAssetType(String assetType) {
+		this.assetType = assetType;
+	}
+
+	/**
+	 * @param usrUpd
+	 *            the usrUpd to set
+	 */
+	public void setUsrUpd(String usrUpd) {
+		this.usrUpd = usrUpd;
 	}
 
 }

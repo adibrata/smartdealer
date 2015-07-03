@@ -3,7 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="setting" extends="smartdealer-package" namespace="/">
+	<package name="repair" extends="smartdealer-package" namespace="/">
 		<action name="assetdoc" class="com.adibrata.smartdealer.action.setting.AssetDocAction" method="execute">
 			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
