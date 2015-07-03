@@ -35,6 +35,15 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the serialversionuid
 	 */
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -89,49 +98,56 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param salesOrderService the salesOrderService to set
+	 * @param salesOrderService
+	 *            the salesOrderService to set
 	 */
 	public void setSalesOrderService(SalesOrderService salesOrderService) {
 		this.salesOrderService = salesOrderService;
 	}
 
 	/**
-	 * @param salesOrderHdr the salesOrderHdr to set
+	 * @param salesOrderHdr
+	 *            the salesOrderHdr to set
 	 */
 	public void setSalesOrderHdr(SalesOrderHdr salesOrderHdr) {
 		this.salesOrderHdr = salesOrderHdr;
 	}
 
 	/**
-	 * @param salesOrderDtl the salesOrderDtl to set
+	 * @param salesOrderDtl
+	 *            the salesOrderDtl to set
 	 */
 	public void setSalesOrderDtl(SalesOrderDtl salesOrderDtl) {
 		this.salesOrderDtl = salesOrderDtl;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param lstSalesOrderHdr the lstSalesOrderHdr to set
+	 * @param lstSalesOrderHdr
+	 *            the lstSalesOrderHdr to set
 	 */
 	public void setLstSalesOrderHdr(List<SalesOrderHdr> lstSalesOrderHdr) {
 		this.lstSalesOrderHdr = lstSalesOrderHdr;
 	}
 
 	/**
-	 * @param lstSalesOrderDtl the lstSalesOrderDtl to set
+	 * @param lstSalesOrderDtl
+	 *            the lstSalesOrderDtl to set
 	 */
 	public void setLstSalesOrderDtl(List<SalesOrderDtl> lstSalesOrderDtl) {
 		this.lstSalesOrderDtl = lstSalesOrderDtl;
@@ -151,7 +167,7 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 
 	}
 
-	public String order() {
+	public String Order() {
 		if (mode != null) {
 			if (mode.equals("search")) {
 				return "search";
@@ -177,37 +193,4 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 		return mode;
 	}
 
-	public String retur() {
-		if (mode != null) {
-			if (mode.equals("search")) {
-				return "search";
-			}
-			if (mode.equals("entry")) {
-				return "entry";
-			}
-			if (mode.equals("add")) {
-				return "add";
-			}
-			if (mode.equals("del")) {
-				return "del";
-			}
-			if (mode.equals("save")) {
-				return "save";
-			}
-			if (mode.equals("back")) {
-				return "back";
-			}
-		} else {
-			return "paging";
-		}
-		return mode;
-	}
-
-	public String getMode() {
-		return mode;
-	}
-
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
 }

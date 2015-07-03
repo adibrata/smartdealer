@@ -36,7 +36,7 @@ public class EmployeeDao implements EmployeeService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Employee ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

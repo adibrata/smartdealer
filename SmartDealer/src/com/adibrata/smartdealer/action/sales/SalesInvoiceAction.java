@@ -152,4 +152,32 @@ public class SalesInvoiceAction extends ActionSupport implements Preparable {
 
 	}
 
+	
+
+	public String Invoice() {
+		if (mode != null) {
+			if (mode.equals("search")) {
+				return "search";
+			}
+			if (mode.equals("entry")) {
+				return "entry";
+			}
+			if (mode.equals("add")) {
+				return "add";
+			}
+			if (mode.equals("del")) {
+				return "del";
+			}
+			if (mode.equals("save")) {
+				return "save";
+			}
+			if (mode.equals("back")) {
+				return "back";
+			}
+		} else {
+			return "paging";
+		}
+		return mode;
+	}
+	
 }

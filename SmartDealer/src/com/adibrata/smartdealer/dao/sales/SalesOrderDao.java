@@ -39,7 +39,7 @@ public class SalesOrderDao implements SalesOrderService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Customer ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

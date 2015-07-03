@@ -42,7 +42,7 @@ public class BankAccountDao implements BankAccountService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from BankAccount ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

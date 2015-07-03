@@ -37,7 +37,7 @@ public class AssetMasterDao implements AssetMasterService{
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from AssetMaster ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

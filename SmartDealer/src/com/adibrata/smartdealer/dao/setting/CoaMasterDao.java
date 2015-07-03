@@ -38,7 +38,7 @@ public class CoaMasterDao implements COAMasterService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Coamaster ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

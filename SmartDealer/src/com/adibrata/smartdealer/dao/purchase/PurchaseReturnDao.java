@@ -23,20 +23,22 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
-public class PurchaseReturnDao implements PurchaseReturnService{
-	String userupd; 
+
+public class PurchaseReturnDao implements PurchaseReturnService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public PurchaseReturnDao() {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from PurchaseOrderHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
@@ -49,38 +51,41 @@ public class PurchaseReturnDao implements PurchaseReturnService{
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Save()
 	 */
 	@Override
-	public void Save(ReturPurchaseHdr returPurchaseHdr, List<ReturPurchaseDtl> returPurchaseDtl) {
+	public void Save(ReturPurchaseHdr returPurchaseHdr,
+			List<ReturPurchaseDtl> returPurchaseDtl) {
 		// TODO Auto-generated method stub
-	
-	
+
 		String retpurchaseno;
 		session.getTransaction().begin();
 		try {
-			retpurchaseno = GetTransNo.GenerateTransactionNo(session,returPurchaseHdr.getPartner().getPartnerCode(),
-					returPurchaseHdr.getOffice().getId(), "REP", dtmupd.getTime());
+			retpurchaseno = GetTransNo.GenerateTransactionNo(session,
+					returPurchaseHdr.getPartner().getPartnerCode(),
+					returPurchaseHdr.getOffice().getId(), "REP",
+					dtmupd.getTime());
 
 			returPurchaseHdr.setReturPurchaseNo(retpurchaseno);
-			
+
 			returPurchaseHdr.setDtmCrt(dtmupd.getTime());
 			returPurchaseHdr.setDtmUpd(dtmupd.getTime());
-		
+
 			session.save(returPurchaseHdr);
 
 			for (ReturPurchaseDtl arow : returPurchaseDtl) {
 				// 1.No Impact Asset Master
 				// 2. Save Stock update Status
 				// 3. Save purchase order detail
-			
 
 				Stock stock = new Stock();
 				stock.setPartner(returPurchaseHdr.getPartner());
 				stock.setOffice(returPurchaseHdr.getOffice());
 				stock.setId(arow.getStock().getId());
-				
+
 				stock.setStockStatus("RET");
 				stock.setSupplier(returPurchaseHdr.getSupplier());
 				stock.setDtmCrt(dtmupd.getTime());
@@ -110,8 +115,11 @@ public class PurchaseReturnDao implements PurchaseReturnService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
 	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
@@ -119,8 +127,12 @@ public class PurchaseReturnDao implements PurchaseReturnService{
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#TotalRecord(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.purchase.PurchaseOrder#TotalRecord(java
+	 * .lang.String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {

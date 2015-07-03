@@ -39,7 +39,7 @@ public class SalesReturDao implements SalesReturnService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from SalesOrderHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

@@ -5,7 +5,7 @@
 <struts>
 	<package name="smartdealer-package" extends="struts-default" namespace="/">
 		<action name="home" class="com.adibrata.smartdealer.action.LoginAction" method="login">
-			<result name="login">login.jsp</result>
+			<result name="login">Index.jsp</result>
 			<result name="home">menu.jsp</result>
 		</action>
 	</package>

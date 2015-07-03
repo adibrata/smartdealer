@@ -40,7 +40,7 @@ public class CustomerDao implements CustomerMaintService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Customer ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

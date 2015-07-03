@@ -34,7 +34,7 @@ public class WorkshopDao implements WorkshopService{
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Workshop ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

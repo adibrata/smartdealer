@@ -47,7 +47,7 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from SalesOrderHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

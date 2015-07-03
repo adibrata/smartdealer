@@ -32,12 +32,13 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public PurchaseEntryDao() {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from Supplier ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
@@ -63,8 +64,9 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 		String pono;
 		session.getTransaction().begin();
 		try {
-			pono = GetTransNo.GenerateTransactionNo(session,purchaseOrderHdr.getPartner().getPartnerCode(),
-					purchaseOrderHdr.getOffice().getId(), "PO", dtmupd.getTime());
+			pono = GetTransNo.GenerateTransactionNo(session, purchaseOrderHdr
+					.getPartner().getPartnerCode(), purchaseOrderHdr
+					.getOffice().getId(), "PO", dtmupd.getTime());
 			purchaseOrderHdr.setPono(pono);
 			purchaseOrderHdr.setDtmCrt(dtmupd.getTime());
 			purchaseOrderHdr.setDtmUpd(dtmupd.getTime());
@@ -149,7 +151,8 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Supplier> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
