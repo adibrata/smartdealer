@@ -60,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="home.html" method="post"> <!--  Should be direct with java -->
+	<form class="login-form" action="home.jsp" method="post"> <!--  Should be direct with java -->
 		<h3 class="form-title">Login to your account</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
