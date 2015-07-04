@@ -149,7 +149,7 @@
 							<li><a href="setting/userregister.action">User Login</a></li>
 
 						</ul></li>
-					<li><a href="home.">Keluar</a></li>
+					<li><a href="../index.jsp">Keluar</a></li>
 				</ul>
 			</s:form>
 		</div>

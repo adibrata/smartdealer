@@ -31,45 +31,44 @@
 			<tr>
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Purchase.jpg"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px"align="top">
 						<p>Pembelian dan Titipan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Penjualan.png"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px" align="top">
 						<p>Penjualan dan Titipan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/services.png"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px" align="top">
 						<p>Perbaikan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Purchase.jpg"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px" align="top">
 						<p>Stock</p></a></td>
 
 			</tr>
 			<tr>
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Employee.jpg"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px" align="top">
 						<p>Karyawan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Finance.jpg"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px"align="top">
 						<p>Keuangan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools" src="../images/smartdealer/Accounting.jpg"
-						width="75%" height="75%" align="top">
+						width="120px" height="100px"align="top">
 						<p>Akuntansi</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools"
-						src="../images/smartdealer/PasswordRequest.png" width="75%"
-						height="75%" align="top">
+						src="../images/smartdealer/PasswordRequest.png" width="120px" height="100px" align="top">
 						<p>Minta Password</p></a></td>
 			</tr>
 		</table>

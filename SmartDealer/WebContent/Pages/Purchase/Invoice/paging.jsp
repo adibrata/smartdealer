@@ -7,14 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>DMS-Dealer Management System</title>
 </head>
-<script type="text/javascript">
-	function search() {
-		document.getElementById("mode").value = "search";
-	}
-	function entry() {
-		document.getElementById("mode").value = "entry";
-	}
-</script>
+
 <body>
 	<s:form action="purchase_receive.action" theme="simple">
 		<center>
@@ -53,4 +46,12 @@
 		</center>
 	</s:form>
 </body>
+<script type="text/javascript">
+	function search() {
+		document.getElementById("mode").value = "search";
+	}
+	function entry() {
+		document.getElementById("mode").value = "entry";
+	}
+</script>
 </html>

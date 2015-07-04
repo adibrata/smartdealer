@@ -24,7 +24,8 @@
 
 </head>
 <body>
-<table>
+<br><br>
+<table align="center" width="100%">
 			<tr>
 				<td width="25%"><div>
 						<img width="100%" height="100" border="0" alt="W3Schools"

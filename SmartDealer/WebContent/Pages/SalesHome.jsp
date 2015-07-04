@@ -24,71 +24,53 @@
 
 		<!-- Main component for a primary marketing message or call to action -->
 		<!-- 	<div class="jumbotron"> -->
-		<table>
-			<tr>
-				<td width="25%"><div>
-						<img width="100%" height="100" border="0" alt="W3Schools"
-							src="images/smartdealer/LogoDealer.jpg">
-					</div></td>
-				<td align="center">Sun Motor</td>
-
-				<td width="25%"><div>
-						<img width="100%" height="100" border="0" alt="W3Schools"
-							src="images/smartdealer/LogoDealer.jpg">
-					</div></td>
-			</tr>
-			<tr>
-				<td width="25%"></td>
-
-				<td align="center" valign="top">Alamat Sun Motor</td>
-				<td width="25%"></td>
-			</tr>
-		</table>
+		<br> <br>
+		<%@include file="Header.jsp"%>
 
 		<table class="table table-striped table-bordered table-hover">
 			<tr>
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools"
-						src="images/smartdealer/PenjualanMenu.jpg" width="50%"
-						height="50%" align="middle">
+						src="../images/smartdealer/PenjualanMenu.jpg" width="120px"
+						height="100px" align="middle">
 						<p>Penjualan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools"
-						src="images/smartdealer/TitipanPenjualan.jpg" width="50%"
-						height="50%" align="middle">
+						src="../images/smartdealer/TitipanPenjualan.jpg" width="120px"
+						height="100px" align="middle">
 						<p>Titipan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
 						border="0" alt="W3Schools"
-						src="images/smartdealer/ReturnPenjualan.jpg" width="50%"
-						height="50%" align="middle">
+						src="../images/smartdealer/ReturnPenjualan.jpg" width="120px"
+						height="100px" align="middle">
 						<p>Retur</p></a></td>
 
 			</tr>
 			<tr>
 				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Employee.jpg"
-						width="50%" height="50%" align="middle">
+						border="0" alt="W3Schools"
+						src="../images/smartdealer/Employee.jpg" 	width="120px" height="100px"
+						align="middle">
 						<p>Laporan Pembelian</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Finance.jpg"
-						width="50%" height="50%" align="middle">
+						border="0" alt="W3Schools" src="../images/smartdealer/Finance.jpg"
+							width="120px" height="100px" align="middle">
 						<p>Laporan Titipan</p></a></td>
 
 				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Accounting.jpg"
-						width="50%" height="50%" align="top">
+						border="0" alt="W3Schools"
+						src="../images/smartdealer/Accounting.jpg" 	width="120px" height="100px" align="top">
 						<p>Laporan Retur</p></a></td>
 			</tr>
 			<tr>
 				<td></td>
 
-				<td width="25%" height="" align="center"><a href=""><img
+				<td width="25%" height="" align="center"><a href="Home.jsp"><img
 						border="0" alt="W3Schools"
-						src="images/smartdealer/logout-icon.png" width="75%" height="75%"
-						align="top">
+						src="../images/smartdealer/logout-icon.png" width="120px" height="100px"  align="top">
 						<p>Keluar</p></a></td>
 				<td></td>
 			</tr>
