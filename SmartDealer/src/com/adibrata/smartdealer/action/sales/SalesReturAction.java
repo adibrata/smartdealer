@@ -174,7 +174,7 @@ public class SalesReturAction extends ActionSupport implements Preparable {
 				return "back";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}

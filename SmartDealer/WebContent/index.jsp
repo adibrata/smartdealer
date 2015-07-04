@@ -38,6 +38,7 @@
 				
 			</div>
 		</form>
+		<a href="setting/assetdoc.action">Test </a>
 	</div>
 
 	<div class="copy-right">

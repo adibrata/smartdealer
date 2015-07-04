@@ -5,7 +5,7 @@
 <struts>
 	<package name="entrust" extends="smartdealer-package" namespace="/titip">
 		<action name="masuk" class="com.adibrata.smartdealer.action.entrust.EntrustAction" method="execute">
-			<result name="paging">/pages/entrust/order/paging.jsp</result>
+			<result name="start">/pages/entrust/order/paging.jsp</result>
 			<result name="search">/pages/entrust/order/paging.jsp</result>
 			<result name="entry">/pages/entrust/order/entry.jsp</result>
 			<result name="add">/pages/entrust/order/entry.jsp</result>

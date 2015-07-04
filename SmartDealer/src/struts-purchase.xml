@@ -5,7 +5,7 @@
 <struts>
 	<package name="purchase" extends="smartdealer-package" namespace="/">
 		<action name="purchaseorder" class="com.adibrata.smartdealer.action.purchase.PurchaseOrderAction" method="execute">
-			<result name="paging">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="start">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="search">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Order/entry.jsp</result>
 			<result name="add">/Pages/Purchase/Order/entry.jsp</result>
@@ -14,14 +14,14 @@
 			<result name="back">/Pages/Purchase/Order/paging.jsp</result>
 		</action>
 		<action name="purchaseinvoice" class="com.adibrata.smartdealer.action.purchase.PurchaseInvoiceAction" method="execute">
-			<result name="paging">/Pages/Purchase/Receive/paging.jsp</result>
+			<result name="start">/Pages/Purchase/Receive/paging.jsp</result>
 			<result name="search">/Pages/Purchase/Receive/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Receive/entry.jsp</result>
 			<result name="save">/Pages/Purchase/Receive/paging.jsp</result>
 			<result name="back">/Pages/Purchase/Receive/paging.jsp</result>
 		</action>
 		<action name="purchaseretur" class="com.adibrata.smartdealer.action.purchase.PurchaseReturAction" method="execute">
-			<result name="paging">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="start">/Pages/Purchase/Retur/paging.jsp</result>
 			<result name="search">/Pages/Purchase/Retur/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Retur/entry.jsp</result>
 			<result name="add">/Pages/Purchase/Retur/entry.jsp</result>

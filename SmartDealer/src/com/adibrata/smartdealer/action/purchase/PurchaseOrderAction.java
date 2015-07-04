@@ -129,7 +129,7 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable {
 				return "back";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}
@@ -143,7 +143,7 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable {
 				return "entry";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}
@@ -169,7 +169,7 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable {
 				return "back";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}

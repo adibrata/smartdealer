@@ -22,21 +22,21 @@
 		<action name="assetmaster"
 			class="com.adibrata.smartdealer.action.setting.AssetMasterAction"
 			method="execute">
-			<result name="start">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="start">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="search">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="search">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="edit">/Pages/Setting/Assetmaster/editAssetmaster.jsp
+			<result name="edit">/Pages/Setting/Assetmaster/editAssetMaster.jsp
 			</result>
-			<result name="del">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="del">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="saveadd">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="saveadd">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="back">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="back">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="add">/Pages/Setting/Assetmaster/addAssetmaster.jsp
+			<result name="add">/Pages/Setting/Assetmaster/addAssetMaster.jsp
 			</result>
-			<result name="saveedit">/Pages/Setting/Assetmaster/pageAssetmaster.jsp
+			<result name="saveedit">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 		</action>
 

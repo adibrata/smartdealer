@@ -6,7 +6,7 @@
 <struts>
 	<package name="customer" extends="smartdealer-package" namespace="/">
 		<action name="customerentry" class="com.adibrata.smartdealer.action.customer.CustomerAction" method="execute">
-			<result name="paging">/Pages/Sales/Order/paging.jsp</result>
+			<result name="start">/Pages/Sales/Order/paging.jsp</result>
 			<result name="search">/Pages/Sales/Order/paging.jsp</result>
 			<result name="entry">/Pages/Sales/Order/entry.jsp</result>
 			<result name="add">/Pages/Sales/Order/entry.jsp</result>

@@ -5,27 +5,27 @@
 <html>
 <head>
 
-<link href="style/css/bootstrap.min.css" rel="stylesheet"
+<link href="../style/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
-<link href="style/css/bootstrap-theme.min.css" rel="stylesheet"
+<link href="../style/css/bootstrap-theme.min.css" rel="stylesheet"
 	type="text/css" />
-<link href="style/css/jquery.smartmenus.bootstrap.css" rel="stylesheet"
-	type="text/css" />
+<link href="../style/css/jquery.smartmenus.bootstrap.css"
+	rel="stylesheet" type="text/css" />
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <script type="text/javascript" language="javascript"
-	src="style/js/bootstrap.min.js"></script>
+	src="../style/js/bootstrap.min.js"></script>
 <!-- /container -->
 <script type="text/javascript" language="javascript"
-	src="style/js/jquery.min.js"></script>
+	src="../style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="style/js/bootstrap.min.js"></script>
+	src="../style/js/bootstrap.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="style/js/jquery.min.js"></script>
+	src="../style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="style/js/jquery.smartmenus.min.js"></script>
+	src="../style/js/jquery.smartmenus.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="style/js/jquery.smartmenus.bootstrap.min.js"></script>
+	src="../style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </head>
 <body>
@@ -36,9 +36,9 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Pembelian </a>
 			<ul class="dropdown-menu">
-				<li><a href="">Pembelian</a></li>
-				<li><a href="">Titipan </a></li>
-				<li><a href="">Retur </a></li>
+				<li><a href="../purchaseorder.action">Pembelian</a></li>
+				<li><a href="purchaseretur.action">Retur </a></li>
+				<li><a href="purchaseinvoice.action">Tagihan </a></li>
 				<li role="separator" class="divider"></li>
 				<li class="dropdown-header">Laporan</li>
 				<li><a href="">Laporan Pembelian</a></li>
@@ -49,9 +49,10 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Penjualan dan Titipan </a>
 			<ul class="dropdown-menu">
-				<li><a href="">Penjualan</a></li>
-				<li><a href="">Titipan </a></li>
-				<li><a href="">Retur </a></li>
+				<li><a href="salesorder.action">Penjualan</a></li>
+				<li><a href="titip/masuk.action">Titipan </a></li>
+				<li><a href="salesretur.action">Retur </a></li>
+				<li><a href="salesinvoice.action">Tagihan</a></li>
 				<li role="separator" class="divider"></li>
 				<li class="dropdown-header">Laporan</li>
 				<li><a href="">Laporan Penjualan</a></li>
@@ -62,7 +63,7 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Perbaikan</a>
 			<ul class="dropdown-menu">
-				<li><a href="">Perbaikan</a></li>
+				<li><a href="repair.action">Perbaikan</a></li>
 
 				<li role="separator" class="divider"></li>
 				<li class="dropdown-header">Laporan</li>
@@ -82,7 +83,7 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Karyawan</a>
 			<ul class="dropdown-menu">
-				<li><a href="">Pengeluaran Karyawan</a></li>
+				<li><a href="pettycash.action">Pengeluaran Karyawan</a></li>
 
 				<li role="separator" class="divider"></li>
 				<li class="dropdown-header">Laporan</li>
@@ -92,10 +93,12 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Keuangan</a>
 			<ul class="dropdown-menu">
-				<li><a href="">Pembayaran Hutang</a></li>
+				<li><a href="accpay.action">Pembayaran Hutang</a></li>
 				<li><a href="">Penerimaan Piutang</a></li>
-				<li><a href="">Pembayaran Bukan Hutang / Piutang</a></li>
-				<li><a href="">Penerimaan Bukan Hutang / Piutang</a></li>
+				<li><a href="otherdisburse.action">Pembayaran Bukan Hutang
+						/ Piutang</a></li>
+				<li><a href="otherreceive.action">Penerimaan Bukan Hutang /
+						Piutang</a></li>
 
 				<li role="separator" class="divider"></li>
 				<li class="dropdown-header">Laporan</li>
@@ -123,19 +126,19 @@
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Setting</a>
 			<ul class="dropdown-menu">
-				<li><a href="">Kantor</a></li>
-				<li><a href="">Karyawan</a></li>
-				<li><a href="">Jabatan</a></li>
-				<li><a href="">Taksasi</a></li>
-				<li><a href="">Master</a></li>
-				<li><a href="">Rekening Bank</a></li>
+				<li><a href="setting/office.action">Kantor</a></li>
+				<li><a href="setting/employee.action">Karyawan</a></li>
+				<li><a href="setting.role.action">Jabatan</a></li>
+				<li><a href="setting/taksasi.action">Taksasi</a></li>
+				<li><a href="setting/master.action">Master</a></li>
+				<li><a href="setting/bankaccount.action">Rekening Bank</a></li>
 
-				<li><a href="">Dealer</a></li>
-				<li><a href="">Bengkel</a></li>
-				<li><a href="">User Login</a></li>
+				<li><a href="setting/dealer.action">Dealer</a></li>
+				<li><a href="setting/workshop.action">Bengkel</a></li>
+				<li><a href="setting/userregister.action">User Login</a></li>
 
 			</ul></li>
-		<li><a href="home.jsp">Keluar</a></li>
+		<li><a href="home.">Keluar</a></li>
 	</ul>
 
 </body>
@@ -144,10 +147,10 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script> -->
-<script src="style/js/jquery.min.js"></script>
-<script src="style/js/bootstrap.min.js"></script>
-<script src="style/js/jquery.smartmenus.min.js"></script>
-<script src="style/js/jquery.smartmenus.bootstrap.min.js"></script>
+<script src="../style/js/jquery.min.js"></script>
+<script src="../style/js/bootstrap.min.js"></script>
+<script src="../style/js/jquery.smartmenus.min.js"></script>
+<script src="../style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 </html>

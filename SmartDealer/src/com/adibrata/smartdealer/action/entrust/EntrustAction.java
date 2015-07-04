@@ -151,7 +151,7 @@ public class EntrustAction extends ActionSupport implements Preparable {
 				return "back";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}
@@ -177,7 +177,7 @@ public class EntrustAction extends ActionSupport implements Preparable {
 				return "back";
 			}
 		} else {
-			return "paging";
+			return "start";
 		}
 		return mode;
 	}
