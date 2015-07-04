@@ -5,38 +5,38 @@
 <html>
 <head>
 
-<link href="../style/css/bootstrap.min.css" rel="stylesheet"
+<link href="style/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
-<link href="../style/css/bootstrap-theme.min.css" rel="stylesheet"
+<link href="style/css/bootstrap-theme.min.css" rel="stylesheet"
 	type="text/css" />
-<link href="../style/css/jquery.smartmenus.bootstrap.css"
+<link href="style/css/jquery.smartmenus.bootstrap.css"
 	rel="stylesheet" type="text/css" />
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <script type="text/javascript" language="javascript"
-	src="../style/js/bootstrap.min.js"></script>
+	src="style/js/bootstrap.min.js"></script>
 <!-- /container -->
 <script type="text/javascript" language="javascript"
-	src="../style/js/jquery.min.js"></script>
+	src="style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="../style/js/bootstrap.min.js"></script>
+	src="style/js/bootstrap.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="../style/js/jquery.min.js"></script>
+	src="style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="../style/js/jquery.smartmenus.min.js"></script>
+	src="style/js/jquery.smartmenus.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="../style/js/jquery.smartmenus.bootstrap.min.js"></script>
+	src="style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </head>
 <body>
-
+<s:form theme="simple">
 	<ul class="nav navbar-nav">
 		<li><a href="home.jsp">Depan</a></li>
 		<li class="dropdown"><a href="" class="dropdown-toggle"
 			data-toggle="dropdown" role="button" aria-haspopup="true"
 			aria-expanded="false">Pembelian </a>
 			<ul class="dropdown-menu">
-				<li><a href="../purchaseorder.action">Pembelian</a></li>
+				<li><a href="purchaseorder.action">Pembelian</a></li>
 				<li><a href="purchaseretur.action">Retur </a></li>
 				<li><a href="purchaseinvoice.action">Tagihan </a></li>
 				<li role="separator" class="divider"></li>
@@ -140,6 +140,7 @@
 			</ul></li>
 		<li><a href="home.">Keluar</a></li>
 	</ul>
+</s:form>
 
 </body>
 <!-- Bootstrap core JavaScript
@@ -147,10 +148,10 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script> -->
-<script src="../style/js/jquery.min.js"></script>
-<script src="../style/js/bootstrap.min.js"></script>
-<script src="../style/js/jquery.smartmenus.min.js"></script>
-<script src="../style/js/jquery.smartmenus.bootstrap.min.js"></script>
+<script src="style/js/jquery.min.js"></script>
+<script src="style/js/bootstrap.min.js"></script>
+<script src="style/js/jquery.smartmenus.min.js"></script>
+<script src="style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 </html>

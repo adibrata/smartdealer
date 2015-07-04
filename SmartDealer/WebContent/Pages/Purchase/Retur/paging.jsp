@@ -16,7 +16,7 @@
 	}
 </script>
 <body>
-	<s:form action="purchase_retur.action" theme="simple">
+	<s:form action="purchaseretur.action" theme="simple">
 		<center>
 			<h1>Retur Purchase</h1>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>

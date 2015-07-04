@@ -16,7 +16,7 @@
 	}
 </script>
 <body>
-	<s:form action="purchase_order.action" theme="simple">
+	<s:form action="purchaseorder.action" theme="simple">
 		<center>
 			<h1>Supplier</h1>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>

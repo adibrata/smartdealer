@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <!-- saved from url=(0050)http://getbootstrap.com/examples/navbar-fixed-top/ -->
@@ -61,10 +61,10 @@
 			</button>
 			<!-- <a class="navbar-brand">DMS</a> -->
 		</div>
-		
+
 		<div id="navbar" class="navbar-collapse collapse">
-			
-			<%@include file="Menu.jsp" %>
+
+			<%@include file="Menu.jsp"%>
 		</div>
 		<!--/.nav-collapse -->
 	</div>
@@ -74,68 +74,67 @@
 
 		<!-- Main component for a primary marketing message or call to action -->
 		<!-- 	<div class="jumbotron"> -->
-		<br>
-		<br>
-		<%@include file="Header.jsp" %>
-		
+		<br> <br>
+		<%@include file="Header.jsp"%>
+		<s:form>
 
-		<table class="table table-striped table-bordered table-hover">
-			<tr>
-				<td width="25%" height="" align="center"><a
-					href="PurchaseHome.jsp"><img border="0" alt="W3Schools"
-						src="images/smartdealer/Purchase.jpg" width="75%" height="75%"
-						align="middle">
-						<p>Pembelian dan Titipan</p></a></td>
+			<table class="table table-striped table-bordered table-hover">
+				<tr>
+					<td width="25%" height="" align="center"><a
+						href="PurchaseHome.jsp"><img border="0" alt="W3Schools"
+							src="images/smartdealer/Purchase.jpg" width="75%" height="75%"
+							align="middle">
+							<p>Pembelian dan Titipan</p></a></td>
 
-				<td width="25%" height="" align="center"><a
-					href="SalesHome.jsp"><img border="0" alt="W3Schools"
-						src="images/smartdealer/Penjualan.jpg" width="75%" height="100%"
-						align="middle">
-						<p>Penjualan dan Titipan</p></a></td>
+					<td width="25%" height="" align="center"><a
+						href="SalesHome.jsp"><img border="0" alt="W3Schools"
+							src="images/smartdealer/Penjualan.jpg" width="75%" height="100%"
+							align="middle">
+							<p>Penjualan dan Titipan</p></a></td>
 
-				<td width="25%" height="" align="center"><a
-					href="ServiceHome.jsp"><img border="0" alt="W3Schools"
-						src="images/smartdealer/services.png" width="100%" height="100%"
-						align="middle">
-						<p>Perbaikan</p></a></td>
+					<td width="25%" height="" align="center"><a
+						href="ServiceHome.jsp"><img border="0" alt="W3Schools"
+							src="images/smartdealer/services.png" width="100%" height="100%"
+							align="middle">
+							<p>Perbaikan</p></a></td>
 
-				<td width="25%" height="" align="center"><a
-					href="StockHome.jsp"><img border="0" alt="W3Schools"
-						src="images/smartdealer/Warehouse.jpg" width="100%" height="100%"
-						align="middle">
-						<p>Stock</p></a></td>
+					<td width="25%" height="" align="center"><a
+						href="StockHome.jsp"><img border="0" alt="W3Schools"
+							src="images/smartdealer/Warehouse.jpg" width="100%" height="100%"
+							align="middle">
+							<p>Stock</p></a></td>
 
-			</tr>
-			<tr>
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Employee.jpg"
-						width="75%" height="75%" align="middle">
-						<p>Karyawan</p></a></td>
+				</tr>
+				<tr>
+					<td width="25%" height="" align="center"><a href=""><img
+							border="0" alt="W3Schools" src="images/smartdealer/Employee.jpg"
+							width="75%" height="75%" align="middle">
+							<p>Karyawan</p></a></td>
 
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Finance.jpg"
-						width="75%" height="75%" align="middle">
-						<p>Keuangan</p></a></td>
+					<td width="25%" height="" align="center"><a href=""><img
+							border="0" alt="W3Schools" src="images/smartdealer/Finance.jpg"
+							width="75%" height="75%" align="middle">
+							<p>Keuangan</p></a></td>
 
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="images/smartdealer/Accounting.jpg"
-						width="75%" height="75%" align="middle">
-						<p>Akuntansi</p></a></td>
+					<td width="25%" height="" align="center"><a href=""><img
+							border="0" alt="W3Schools"
+							src="images/smartdealer/Accounting.jpg" width="75%" height="75%"
+							align="middle">
+							<p>Akuntansi</p></a></td>
 
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools"
-						src="images/smartdealer/PasswordRequest.png" width="75%"
-						height="75%" align="middle">
-						<p>Minta Password</p></a></td>
-			</tr>
-		</table>
-
+					<td width="25%" height="" align="center"><a href=""><img
+							border="0" alt="W3Schools"
+							src="images/smartdealer/PasswordRequest.png" width="75%"
+							height="75%" align="middle">
+							<p>Minta Password</p></a></td>
+				</tr>
+			</table>
+		</s:form>
 
 		<!-- 	</div> -->
 
 	</div>
 	<!-- /container -->
-
 
 
 	<!-- Bootstrap core JavaScript
