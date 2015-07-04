@@ -5,7 +5,7 @@
 <struts>
 	<package name="othertrans" extends="smartdealer-package" namespace="/">
 		<action name="otherreceive" class="com.adibrata.smartdealer.action.othertrans.OtherReceiveAction" method="execute">
-			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
@@ -15,7 +15,7 @@
 			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 		</action>
 		<action name="otherdisburse" class="com.adibrata.smartdealer.action.othertrans.OtherReceiveAction" method="execute">
-			<result name="page">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="start">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="search">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
 			<result name="del">/pages/setting/assetmaster/pageAssetMaster.jsp</result>

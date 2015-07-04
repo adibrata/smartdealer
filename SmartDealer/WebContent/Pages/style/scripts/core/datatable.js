@@ -59,7 +59,7 @@ var Datatable = function () {
                         "oPaginate": {
                             "sPrevious": "Prev",
                             "sNext": "Next",
-                            "sPage": "Page",
+                            "sPage": "start",
                             "sPageOf": "of"
                         }
                     },

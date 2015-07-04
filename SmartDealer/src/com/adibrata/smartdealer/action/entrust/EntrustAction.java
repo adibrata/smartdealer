@@ -31,6 +31,23 @@ public class EntrustAction extends ActionSupport implements Preparable {
 	private List<EntrustHdr> lstEntrustHdr;
 	private List<EntrustDtl> lstEntrustDtl;
 
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+	
 	/**
 	 * @return the serialversionuid
 	 */

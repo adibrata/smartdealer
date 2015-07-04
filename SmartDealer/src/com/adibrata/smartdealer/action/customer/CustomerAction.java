@@ -23,6 +23,23 @@ public class CustomerAction extends ActionSupport implements Preparable {
 	private Office office;
 	private Customer customer;
 	private List<Customer> lstCustomer;
+	
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
 
 	/**
 	 * @return the mode
@@ -67,42 +84,49 @@ public class CustomerAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param customerMaintService the customerMaintService to set
+	 * @param customerMaintService
+	 *            the customerMaintService to set
 	 */
-	public void setCustomerMaintService(CustomerMaintService customerMaintService) {
+	public void setCustomerMaintService(
+			CustomerMaintService customerMaintService) {
 		this.customerMaintService = customerMaintService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param customer the customer to set
+	 * @param customer
+	 *            the customer to set
 	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
 	/**
-	 * @param lstCustomer the lstCustomer to set
+	 * @param lstCustomer
+	 *            the lstCustomer to set
 	 */
 	public void setLstCustomer(List<Customer> lstCustomer) {
 		this.lstCustomer = lstCustomer;

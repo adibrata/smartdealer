@@ -253,7 +253,7 @@ public class MenuAction extends ActionSupport implements Preparable {
 				return "failed";
 			}
 		} else {
-			strMode = "first";
+			strMode = "start";
 		}
 		return strMode;
 	}

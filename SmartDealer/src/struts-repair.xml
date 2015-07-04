@@ -5,7 +5,7 @@
 <struts>
 	<package name="repair" extends="smartdealer-package" namespace="/">
 		<action name="repair" class="com.adibrata.smartdealer.action.repair.RepairAction" method="execute">
-			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>

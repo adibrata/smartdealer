@@ -1,6 +1,5 @@
 package com.adibrata.smartdealer.action.othertrans;
 
-
 /**
  * @author Henry
  *
@@ -21,7 +20,6 @@ import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.accpay.PVDisbursementService;
 import com.adibrata.smartdealer.service.othertransactions.OtherReceiveService;
 
-
 public class OtherReceiveAction extends ActionSupport implements Preparable {
 
 	private String mode;
@@ -32,6 +30,22 @@ public class OtherReceiveAction extends ActionSupport implements Preparable {
 	private OtherRcvDtl otherRcvDtl;
 	private List<OtherRcvHdr> lstOtherRcvHdr;
 	private List<OtherRcvDtl> lstOtherRcvDtl;
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
 
 	/**
 	 * @return the mode
@@ -90,56 +104,65 @@ public class OtherReceiveAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param otjOtherReceiveService the otjOtherReceiveService to set
+	 * @param otjOtherReceiveService
+	 *            the otjOtherReceiveService to set
 	 */
-	public void setOtjOtherReceiveService(OtherReceiveService otjOtherReceiveService) {
+	public void setOtjOtherReceiveService(
+			OtherReceiveService otjOtherReceiveService) {
 		this.otjOtherReceiveService = otjOtherReceiveService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param otherRcvHdr the otherRcvHdr to set
+	 * @param otherRcvHdr
+	 *            the otherRcvHdr to set
 	 */
 	public void setOtherRcvHdr(OtherRcvHdr otherRcvHdr) {
 		this.otherRcvHdr = otherRcvHdr;
 	}
 
 	/**
-	 * @param otherRcvDtl the otherRcvDtl to set
+	 * @param otherRcvDtl
+	 *            the otherRcvDtl to set
 	 */
 	public void setOtherRcvDtl(OtherRcvDtl otherRcvDtl) {
 		this.otherRcvDtl = otherRcvDtl;
 	}
 
 	/**
-	 * @param lstOtherRcvHdr the lstOtherRcvHdr to set
+	 * @param lstOtherRcvHdr
+	 *            the lstOtherRcvHdr to set
 	 */
 	public void setLstOtherRcvHdr(List<OtherRcvHdr> lstOtherRcvHdr) {
 		this.lstOtherRcvHdr = lstOtherRcvHdr;
 	}
 
 	/**
-	 * @param lstOtherRcvDtl the lstOtherRcvDtl to set
+	 * @param lstOtherRcvDtl
+	 *            the lstOtherRcvDtl to set
 	 */
 	public void setLstOtherRcvDtl(List<OtherRcvDtl> lstOtherRcvDtl) {
 		this.lstOtherRcvDtl = lstOtherRcvDtl;
@@ -152,7 +175,7 @@ public class OtherReceiveAction extends ActionSupport implements Preparable {
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

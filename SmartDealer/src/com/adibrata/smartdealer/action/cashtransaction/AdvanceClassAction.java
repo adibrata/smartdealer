@@ -22,6 +22,22 @@ public class AdvanceClassAction extends ActionSupport implements Preparable {
 	private Office office;
 	private AdvanceCash advanceCash;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */
@@ -58,35 +74,40 @@ public class AdvanceClassAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param advanceCashService the advanceCashService to set
+	 * @param advanceCashService
+	 *            the advanceCashService to set
 	 */
 	public void setAdvanceCashService(AdvanceCashService advanceCashService) {
 		this.advanceCashService = advanceCashService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param advanceCash the advanceCash to set
+	 * @param advanceCash
+	 *            the advanceCash to set
 	 */
 	public void setAdvanceCash(AdvanceCash advanceCash) {
 		this.advanceCash = advanceCash;

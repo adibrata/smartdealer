@@ -73,7 +73,7 @@ public class TaksasiAction extends ActionSupport implements Preparable {
 				return "failed";
 			}
 		} else {
-			strMode = "first";
+			strMode = "start";
 		}
 		return strMode;
 	}

@@ -9,7 +9,7 @@
 		<action name="employee"
 			class="com.adibrata.smartdealer.action.usermanagement.EmployeeAction"
 			method="execute">
-			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
@@ -27,7 +27,7 @@
 		<action name="menu"
 			class="com.adibrata.smartdealer.action.usermanagement.MenuAction"
 			method="execute">
-			<result name="page">/pages/setting/assetdoc/pageAssetMaster.jsp
+			<result name="start">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
@@ -46,7 +46,7 @@
 		<action name="role"
 			class="com.adibrata.smartdealer.action.usermanagement.RoleAction"
 			method="execute">
-			<result name="page">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp
 			</result>
 			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp
 			</result>
@@ -66,7 +66,7 @@
 		<action name="userregister"
 			class="com.adibrata.smartdealer.action.usermanagement.UserRegistrationAction"
 			method="execute">
-			<result name="page">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="start">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="search">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
 			<result name="del">/pages/setting/dealer/pageDealer.jsp</result>

@@ -33,6 +33,22 @@ public class PaymentVoucherAction extends ActionSupport implements Preparable {
 	private Office office;
 	private PaymentVoucher paymentVoucher;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */
@@ -69,35 +85,41 @@ public class PaymentVoucherAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param pVDisbursementService the pVDisbursementService to set
+	 * @param pVDisbursementService
+	 *            the pVDisbursementService to set
 	 */
-	public void setPVDisbursementService(PVDisbursementService pVDisbursementService) {
+	public void setPVDisbursementService(
+			PVDisbursementService pVDisbursementService) {
 		PVDisbursementService = pVDisbursementService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param paymentVoucher the paymentVoucher to set
+	 * @param paymentVoucher
+	 *            the paymentVoucher to set
 	 */
 	public void setPaymentVoucher(PaymentVoucher paymentVoucher) {
 		this.paymentVoucher = paymentVoucher;

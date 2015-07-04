@@ -40,6 +40,22 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 	private List<PurchaseOrderHdr> lstPurchaseOrderHdr;
 	private PurchaseInvoice purchaseInvoice;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */
@@ -90,14 +106,16 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param purchaseInvoiceService the purchaseInvoiceService to set
+	 * @param purchaseInvoiceService
+	 *            the purchaseInvoiceService to set
 	 */
 	public void setPurchaseInvoiceService(
 			PurchaseInvoiceService purchaseInvoiceService) {
@@ -105,35 +123,41 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param lstPurchaseInvoice the lstPurchaseInvoice to set
+	 * @param lstPurchaseInvoice
+	 *            the lstPurchaseInvoice to set
 	 */
 	public void setLstPurchaseInvoice(List<PurchaseInvoice> lstPurchaseInvoice) {
 		this.lstPurchaseInvoice = lstPurchaseInvoice;
 	}
 
 	/**
-	 * @param lstPurchaseOrderHdr the lstPurchaseOrderHdr to set
+	 * @param lstPurchaseOrderHdr
+	 *            the lstPurchaseOrderHdr to set
 	 */
-	public void setLstPurchaseOrderHdr(List<PurchaseOrderHdr> lstPurchaseOrderHdr) {
+	public void setLstPurchaseOrderHdr(
+			List<PurchaseOrderHdr> lstPurchaseOrderHdr) {
 		this.lstPurchaseOrderHdr = lstPurchaseOrderHdr;
 	}
 
 	/**
-	 * @param purchaseInvoice the purchaseInvoice to set
+	 * @param purchaseInvoice
+	 *            the purchaseInvoice to set
 	 */
 	public void setPurchaseInvoice(PurchaseInvoice purchaseInvoice) {
 		this.purchaseInvoice = purchaseInvoice;

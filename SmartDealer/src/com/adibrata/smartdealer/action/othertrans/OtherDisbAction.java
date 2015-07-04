@@ -38,6 +38,22 @@ public class OtherDisbAction extends ActionSupport implements Preparable {
 
 	private OtherDisburseService otherDisburseService;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */

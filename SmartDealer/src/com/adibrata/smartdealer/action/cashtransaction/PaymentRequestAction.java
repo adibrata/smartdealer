@@ -23,6 +23,22 @@ public class PaymentRequestAction extends ActionSupport implements Preparable {
 	private PayReqHdr payReqHdr;
 	private PayReqDtl payReqDtl;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */
@@ -66,42 +82,49 @@ public class PaymentRequestAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode the mode to set
+	 * @param mode
+	 *            the mode to set
 	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
 
 	/**
-	 * @param paymentRequestService the paymentRequestService to set
+	 * @param paymentRequestService
+	 *            the paymentRequestService to set
 	 */
-	public void setPaymentRequestService(PaymentRequestService paymentRequestService) {
+	public void setPaymentRequestService(
+			PaymentRequestService paymentRequestService) {
 		this.paymentRequestService = paymentRequestService;
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param payReqHdr the payReqHdr to set
+	 * @param payReqHdr
+	 *            the payReqHdr to set
 	 */
 	public void setPayReqHdr(PayReqHdr payReqHdr) {
 		this.payReqHdr = payReqHdr;
 	}
 
 	/**
-	 * @param payReqDtl the payReqDtl to set
+	 * @param payReqDtl
+	 *            the payReqDtl to set
 	 */
 	public void setPayReqDtl(PayReqDtl payReqDtl) {
 		this.payReqDtl = payReqDtl;

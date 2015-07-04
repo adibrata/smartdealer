@@ -1,6 +1,5 @@
 package com.adibrata.smartdealer.action.purchase;
 
-
 /**
  * @author Henry
  *
@@ -21,20 +20,35 @@ import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.PurchaseInvoiceService;
 import com.adibrata.smartdealer.service.purchase.PurchaseOrderService;
 
-
-public class PurchaseOrderAction extends ActionSupport implements Preparable{
+public class PurchaseOrderAction extends ActionSupport implements Preparable {
 
 	/**
 	 *
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
 	private Partner partner;
 	private Office office;
 
 	private String mode;
 	private PurchaseOrderService purchaseOrderService;
-	
+
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the serialversionuid
 	 */
@@ -64,23 +78,27 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable{
 	}
 
 	/**
-	 * @param partner the partner to set
+	 * @param partner
+	 *            the partner to set
 	 */
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
 	/**
-	 * @param office the office to set
+	 * @param office
+	 *            the office to set
 	 */
 	public void setOffice(Office office) {
 		this.office = office;
 	}
 
 	/**
-	 * @param purchaseOrderService the purchaseOrderService to set
+	 * @param purchaseOrderService
+	 *            the purchaseOrderService to set
 	 */
-	public void setPurchaseOrderService(PurchaseOrderService purchaseOrderService) {
+	public void setPurchaseOrderService(
+			PurchaseOrderService purchaseOrderService) {
 		this.purchaseOrderService = purchaseOrderService;
 	}
 
@@ -90,70 +108,67 @@ public class PurchaseOrderAction extends ActionSupport implements Preparable{
 
 	}
 
-	public String order(){
-		if (mode != null){
-			if (mode.equals("search")){
+	public String order() {
+		if (mode != null) {
+			if (mode.equals("search")) {
 				return "search";
 			}
-			if (mode.equals("entry")){
+			if (mode.equals("entry")) {
 				return "entry";
 			}
-			if (mode.equals("add")){
+			if (mode.equals("add")) {
 				return "add";
 			}
-			if (mode.equals("del")){
+			if (mode.equals("del")) {
 				return "del";
 			}
-			if (mode.equals("save")){
+			if (mode.equals("save")) {
 				return "save";
 			}
-			if (mode.equals("back")){
+			if (mode.equals("back")) {
 				return "back";
 			}
-		}
-		else{
+		} else {
 			return "paging";
 		}
 		return mode;
 	}
 
-	public String receive(){
-		if (mode != null){
-			if (mode.equals("search")){
+	public String receive() {
+		if (mode != null) {
+			if (mode.equals("search")) {
 				return "search";
 			}
-			if (mode.equals("entry")){
+			if (mode.equals("entry")) {
 				return "entry";
 			}
-		}
-		else{
+		} else {
 			return "paging";
 		}
 		return mode;
 	}
 
-	public String retur(){
-		if (mode != null){
-			if (mode.equals("search")){
+	public String retur() {
+		if (mode != null) {
+			if (mode.equals("search")) {
 				return "search";
 			}
-			if (mode.equals("entry")){
+			if (mode.equals("entry")) {
 				return "entry";
 			}
-			if (mode.equals("add")){
+			if (mode.equals("add")) {
 				return "add";
 			}
-			if (mode.equals("del")){
+			if (mode.equals("del")) {
 				return "del";
 			}
-			if (mode.equals("save")){
+			if (mode.equals("save")) {
 				return "save";
 			}
-			if (mode.equals("back")){
+			if (mode.equals("back")) {
 				return "back";
 			}
-		}
-		else{
+		} else {
 			return "paging";
 		}
 		return mode;

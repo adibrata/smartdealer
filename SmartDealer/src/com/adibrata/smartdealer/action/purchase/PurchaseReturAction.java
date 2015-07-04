@@ -31,6 +31,22 @@ public class PurchaseReturAction extends ActionSupport implements Preparable {
 	
 	private PurchaseReturnService purchaseReturnService;
 
+	public String execute() {
+		String strMode;
+		strMode = mode;
+
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
+
 	/**
 	 * @return the mode
 	 */

@@ -21,7 +21,23 @@ public class PettyCashAction extends ActionSupport implements Preparable {
 	private PettyCashHdr pettyCashHdr;
 	private PettyCashDtl pettCashDtl;
 	private PettyCashService pettCashService;
+	String mode;
+	
+	public String execute() {
+		String strMode;
+		strMode = mode;
 
+		if (mode != null) {
+			switch (strMode) {
+			case "search":
+			default:
+				return "failed";
+			}
+		} else {
+			strMode = "start";
+		}
+		return strMode;
+	}
 	/**
 	 * @return the partner
 	 */
@@ -100,6 +116,18 @@ public class PettyCashAction extends ActionSupport implements Preparable {
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
 
+	}
+	/**
+	 * @return the mode
+	 */
+	public String getMode() {
+		return mode;
+	}
+	/**
+	 * @param mode the mode to set
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
 	}
 
 }
