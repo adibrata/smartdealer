@@ -26,30 +26,26 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="Header.jsp"%>
-
-		<table class="table table-striped table-bordered table-hover">
-			<tr>
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/services.png"
-						width="120px" height="100px" align="top">
-						
-						<p>Perbaikan</p></a></td>
-						<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Finance.jpg"
-						width="120px" height="100px" align="top">
-						<p>Laporan Service</p></a></td>
-						
-				<td width="25%" height="" align="center"><a href="Home.jsp"><img
-						border="0" alt="W3Schools"
-						src="../images/smartdealer/logout-icon.png" width="120px" height="100px" align="top">
-						<p>Keluar</p></a></td>
-
-
-				
-			</tr>
-		</table>
-
-
+		<div class="row" align="center">
+			<div class="col-md-4">
+				<a href=""><img border="0" alt="W3Schools"
+					src="../images/smartdealer/services.png" width="120px"
+					height="100px" align="top">
+					<p>Perbaikan</p></a>
+			</div>
+			<div class="col-md-4">
+				<a href=""><img border="0" alt="W3Schools"
+					src="../images/smartdealer/Finance.jpg" width="120px"
+					height="100px" align="top">
+					<p>Laporan Perbaikan</p></a>
+			</div>
+			<div class="col-md-4">
+				<a href="Home.jsp"><img border="0" alt="W3Schools"
+					src="../images/smartdealer/logout-icon.png" width="120px"
+					height="100px" align="top">
+					<p>Keluar</p></a>
+			</div>
+		</div>
 		<!-- 	</div> -->
 
 	</div>

@@ -25,6 +25,8 @@
 </head>
 <body>
 <br><br>
+<div class="jumbotron"> 
+<s:form>
 <table align="center" width="100%">
 			<tr>
 				<td width="25%"><div>
@@ -41,9 +43,11 @@
 			<tr>
 				<td width="25%"></td>
 
-				<td align="center" valign="top">Alamat Sun Motor</td>
+				<td align="center" valign="top">Jln. Cawang Baru Tengah No. 48 </td>
 				<td width="25%"></td>
 			</tr>
 		</table>
+		</s:form>
+		</div>
 </body>
 </html>

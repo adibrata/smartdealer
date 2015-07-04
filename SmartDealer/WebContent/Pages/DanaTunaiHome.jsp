@@ -26,52 +26,60 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="Header.jsp"%>
+	<div class="row" align="center">
+				<div class="col-md-3">
+					<a href="PurchaseHome.jsp"><img border="0" alt="W3Schools"
+						width="120px" height="100px"
+						src="../images/smartdealer/Purchase.jpg" align="middle">
+						<p>Pembelian dan Titipan</p></a>
+				</div>
+				<div class="col-md-3">
+					<a href="SalesHome.jsp"><img border="0" alt="W3Schools"
+						width="120px" height="100px"
+						src="../images/smartdealer/Penjualan.jpg" align="middle">
+						<p>Penjualan dan Titipan
+				</div>
+				<div class="col-md-3">
+					<a href="ServiceHome.jsp"><img border="0" alt="W3Schools"
+						width="120px" height="100px"
+						src="../images/smartdealer/services.png" align="middle">
+						<p>Perbaikan</p></a>
+				</div>
+				<div class="col-md-3">
+					<a href="StockHome.jsp"><img border="0" alt="W3Schools"
+						width="120px" height="100px"
+						src="../images/smartdealer/Warehouse.jpg" align="middle">
+						<p>Stock</p></a>
+				</div>
+			</div>
+			<div class="row" align="center">
+				<div class="col-md-3">
+					<a href=""><img border="0"
+							alt="W3Schools" src="../images/smartdealer/Employee.jpg"
+							width="120px" height="100px" align="middle">
+							<p>Karyawan</p></a>
 
-		<table class="table table-striped table-bordered table-hover">
-			<tr>
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Purchase.jpg"
-						width="120px" height="100px" align="top">
-						<p>Pembelian dan Titipan</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Penjualan.png"
-						width="120px" height="100px" align="top">
-						<p>Penjualan dan Titipan</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/services.png"
-						width="120px" height="100px" align="top">
-						<p>Perbaikan</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Purchase.jpg"
-						width="120px" height="100px" align="top">
-						<p>Stock</p></a></td>
-
-			</tr>
-			<tr>
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Employee.jpg"
-						width="120px" height="100px" align="top">
-						<p>Karyawan</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Finance.jpg"
-						width="120px" height="100px" align="top">
-						<p>Keuangan</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools" src="../images/smartdealer/Accounting.jpg"
-						width="120px" height="100px" align="top">
-						<p>Akuntansi</p></a></td>
-
-				<td width="25%" height="" align="center"><a href=""><img
-						border="0" alt="W3Schools"
-						src="../images/smartdealer/PasswordRequest.png" width="120px" height="100px" align="top">
-						<p>Minta Password</p></a></td>
-			</tr>
-		</table>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img border="0"
+							alt="W3Schools" src="../images/smartdealer/Finance.jpg"
+							width="120px" height="100px" align="middle">
+							<p>Keuangan</p></a>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img border="0"
+							alt="W3Schools" width="120px" height="100px"
+							src="../images/smartdealer/Accounting.jpg" align="middle">
+							<p>Akuntansi</p></a>
+				</div>
+				<div class="col-md-3">
+					<a href=""><img border="0"
+							alt="W3Schools" width="120px" height="100px"
+							src="../images/smartdealer/PasswordRequest.png" align="middle">
+							<p>Minta Password</p></a></a>
+				</div>
+			</div>
+			
 
 
 		<!-- 	</div> -->
