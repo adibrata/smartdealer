@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>DMS-Dealer Management System</title>
 
 <link href="../pages/style/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="../pages/style/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css" />

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +10,12 @@
 <link href="style/css/style.css" rel='stylesheet' type='text/css' />
 <script type="application/x-javascript">
 	
+	
 		addEventListener("load", function() {
 			setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1);
 		}
 	
+
 </script>
 
 </head>
@@ -23,7 +26,7 @@
 		<center>
 			<h1>Dealer Management System</h1>
 		</center>
-		<form action="home">
+		<s:form action="home">
 			<li><input type="text" class="text" value="User Name"
 				onfocus="this.value = '';"
 				onblur="if (this.value == '') {this.value = 'User Name';}"><a
@@ -35,10 +38,9 @@
 
 			<div class="forgot">
 				<input type="submit" value="Login">
-				
+
 			</div>
-		</form>
-		<a href="setting/assetdoc.action">Test </a>
+		</s:form>
 	</div>
 
 	<div class="copy-right">
