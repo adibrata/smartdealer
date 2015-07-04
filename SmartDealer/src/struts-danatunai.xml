@@ -3,16 +3,18 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="danatunai" extends="smartdealer-package" namespace="/">
-		<action name="danatunai" class="com.adibrata.smartdealer.action.danatunai.DanaTunaiAction" method="execute">
-			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
-			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+	<package name="danatunai" extends="smartdealer-package"
+		namespace="/">
+		<action name="danatunai"
+			class="com.adibrata.smartdealer.action.danatunai.DanaTunaiAction"
+			method="execute">
+			<result name="start">/Pages/DanaTunai/paging.jsp</result>
+			<result name="success">/Pages/DanaTunai/paging.jsp</result>
+			<result name="search">/Pages/DanaTunai/paging.jsp</result>
+			<result name="back">/Pages/DanaTunai/paging.jsp</result>
+			<result name="error">/Pages/DanaTunai/entry.jsp</result>
+			<result name="entry">/Pages/DanaTunai/entry.jsp</result>
+			<result name="adddetail">/Pages/DanaTunai/entry.jsp</result>
 		</action>
 	</package>
 </struts>

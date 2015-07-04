@@ -5,14 +5,14 @@
 <struts>
 	<package name="repair" extends="smartdealer-package" namespace="/">
 		<action name="repair" class="com.adibrata.smartdealer.action.repair.RepairAction" method="execute">
-			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
-			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="start">/Pages/Repair/paging.jsp</result>
+			<result name="success">/Pages/Repair/paging.jsp</result>
+			<result name="error">/Pages/Repair/entry.jsp</result>
+
+			<result name="search">/Pages/Repair/paging.jsp</result>
+			<result name="entry">/Pages/Repair/entry.jsp</result>
+			<result name="adddetail">/Pages/Repair/entry.jsp</result>
+			<result name="back">/Pages/Repair/paging.jsp</result>
 		</action>
 	</package>
 </struts>

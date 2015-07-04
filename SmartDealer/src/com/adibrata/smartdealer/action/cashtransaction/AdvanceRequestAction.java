@@ -15,7 +15,7 @@ import util.adibrata.support.common.*;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService;
 
-public class AdvanceClassAction extends ActionSupport implements Preparable {
+public class AdvanceRequestAction extends ActionSupport implements Preparable {
 	private String mode;
 	private AdvanceCashService advanceCashService;
 	private Partner partner;
@@ -113,7 +113,7 @@ public class AdvanceClassAction extends ActionSupport implements Preparable {
 		this.advanceCash = advanceCash;
 	}
 
-	public AdvanceClassAction() {
+	public AdvanceRequestAction() {
 		// TODO Auto-generated constructor stub
 	}
 

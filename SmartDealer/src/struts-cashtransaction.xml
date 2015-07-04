@@ -3,36 +3,79 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="cashtransaction" extends="smartdealer-package" namespace="/">
-		<action name="advancecash" class="com.adibrata.smartdealer.action.cashtransaction.AdvanceClassAction" method="execute">
-			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
-			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+	<package name="cashtransaction" extends="smartdealer-package"
+		namespace="/">
+		<action name="advancecashrequest"
+			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceRequestAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="back">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
 		</action>
-		<action name="paymentrequest" class="com.adibrata.smartdealer.action.cashtransaction.PaymentRequestAction" method="execute">
-			<result name="start">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="search">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
-			<result name="del">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="back">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="add">/pages/setting/assetmaster/addAssetMaster.jsp</result>
-			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+		<action name="advancecashreverse"
+			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceRequestAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="back">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			</result>
 		</action>
-		<action name="pettycash" class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction" method="execute">
-			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
-			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
-			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		<action name="paymentrequest"
+			class="com.adibrata.smartdealer.action.cashtransaction.PaymentRequestAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="back">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+		</action>
+		<action name="pettycash"
+			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="back">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
 		</action>
 
 	</package>
