@@ -3,8 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="setting" extends="smartdealer-package" namespace="/">
-		<action name="assetdoc" class="com.adibrata.smartdealer.action.setting.AssetDocAction" method="execute">
+	<package name="danatunai" extends="smartdealer-package" namespace="/">
+		<action name="danatunai" class="com.adibrata.smartdealer.action.danatunai.DanaTunaiAction" method="execute">
 			<result name="page">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
@@ -13,98 +13,6 @@
 			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-		</action>
-		<action name="assetmaster" class="com.adibrata.smartdealer.action.setting.AssetMasterAction" method="execute">
-			<result name="page">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="search">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
-			<result name="del">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="back">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="add">/pages/setting/assetmaster/addAssetMaster.jsp</result>
-			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-		</action>
-		<action name="bankAccount" class="com.adibrata.smartdealer.action.setting.BankAccountAction" method="execute">
-			<result name="page">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
-			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
-			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-		</action>
-		<action name="dealer" class="com.adibrata.smartdealer.action.setting.DealerAction" method="execute">
-			<result name="page">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="search">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
-			<result name="del">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="save">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="back">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="add">/pages/setting/dealer/addDealer.jsp</result>
-			<result name="save">/pages/setting/dealer/pageDealer.jsp</result>
-		</action>
-		<action name="jurnalScheme" class="com.adibrata.smartdealer.action.setting.JurnalSchemeAction" method="execute">
-			<result name="page">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="search">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="edit">/pages/setting/jurnalScheme/editJurnalSchHdr.jsp</result>
-			<result name="del">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="save">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="back">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="add">/pages/setting/jurnalScheme/addJurnalSchHdr.jsp</result>
-			<result name="save">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-			<result name="detail">/pages/setting/jurnalScheme/pageJurnalSchDtl.jsp</result>
-			<result name="saveDetail">/pages/setting/jurnalScheme/pageJurnalSchHdr.jsp</result>
-		</action>
-		<action name="master" class="com.adibrata.smartdealer.action.setting.MasterAction" method="execute">
-			<result name="page">/pages/setting/master/pageMaster.jsp</result>
-			<result name="search">/pages/setting/master/pageMaster.jsp</result>
-			<result name="edit">/pages/setting/master/editMaster.jsp</result>
-			<result name="del">/pages/setting/master/pageMaster.jsp</result>
-			<result name="save">/pages/setting/master/pageMaster.jsp</result>
-			<result name="back">/pages/setting/master/pageMaster.jsp</result>
-			<result name="add">/pages/setting/master/addMaster.jsp</result>
-			<result name="save">/pages/setting/master/pageMaster.jsp</result>
-		</action>
-		<action name="office" class="com.adibrata.smartdealer.action.setting.OfficeAction" method="execute">
-			<result name="page">/pages/setting/office/pageOffice.jsp</result>
-			<result name="search">/pages/setting/office/pageOffice.jsp</result>
-			<result name="edit">/pages/setting/office/editOffice.jsp</result>
-			<result name="del">/pages/setting/office/pageOffice.jsp</result>
-			<result name="save">/pages/setting/office/pageOffice.jsp</result>
-			<result name="back">/pages/setting/office/pageOffice.jsp</result>
-			<result name="add">/pages/setting/office/addOffice.jsp</result>
-			<result name="save">/pages/setting/office/pageOffice.jsp</result>
-		</action>
-		<action name="workshop" class="com.adibrata.smartdealer.action.setting.WorkshopAction" method="execute">
-			<result name="page">/pages/setting/workshop/pageWorkshop.jsp</result>
-			<result name="search">/pages/setting/workshop/pageWorkshop.jsp</result>
-			<result name="edit">/pages/setting/workshop/editWorkshop.jsp</result>
-			<result name="del">/pages/setting/workshop/pageWorkshop.jsp</result>
-			<result name="save">/pages/setting/workshop/pageWorkshop.jsp</result>
-			<result name="back">/pages/setting/workshop/pageWorkshop.jsp</result>
-			<result name="add">/pages/setting/workshop/addWorkshop.jsp</result>
-			<result name="save">/pages/setting/workshop/pageWorkshop.jsp</result>
-		</action>
-		<action name="zipCode" class="com.adibrata.smartdealer.action.setting.ZipCodeAction" method="execute">
-			<result name="page">/pages/setting/zipCode/pageZipCode.jsp</result>
-			<result name="search">/pages/setting/zipCode/pageZipCode.jsp</result>
-			<result name="edit">/pages/setting/zipCode/editZipCode.jsp</result>
-			<result name="del">/pages/setting/zipCode/pageZipCode.jsp</result>
-			<result name="save">/pages/setting/zipCode/pageZipCode.jsp</result>
-			<result name="back">/pages/setting/zipCode/pageZipCode.jsp</result>
-			<result name="add">/pages/setting/zipCode/addZipCode.jsp</result>
-			<result name="save">/pages/setting/zipCode/pageZipCode.jsp</result>
-		</action>
-		<action name="taksasi" class="com.adibrata.smartdealer.action.setting.TaksasiAction" method="execute">
-			<result name="page">/pages/setting/taksasi/pageTaksasi.jsp</result>
-			<result name="search">/pages/setting/taksasi/pageTaksasi.jsp</result>
-			<result name="edit">/pages/setting/taksasi/editTaksasi.jsp</result>
-			<result name="del">/pages/setting/taksasi/pageTaksasi.jsp</result>
-			<result name="save">/pages/setting/taksasi/pageTaksasi.jsp</result>
-			<result name="back">/pages/setting/taksasi/pageTaksasi.jsp</result>
-			<result name="add">/pages/setting/taksasi/addTaksasi.jsp</result>
-			<result name="save">/pages/setting/taksasi/pageTaksasi.jsp</result>
 		</action>
 	</package>
 </struts>

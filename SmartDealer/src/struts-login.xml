@@ -10,7 +10,7 @@
 		</action>
 		
 		<action name="home" class="com.adibrata.smartdealer.action.usermanagement.LoginAction" method="home">
-			<result name="success">home.jsp</result>
+			<result name="success">/Pages/Home.jsp</result>
 		</action>
 	</package>
 </struts>

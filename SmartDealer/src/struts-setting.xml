@@ -5,7 +5,7 @@
 
 <struts>
 	<package name="Setting" extends="smartdealer-package"
-		namespace="/">
+		namespace="/setting">
 		<action name="assetdoc"
 			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
 			method="execute">
@@ -40,7 +40,7 @@
 			</result>
 		</action>
 
-	<action name="bankaccount"
+		<action name="bankaccount"
 			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
 			method="execute">
 			<result name="start">/Pages/Setting/BankAccount/pageBankAccount.jsp

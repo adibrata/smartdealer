@@ -4,8 +4,8 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
     
 <struts>
-	<package name="Sales" extends="smartdealer-package" namespace="/">
-		<action name="Sales_Order" class="com.adibrata.smartdealer.action.SalesAction" method="Order">
+	<package name="customer" extends="smartdealer-package" namespace="/">
+		<action name="customerentry" class="com.adibrata.smartdealer.action.customer.CustomerAction" method="execute">
 			<result name="paging">/Pages/Sales/Order/paging.jsp</result>
 			<result name="search">/Pages/Sales/Order/paging.jsp</result>
 			<result name="entry">/Pages/Sales/Order/entry.jsp</result>
@@ -14,14 +14,6 @@
 			<result name="save">/Pages/Sales/Order/paging.jsp</result>
 			<result name="back">/Pages/Sales/Order/paging.jsp</result>
 		</action>
-		<action name="Sales_Retur" class="com.adibrata.smartdealer.action.SalesAction" method="Retur">
-			<result name="paging">/Pages/Sales/Retur/paging.jsp</result>
-			<result name="search">/Pages/Sales/Retur/paging.jsp</result>
-			<result name="entry">/Pages/Sales/Retur/entry.jsp</result>
-			<result name="add">/Pages/Sales/Retur/entry.jsp</result>
-			<result name="del">/Pages/Sales/Retur/entry.jsp</result>
-			<result name="save">/Pages/Sales/Retur/paging.jsp</result>
-			<result name="back">/Pages/Sales/Retur/paging.jsp</result>
-		</action>
+	
 	</package>
 </struts>

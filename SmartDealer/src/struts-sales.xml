@@ -3,8 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="sales" extends="smartdealer-package" namespace="/Sales">
-		<action name="sales_order" class="com.adibrata.smartdealer.action.SalesAction" method="order">
+	<package name="sales" extends="smartdealer-package" namespace="/">
+		<action name="salesorder" class="com.adibrata.smartdealer.action.sales.SalesOrderAction" method="execute">
 			<result name="paging">/pages/sales/order/paging.jsp</result>
 			<result name="search">/pages/sales/order/paging.jsp</result>
 			<result name="entry">/pages/sales/order/entry.jsp</result>
@@ -13,7 +13,7 @@
 			<result name="save">/pages/sales/order/paging.jsp</result>
 			<result name="back">/pages/sales/order/paging.jsp</result>
 		</action>
-		<action name="sales_retur" class="com.adibrata.smartdealer.action.SalesReturAction" method="retur">
+		<action name="salesretur" class="com.adibrata.smartdealer.action.sales.SalesReturAction" method="execute">
 			<result name="paging">/pages/sales/retur/paging.jsp</result>
 			<result name="search">/pages/sales/retur/paging.jsp</result>
 			<result name="entry">/pages/sales/retur/entry.jsp</result>
@@ -22,7 +22,7 @@
 			<result name="save">/pages/sales/retur/paging.jsp</result>
 			<result name="back">/pages/sales/retur/paging.jsp</result>
 		</action>
-		<action name="sales_invoice" class="com.adibrata.smartdealer.action.SalesInvoiceAction" method="retur">
+		<action name="salesinvoice" class="com.adibrata.smartdealer.action.sales.SalesInvoiceAction" method="execute">
 			<result name="paging">/pages/sales/retur/paging.jsp</result>
 			<result name="search">/pages/sales/retur/paging.jsp</result>
 			<result name="entry">/pages/sales/retur/entry.jsp</result>

@@ -3,8 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="entrust" extends="smartdealer-package" namespace="/">
-		<action name="entrust_order" class="com.adibrata.smartdealer.action.EntrustAction" method="order">
+	<package name="entrust" extends="smartdealer-package" namespace="/titip">
+		<action name="masuk" class="com.adibrata.smartdealer.action.entrust.EntrustAction" method="execute">
 			<result name="paging">/pages/entrust/order/paging.jsp</result>
 			<result name="search">/pages/entrust/order/paging.jsp</result>
 			<result name="entry">/pages/entrust/order/entry.jsp</result>
@@ -13,14 +13,6 @@
 			<result name="save">/pages/entrust/order/paging.jsp</result>
 			<result name="back">/pages/entrust/order/paging.jsp</result>
 		</action>
-		<action name="entrust_receive" class="com.adibrata.smartdealer.action.EntrustAction" method="receive">
-			<result name="paging">/pages/entrust/receive/paging.jsp</result>
-			<result name="search">/pages/entrust/receive/paging.jsp</result>
-			<result name="entry">/pages/entrust/receive/entry.jsp</result>
-			<result name="add">/pages/entrust/receive/entry.jsp</result>
-			<result name="del">/pages/entrust/receive/entry.jsp</result>
-			<result name="save">/pages/entrust/receive/paging.jsp</result>
-			<result name="back">/pages/entrust/receive/paging.jsp</result>
-		</action>
+	
 	</package>
 </struts>
