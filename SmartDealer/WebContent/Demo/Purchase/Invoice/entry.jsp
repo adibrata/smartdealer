@@ -29,7 +29,7 @@
 		<%@include file="/Demo/Header.jsp"%>
 		<s:form action="sales_retur.action" theme="simple">
 
-			<h1>Tagihan Penjualan</h1>
+			<h1>Tagihan Pembelian</h1>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table width="95%" align="center">
 
@@ -79,15 +79,12 @@
 					<td>xxxx50xxxxx</td>
 				</tr>
 				<tr>
-					<td>Nilai Penjualan</td>
+					<td>Nilai Pembelian</td>
 					<td>999,999,999</td>
-					<td>Sisa Penerimaan</td>
-					<td>999,999,999</td>
+					<td>Nilai Tagihan Pembelian</td>
+					<td><input></input></td>
 				</tr>
-				<tr>
-					<td>Nilai Penerimaan</td>
-					<td colspan=3><input></input></td>
-				</tr>
+
 				<tr>
 					<td colspan="4" align="right"><a href="paging.jsp"
 						class="btn btn-sm btn-primary">Save</a> <a href="paging.jsp"

@@ -7,12 +7,12 @@
 
 </head>
 
-<link href="/SmartDealer/Demo/style/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css" />
-<link href="/SmartDealer/Demo/style/css/bootstrap-theme.min.css" rel="stylesheet"
-	type="text/css" />
-<link href="/SmartDealer/Demo/style/css/jquery.smartmenus.bootstrap.css" rel="stylesheet"
-	type="text/css" />
+<link href="/SmartDealer/Demo/style/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="/SmartDealer/Demo/style/css/bootstrap-theme.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="/SmartDealer/Demo/style/css/jquery.smartmenus.bootstrap.css"
+	rel="stylesheet" type="text/css" />
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <script type="text/javascript" language="javascript"
@@ -29,7 +29,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<button  type="button" class="navbar-toggle collapsed"
+			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 				aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -48,8 +48,10 @@
 						aria-expanded="false">Pembelian </a>
 						<ul class="dropdown-menu">
 							<li><a href="/SmartDealer/Demo/Purchase/Order/paging.jsp">Pembelian</a></li>
-							<li><a href="/SmartDealer/Demo/Purchase/Retur/paging.jsp">Retur </a></li>
-							<li><a href="/SmartDealer/Demo/Purchase/Invoice/paging.jsp">Tagihan </a></li>
+							<li><a href="/SmartDealer/Demo/Purchase/Retur/paging.jsp">Retur
+							</a></li>
+							<li><a href="/SmartDealer/Demo/Purchase/Invoice/paging.jsp">Tagihan
+							</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
 							<li><a href="">Laporan Pembelian</a></li>
@@ -61,9 +63,11 @@
 						aria-expanded="false">Penjualan dan Titipan </a>
 						<ul class="dropdown-menu">
 							<li><a href="/SmartDealer/Demo/Sales/Order/paging.jsp">Penjualan</a></li>
-							<li><a href="/SmartDealer/Demo/Entrust/paging.jsp">Titipan </a></li>
-							<li><a href="/SmartDealer/Demo/Sales/Retur/paging,jsp">Retur </a></li>
-							<li><a href="/SmartDealer/Demo/AccPay/Selection">Tagihan</a></li>
+							<li><a href="/SmartDealer/Demo/Entrust/paging.jsp">Titipan
+							</a></li>
+							<li><a href="/SmartDealer/Demo/Sales/Retur/paging.jsp">Retur
+							</a></li>
+							<li><a href="/SmartDealer/Demo/Sales/Invoice/paging.jsp">Tagihan</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
 							<li><a href="">Laporan Penjualan</a></li>
@@ -102,14 +106,26 @@
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Dana Tunai</a>
+						<ul class="dropdown-menu">
+							<li><a href="pettycash.action">Dana Tunai</a></li>
+
+							<li role="separator" class="divider"></li>
+							<li class="dropdown-header">Laporan</li>
+							<li><a href="">Laporan Dana Tunain</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Keuangan</a>
 						<ul class="dropdown-menu">
-							<li><a href="accpay.action">Pembayaran Hutang</a></li>
-							<li><a href="">Penerimaan Piutang</a></li>
-							<li><a href="otherdisburse.action">Pembayaran Bukan
-									Hutang / Piutang</a></li>
-							<li><a href="otherreceive.action">Penerimaan Bukan
-									Hutang / Piutang</a></li>
+							<li><a href="/SmartDealer/Demo/AccPay/ApSelection.jsp">Pembayaran
+									Hutang</a></li>
+							<li><a
+								href="/SmartDealer/Demo/OtherTransaction/OtherDisburse/OtherDisburse.jsp">Pembayaran
+									Bukan Hutang / Piutang</a></li>
+							<li><a
+								href="/SmartDealer/Demo/OtherTransaction/OtherReceive/OtherReceive.jsp">Penerimaan
+									Bukan Hutang / Piutang</a></li>
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
