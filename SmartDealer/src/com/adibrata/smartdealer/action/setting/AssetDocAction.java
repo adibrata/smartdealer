@@ -69,7 +69,14 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	public String execute() {
 		String strMode;
 		strMode = mode;
-
+		/*<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
+		<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
+		<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>*/
 		if (mode != null) {
 			switch (strMode) {
 			case "search":
@@ -83,10 +90,10 @@ public class AssetDocAction extends BaseAction implements Preparable {
 				strMode = SaveAdd();
 			case "saveedit":
 				strMode = SaveEdit();
-			case "back":
+			case "end":
 
 			default:
-				return "failed";
+				return ERROR;
 			}
 		} else {
 			strMode = "start";

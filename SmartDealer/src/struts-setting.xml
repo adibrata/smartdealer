@@ -12,7 +12,7 @@
 			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
-			<result name="del">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>

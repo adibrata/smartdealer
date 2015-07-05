@@ -3,6 +3,8 @@ package com.adibrata.smartdealer.dao;
 import java.text.ParseException;
 import java.util.List;
 
+import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
+import com.adibrata.smartdealer.dao.setting.DealerDao;
 import com.adibrata.smartdealer.dao.setting.OfficeDao;
 import com.adibrata.smartdealer.model.*;
 
@@ -37,20 +39,21 @@ public class ClassTest {
 
 	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
-		
+
 		@SuppressWarnings("unused")
-	/*	Session session = HibernateHelper.getSessionFactory().openSession();*/
+		/* Session session = HibernateHelper.getSessionFactory().openSession(); */
 		OfficeDao a = new OfficeDao();
-		Office o = new Office();
-		
-		List<Office> lst = a.Paging(2, "", "");
-		
-		for (Office aRow : lst) 
-		{
+		DealerDao b = new DealerDao();
+		AssetDocMasterDao c = new AssetDocMasterDao();
+
+		List<Office> lst = (List<Office>) a.Paging(1, "", "");
+
+		for (Office aRow : lst) {
 			System.out.println(aRow.getOfficeCode());
 		}
 		double g = a.TotalRecord("");
-		System.out.println(g);
-		
+
+		/* System.out.println(g); */
+
 	}
 }
