@@ -26,7 +26,7 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Demo/Header.jsp"%>
-		<h1>Pembayaran Bukan Piutang</h1>
+		<h1>Pembayaran Bukan Hutang</h1>
 		<table width="95%" border="0" cellpadding="2" cellspacing="1"
 			class="tablegrid">
 			<tr>

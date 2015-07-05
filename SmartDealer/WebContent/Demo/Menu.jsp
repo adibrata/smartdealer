@@ -60,7 +60,7 @@
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Penjualan dan Titipan </a>
+						aria-expanded="false">Penjualan </a>
 						<ul class="dropdown-menu">
 							<li><a href="/SmartDealer/Demo/Sales/Order/paging.jsp">Penjualan</a></li>
 							<li><a href="/SmartDealer/Demo/Entrust/paging.jsp">Titipan
@@ -94,11 +94,11 @@
 							<li class="dropdown-header">Laporan</li>
 							<li><a href="">Laporan Stock</a></li>
 						</ul></li>
-					<li class="dropdown"><a href="" class="dropdown-toggle"
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Karyawan</a>
 						<ul class="dropdown-menu">
-							<li><a href="pettycash.action">Pengeluaran Karyawan</a></li>
+							<li><a href="/SmartDealer/Demo/CashTransaction/PettyCash/PettyCash.jsp">Pengeluaran Karyawan</a></li>
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
@@ -118,21 +118,21 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Keuangan</a>
 						<ul class="dropdown-menu">
-							<li><a href="/SmartDealer/Demo/AccPay/ApSelection.jsp">Pembayaran
+							<li><a href="/SmartDealer/Demo/AccPay/Selection/ApSelection.jsp">Pembayaran
 									Hutang</a></li>
 							<li><a
 								href="/SmartDealer/Demo/OtherTransaction/OtherDisburse/OtherDisburse.jsp">Pembayaran
-									Bukan Hutang / Piutang</a></li>
+									Bukan Hutang</a></li>
 							<li><a
 								href="/SmartDealer/Demo/OtherTransaction/OtherReceive/OtherReceive.jsp">Penerimaan
-									Bukan Hutang / Piutang</a></li>
+									Bukan Piutang</a></li>
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
 							<li><a href="">Laporan Hutang</a></li>
 							<li><a href="">Laporan Piutang</a></li>
-							<li><a href="">Laporan Pembayaran Bukan Hutang / Piutang</a></li>
-							<li><a href="">Laporan Penerimaan Bukan Hutang / Piutang</a></li>
+							<li><a href="">Laporan Pembayaran Bukan Hutang</a></li>
+							<li><a href="">Laporan Penerimaan Bukan Piutang</a></li>
 
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
