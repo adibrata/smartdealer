@@ -44,12 +44,13 @@ public class ClassTest {
 		/* Session session = HibernateHelper.getSessionFactory().openSession(); */
 		OfficeDao a = new OfficeDao();
 		DealerDao b = new DealerDao();
+		
 		AssetDocMasterDao c = new AssetDocMasterDao();
 
-		List<Office> lst = (List<Office>) a.Paging(1, "", "");
+		List<AssetDocMaster> lst = (List<AssetDocMaster>) c.Paging(1, "", "");
 
-		for (Office aRow : lst) {
-			System.out.println(aRow.getOfficeCode());
+		for (AssetDocMaster aRow : lst) {
+			System.out.println(aRow.getDocumentCode());
 		}
 		double g = a.TotalRecord("");
 

@@ -10,13 +10,16 @@
 			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="success">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="error">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+
 		</action>
 
 		<action name="assetmaster"

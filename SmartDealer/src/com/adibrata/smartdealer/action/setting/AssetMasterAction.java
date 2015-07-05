@@ -53,6 +53,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		strMode = mode;
 
 		if (mode != null) {
+		
 			switch (strMode) {
 			case "search":
 				strMode = Paging();
@@ -70,7 +71,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 			case "back":
 
 			default:
-				return "failed";
+				return ERROR;
 			}
 		} else {
 			strMode = "start";

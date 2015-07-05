@@ -23,7 +23,7 @@
 		<center>
 			<h1>Dealer Management System</h1>
 		</center>
-		<s:form action="home">
+		<s:form action="home.action">
 			<li><input type="text" class="text" value="User Name"
 				onfocus="this.value = '';"
 				onblur="if (this.value == '') {this.value = 'User Name';}"><a

@@ -69,41 +69,50 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	public String execute() {
 		String strMode;
 		strMode = mode;
-		/*<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
-		<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
-		<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>*/
+		/*
+		 * <result
+		 * name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 * <result
+		 * name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 * <result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
+		 * <result
+		 * name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 * <result
+		 * name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 * <result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 * <result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
+		 * <result
+		 * name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+		 */
+		System.out.println(mode);
 		if (mode != null) {
-			switch (strMode) {
-			case "search":
-				strMode = Paging();
-			case "edit":
-			case "add":
+			if (mode.equals("search")) {
+				Paging();
+			} else if (mode.equals(SUCCESS)) {
+				strMode = mode;
+			} else if (mode.equals(ERROR)) {
+				Paging();
+			} else if (mode.equals("add")) {
+				Paging();
+			} else if (mode.equals("edit")) {
+				Paging();
+			} else if (mode.equals("saveadd")) {
+				mode = SaveAdd();
+			} else if (mode.equals("saveedit")) {
+				mode = SaveEdit();
+			} else if (mode.equals("savedel")) {
+				mode = SaveDelete();
+			} else
+				mode = ERROR;
 
-			case "savedel":
-				return SaveDelete();
-			case "saveadd":
-				strMode = SaveAdd();
-			case "saveedit":
-				strMode = SaveEdit();
-			case "end":
-
-			default:
-				return ERROR;
-			}
 		} else {
-			strMode = "start";
+			mode = "start";
 		}
-		return strMode;
+	
+		return mode;
 	}
 
-	private String Paging() {
-
-		String status = "";
+	private void Paging() {
 		try {
 			String wherecond = "";
 			if (this.getSearchcriteria().contains("%"))
@@ -114,11 +123,10 @@ public class AssetDocAction extends BaseAction implements Preparable {
 						+ this.getSearchcriteria();
 
 			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
-					this.getPageNumber(), wherecond, "");
+					1, "", "");
 
-			status = "Success";
 		} catch (Exception exp) {
-			status = "Failed";
+			
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -126,7 +134,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		return status;
+	
 	}
 
 	private String SaveAdd() {
@@ -377,7 +385,6 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		return usrCrt;
 	}
 
-
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
 	}
@@ -447,7 +454,8 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	}
 
 	/**
-	 * @param message the message to set
+	 * @param message
+	 *            the message to set
 	 */
 	public void setMessage(String message) {
 		this.message = message;

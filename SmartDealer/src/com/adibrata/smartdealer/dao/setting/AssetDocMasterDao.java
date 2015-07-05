@@ -38,7 +38,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from AssetDocMaster ";
+			strStatement = "from AssetDocMaster ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
