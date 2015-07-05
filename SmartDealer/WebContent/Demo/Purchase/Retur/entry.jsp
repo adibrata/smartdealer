@@ -29,7 +29,7 @@
 		<%@include file="/Demo/Header.jsp"%>
 		<s:form action="sales_retur.action" theme="simple">
 
-			<h1>Retur Penjualan</h1>
+			<h1>Retur Pembelian</h1>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table width="95%" align="center">
 

@@ -15,6 +15,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 
+import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.accpay.SelectionService;
 
@@ -22,7 +23,7 @@ import com.adibrata.smartdealer.service.accpay.SelectionService;
  * @author Henry
  *
  */
-public class AccPayAction extends ActionSupport implements Preparable {
+public class AccPayAction extends BaseAction implements Preparable {
 
 	/**
 	 * 

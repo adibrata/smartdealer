@@ -42,6 +42,8 @@
 		<s:form action="sales_order.action" theme="simple">
 
 			<h1>Pembelian dan Penerimaan Titipan</h1>
+			<button class="btn btn-sm btn-primary" type="submit"
+							class="btn btn-sm btn-primary" onclick="del()">Upload</button>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table align="left" width="95%" align="center">
 				<tr>
@@ -195,8 +197,8 @@
 				</tr>
 				<tr>
 					<td colspan="4" align="right"><a
-						href="avascript:history.back();" class="btn btn-sm btn-primary">Save</a>
-						<a href="avascript:history.back();" class="btn btn-sm btn-primary">Back</a></td>
+						href="javascript:history.back();" class="btn btn-sm btn-primary">Save</a>
+						<a href="javascript:history.back();" class="btn btn-sm btn-primary">Back</a></td>
 				</tr>
 			</table>
 		</s:form>

@@ -26,7 +26,7 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Demo/Header.jsp"%>
-		<h1>Tagihan Penjualan</h1>
+		<h1>Retur Pembelian</h1>
 		<table align="left" width="95%" align="center">
 			<tr>
 				<td width="25%"><select>

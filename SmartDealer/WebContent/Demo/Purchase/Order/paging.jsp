@@ -44,9 +44,9 @@
 		
 				<table border="1" width="95%" align="left">
 					<tr>
-						<th>Customer Name</th>
-						<th>Customer Address</th>
-						<th>Phone Number</th>
+						<th>Nama Dealer</th>
+						<th>Alamat Dealer</th>
+						<th>No Telpon</th>
 						<th align="center"><a href="entry.jsp"
 							class="btn btn-sm btn-primary">Select</a></th>
 					</tr>
