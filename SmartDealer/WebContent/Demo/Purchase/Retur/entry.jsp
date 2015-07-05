@@ -32,18 +32,22 @@
 			<h1>Retur Pembelian</h1>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table width="95%" align="center">
-
 				<tr>
-					<td>No Penjualan</td>
-					<td>xxxx20xxxxx</td>
-					<td>Nama Pelanggan</td>
+					<td>Unit Selection</td>
+					<td><input></input></td>
+
+				</tr>
+				<tr>
+					<td>No Pembelian</td>
+					<td>xxxx50xxx</td>
+					<td>Nama Dealer</td>
 					<td>xxxx20xxxxx</td>
 				</tr>
 				<tr>
-					<td width="25%">Sales Date</td>
-					<td width="25%">1/07/2015</td>
-					<td width="25%">Delivery Date</td>
-					<td width="25%">xxxx50xxxxx</td>
+					<td width="25%">Tanggal Pembelian</td>
+					<td width="25%">10/07/2015</td>
+					<td width="25%">Tanggal Penerimaan</td>
+					<td width="25%">10/07/2015</td>
 				</tr>
 
 				<tr>
@@ -78,14 +82,57 @@
 					<td>Engine No.</td>
 					<td>xxxx50xxxxx</td>
 				</tr>
+				<table width="100%"> 
+					<tr>
+						<td align="right">
+							<button class="btn btn-sm btn-primary" type="submit"
+								class="btn btn-sm btn-primary" onclick="tambah()">Add</button>
+						</td>
+					</tr>
+				</table>
 
+				<table border="1" width="100%" align="center">
+					<tr>
+						<th>Merek</th>
+						<th>Tipe</th>
+						<th>Model</th>
+						<th>Warna</th>
+						<th>No Polisi</th>
+						<th>No. Rangka</th>
+						<th>No. Mesin</th>
+						<th>Bulan Pembuatan</th>
+						<th>Tahun Pembuatan</th>
+						<th>Umur<br>(month)
+						</th>
+						<th>Harga Unit</th>
+						<th>Pajak</th>
+						<th>Harga Total</th>
+						<th><button class="btn btn-sm btn-primary" type="submit"
+								class="btn btn-sm btn-primary" onclick="del()">Del</button></th>
 
+					</tr>
+					<tr>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td><s:property value="" /></td>
+						<td align="center"><input type="radio" checked /></td>
+
+					</tr>
+					<table width="100%"> 
 				<tr>
-					<td colspan="4" align="right">
-					<a href="paging.jsp" class="btn btn-sm btn-primary">Save</a>
-					<a href="paging.jsp" class="btn btn-sm btn-primary">Back</a>
-					
-					</td>
+					<td align="right"><a href="paging.jsp"
+						class="btn btn-sm btn-primary">Save</a> <a href="paging.jsp"
+						class="btn btn-sm btn-primary">Back</a></td>
 				</tr>
 			</table>
 		</s:form>

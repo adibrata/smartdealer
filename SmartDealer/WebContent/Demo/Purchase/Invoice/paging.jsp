@@ -26,30 +26,29 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Demo/Header.jsp"%>
-		<h1>Taihan Penjualan</h1>
+		<h1>Tagihan Pembelian</h1>
 		<table align="left" width="95%" align="center">
 			<tr>
 				<td width="25%"><select>
 						<option value="">Search By</option>
-						<option value="">Customer Name</option>
-						<option value="">Customer Address</option>
+						<option value="">Dealer Name</option>
+						<option value="">Dealer Address</option>
 				</select></td>
 				<td><input name="" /></td>
 
 			</tr>
 			<tr>
-				<td width="25%">Tanggal Penjualan</td>
+				<td width="25%">Tanggal Pembelian</td>
 				<td colspan="3"><input></input></td>
 			</tr>
 			<tr>
 
-				<td colspan=4 align="right">
+				<td colspan=4 align="right"> 
 					<button class="btn btn-sm btn-primary" type="submit"
 						onclick="search()" class="btn btn-sm btn-primary">Search</button>
 				</td>
 			</tr>
 		</table>
-		<br>
 		<br>
 		<div class="table-container" align="center">
 			<center>
@@ -59,8 +58,6 @@
 						<th align="center">Tanggal Penjualan</th>
 						<th>Nama</th>
 						<th>Alamat</th>
-						<th>Nilai Penjualan</th>
-						<th>Sisa Penerimaan</th>
 						<th align="center"><a href="entry.jsp" width="100%"
 							class="btn btn-sm btn-primary">Select</a></th>
 					</tr>
@@ -69,9 +66,6 @@
 						<td align="center">14/10/2015</td>
 						<td>xxxx50xxxx</td>
 						<td>xxxx100xxxx</td>
-						<td>999,999,999</td>
-						<td>999,999,999</td>
-
 						<td align="center"><input type="radio" checked /></td>
 					</tr>
 					<tr>
@@ -79,9 +73,6 @@
 						<td width="15%" align="center">14/10/2015</td>
 						<td>xxxx50xxxx</td>
 						<td>xxxx100xxxx</td>
-						<td>999,999,999</td>
-						<td>999,999,999</td>
-						
 						<td align="center"><input type="radio" /></td>
 					</tr>
 					<tr>
@@ -89,9 +80,6 @@
 						<td align="center">14/10/2015</td>
 						<td>xxxx50xxxx</td>
 						<td>xxxx100xxxx</td>
-						<td>999,999,999</td>
-						<td>999,999,999</td>
-						
 						<td align="center"><input type="radio" /></td>
 					</tr>
 					<tr>
@@ -99,9 +87,6 @@
 						<td align="center">14/10/2015</td>
 						<td>xxxx50xxxx</td>
 						<td>xxxx100xxxx</td>
-						<td>999,999,999</td>
-						<td>999,999,999</td>
-						
 						<td align="center"><input type="radio" /></td>
 					</tr>
 					<tr>
@@ -109,9 +94,6 @@
 						<td align="center">14/10/2015</td>
 						<td>xxxx50xxxx</td>
 						<td>xxxx100xxxx</td>
-						<td>999,999,999</td>
-						<td>999,999,999</td>
-						
 						<td align="center"><input type="radio" /></td>
 					</tr>
 				</table>

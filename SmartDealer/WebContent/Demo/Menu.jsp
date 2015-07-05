@@ -42,7 +42,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<s:form theme="simple">
 				<ul class="nav navbar-nav">
-					<li><a href="Home.jsp">Depan</a></li>
+					<li><a href="/SmartDealer/Demo/Home.jsp">Depan</a></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Pembelian </a>

@@ -43,7 +43,7 @@
 
 			<h1>Pembelian dan Penerimaan Titipan</h1>
 			<button class="btn btn-sm btn-primary" type="submit"
-							class="btn btn-sm btn-primary" onclick="del()">Upload</button>
+				class="btn btn-sm btn-primary" onclick="del()">Upload</button>
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table align="left" width="95%" align="center">
 				<tr>
@@ -132,6 +132,8 @@
 					<td>Pajak</td>
 					<td><input></input></td>
 				</tr>
+			</table>
+			<table>
 				<tr>
 					<td colspan="5" align="right">
 						<button class="btn btn-sm btn-primary" type="submit"
@@ -142,7 +144,6 @@
 
 			<table border="1" width="100%" align="center">
 				<tr>
-
 					<th>Merek</th>
 					<th>Tipe</th>
 					<th>Model</th>
@@ -159,6 +160,8 @@
 					<th>Harga Total</th>
 					<th><button class="btn btn-sm btn-primary" type="submit"
 							class="btn btn-sm btn-primary" onclick="del()">Del</button></th>
+					<th><button class="btn btn-sm btn-primary" type="submit"
+							class="btn btn-sm btn-primary" onclick="del()">Document</button></th>
 				</tr>
 				<tr>
 					<td><s:property value="" /></td>
@@ -174,6 +177,7 @@
 					<td><s:property value="" /></td>
 					<td><s:property value="" /></td>
 					<td><s:property value="" /></td>
+					<td align="center"><input type="radio" checked /></td>
 					<td align="center"><input type="radio" checked /></td>
 				</tr>
 			</table>
@@ -198,7 +202,9 @@
 				<tr>
 					<td colspan="4" align="right"><a
 						href="javascript:history.back();" class="btn btn-sm btn-primary">Save</a>
-						<a href="javascript:history.back();" class="btn btn-sm btn-primary">Back</a></td>
+						<a href="javascript:history.back();"
+						class="btn btn-sm btn-primary">Back</a></td>
+
 				</tr>
 			</table>
 		</s:form>

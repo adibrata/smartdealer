@@ -38,12 +38,12 @@
 
 			</tr>
 			<tr>
-				<td width="25%">Tanggal Penjualan</td>
+				<td width="25%">Tanggal Pembelian</td>
 				<td colspan="3"><input></input></td>
 			</tr>
 			<tr>
 
-				<td colspan=4 align="right"> 
+				<td colspan=4 align="right">
 					<button class="btn btn-sm btn-primary" type="submit"
 						onclick="search()" class="btn btn-sm btn-primary">Search</button>
 				</td>
