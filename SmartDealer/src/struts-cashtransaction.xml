@@ -12,11 +12,11 @@
 			</result>
 			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
+			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			</result>
 			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="back">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-			</result>
-			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
 			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
@@ -32,13 +32,11 @@
 			</result>
 			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
-			<result name="back">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
-			</result>
-			<result name="adddetail">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 		</action>
 		<action name="paymentrequest"
@@ -50,7 +48,7 @@
 			</result>
 			<result name="search">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
-			<result name="back">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="end">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="error">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -68,7 +66,7 @@
 			</result>
 			<result name="search">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
-			<result name="back">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="end">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>

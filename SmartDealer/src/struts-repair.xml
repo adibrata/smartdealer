@@ -12,7 +12,7 @@
 			<result name="search">/Pages/Repair/paging.jsp</result>
 			<result name="entry">/Pages/Repair/entry.jsp</result>
 			<result name="adddetail">/Pages/Repair/entry.jsp</result>
-			<result name="back">/Pages/Repair/paging.jsp</result>
+			<result name="end">/Pages/Repair/paging.jsp</result>
 		</action>
 	</package>
 </struts>

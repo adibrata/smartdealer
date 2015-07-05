@@ -10,7 +10,7 @@
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="end">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 		</action>
@@ -20,7 +20,7 @@
 			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
 			<result name="del">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
-			<result name="back">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="end">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 			<result name="add">/pages/setting/assetmaster/addAssetMaster.jsp</result>
 			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
 		</action>
@@ -30,7 +30,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -40,7 +40,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -50,7 +50,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -60,7 +60,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -70,7 +70,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -80,7 +80,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -90,7 +90,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -100,7 +100,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -110,7 +110,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -120,7 +120,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>
@@ -130,7 +130,7 @@
 			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
 			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
 			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
 		</action>

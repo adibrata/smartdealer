@@ -14,7 +14,7 @@
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="back">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 		</action>
@@ -32,7 +32,7 @@
 			</result>
 			<result name="saveadd">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="back">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			<result name="end">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 			<result name="add">/Pages/Setting/Assetmaster/addAssetMaster.jsp
 			</result>
@@ -53,7 +53,7 @@
 			</result>
 			<result name="saveadd">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
-			<result name="back">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="end">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="add">/Pages/Setting/BankAccount/addBankAccount.jsp
 			</result>
@@ -68,7 +68,7 @@
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="saveadd">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="back">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="end">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="add">/Pages/Setting/Dealer/addDealer.jsp</result>
 			<result name="saveedit">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
@@ -86,7 +86,7 @@
 			</result>
 			<result name="saveadd">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
-			<result name="back">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="end">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
 			</result>
 			<result name="add">/Pages/Setting/JurnalScheme/addJurnalSchHdr.jsp
 			</result>
@@ -105,7 +105,7 @@
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="saveadd">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="back">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="end">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="add">/Pages/Setting/Master/addMaster.jsp</result>
 			<result name="saveedit">/Pages/Setting/Master/pageMaster.jsp</result>
 		</action>
@@ -116,7 +116,7 @@
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="saveadd">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="back">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="end">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="add">/Pages/Setting/Office/addOffice.jsp</result>
 			<result name="saveedit">/Pages/Setting/Office/pageOffice.jsp</result>
 		</action>
@@ -128,7 +128,7 @@
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="saveadd">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="back">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="end">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="add">/Pages/Setting/Workshop/addWorkshop.jsp</result>
 			<result name="saveedit">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 		</action>
@@ -139,7 +139,7 @@
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="saveadd">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="back">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="end">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="add">/Pages/Setting/ZipCode/addZipCode.jsp</result>
 			<result name="saveedit">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 		</action>
@@ -151,7 +151,7 @@
 			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
 			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="saveadd">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="back">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="end">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="add">/Pages/Setting/Taksasi/addTaksasi.jsp</result>
 			<result name="saveedit">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 		</action>

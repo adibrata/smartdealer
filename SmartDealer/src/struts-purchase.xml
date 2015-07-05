@@ -15,7 +15,7 @@
 			<result name="search">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Order/entry.jsp</result>
 			<result name="adddetail">/Pages/Purchase/Order/entry.jsp</result>
-			<result name="back">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="end">/Pages/Purchase/Order/paging.jsp</result>
 		</action>
 		<action name="purchaseinvoice"
 			class="com.adibrata.smartdealer.action.purchase.PurchaseInvoiceAction"
@@ -28,7 +28,7 @@
 			<result name="entry">/Pages/Purchase/Invoice/entry.jsp</result>
 			<result name="adddetail">/Pages/Purchase/Invoice/entry.jsp</result>
 
-			<result name="back">/Pages/Purchase/Invoice/paging.jsp</result>
+			<result name="end">/Pages/Purchase/Invoice/paging.jsp</result>
 		</action>
 		<action name="purchaseretur"
 			class="com.adibrata.smartdealer.action.purchase.PurchaseReturAction"
@@ -41,7 +41,7 @@
 			<result name="entry">/Pages/Purchase/Retur/entry.jsp</result>
 			<result name="adddetail">/Pages/Purchase/Invoice/entry.jsp</result>
 
-			<result name="back">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="end">/Pages/Purchase/Retur/paging.jsp</result>
 		</action>
 	</package>
 </struts>

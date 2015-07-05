@@ -12,7 +12,7 @@
 			</result>
 			<result name="search">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
-			<result name="back">/Pages/AccPay/Selection/ApSelection.jsp
+			<result name="end">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
 			<result name="error">/Pages/AccPay/Selection/ApSelectionEntry.jsp
 			</result>
@@ -30,7 +30,7 @@
 			</result>
 			<result name="search">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
-			<result name="back">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
+			<result name="end">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
 			<result name="error">/Pages/AccPay/PaymentVoucher/PVDisburseEntry.jsp
 			</result>

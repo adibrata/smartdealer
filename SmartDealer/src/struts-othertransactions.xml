@@ -21,7 +21,7 @@
 			</result>
 			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="back">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
 		<action name="otherreceive"
@@ -40,7 +40,7 @@
 			</result>
 			<result name="adddetail">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="back">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			<result name="end">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
 		</action>
 	</package>

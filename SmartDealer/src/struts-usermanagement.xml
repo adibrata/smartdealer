@@ -15,7 +15,7 @@
 			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
 			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="end">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 
 			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
@@ -35,7 +35,7 @@
 			<result name="del">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
 			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="back">/pages/setting/assetdoc/pageAssetMaster.jsp
+			<result name="end">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
 			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
@@ -56,7 +56,7 @@
 			</result>
 			<result name="saveadd">/pages/setting/bankAccount/pageBankAccount.jsp
 			</result>
-			<result name="back">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp
 			</result>
 			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp
 			</result>
@@ -71,7 +71,7 @@
 			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
 			<result name="del">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="saveadd">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="back">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="end">/pages/setting/dealer/pageDealer.jsp</result>
 			<result name="add">/pages/setting/dealer/addDealer.jsp</result>
 			<result name="saveedit">/pages/setting/dealer/pageDealer.jsp</result>
 		</action>
