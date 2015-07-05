@@ -18,12 +18,13 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 
+import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.SalesOrderService;
 import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
 
-public class AssetDocAction extends ActionSupport implements Preparable {
+public class AssetDocAction extends BaseAction implements Preparable {
 
 	/**
 	 * 
@@ -43,7 +44,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	private String usrUpd;
 	private String usrCrt;
 	private int pageNumber;
-	
+	private String message;
 	private String assetdocumentcode;
 	private String assetdocumentname;
 	private String assetType;
@@ -74,12 +75,10 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 			case "search":
 				strMode = Paging();
 			case "edit":
-
-			case "del":
-				return SaveDelete();
 			case "add":
 
-				strMode = SaveAdd();
+			case "savedel":
+				return SaveDelete();
 			case "saveadd":
 				strMode = SaveAdd();
 			case "saveedit":
@@ -131,8 +130,10 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 			assetDocMaster.setDocumentName(this.getAssetdocumentname());
 			this.assetDocMasterService.SaveAdd(assetDocMaster);
 			status = SUCCESS;
+			this.setMessage(BaseAction.SuccessMessage());
 		} catch (Exception exp) {
 			status = ERROR;
+			this.setMessage(BaseAction.ErrorMessage());
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -151,9 +152,11 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 			assetDocMaster.setDocumentCode(this.getAssetdocumentcode());
 			assetDocMaster.setDocumentName(this.getAssetdocumentname());
 			this.assetDocMasterService.SaveEdit(assetDocMaster);
-			status = "Success";
+			status = SUCCESS;
+			this.setMessage(BaseAction.SuccessMessage());
 		} catch (Exception exp) {
-			status = "Failed";
+			status = ERROR;
+			this.setMessage(BaseAction.ErrorMessage());
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -169,11 +172,13 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
 			assetDocMaster.setId(this.getId());
-		
+
 			this.assetDocMasterService.SaveDel(assetDocMaster);
-			status = "Success";
+			status = SUCCESS;
+			this.setMessage(BaseAction.SuccessMessage());
 		} catch (Exception exp) {
-			status = "Failed";
+			status = ERROR;
+			this.setMessage(BaseAction.ErrorMessage());
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -322,7 +327,6 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	 * @return the documentCode
 	 */
 
-
 	/**
 	 * @return the usrUpd
 	 */
@@ -354,7 +358,6 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 		this.assetdocumentname = documentName;
 	}
 
-	
 	/**
 	 * @param usrUpd
 	 *            the usrUpd to set
@@ -366,6 +369,7 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	public String getUsrCrt() {
 		return usrCrt;
 	}
+
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
@@ -398,7 +402,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param assetdocumentcode the assetdocumentcode to set
+	 * @param assetdocumentcode
+	 *            the assetdocumentcode to set
 	 */
 	public void setAssetdocumentcode(String assetdocumentcode) {
 		this.assetdocumentcode = assetdocumentcode;
@@ -412,7 +417,8 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param assetdocumentname the assetdocumentname to set
+	 * @param assetdocumentname
+	 *            the assetdocumentname to set
 	 */
 	public void setAssetdocumentname(String assetdocumentname) {
 		this.assetdocumentname = assetdocumentname;
@@ -424,6 +430,20 @@ public class AssetDocAction extends ActionSupport implements Preparable {
 
 	public void setAssetType(String assetType) {
 		this.assetType = assetType;
+	}
+
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	/**
