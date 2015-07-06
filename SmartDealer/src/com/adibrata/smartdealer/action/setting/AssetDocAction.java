@@ -53,6 +53,10 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	 * 
 	 */
 	public AssetDocAction() {
+		// TODO Auto-generated constructor stub
+		AssetDocMasterService assetdocmasterservice = new AssetDocMasterDao();
+
+		this.assetDocMasterService = assetdocmasterservice;
 		Partner partner = new Partner();
 		Office office = new Office();
 		AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -63,70 +67,107 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		if (this.pageNumber == 0)
 			this.pageNumber = 1;
 
-		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * 
+	 */
+	/*
+	 * public AssetDocAction(AssetDocMasterService assetDocMasterService) {
+	 * this.assetDocMasterService = assetDocMasterService; // TODO
+	 * Auto-generated constructor stub }
+	 */
 
 	public String execute() {
 		String strMode;
 		strMode = mode;
-		/*
-		 * <result
-		 * name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 * <result
-		 * name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 * <result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
-		 * <result
-		 * name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 * <result
-		 * name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 * <result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 * <result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
-		 * <result
-		 * name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-		 */
-		System.out.println(mode);
-		if (mode != null) {
-			if (mode.equals("search")) {
-				Paging();
-			} else if (mode.equals(SUCCESS)) {
-				strMode = mode;
-			} else if (mode.equals(ERROR)) {
-				Paging();
-			} else if (mode.equals("add")) {
-				Paging();
-			} else if (mode.equals("edit")) {
-				Paging();
-			} else if (mode.equals("saveadd")) {
-				mode = SaveAdd();
-			} else if (mode.equals("saveedit")) {
-				mode = SaveEdit();
-			} else if (mode.equals("savedel")) {
-				mode = SaveDelete();
-			} else
-				mode = ERROR;
 
+		if (mode != null) {
+
+			switch (strMode) {
+			case "search":
+				Paging();
+			case "edit":
+
+			case "del":
+				return SaveDelete();
+			case "add":
+				strMode = SaveAdd();
+			case "saveadd":
+				strMode = SaveAdd();
+			case "saveedit":
+				strMode = SaveEdit();
+			case "back":
+				;
+
+			case "first":
+				this.pageNumber -= 1;
+				Paging();
+			case "prev":
+				this.pageNumber -= 1;
+				if (this.pageNumber <= 1)
+					this.pageNumber = 1;
+				Paging();
+			case "next":
+				this.pageNumber += 1;
+				Paging();
+			case "last":
+				LastPage();
+			default:
+				return ERROR;
+			}
 		} else {
-			mode = "start";
+			strMode = "start";
 		}
-	
-		return mode;
+		return strMode;
+		/*
+		 * 
+		 * 
+		 * 
+		 * if (mode != null) {
+		 * 
+		 * if (mode.equals("search")) { Paging(); } else if
+		 * (mode.equals(SUCCESS)) { strMode = mode; } else if
+		 * (mode.equals(ERROR)) { Paging(); } else if (mode.equals("add")) {
+		 * Paging(); } else if (mode.equals("edit")) { Paging(); } else if
+		 * (mode.equals("saveadd")) { mode = SaveAdd(); } else if
+		 * (mode.equals("saveedit")) { mode = SaveEdit(); } else if
+		 * (mode.equals("savedel")) { mode = SaveDelete(); } else mode = ERROR;
+		 * 
+		 * } else { mode = "start"; }
+		 * 
+		 * return mode;
+		 */
 	}
 
-	private void Paging() {
-		try {
-			String wherecond = "";
+	/**
+	 * 
+	 */
+	private String WhereCond() {
+		String wherecond = "";
+		if (this.getSearchvalue() != null
+				&& !this.getSearchcriteria().equals("")) {
 			if (this.getSearchcriteria().contains("%"))
-				wherecond = this.getSearchvalue() + " like "
-						+ this.getSearchcriteria();
+				wherecond = this.getSearchvalue() + " like '"
+						+ this.getSearchcriteria() + "' ";
 			else
-				wherecond = this.getSearchvalue() + " = "
-						+ this.getSearchcriteria();
+				wherecond = this.getSearchcriteria() + " = '"
+						+ this.getSearchvalue() + "' ";
+		}
+		return wherecond;
+	}
 
-			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
-					1, "", "");
+	private void LastPage() {
+		try {
+			/* int lastPageNumber = (int) ((countResults / pageSize) + 1); */
 
-		} catch (Exception exp) {
-			
+			this.pageNumber = (int) ((this.assetDocMasterService
+					.TotalRecord(this.WhereCond()) / this.PageRecord()) + 1);
+			Paging();
+		}
+
+		catch (Exception exp) {
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -134,7 +175,24 @@ public class AssetDocAction extends BaseAction implements Preparable {
 					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-	
+	}
+
+	private void Paging() {
+		try {
+			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
+					this.getPageNumber(), this.WhereCond(), "");
+		}
+
+		catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+
 	}
 
 	private String SaveAdd() {
@@ -204,6 +262,9 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		return status;
 	}
 
+	/** Getter Setter */
+	
+	
 	/**
 	 * @return the serialversionuid
 	 */
@@ -460,10 +521,10 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
 	/**
-	 * @param searchBy
-	 *            the searchBy to set
+	 * @return the wherecond
 	 */
+	// endregion
 
 }

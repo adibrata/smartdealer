@@ -155,8 +155,10 @@ public class DealerDao implements DealerService {
 		List<Supplier> list = null;
 		try {
 			hql.append(strStatement);
-			if (WhereCond != "")
+			if (WhereCond != "") {
+				hql.append(" where ");
 				hql.append(WhereCond);
+			}
 
 			Query selectQuery = session.createQuery(hql.toString());
 			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);

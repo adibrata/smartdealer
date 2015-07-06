@@ -65,9 +65,10 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		List<AssetDocMaster> list = null;
 		try {
 			hql.append(strStatement);
-			if (WhereCond != "")
+			if (WhereCond != "") {
+				hql.append(" where ");
 				hql.append(WhereCond);
-
+			}
 			Query selectQuery = session.createQuery(hql.toString());
 			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
@@ -93,11 +94,15 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 	 * .lang.String)
 	 */
 	@Override
-	public long TotalRecord(String WherCond) {
+	public long TotalRecord(String WhereCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
 

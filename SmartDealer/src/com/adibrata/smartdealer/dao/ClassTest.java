@@ -47,7 +47,7 @@ public class ClassTest {
 		
 		AssetDocMasterDao c = new AssetDocMasterDao();
 
-		List<AssetDocMaster> lst = (List<AssetDocMaster>) c.Paging(1, "", "");
+		List<AssetDocMaster> lst = (List<AssetDocMaster>) c.Paging(1, "documentCode = 'STNK'", "");
 
 		for (AssetDocMaster aRow : lst) {
 			System.out.println(aRow.getDocumentCode());

@@ -31,6 +31,20 @@ public class BaseAction extends ActionSupport implements Preparable {
 		return "Success On Save";
 				
 	}
+	
+	public static String sesPartnerCode()
+	{
+		return "001";
+	}
+	
+	public static String sesOfficeId()
+	{
+		return "001";
+	}
+	public static int PageRecord()
+	{
+		return 10;
+	}
 	/**
 	 * @return the messagedescription
 	 */
