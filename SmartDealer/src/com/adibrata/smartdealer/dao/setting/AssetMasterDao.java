@@ -91,11 +91,16 @@ public class AssetMasterDao implements AssetMasterService{
 	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public long TotalRecord(String WherCond) {
+	public long TotalRecord(String WhereCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0 ;
 		try {
 			String countQ = "Select count (id) " + strStatement;
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			countQ = countQ + hql.toString();
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
 		

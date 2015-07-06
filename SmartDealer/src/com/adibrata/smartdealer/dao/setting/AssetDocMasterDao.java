@@ -103,6 +103,8 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
+			countQ = countQ + hql.toString();
+			
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
 

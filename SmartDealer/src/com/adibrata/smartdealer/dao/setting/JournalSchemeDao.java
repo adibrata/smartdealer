@@ -186,6 +186,11 @@ public class JournalSchemeDao implements JournalSchemeService {
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
+			if (WherCond != "") {
+				hql.append(" where ");
+				hql.append(WherCond);
+			}
+			countQ = countQ + hql.toString();
 			countResults = (long) countQuery.uniqueResult();
 
 		} catch (Exception exp) {

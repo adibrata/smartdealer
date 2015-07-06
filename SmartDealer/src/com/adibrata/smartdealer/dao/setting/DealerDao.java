@@ -192,7 +192,11 @@ public class DealerDao implements DealerService {
 			String countQ = "Select count (id) " + strStatement;
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-
+			if (WherCond != "") {
+				hql.append(" where ");
+				hql.append(WherCond);
+			}
+			countQ = countQ + hql.toString();
 		} catch (Exception exp) {
 
 			ExceptionEntities lEntExp = new ExceptionEntities();
