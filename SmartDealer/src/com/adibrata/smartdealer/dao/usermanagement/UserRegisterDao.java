@@ -184,6 +184,11 @@ public class UserRegisterDao implements UserService {
 		long countResults = 0 ;
 		try {
 			String countQ = "Select count (id) " + strStatement;
+			if (WherCond != "") {
+				hql.append(" where ");
+				hql.append(WherCond);
+			}
+			countQ = countQ + hql.toString();
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
 		

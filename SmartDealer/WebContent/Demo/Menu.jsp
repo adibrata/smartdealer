@@ -184,6 +184,7 @@
 
 							<li><a href="setting/dealer.action">Dealer</a></li>
 							<li><a href="setting/workshop.action">Bengkel</a></li>
+							<li><a href="setting/workshop.action">Leasing</a></li>
 							<li><a href="setting/userregister.action">User Login</a></li>
 
 						</ul></li>
