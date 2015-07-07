@@ -45,7 +45,7 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from ServiceHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();

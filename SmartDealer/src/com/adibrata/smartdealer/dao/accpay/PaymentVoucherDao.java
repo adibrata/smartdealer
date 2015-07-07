@@ -91,7 +91,7 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<PaymentVoucher> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}

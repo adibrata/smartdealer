@@ -40,7 +40,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Customer ";
+			strStatement = " from SalesOrderHdr ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
