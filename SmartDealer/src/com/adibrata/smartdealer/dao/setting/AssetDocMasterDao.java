@@ -86,6 +86,37 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 		return list;
 	}
 
+	@Override
+	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<AssetDocMaster> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -104,7 +135,7 @@ public class AssetDocMasterDao implements AssetDocMasterService {
 				hql.append(WhereCond);
 			}
 			countQ = countQ + hql.toString();
-			
+
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
 

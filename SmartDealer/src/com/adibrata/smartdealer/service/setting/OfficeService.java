@@ -1,6 +1,7 @@
 package com.adibrata.smartdealer.service.setting;
 
 import java.util.List;
+
 import com.adibrata.smartdealer.model.*;
 public interface OfficeService {
 	public void SaveAdd(Office office);
@@ -8,6 +9,7 @@ public interface OfficeService {
 	public void SaveDel(Office office);
 	
 	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public Office View(long id);
 }

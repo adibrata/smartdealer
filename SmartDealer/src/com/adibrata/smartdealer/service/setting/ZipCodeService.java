@@ -15,6 +15,7 @@ public interface ZipCodeService {
 	public void SaveEdit(ZipCode zipcode);
 	public void SaveDel(ZipCode zipcode);
 	public List<ZipCode> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<ZipCode> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public ZipCode View(long id);
 	

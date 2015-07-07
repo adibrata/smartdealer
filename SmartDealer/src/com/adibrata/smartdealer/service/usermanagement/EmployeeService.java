@@ -15,6 +15,7 @@ public interface EmployeeService {
 	public void SaveEdit(Employee employee);
 	public void SaveDel(Employee employee);
 	public List<Employee>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Employee> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	
 	public Employee View(long id);

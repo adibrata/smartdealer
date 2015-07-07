@@ -18,6 +18,8 @@ public interface AssetDocMasterService {
 	public void SaveDel(AssetDocMaster assetDocMaster);
 	
 	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
+	
 	public long TotalRecord(String WherCond);
 	public AssetDocMaster View (long id);
 	

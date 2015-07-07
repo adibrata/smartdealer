@@ -13,6 +13,8 @@ import com.adibrata.smartdealer.model.*;
 public interface PurchaseOrderService {
 
 	public void Save(PurchaseOrderHdr purchaseOrderHdr, List<PurchaseOrderDtl> lstpurchaseOrderDtl);
-	public List Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
+	
 	public long TotalRecord(String WherCond);
 }

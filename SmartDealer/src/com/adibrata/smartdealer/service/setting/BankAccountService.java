@@ -16,6 +16,7 @@ public interface BankAccountService {
 	public void SaveDel(BankAccount bankAccount);
 	
 	public List<BankAccount> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<BankAccount> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public BankAccount View (long id);
 }

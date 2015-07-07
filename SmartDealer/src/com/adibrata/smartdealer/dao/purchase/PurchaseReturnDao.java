@@ -121,8 +121,9 @@ public class PurchaseReturnDao implements PurchaseReturnService {
 	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Paging(int,
 	 * java.lang.String, java.lang.String)
 	 */
+	
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -138,6 +139,14 @@ public class PurchaseReturnDao implements PurchaseReturnService {
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+
+	@Override
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

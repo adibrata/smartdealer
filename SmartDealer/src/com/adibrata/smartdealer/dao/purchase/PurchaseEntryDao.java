@@ -170,4 +170,11 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 		return 0;
 	}
 
+	@Override
+	public List<Supplier> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

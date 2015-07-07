@@ -96,4 +96,11 @@ public class PuchaseInvoiceDao implements PurchaseInvoiceService {
 		return null;
 	}
 
+	@Override
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

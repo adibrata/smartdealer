@@ -15,7 +15,7 @@ public interface DuplicateCustomerService {
 
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);
-	public List<Object[]> View(long id);
-	public List<Object[]> SearchDuplicate (String name, String IdNo, String MotherName);
+	public List<Customer> View(long id);
+	public List<Customer> SearchDuplicate (String name, String IdNo, String MotherName);
 	
 }

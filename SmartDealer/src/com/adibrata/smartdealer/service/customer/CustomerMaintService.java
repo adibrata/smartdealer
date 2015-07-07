@@ -7,6 +7,7 @@ import java.util.List;
 
 
 
+
 /**
  * @author Henry
  *
@@ -17,6 +18,7 @@ public interface CustomerMaintService {
 	public void Save(Customer customer);
 	
 	public List<Customer>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public Customer View(long id);
 }

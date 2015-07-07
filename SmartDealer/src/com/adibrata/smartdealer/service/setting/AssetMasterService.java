@@ -16,6 +16,7 @@ public interface AssetMasterService {
 	public void SaveDel(AssetMaster stock);
 	
 	public List<AssetMaster> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<AssetMaster> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public AssetMaster View (long id);
 }

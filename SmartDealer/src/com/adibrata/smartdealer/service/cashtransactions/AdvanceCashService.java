@@ -13,6 +13,6 @@ import com.adibrata.smartdealer.model.*;
 public interface AdvanceCashService {
 	public void Save (AdvanceCash advancecash);
 	public List<Object[]>  Paging(int CurrentPage, String WhereCond, String SortBy);
-	public double TotalRecord(String WherCond);
+	public long TotalRecord(String WherCond);
 	public List<Object[]> View(long id);
 }

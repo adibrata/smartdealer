@@ -2,8 +2,8 @@ package com.adibrata.smartdealer.service.purchase;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.PurchaseInvoice;
-
 import com.adibrata.smartdealer.model.PurchaseOrderHdr;
 
 public interface PurchaseInvoiceService {
@@ -11,7 +11,7 @@ public interface PurchaseInvoiceService {
 
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy);
-
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 
 	public PurchaseInvoice View(long id);

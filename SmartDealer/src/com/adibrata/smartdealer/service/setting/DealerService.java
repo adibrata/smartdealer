@@ -6,6 +6,8 @@ package com.adibrata.smartdealer.service.setting;
 import java.util.List;
 
 
+
+import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.Supplier;
 
 /**
@@ -19,6 +21,7 @@ public interface DealerService {
 	public void SaveDel(Supplier supplier);
 	
 	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<Supplier> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	
 	public Supplier View(long id);

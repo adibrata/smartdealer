@@ -25,6 +25,9 @@ public interface JournalSchemeService {
 	public List<CoaSchmHdr> PagingHeader(int CurrentPage, String WhereCond,
 			String SortBy);
 
+	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast);
+
 	public long TotalRecord(String WherCond);
 
 	public List<Coamaster> ListCoaMaster();

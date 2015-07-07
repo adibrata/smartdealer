@@ -8,7 +8,8 @@ public interface UserRoleService {
 	public void SaveEdit(MsUserRole msUserRole);
 	public void SaveDel(MsUserRole msUserRole);
 	
-	public List<Object[]>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<MsRole>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public MsUserRole View(long Id);
 }
