@@ -17,6 +17,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import com.adibrata.smartdealer.model.OtherDsbDtl;
 import com.adibrata.smartdealer.model.PurchaseInvoice;
 import com.adibrata.smartdealer.model.PurchaseOrderHdr;
+import com.adibrata.smartdealer.model.SalesOrderHdr;
 import com.adibrata.smartdealer.service.purchase.PurchaseInvoiceService;
 
 /**
@@ -99,6 +100,12 @@ public class PuchaseInvoiceDao implements PurchaseInvoiceService {
 	@Override
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SalesOrderHdr viewSalesOrderHdr(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

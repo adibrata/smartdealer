@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 5, 2015 7:32:33 PM by Hibernate Tools 4.3.1
+// Generated Jul 7, 2015 12:58:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -58,7 +58,7 @@ public class EntrustHdr implements java.io.Serializable {
 		this.entrustDtls = entrustDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;

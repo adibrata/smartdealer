@@ -76,7 +76,7 @@ public class OfficeDao implements OfficeService {
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -97,7 +97,7 @@ public class OfficeDao implements OfficeService {
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			if (WherCond != "") {
@@ -107,9 +107,9 @@ public class OfficeDao implements OfficeService {
 			countQ = countQ + hql.toString();
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -131,7 +131,25 @@ public class OfficeDao implements OfficeService {
 	public void SaveAdd(Office office) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		StringBuilder fulladdress = new StringBuilder();
+
 		try {
+			fulladdress.append(office.getAddress());
+			fulladdress.append(" RT/RW: ");
+			fulladdress.append(office.getRt());
+			fulladdress.append("/");
+			fulladdress.append(office.getRw());
+			fulladdress.append(" Kelurahan: ");
+			fulladdress.append(office.getKelurahan());
+			fulladdress.append(" Kecamatan: ");
+			fulladdress.append(office.getKecamatan());
+			fulladdress.append(" ");
+			fulladdress.append(office.getCity());
+			fulladdress.append(" ");
+			fulladdress.append(office.getZipcode());
+			fulladdress.append(" ");
+
+			office.setFullAddress(fulladdress.toString());
 			office.setDtmCrt(dtmupd.getTime());
 			office.setDtmUpd(dtmupd.getTime());
 			session.save(office);
@@ -160,7 +178,25 @@ public class OfficeDao implements OfficeService {
 	public void SaveEdit(Office office) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		StringBuilder fulladdress = new StringBuilder();
+
 		try {
+			fulladdress.append(office.getAddress());
+			fulladdress.append(" RT/RW: ");
+			fulladdress.append(office.getRt());
+			fulladdress.append("/");
+			fulladdress.append(office.getRw());
+			fulladdress.append(" Kelurahan: ");
+			fulladdress.append(office.getKelurahan());
+			fulladdress.append(" Kecamatan: ");
+			fulladdress.append(office.getKecamatan());
+			fulladdress.append(" ");
+			fulladdress.append(office.getCity());
+			fulladdress.append(" ");
+			fulladdress.append(office.getZipcode());
+			fulladdress.append(" ");
+
+			office.setFullAddress(fulladdress.toString());
 
 			office.setDtmUpd(dtmupd.getTime());
 			session.update(office);
@@ -181,8 +217,7 @@ public class OfficeDao implements OfficeService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.OfficeService#SaveDel(com
+	 * @see com.adibrata.smartdealer.service.setting.OfficeService#SaveDel(com
 	 * .adibrata.smartdealer.model.Office)
 	 */
 	@Override
@@ -229,31 +264,31 @@ public class OfficeDao implements OfficeService {
 	public List<Office> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<Office> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<Office> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord (WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

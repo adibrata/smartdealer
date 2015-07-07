@@ -21,14 +21,16 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.setting.WorkshopService;
-public class WorkshopDao implements WorkshopService{
-	String userupd; 
+
+public class WorkshopDao implements WorkshopService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public WorkshopDao() {
 		// TODO Auto-generated constructor stub
 		try {
@@ -46,77 +48,139 @@ public class WorkshopDao implements WorkshopService{
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveAdd(com.adibrata.smartdealer.model.Workshop)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.WorkshopService#SaveAdd(com.
+	 * adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
 	public void SaveAdd(Workshop workshop) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		StringBuilder fulladdress = new StringBuilder();
+
 		try {
+			fulladdress.append(workshop.getAddress());
+			fulladdress.append(" RT/RW: ");
+			fulladdress.append(workshop.getRt());
+			fulladdress.append("/");
+			fulladdress.append(workshop.getRw());
+			fulladdress.append(" Kelurahan: ");
+			fulladdress.append(workshop.getKelurahan());
+			fulladdress.append(" Kecamatan: ");
+			fulladdress.append(workshop.getKecamatan());
+			fulladdress.append(" ");
+			fulladdress.append(workshop.getCity());
+			fulladdress.append(" ");
+			fulladdress.append(workshop.getZipCode());
+			fulladdress.append(" ");
+
+			workshop.setFullAddress(fulladdress.toString());
 			workshop.setDtmCrt(dtmupd.getTime());
 			workshop.setDtmUpd(dtmupd.getTime());
 			session.save(workshop);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		
+
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveEdit(com.adibrata.smartdealer.model.Workshop)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.WorkshopService#SaveEdit(com
+	 * .adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
 	public void SaveEdit(Workshop workshop) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		StringBuilder fulladdress = new StringBuilder();
+
 		try {
+			fulladdress.append(workshop.getAddress());
+			fulladdress.append(" RT/RW: ");
+			fulladdress.append(workshop.getRt());
+			fulladdress.append("/");
+			fulladdress.append(workshop.getRw());
+			fulladdress.append(" Kelurahan: ");
+			fulladdress.append(workshop.getKelurahan());
+			fulladdress.append(" Kecamatan: ");
+			fulladdress.append(workshop.getKecamatan());
+			fulladdress.append(" ");
+			fulladdress.append(workshop.getCity());
+			fulladdress.append(" ");
+			fulladdress.append(workshop.getZipCode());
+			fulladdress.append(" ");
+
+			workshop.setFullAddress(fulladdress.toString());
 			workshop.setDtmCrt(dtmupd.getTime());
 			workshop.setDtmUpd(dtmupd.getTime());
 			session.update(workshop);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#SaveDel(com.adibrata.smartdealer.model.Workshop)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.WorkshopService#SaveDel(com.
+	 * adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
 	public void SaveDel(Workshop workshop) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			session.delete(workshop);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#Paging(int, java.lang.String, java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Workshop> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Workshop> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Workshop> list = null;
@@ -133,7 +197,7 @@ public class WorkshopDao implements WorkshopService{
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -143,13 +207,18 @@ public class WorkshopDao implements WorkshopService{
 		}
 		return list;
 	}
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.WorkshopService#TotalRecord(java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.WorkshopService#TotalRecord(
+	 * java.lang.String)
 	 */
 	@Override
 	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
-		long countResults = 0 ;
+		long countResults = 0;
 		try {
 			String countQ = "Select count (id) " + strStatement;
 			if (WherCond != "") {
@@ -159,9 +228,9 @@ public class WorkshopDao implements WorkshopService{
 			countQ = countQ + hql.toString();
 			Query countQuery = session.createQuery(countQ);
 			countResults = (long) countQuery.uniqueResult();
-		
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -171,51 +240,55 @@ public class WorkshopDao implements WorkshopService{
 		}
 		return countResults;
 	}
+
 	@Override
 	public Workshop View(long id) {
 		// TODO Auto-generated method stub
 		Workshop workshop = null;
 		try {
-			workshop =  (Workshop) session.get(Workshop.class, id);
-			
+			workshop = (Workshop) session.get(Workshop.class, id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return workshop;
 	}
+
 	@Override
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<Workshop> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<Workshop> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord (WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }
