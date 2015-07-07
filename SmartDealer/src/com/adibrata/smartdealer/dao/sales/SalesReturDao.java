@@ -17,6 +17,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.*;
 
@@ -25,7 +26,7 @@ import com.adibrata.smartdealer.service.sales.*;
  * @author Henry
  *
  */
-public class SalesReturDao implements SalesReturnService {
+public class SalesReturDao extends DaoBase implements SalesReturnService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -51,8 +52,6 @@ public class SalesReturDao implements SalesReturnService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-
-
 
 	/*
 	 * (non-Javadoc)
@@ -112,8 +111,6 @@ public class SalesReturDao implements SalesReturnService {
 		
 	}
 
-
-
 	@Override
 	public List<ReturSalesHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
@@ -141,8 +138,6 @@ public class SalesReturDao implements SalesReturnService {
 		}
 		return list;
 	}
-
-
 
 	@Override
 	public List<ReturSalesHdr> Paging(int CurrentPage, String WhereCond,

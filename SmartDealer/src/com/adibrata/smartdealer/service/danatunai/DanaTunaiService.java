@@ -11,11 +11,12 @@ package com.adibrata.smartdealer.service.danatunai;
 import java.util.List;
 
 import com.adibrata.smartdealer.model.*;
-public interface DanaTunaiService {
+import com.adibrata.smartdealer.service.SeviceBase;
+public interface DanaTunaiService  extends SeviceBase {
 	public void Save(DanaTunai danaTunai);
 
-	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy);
-
+	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy, boolean isLast);
 	public long TotalRecord(String WherCond);
 	public DanaTunai viewDanaTunai(long id);
 }

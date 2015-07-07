@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService;
 
@@ -23,16 +24,17 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
-public class AdvanceCashDao implements AdvanceCashService {
-	String userupd; 
+
+public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	public AdvanceCashDao ()
-	{
+
+	public AdvanceCashDao() {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
@@ -48,9 +50,13 @@ public class AdvanceCashDao implements AdvanceCashService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#Save(com.adibrata.smartdealer.model.AdvanceCash)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#
+	 * Save(com.adibrata.smartdealer.model.AdvanceCash)
 	 */
 	@Override
 	public void Save(AdvanceCash advancecash) {
@@ -60,39 +66,45 @@ public class AdvanceCashDao implements AdvanceCashService {
 			advancecash.setDtmCrt(dtmupd.getTime());
 			advancecash.setDtmUpd(dtmupd.getTime());
 			session.save(advancecash);
-			
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#
+	 * Paging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<AdvanceCash> Paging(int CurrentPage, String WhereCond,
+			String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		StringBuilder hql = new StringBuilder();
+		List<AdvanceCash> list = null;
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#TotalRecord(java.lang.String)
-	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0;
 		try {
-			String countQ = "Select count (id) " + strStatement;
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
 		} catch (Exception exp) {
 
@@ -103,13 +115,57 @@ public class AdvanceCashDao implements AdvanceCashService {
 					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		return countResults;
+		return list;
 	}
 
 	@Override
-	public List<Object[]> View(long id) {
+	public AdvanceCash View(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		AdvanceCash advanceCash = new AdvanceCash();
+		try {
+			advanceCash = (AdvanceCash) session.get(AdvanceCash.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return advanceCash;
+	}
+
+	@Override
+	public List<AdvanceCash> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<AdvanceCash> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

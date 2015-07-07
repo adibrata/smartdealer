@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 12:58:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,10 +27,13 @@ public class OtherDsbHdr implements java.io.Serializable {
 	private long id;
 	private Office office;
 	private Partner partner;
-	private BigDecimal rcvAmount;
+	private BigDecimal disbAmount;
 	private Date postingDate;
 	private Date valueDate;
 	private Long bankAccountId;
+	private String refNo;
+	private String notes;
+	private String destination;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -45,16 +48,20 @@ public class OtherDsbHdr implements java.io.Serializable {
 	}
 
 	public OtherDsbHdr(long id, Office office, Partner partner,
-			BigDecimal rcvAmount, Date postingDate, Date valueDate,
-			Long bankAccountId, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<OtherDsbDtl> otherDsbDtls) {
+			BigDecimal disbAmount, Date postingDate, Date valueDate,
+			Long bankAccountId, String refNo, String notes, String destination,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Set<OtherDsbDtl> otherDsbDtls) {
 		this.id = id;
 		this.office = office;
 		this.partner = partner;
-		this.rcvAmount = rcvAmount;
+		this.disbAmount = disbAmount;
 		this.postingDate = postingDate;
 		this.valueDate = valueDate;
 		this.bankAccountId = bankAccountId;
+		this.refNo = refNo;
+		this.notes = notes;
+		this.destination = destination;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -62,7 +69,7 @@ public class OtherDsbHdr implements java.io.Serializable {
 		this.otherDsbDtls = otherDsbDtls;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -92,13 +99,13 @@ public class OtherDsbHdr implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "RcvAmount", precision = 17)
-	public BigDecimal getRcvAmount() {
-		return this.rcvAmount;
+	@Column(name = "DisbAmount", precision = 17)
+	public BigDecimal getDisbAmount() {
+		return this.disbAmount;
 	}
 
-	public void setRcvAmount(BigDecimal rcvAmount) {
-		this.rcvAmount = rcvAmount;
+	public void setDisbAmount(BigDecimal disbAmount) {
+		this.disbAmount = disbAmount;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -128,6 +135,33 @@ public class OtherDsbHdr implements java.io.Serializable {
 
 	public void setBankAccountId(Long bankAccountId) {
 		this.bankAccountId = bankAccountId;
+	}
+
+	@Column(name = "RefNo", length = 50)
+	public String getRefNo() {
+		return this.refNo;
+	}
+
+	public void setRefNo(String refNo) {
+		this.refNo = refNo;
+	}
+
+	@Column(name = "Notes", length = 8000)
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	@Column(name = "Destination", length = 50)
+	public String getDestination() {
+		return this.destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

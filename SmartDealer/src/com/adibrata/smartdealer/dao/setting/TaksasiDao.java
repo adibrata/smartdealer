@@ -19,10 +19,11 @@ import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.setting.TaksasiService;
 
-public class TaksasiDao implements TaksasiService {
+public class TaksasiDao extends DaoBase implements TaksasiService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -48,12 +49,6 @@ public class TaksasiDao implements TaksasiService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.setting.Taksasi#Save()
-	 */
 
 	/*
 	 * (non-Javadoc)
@@ -88,39 +83,6 @@ public class TaksasiDao implements TaksasiService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.Taksasi#TotalRecord(java.lang
-	 * .String)
-	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0;
-		try {
-			String countQ = "Select count (id) " + strStatement;
-			if (WherCond != "") {
-				hql.append(" where ");
-				hql.append(WherCond);
-			}
-			countQ = countQ + hql.toString();
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return countResults;
 	}
 
 	/*
@@ -232,31 +194,31 @@ public class TaksasiDao implements TaksasiService {
 	public List<Taksasi> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<Taksasi> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<Taksasi> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord (WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

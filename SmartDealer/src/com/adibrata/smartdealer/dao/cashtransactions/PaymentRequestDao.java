@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.cashtransactions.PaymentRequestService;
 
@@ -24,7 +25,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
-public class PaymentRequestDao implements PaymentRequestService {
+public class PaymentRequestDao extends DaoBase implements PaymentRequestService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -97,9 +98,34 @@ public class PaymentRequestDao implements PaymentRequestService {
 	 * #PurchaseInvoicePaging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub
+				StringBuilder hql = new StringBuilder();
+				List<PayReqHdr> list = null;
+
+				try {
+					hql.append(strStatement);
+					if (WhereCond != "") {
+						hql.append(" where ");
+						hql.append(WhereCond);
+					}
+					Query selectQuery = session.createQuery(hql.toString());
+					long totalrecord = TotalRecord(WhereCond);
+					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+					selectQuery.setMaxResults(pagesize);
+					list = selectQuery.list();
+
+				} catch (Exception exp) {
+
+					ExceptionEntities lEntExp = new ExceptionEntities();
+					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+							.getClassName());
+					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+							.getMethodName());
+					ExceptionHelper.WriteException(lEntExp, exp);
+				}
+				return list;
 	}
 
 	/*
@@ -109,10 +135,26 @@ public class PaymentRequestDao implements PaymentRequestService {
 	 * com.adibrata.smartdealer.service.cashtransactions.PaymentRequestService
 	 * #TotalRecord(java.lang.String)
 	 */
+	
+
 	@Override
-	public long TotalRecord(String WherCond) {
+	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+	@Override
+	public List<PayReqDtl> lstPayReqDtl(int CurrentPage, String WhereCond,
+			String SortBy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PayReqDtl View(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

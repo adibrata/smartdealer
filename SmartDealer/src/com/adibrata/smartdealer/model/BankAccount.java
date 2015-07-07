@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 12:58:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -43,6 +43,7 @@ public class BankAccount implements java.io.Serializable {
 	private String phoneNo2;
 	private String areaFax;
 	private String faxNo;
+	private String fullAddress;
 	private BigDecimal endingBalance;
 	private String coacode;
 	private Long seqNo;
@@ -66,10 +67,10 @@ public class BankAccount implements java.io.Serializable {
 			String address, String rt, String rw, String kelurahan,
 			String kecamatan, String city, String zipCode, String areaPhone1,
 			String phoneNo1, String areaPhone2, String phoneNo2,
-			String areaFax, String faxNo, BigDecimal endingBalance,
-			String coacode, Long seqNo, Character resetFlag,
-			String formatSeqNo, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<PayReqHdr> payReqHdrs) {
+			String areaFax, String faxNo, String fullAddress,
+			BigDecimal endingBalance, String coacode, Long seqNo,
+			Character resetFlag, String formatSeqNo, Date dtmUpd,
+			String usrUpd, Date dtmCrt, String usrCrt, Set<PayReqHdr> payReqHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
@@ -89,6 +90,7 @@ public class BankAccount implements java.io.Serializable {
 		this.phoneNo2 = phoneNo2;
 		this.areaFax = areaFax;
 		this.faxNo = faxNo;
+		this.fullAddress = fullAddress;
 		this.endingBalance = endingBalance;
 		this.coacode = coacode;
 		this.seqNo = seqNo;
@@ -101,7 +103,7 @@ public class BankAccount implements java.io.Serializable {
 		this.payReqHdrs = payReqHdrs;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -272,6 +274,15 @@ public class BankAccount implements java.io.Serializable {
 
 	public void setFaxNo(String faxNo) {
 		this.faxNo = faxNo;
+	}
+
+	@Column(name = "FullAddress", length = 500)
+	public String getFullAddress() {
+		return this.fullAddress;
+	}
+
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
 	}
 
 	@Column(name = "EndingBalance", precision = 17)

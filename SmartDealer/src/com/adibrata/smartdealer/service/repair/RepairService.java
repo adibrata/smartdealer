@@ -9,12 +9,13 @@ import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.ServiceDtl;
 import com.adibrata.smartdealer.model.ServiceHdr;
 import com.adibrata.smartdealer.model.Workshop;
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry Setiap perbaikan menyimpan account payable untuk ditagih
  *
  */
-public interface RepairService {
+public interface RepairService  extends SeviceBase {
 	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> serviceDtls);
 
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,

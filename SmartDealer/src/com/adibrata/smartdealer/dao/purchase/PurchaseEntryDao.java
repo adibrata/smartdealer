@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 
@@ -24,7 +25,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
-public class PurchaseEntryDao implements PurchaseOrderService {
+public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

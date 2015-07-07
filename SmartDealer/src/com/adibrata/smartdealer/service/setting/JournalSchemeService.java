@@ -28,8 +28,6 @@ public interface JournalSchemeService {
 	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast);
 
-	public long TotalRecord(String WherCond);
-
 	public List<Coamaster> ListCoaMaster();
 
 	public CoaSchmHdr ViewHeader(long id);

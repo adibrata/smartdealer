@@ -8,7 +8,8 @@ package com.adibrata.smartdealer.service.accpay;
  *
  */
 import com.adibrata.smartdealer.model.*;
+import com.adibrata.smartdealer.service.SeviceBase;
 
-public interface PVApprovalService {
+public interface PVApprovalService  extends SeviceBase {
 
 }

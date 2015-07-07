@@ -11,6 +11,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.setting.DealerService;
 
@@ -24,7 +25,7 @@ import util.adibrata.support.transno.GetTransNo;
  * @author Henry
  *
  */
-public class DealerDao implements DealerService {
+public class DealerDao extends DaoBase implements DealerService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -211,38 +212,6 @@ public class DealerDao implements DealerService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.DealerService#TotalRecord(java
-	 * .lang.String)
-	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0;
-		try {
-			String countQ = "Select count (id) " + strStatement;
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
-			if (WherCond != "") {
-				hql.append(" where ");
-				hql.append(WherCond);
-			}
-			countQ = countQ + hql.toString();
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return countResults;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.cashtransactions.PettyCashService;
 
@@ -23,7 +24,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
-public class PettyCashDao implements PettyCashService {
+public class PettyCashDao extends DaoBase implements PettyCashService {
 	String userupd; 
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -77,23 +78,31 @@ public class PettyCashDao implements PettyCashService {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#PurchaseInvoicePaging(int, java.lang.String, java.lang.String)
-	 */
+
 	@Override
-	public List PurchaseInvoicePaging(int CurrentPage, String WhereCond,
+	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#TotalRecord(java.lang.String)
-	 */
 	@Override
-	public long TotalRecord(String WherCond) {
+	public List<PettyCashDtl> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+	@Override
+	public PettyCashHdr View(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PettyCashDtl> ViewDetail(PettyCashHdr pettyCashHdr) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

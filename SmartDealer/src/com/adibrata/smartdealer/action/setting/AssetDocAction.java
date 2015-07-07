@@ -181,6 +181,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		try {
 			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
 					this.getPageNumber(), this.WhereCond(), "");
+			
 		}
 
 		catch (Exception exp) {

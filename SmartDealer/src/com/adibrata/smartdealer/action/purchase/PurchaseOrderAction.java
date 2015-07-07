@@ -4,8 +4,6 @@ package com.adibrata.smartdealer.action.purchase;
  * @author Henry
  *
  */
-import Model.Mahasiswa;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -97,7 +95,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		return status;
+
 	}
 
 	public String execute() {

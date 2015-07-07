@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 12:58:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,10 +27,13 @@ public class OtherRcvHdr implements java.io.Serializable {
 	private long id;
 	private Office office;
 	private String partnerCode;
+	private String rcvFrom;
 	private BigDecimal rcvAmount;
+	private String reffNo;
 	private Date postingDate;
 	private Date valueDate;
 	private Long bankAccountId;
+	private String notes;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -45,16 +48,20 @@ public class OtherRcvHdr implements java.io.Serializable {
 	}
 
 	public OtherRcvHdr(long id, Office office, String partnerCode,
-			BigDecimal rcvAmount, Date postingDate, Date valueDate,
-			Long bankAccountId, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<OtherRcvDtl> otherRcvDtls) {
+			String rcvFrom, BigDecimal rcvAmount, String reffNo,
+			Date postingDate, Date valueDate, Long bankAccountId, String notes,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Set<OtherRcvDtl> otherRcvDtls) {
 		this.id = id;
 		this.office = office;
 		this.partnerCode = partnerCode;
+		this.rcvFrom = rcvFrom;
 		this.rcvAmount = rcvAmount;
+		this.reffNo = reffNo;
 		this.postingDate = postingDate;
 		this.valueDate = valueDate;
 		this.bankAccountId = bankAccountId;
+		this.notes = notes;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -62,7 +69,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.otherRcvDtls = otherRcvDtls;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -91,6 +98,15 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.partnerCode = partnerCode;
 	}
 
+	@Column(name = "RcvFrom", length = 50)
+	public String getRcvFrom() {
+		return this.rcvFrom;
+	}
+
+	public void setRcvFrom(String rcvFrom) {
+		this.rcvFrom = rcvFrom;
+	}
+
 	@Column(name = "RcvAmount", precision = 17)
 	public BigDecimal getRcvAmount() {
 		return this.rcvAmount;
@@ -98,6 +114,15 @@ public class OtherRcvHdr implements java.io.Serializable {
 
 	public void setRcvAmount(BigDecimal rcvAmount) {
 		this.rcvAmount = rcvAmount;
+	}
+
+	@Column(name = "ReffNo", length = 50)
+	public String getReffNo() {
+		return this.reffNo;
+	}
+
+	public void setReffNo(String reffNo) {
+		this.reffNo = reffNo;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -127,6 +152,15 @@ public class OtherRcvHdr implements java.io.Serializable {
 
 	public void setBankAccountId(Long bankAccountId) {
 		this.bankAccountId = bankAccountId;
+	}
+
+	@Column(name = "Notes", length = 8000)
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

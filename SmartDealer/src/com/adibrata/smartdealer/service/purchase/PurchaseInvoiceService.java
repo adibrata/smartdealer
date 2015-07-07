@@ -6,8 +6,9 @@ import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.PurchaseInvoice;
 import com.adibrata.smartdealer.model.PurchaseOrderHdr;
 import com.adibrata.smartdealer.model.SalesOrderHdr;
+import com.adibrata.smartdealer.service.SeviceBase;
 
-public interface PurchaseInvoiceService {
+public interface PurchaseInvoiceService  extends SeviceBase {
 	public void Save(PurchaseInvoice purchaseInvoice);
 
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,

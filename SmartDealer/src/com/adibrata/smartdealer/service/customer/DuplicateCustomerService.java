@@ -6,12 +6,14 @@ package com.adibrata.smartdealer.service.customer;
 import java.util.List;
 
 
+
 /**
  * @author Henry
  *
  */
 import com.adibrata.smartdealer.model.*;
-public interface DuplicateCustomerService {
+import com.adibrata.smartdealer.service.SeviceBase;
+public interface DuplicateCustomerService  extends SeviceBase {
 
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

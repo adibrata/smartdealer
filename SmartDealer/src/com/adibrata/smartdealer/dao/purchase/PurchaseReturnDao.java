@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 
@@ -24,7 +25,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
-public class PurchaseReturnDao implements PurchaseReturnService {
+public class PurchaseReturnDao extends DaoBase implements PurchaseReturnService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -128,19 +129,6 @@ public class PurchaseReturnDao implements PurchaseReturnService {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.purchase.PurchaseOrder#TotalRecord(java
-	 * .lang.String)
-	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 
 	@Override
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,

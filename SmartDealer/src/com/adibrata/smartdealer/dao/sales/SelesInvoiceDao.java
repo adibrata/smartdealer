@@ -23,13 +23,14 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 
 /**
  * @author Henry
  *
  */
-public class SelesInvoiceDao implements SalesInvoiceService {
+public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 
 	/**
 	 * 
@@ -87,27 +88,6 @@ public class SelesInvoiceDao implements SalesInvoiceService {
 		}
 		return list;
 
-	}
-
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0;
-		try {
-			String countQ = "Select count (id) " + strStatement;
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return countResults;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 import com.adibrata.smartdealer.service.repair.RepairService;
@@ -26,7 +27,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
-public class RepairEntryDao implements RepairService {
+public class RepairEntryDao  extends DaoBase implements RepairService {
 
 	/**
 	 * 
@@ -89,12 +90,6 @@ public class RepairEntryDao implements RepairService {
 	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

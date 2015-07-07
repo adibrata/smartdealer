@@ -20,10 +20,11 @@ import util.adibrata.framework.encryption.EncryptionHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
+import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.usermanagement.UserService;
 
-public class UserRegisterDao implements UserService {
+public class UserRegisterDao extends DaoBase implements UserService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -170,38 +171,6 @@ public class UserRegisterDao implements UserService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.usermanagement.UserRegisterService#
-	 * TotalRecord(java.lang.String)
-	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0 ;
-		try {
-			String countQ = "Select count (id) " + strStatement;
-			if (WherCond != "") {
-				hql.append(" where ");
-				hql.append(WherCond);
-			}
-			countQ = countQ + hql.toString();
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
-		
-		} catch (Exception exp) {
-			
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return countResults;
 	}
 
 	public boolean PasswordVerification(MsUser msUser) {

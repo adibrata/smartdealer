@@ -8,13 +8,15 @@ import java.util.List;
 
 
 
+
 /**
  * @author Henry
  *
  */
 import com.adibrata.smartdealer.model.*;
+import com.adibrata.smartdealer.service.SeviceBase;
 
-public interface CustomerMaintService {
+public interface CustomerMaintService extends SeviceBase  {
 	public void Save(Customer customer);
 	
 	public List<Customer>  Paging(int CurrentPage, String WhereCond, String SortBy);
