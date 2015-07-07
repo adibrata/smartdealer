@@ -91,7 +91,7 @@ public class PettyCashDao implements PettyCashService {
 	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double TotalRecord(String WherCond) {
+	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

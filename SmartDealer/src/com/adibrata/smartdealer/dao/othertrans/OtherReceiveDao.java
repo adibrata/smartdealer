@@ -93,7 +93,7 @@ public class OtherReceiveDao implements OtherReceiveService{
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double TotalRecord(String WherCond) {
+	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {

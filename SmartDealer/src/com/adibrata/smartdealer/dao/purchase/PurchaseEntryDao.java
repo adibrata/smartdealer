@@ -147,19 +147,6 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Paging(int,
-	 * java.lang.String, java.lang.String)
-	 */
-	@Override
-	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.adibrata.smartdealer.service.purchase.PurchaseOrder#TotalRecord(java
 	 * .lang.String)
@@ -170,9 +157,31 @@ public class PurchaseEntryDao implements PurchaseOrderService {
 		return 0;
 	}
 
+
+
 	@Override
-	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage,
+			String WhereCond, String SortBy) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage,
+			String WhereCond, String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(
+			PurchaseOrderHdr purchaseOrderHdr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

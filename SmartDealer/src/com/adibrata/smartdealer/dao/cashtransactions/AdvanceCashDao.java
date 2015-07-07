@@ -86,7 +86,7 @@ public class AdvanceCashDao implements AdvanceCashService {
 	 * @see com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService#TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double TotalRecord(String WherCond) {
+	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {

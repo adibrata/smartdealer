@@ -108,7 +108,7 @@ public class OtherDisburseDao implements OtherDisburseService {
 	 * TotalRecord(java.lang.String)
 	 */
 	@Override
-	public double TotalRecord(String WherCond) {
+	public long TotalRecord(String WherCond) {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {

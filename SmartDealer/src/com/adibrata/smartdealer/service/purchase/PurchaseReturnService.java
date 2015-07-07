@@ -15,4 +15,5 @@ public interface PurchaseReturnService {
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy);
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
+	public PurchaseOrderHdr viewPurchaseOrderHdr (long id);
 }

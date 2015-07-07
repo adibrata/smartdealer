@@ -144,4 +144,11 @@ public class CustomerDao implements CustomerMaintService {
 		return customer;
 	}
 
+	@Override
+	public List<Customer> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

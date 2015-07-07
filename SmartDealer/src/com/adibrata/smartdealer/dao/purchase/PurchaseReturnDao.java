@@ -149,4 +149,10 @@ public class PurchaseReturnDao implements PurchaseReturnService {
 		return null;
 	}
 
+	@Override
+	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
