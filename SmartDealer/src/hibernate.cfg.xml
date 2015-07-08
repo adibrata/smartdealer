@@ -21,7 +21,6 @@
         <property name="hibernate.validator.apply_to_ddl">auto</property>
         <mapping class="com.adibrata.smartdealer.model.PettyCashDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
-        <mapping class="com.adibrata.smartdealer.model.AssetServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.JrnlDtl" />
         <mapping class="com.adibrata.smartdealer.model.CoaSchmDtl" />
