@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:17:27 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -65,8 +65,6 @@ public class Partner implements java.io.Serializable {
 	private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 	private Set<MasterTable> masterTables = new HashSet<MasterTable>(0);
 	private Set<Workshop> workshops = new HashSet<Workshop>(0);
-	private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(
-			0);
 	private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
 	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 	private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
@@ -113,7 +111,6 @@ public class Partner implements java.io.Serializable {
 			Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos,
 			Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais,
 			Set<MasterTable> masterTables, Set<Workshop> workshops,
-			Set<AssetServiceHdr> assetServiceHdrs,
 			Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
@@ -168,7 +165,6 @@ public class Partner implements java.io.Serializable {
 		this.danaTunais = danaTunais;
 		this.masterTables = masterTables;
 		this.workshops = workshops;
-		this.assetServiceHdrs = assetServiceHdrs;
 		this.paymentVouchers = paymentVouchers;
 		this.serviceHdrs = serviceHdrs;
 		this.returPurchaseHdrs = returPurchaseHdrs;
@@ -577,15 +573,6 @@ public class Partner implements java.io.Serializable {
 
 	public void setWorkshops(Set<Workshop> workshops) {
 		this.workshops = workshops;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-	public Set<AssetServiceHdr> getAssetServiceHdrs() {
-		return this.assetServiceHdrs;
-	}
-
-	public void setAssetServiceHdrs(Set<AssetServiceHdr> assetServiceHdrs) {
-		this.assetServiceHdrs = assetServiceHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
