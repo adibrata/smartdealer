@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -49,6 +49,7 @@ public class Office implements java.io.Serializable {
 	private Date dtmCrt;
 	private String usrCrt;
 	private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
+	private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 	private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(
 			0);
 	private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
@@ -57,13 +58,17 @@ public class Office implements java.io.Serializable {
 			0);
 	private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
 	private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+	private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	private Set<Stock> stocks = new HashSet<Stock>(0);
+	private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 	private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 	private Set<AccountPayable> accountPayablesForOfficeId = new HashSet<AccountPayable>(
 			0);
 	private Set<AccountPayable> accountPayablesForOfficeDisbId = new HashSet<AccountPayable>(
 			0);
+	private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
+	private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 	private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
 			0);
 	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
@@ -82,14 +87,17 @@ public class Office implements java.io.Serializable {
 			String phoneNo2, String areaFax, String faxNo, String handphone,
 			String fullAddress, Character isActive, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs,
+			Set<EntrustHdr> entrustHdrs,
 			Set<PurchaseOrderHdr> purchaseOrderHdrs,
 			Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
-			Set<Employee> employees, Set<Stock> stocks,
+			Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees,
+			Set<Stock> stocks, Set<DanaTunai> danaTunais,
 			Set<PayReqHdr> payReqHdrs,
 			Set<AccountPayable> accountPayablesForOfficeId,
 			Set<AccountPayable> accountPayablesForOfficeDisbId,
+			Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs) {
 		this.id = id;
 		this.partner = partner;
@@ -117,22 +125,27 @@ public class Office implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 		this.otherRcvHdrs = otherRcvHdrs;
+		this.entrustHdrs = entrustHdrs;
 		this.purchaseOrderHdrs = purchaseOrderHdrs;
 		this.otherDsbHdrs = otherDsbHdrs;
 		this.paymentVouchers = paymentVouchers;
 		this.purchaseInvoices = purchaseInvoices;
 		this.salesInvoices = salesInvoices;
 		this.salesOrderHdrs = salesOrderHdrs;
+		this.returSalesHdrs = returSalesHdrs;
 		this.employees = employees;
 		this.stocks = stocks;
+		this.danaTunais = danaTunais;
 		this.payReqHdrs = payReqHdrs;
 		this.accountPayablesForOfficeId = accountPayablesForOfficeId;
 		this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
+		this.advanceCashes = advanceCashes;
+		this.pettyCashHdrs = pettyCashHdrs;
 		this.returPurchaseHdrs = returPurchaseHdrs;
 		this.serviceHdrs = serviceHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -371,6 +384,15 @@ public class Office implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<EntrustHdr> getEntrustHdrs() {
+		return this.entrustHdrs;
+	}
+
+	public void setEntrustHdrs(Set<EntrustHdr> entrustHdrs) {
+		this.entrustHdrs = entrustHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
 	public Set<PurchaseOrderHdr> getPurchaseOrderHdrs() {
 		return this.purchaseOrderHdrs;
 	}
@@ -425,6 +447,15 @@ public class Office implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<ReturSalesHdr> getReturSalesHdrs() {
+		return this.returSalesHdrs;
+	}
+
+	public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs) {
+		this.returSalesHdrs = returSalesHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
 	public Set<Employee> getEmployees() {
 		return this.employees;
 	}
@@ -440,6 +471,15 @@ public class Office implements java.io.Serializable {
 
 	public void setStocks(Set<Stock> stocks) {
 		this.stocks = stocks;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<DanaTunai> getDanaTunais() {
+		return this.danaTunais;
+	}
+
+	public void setDanaTunais(Set<DanaTunai> danaTunais) {
+		this.danaTunais = danaTunais;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
@@ -469,6 +509,24 @@ public class Office implements java.io.Serializable {
 	public void setAccountPayablesForOfficeDisbId(
 			Set<AccountPayable> accountPayablesForOfficeDisbId) {
 		this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<AdvanceCash> getAdvanceCashes() {
+		return this.advanceCashes;
+	}
+
+	public void setAdvanceCashes(Set<AdvanceCash> advanceCashes) {
+		this.advanceCashes = advanceCashes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<PettyCashHdr> getPettyCashHdrs() {
+		return this.pettyCashHdrs;
+	}
+
+	public void setPettyCashHdrs(Set<PettyCashHdr> pettyCashHdrs) {
+		this.pettyCashHdrs = pettyCashHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

@@ -17,6 +17,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 import com.adibrata.smartdealer.service.repair.RepairService;
@@ -59,19 +60,33 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 	}
 
 	@Override
-	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls) {
+	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstserviceItem) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.service, serviceHdr
+					.getPartner().getPartnerCode(), serviceHdr.getOffice()
+					.getId());
+			serviceHdr.setServiceNo(transno);
 			serviceHdr.setDtmCrt(dtmupd.getTime());
 			serviceHdr.setDtmUpd(dtmupd.getTime());
 			session.save(serviceHdr);
 			for (ServiceDtl arow : lstserviceDtls) {
-				ServiceDtl returSalesDtl = new ServiceDtl();
-				returSalesDtl = arow;
-				returSalesDtl.setDtmCrt(dtmupd.getTime());
-				returSalesDtl.setDtmUpd(dtmupd.getTime());
-				session.save(returSalesDtl);
+				ServiceDtl serviceDtl = new ServiceDtl();
+				
+				serviceDtl = arow;
+				serviceDtl.setServiceHdr(serviceHdr);
+				serviceDtl.setDtmCrt(dtmupd.getTime());
+				serviceDtl.setDtmUpd(dtmupd.getTime());
+				session.save(serviceDtl);
+				for (ServiceItem arow1 : lstserviceItem) {
+					ServiceItem serviceItem = new ServiceItem();
+					serviceItem = arow1;
+					serviceItem.setServiceDtl(serviceDtl);
+					serviceItem.setDtmCrt(dtmupd.getTime());
+					serviceItem.setDtmUpd(dtmupd.getTime());
+					session.save(serviceItem);
+				}
 			}
 			session.getTransaction().commit();
 

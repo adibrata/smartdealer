@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.danatunai.*;
 
@@ -65,6 +66,10 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.danatunai, danaTunai
+					.getPartner().getPartnerCode(), danaTunai.getOffice()
+					.getId());
+			danaTunai.setDanaTunaiNo (transno);
 			danaTunai.setDtmCrt(dtmupd.getTime());
 			danaTunai.setDtmUpd(dtmupd.getTime());
 			session.save(danaTunai);
@@ -108,6 +113,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 		return danaTunai;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<DanaTunai> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
@@ -137,6 +143,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<DanaTunai> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean isLast) {

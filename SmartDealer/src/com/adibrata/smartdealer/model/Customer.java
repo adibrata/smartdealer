@@ -1,14 +1,15 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -41,6 +42,10 @@ public class Customer implements java.io.Serializable {
 	private String faxNo;
 	private String handphone;
 	private String fullAddress;
+	private BigDecimal prepaidAmount;
+	private BigDecimal aramount;
+	private BigDecimal arpaid;
+	private BigDecimal arwaived;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -59,9 +64,10 @@ public class Customer implements java.io.Serializable {
 			String rt, String rw, String kelurahan, String city,
 			String zipcode, String type, String areaPhone1, String phoneNo1,
 			String areaPhone2, String phoneNo2, String areaFax, String faxNo,
-			String handphone, String fullAddress, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<SalesInvoice> salesInvoices,
-			Set<SalesOrderHdr> salesOrderHdrs) {
+			String handphone, String fullAddress, BigDecimal prepaidAmount,
+			BigDecimal aramount, BigDecimal arpaid, BigDecimal arwaived,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.name = name;
@@ -80,6 +86,10 @@ public class Customer implements java.io.Serializable {
 		this.faxNo = faxNo;
 		this.handphone = handphone;
 		this.fullAddress = fullAddress;
+		this.prepaidAmount = prepaidAmount;
+		this.aramount = aramount;
+		this.arpaid = arpaid;
+		this.arwaived = arwaived;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -88,7 +98,7 @@ public class Customer implements java.io.Serializable {
 		this.salesOrderHdrs = salesOrderHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -250,6 +260,42 @@ public class Customer implements java.io.Serializable {
 
 	public void setFullAddress(String fullAddress) {
 		this.fullAddress = fullAddress;
+	}
+
+	@Column(name = "PrepaidAmount", precision = 17)
+	public BigDecimal getPrepaidAmount() {
+		return this.prepaidAmount;
+	}
+
+	public void setPrepaidAmount(BigDecimal prepaidAmount) {
+		this.prepaidAmount = prepaidAmount;
+	}
+
+	@Column(name = "ARAmount", precision = 17)
+	public BigDecimal getAramount() {
+		return this.aramount;
+	}
+
+	public void setAramount(BigDecimal aramount) {
+		this.aramount = aramount;
+	}
+
+	@Column(name = "ARPaid", precision = 17)
+	public BigDecimal getArpaid() {
+		return this.arpaid;
+	}
+
+	public void setArpaid(BigDecimal arpaid) {
+		this.arpaid = arpaid;
+	}
+
+	@Column(name = "ARWaived", precision = 17)
+	public BigDecimal getArwaived() {
+		return this.arwaived;
+	}
+
+	public void setArwaived(BigDecimal arwaived) {
+		this.arwaived = arwaived;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

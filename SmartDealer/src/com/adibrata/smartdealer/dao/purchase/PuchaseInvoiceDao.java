@@ -15,6 +15,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.OtherDsbDtl;
 import com.adibrata.smartdealer.model.PurchaseInvoice;
 import com.adibrata.smartdealer.model.PurchaseOrderHdr;
@@ -61,6 +62,10 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.purchaseinvoice, purchaseInvoice
+					.getPartner().getPartnerCode(), purchaseInvoice.getOffice()
+					.getId());
+			purchaseInvoice.setPurchaseInvoiceNo(transno);
 			purchaseInvoice.setDtmCrt(dtmupd.getTime());
 			purchaseInvoice.setDtmUpd(dtmupd.getTime());
 			session.save(purchaseInvoice);

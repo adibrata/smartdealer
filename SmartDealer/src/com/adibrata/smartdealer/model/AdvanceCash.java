@@ -1,12 +1,13 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,8 +22,14 @@ import javax.persistence.TemporalType;
 public class AdvanceCash implements java.io.Serializable {
 
 	private long id;
+	private BankAccount bankAccount;
+	private Employee employee;
+	private Office office;
 	private Partner partner;
-	private Long officeId;
+	private String advanceNo;
+	private BigDecimal advanceAmount;
+	private Date postingDate;
+	private Date valueDate;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -35,18 +42,26 @@ public class AdvanceCash implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public AdvanceCash(long id, Partner partner, Long officeId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt) {
+	public AdvanceCash(long id, BankAccount bankAccount, Employee employee,
+			Office office, Partner partner, String advanceNo,
+			BigDecimal advanceAmount, Date postingDate, Date valueDate,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
+		this.bankAccount = bankAccount;
+		this.employee = employee;
+		this.office = office;
 		this.partner = partner;
-		this.officeId = officeId;
+		this.advanceNo = advanceNo;
+		this.advanceAmount = advanceAmount;
+		this.postingDate = postingDate;
+		this.valueDate = valueDate;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -54,6 +69,36 @@ public class AdvanceCash implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "BankAccountId")
+	public BankAccount getBankAccount() {
+		return this.bankAccount;
+	}
+
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "EmployeeId")
+	public Employee getEmployee() {
+		return this.employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeID")
+	public Office getOffice() {
+		return this.office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -66,13 +111,42 @@ public class AdvanceCash implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "OfficeID")
-	public Long getOfficeId() {
-		return this.officeId;
+	@Column(name = "AdvanceNo", length = 20)
+	public String getAdvanceNo() {
+		return this.advanceNo;
 	}
 
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
+	public void setAdvanceNo(String advanceNo) {
+		this.advanceNo = advanceNo;
+	}
+
+	@Column(name = "AdvanceAmount", precision = 17)
+	public BigDecimal getAdvanceAmount() {
+		return this.advanceAmount;
+	}
+
+	public void setAdvanceAmount(BigDecimal advanceAmount) {
+		this.advanceAmount = advanceAmount;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "PostingDate", length = 23)
+	public Date getPostingDate() {
+		return this.postingDate;
+	}
+
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "ValueDate", length = 23)
+	public Date getValueDate() {
+		return this.valueDate;
+	}
+
+	public void setValueDate(Date valueDate) {
+		this.valueDate = valueDate;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

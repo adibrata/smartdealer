@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.cashtransactions.PaymentRequestService;
 
@@ -68,11 +69,17 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService 
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			
+			String transno = TransactionNo(session, TransactionType.paymentrequest, payReqHdr
+					.getPartner().getPartnerCode(), payReqHdr.getOffice()
+					.getId());
+			payReqHdr.setPayReqNo(transno);
 			payReqHdr.setDtmCrt(dtmupd.getTime());
 			payReqHdr.setDtmUpd(dtmupd.getTime());
 			for (PayReqDtl arow : lstpayReqDtl) {
 				PayReqDtl payReqDtl = new PayReqDtl();
 				payReqDtl = arow;
+				payReqDtl.setPayReqHdr(payReqHdr);
 				payReqDtl.setDtmCrt(dtmupd.getTime());
 				payReqDtl.setDtmUpd(dtmupd.getTime());
 				session.save(payReqHdr);

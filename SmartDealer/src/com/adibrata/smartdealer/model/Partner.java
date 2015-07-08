@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,6 +46,7 @@ public class Partner implements java.io.Serializable {
 	private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 	private Set<AssetMaster> assetMasters = new HashSet<AssetMaster>(0);
 	private Set<MsRole> msRoles = new HashSet<MsRole>(0);
+	private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 	private Set<TransJob> transJobs = new HashSet<TransJob>(0);
 	private Set<Stock> stocks = new HashSet<Stock>(0);
 	private Set<MsUser> msUsers = new HashSet<MsUser>(0);
@@ -75,6 +76,7 @@ public class Partner implements java.io.Serializable {
 	private Set<JrnlHdr> jrnlHdrs = new HashSet<JrnlHdr>(0);
 	private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 	private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
+	private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
 	private Set<CashBankDtl> cashBankDtls = new HashSet<CashBankDtl>(0);
 	private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(
 			0);
@@ -102,7 +104,8 @@ public class Partner implements java.io.Serializable {
 			String fullAddress, Character isActive, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts,
 			Set<AssetMaster> assetMasters, Set<MsRole> msRoles,
-			Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers,
+			Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs,
+			Set<Stock> stocks, Set<MsUser> msUsers,
 			Set<PayHistHdr> payHistHdrs, Set<PayReqHdr> payReqHdrs,
 			Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers,
 			Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis,
@@ -115,7 +118,8 @@ public class Partner implements java.io.Serializable {
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 			Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs,
-			Set<OtherDsbHdr> otherDsbHdrs, Set<CashBankDtl> cashBankDtls,
+			Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs,
+			Set<CashBankDtl> cashBankDtls,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<AssetServiceMaster> assetServiceMasters,
 			Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees,
@@ -146,6 +150,7 @@ public class Partner implements java.io.Serializable {
 		this.bankAccounts = bankAccounts;
 		this.assetMasters = assetMasters;
 		this.msRoles = msRoles;
+		this.returSalesHdrs = returSalesHdrs;
 		this.transJobs = transJobs;
 		this.stocks = stocks;
 		this.msUsers = msUsers;
@@ -172,6 +177,7 @@ public class Partner implements java.io.Serializable {
 		this.jrnlHdrs = jrnlHdrs;
 		this.entrustHdrs = entrustHdrs;
 		this.otherDsbHdrs = otherDsbHdrs;
+		this.otherRcvHdrs = otherRcvHdrs;
 		this.cashBankDtls = cashBankDtls;
 		this.purchaseInvoices = purchaseInvoices;
 		this.assetServiceMasters = assetServiceMasters;
@@ -183,7 +189,7 @@ public class Partner implements java.io.Serializable {
 		this.offices = offices;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "PartnerCode", unique = true, nullable = false, length = 20)
 	public String getPartnerCode() {
 		return this.partnerCode;
@@ -409,6 +415,15 @@ public class Partner implements java.io.Serializable {
 
 	public void setMsRoles(Set<MsRole> msRoles) {
 		this.msRoles = msRoles;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+	public Set<ReturSalesHdr> getReturSalesHdrs() {
+		return this.returSalesHdrs;
+	}
+
+	public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs) {
+		this.returSalesHdrs = returSalesHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -643,6 +658,15 @@ public class Partner implements java.io.Serializable {
 
 	public void setOtherDsbHdrs(Set<OtherDsbHdr> otherDsbHdrs) {
 		this.otherDsbHdrs = otherDsbHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+	public Set<OtherRcvHdr> getOtherRcvHdrs() {
+		return this.otherRcvHdrs;
+	}
+
+	public void setOtherRcvHdrs(Set<OtherRcvHdr> otherRcvHdrs) {
+		this.otherRcvHdrs = otherRcvHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

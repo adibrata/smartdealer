@@ -11,9 +11,6 @@ import java.util.List;
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
-import util.adibrata.support.transno.GetTransNo;
-
 import com.adibrata.smartdealer.service.accpay.*;
 
 import org.hibernate.Query;
@@ -42,7 +39,7 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 
-	public AccountPayableDao(String userupd) {
+	public AccountPayableDao() {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();

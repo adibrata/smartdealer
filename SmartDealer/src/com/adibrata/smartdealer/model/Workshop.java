@@ -1,14 +1,17 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +46,7 @@ public class Workshop implements java.io.Serializable {
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
+	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 
 	public Workshop() {
 	}
@@ -56,7 +60,8 @@ public class Workshop implements java.io.Serializable {
 			String kecamatan, String city, String zipCode, String areaPhone1,
 			String phoneNo1, String areaPhone2, String phoneNo2,
 			String areaFax, String faxNo, String handphone, String fullAddress,
-			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt) {
+			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
+			Set<ServiceHdr> serviceHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.workshopCode = workshopCode;
@@ -80,9 +85,10 @@ public class Workshop implements java.io.Serializable {
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
+		this.serviceHdrs = serviceHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -291,6 +297,15 @@ public class Workshop implements java.io.Serializable {
 
 	public void setDtmCrt(Date dtmCrt) {
 		this.dtmCrt = dtmCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "workshop")
+	public Set<ServiceHdr> getServiceHdrs() {
+		return this.serviceHdrs;
+	}
+
+	public void setServiceHdrs(Set<ServiceHdr> serviceHdrs) {
+		this.serviceHdrs = serviceHdrs;
 	}
 
 }

@@ -14,8 +14,8 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface PurchaseOrderService  extends SeviceBase {
 
 	public void Save(PurchaseOrderHdr purchaseOrderHdr, List<PurchaseOrderDtl> lstpurchaseOrderDtl);
-	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage, String WhereCond, String SortBy);
-	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	
 	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(PurchaseOrderHdr purchaseOrderHdr);
 	public long TotalRecord(String WherCond);

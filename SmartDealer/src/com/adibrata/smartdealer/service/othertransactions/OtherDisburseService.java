@@ -16,5 +16,6 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface OtherDisburseService  extends SeviceBase {
 	public void Save (OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> otherDsbDtl);
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 }

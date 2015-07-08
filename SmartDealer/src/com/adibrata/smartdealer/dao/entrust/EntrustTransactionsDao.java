@@ -21,7 +21,6 @@ import com.adibrata.smartdealer.model.*;
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.service.entrust.EntrustService;
@@ -59,17 +58,26 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	 * @see com.adibrata.smartdealer.service.entrust.EntrustTransactions#Save()
 	 */
 	@Override
-	public void Save(EntrustHdr entrustHdr, EntrustDtl entrustDtl) {
+	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+
 		try {
+			String transno = GetTransNo.GenerateTransactionNo(session, entrustHdr
+					.getPartner().getPartnerCode(), entrustHdr.getOffice()
+					.getId(), "ENTO", dtmupd.getTime());
+			entrustHdr.setEntrustNo(transno);
 			entrustHdr.setDtmCrt(dtmupd.getTime());
 			entrustHdr.setDtmUpd(dtmupd.getTime());
-			entrustDtl.setDtmCrt(dtmupd.getTime());
-			entrustDtl.setDtmUpd(dtmupd.getTime());
 			session.save(entrustHdr);
-			session.save(entrustDtl);
-
+			for (EntrustDtl arow : lstentrustDtl) {
+				EntrustDtl entrustDtl = new EntrustDtl();
+				entrustDtl = arow;
+				entrustDtl.setEntrustHdr(entrustHdr);
+				entrustDtl.setDtmCrt(dtmupd.getTime());
+				entrustDtl.setDtmUpd(dtmupd.getTime());
+				session.save(entrustDtl);
+			}
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {

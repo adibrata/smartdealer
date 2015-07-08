@@ -38,7 +38,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from Office ";
+			strStatement = " from AdvanceCash ";
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
@@ -62,7 +62,13 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	public void Save(AdvanceCash advancecash) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+
 		try {
+			
+			String transno = TransactionNo(session, TransactionType.advancerequest, advancecash
+					.getPartner().getPartnerCode(), advancecash.getOffice()
+					.getId());
+			advancecash.setAdvanceNo(transno);
 			advancecash.setDtmCrt(dtmupd.getTime());
 			advancecash.setDtmUpd(dtmupd.getTime());
 			session.save(advancecash);

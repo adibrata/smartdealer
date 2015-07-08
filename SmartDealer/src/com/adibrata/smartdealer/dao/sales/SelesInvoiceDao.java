@@ -24,6 +24,7 @@ import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 
 /**
@@ -95,7 +96,8 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-
+			
+			
 			salesInvoice.setDtmCrt(dtmupd.getTime());
 			salesInvoice.setDtmUpd(dtmupd.getTime());
 			session.save(salesInvoice);

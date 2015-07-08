@@ -1,12 +1,13 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -23,6 +24,8 @@ public class PettyCashDtl implements java.io.Serializable {
 	private long id;
 	private PettyCashHdr pettyCashHdr;
 	private String description;
+	private String coaName;
+	private BigDecimal amount;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -36,17 +39,20 @@ public class PettyCashDtl implements java.io.Serializable {
 	}
 
 	public PettyCashDtl(long id, PettyCashHdr pettyCashHdr, String description,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
+			String coaName, BigDecimal amount, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.pettyCashHdr = pettyCashHdr;
 		this.description = description;
+		this.coaName = coaName;
+		this.amount = amount;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -73,6 +79,24 @@ public class PettyCashDtl implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Column(name = "CoaName", length = 20)
+	public String getCoaName() {
+		return this.coaName;
+	}
+
+	public void setCoaName(String coaName) {
+		this.coaName = coaName;
+	}
+
+	@Column(name = "Amount", precision = 17)
+	public BigDecimal getAmount() {
+		return this.amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

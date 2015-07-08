@@ -73,6 +73,7 @@
         <mapping class="com.adibrata.smartdealer.model.AssetServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.DanaTunai" />
         <mapping class="com.adibrata.smartdealer.model.Employee" />
+        <mapping class="com.adibrata.smartdealer.model.ServiceItem" />
         <mapping class="com.adibrata.smartdealer.model.JrnlHdr" />
         <mapping class="com.adibrata.smartdealer.model.AssetDocMaster" />
         <mapping class="com.adibrata.smartdealer.model.TrxConfigDtl" />

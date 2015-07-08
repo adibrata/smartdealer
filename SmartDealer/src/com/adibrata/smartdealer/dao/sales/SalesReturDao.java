@@ -18,6 +18,7 @@ import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.*;
 
@@ -60,33 +61,17 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 	 * com.adibrata.smartdealer.service.sales.SalesReturn#TotalRecord(java.lang
 	 * .String)
 	 */
-	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		long countResults = 0;
-		try {
-			String countQ = "Select count (id) " + strStatement;
-			Query countQuery = session.createQuery(countQ);
-			countResults = (long) countQuery.uniqueResult();
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return countResults;
-	}
-
+	
 	@Override
 	public void Save(ReturSalesHdr returSalesHdr,
 			List<ReturSalesDtl> lstreturSalesDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.salesorderreturn, returSalesHdr
+					.getPartner().getPartnerCode(), returSalesHdr.getOffice()
+					.getId());
+			
 			returSalesHdr.setDtmCrt(dtmupd.getTime());
 			returSalesHdr.setDtmUpd(dtmupd.getTime());
 			session.save(returSalesHdr);

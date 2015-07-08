@@ -1,15 +1,14 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,10 +24,13 @@ import javax.persistence.TemporalType;
 public class ServiceHdr implements java.io.Serializable {
 
 	private long id;
+	private AssetMaster assetMaster;
 	private Office office;
 	private Partner partner;
-	private Long workshopId;
-	private Serializable assetCode;
+	private Workshop workshop;
+	private String serviceNo;
+	private Date postingDate;
+	private Date valueDate;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -42,14 +44,18 @@ public class ServiceHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public ServiceHdr(long id, Office office, Partner partner, Long workshopId,
-			Serializable assetCode, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<ServiceDtl> serviceDtls) {
+	public ServiceHdr(long id, AssetMaster assetMaster, Office office,
+			Partner partner, Workshop workshop, String serviceNo,
+			Date postingDate, Date valueDate, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<ServiceDtl> serviceDtls) {
 		this.id = id;
+		this.assetMaster = assetMaster;
 		this.office = office;
 		this.partner = partner;
-		this.workshopId = workshopId;
-		this.assetCode = assetCode;
+		this.workshop = workshop;
+		this.serviceNo = serviceNo;
+		this.postingDate = postingDate;
+		this.valueDate = valueDate;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -57,7 +63,7 @@ public class ServiceHdr implements java.io.Serializable {
 		this.serviceDtls = serviceDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -65,6 +71,16 @@ public class ServiceHdr implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "AssetMasterId")
+	public AssetMaster getAssetMaster() {
+		return this.assetMaster;
+	}
+
+	public void setAssetMaster(AssetMaster assetMaster) {
+		this.assetMaster = assetMaster;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -87,22 +103,43 @@ public class ServiceHdr implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "WorkshopId")
-	public Long getWorkshopId() {
-		return this.workshopId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "WorkshopId")
+	public Workshop getWorkshop() {
+		return this.workshop;
 	}
 
-	public void setWorkshopId(Long workshopId) {
-		this.workshopId = workshopId;
+	public void setWorkshop(Workshop workshop) {
+		this.workshop = workshop;
 	}
 
-	@Column(name = "AssetCode")
-	public Serializable getAssetCode() {
-		return this.assetCode;
+	@Column(name = "ServiceNo", length = 20)
+	public String getServiceNo() {
+		return this.serviceNo;
 	}
 
-	public void setAssetCode(Serializable assetCode) {
-		this.assetCode = assetCode;
+	public void setServiceNo(String serviceNo) {
+		this.serviceNo = serviceNo;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "PostingDate", length = 23)
+	public Date getPostingDate() {
+		return this.postingDate;
+	}
+
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "ValueDate", length = 23)
+	public Date getValueDate() {
+		return this.valueDate;
+	}
+
+	public void setValueDate(Date valueDate) {
+		this.valueDate = valueDate;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

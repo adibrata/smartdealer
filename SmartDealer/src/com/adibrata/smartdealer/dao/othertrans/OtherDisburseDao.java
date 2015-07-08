@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
@@ -66,6 +67,10 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.otherdisburse, otherDsbHdr
+					.getPartner().getPartnerCode(), otherDsbHdr.getOffice()
+					.getId());
+			otherDsbHdr.setOtherDisbNo(transno);
 			otherDsbHdr.setDtmCrt(dtmupd.getTime());
 			otherDsbHdr.setDtmUpd(dtmupd.getTime());
 			session.save(otherDsbHdr);

@@ -23,17 +23,18 @@ import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
-import util.adibrata.support.transno.GetTransNo;
+
 public class PettyCashDao extends DaoBase implements PettyCashService {
-	String userupd; 
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+
 	public PettyCashDao() {
-		
+
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -51,46 +52,111 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#SavePettyCash(com.adibrata.smartdealer.model.PettyCashHdr, com.adibrata.smartdealer.model.PettyCashDtl)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.cashtransactions.PettyCashService#
+	 * SavePettyCash(com.adibrata.smartdealer.model.PettyCashHdr,
+	 * com.adibrata.smartdealer.model.PettyCashDtl)
 	 */
 	@Override
 	public void SavePettyCash(PettyCashHdr pettycashhdr,
-			PettyCashDtl pettycashdtl) {
+			List<PettyCashDtl> lstpettycashdtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+
 		try {
+
+			String transno = TransactionNo(session,
+					TransactionType.pettycashtransaction, pettycashhdr
+							.getPartner().getPartnerCode(), pettycashhdr
+							.getOffice().getId());
+			pettycashhdr.setPcno(transno);
 			pettycashhdr.setDtmCrt(dtmupd.getTime());
 			pettycashhdr.setDtmUpd(dtmupd.getTime());
-			pettycashdtl.setDtmCrt(dtmupd.getTime());
-			pettycashdtl.setDtmUpd(dtmupd.getTime());
 			session.save(pettycashhdr);
-			
-			session.save(pettycashdtl);
+			for (PettyCashDtl arow : lstpettycashdtl) {
+				PettyCashDtl pettyCashDtl = new PettyCashDtl();
+				pettyCashDtl = arow;
+
+				pettyCashDtl.setPettyCashHdr(pettycashhdr);
+				pettyCashDtl.setDtmCrt(dtmupd.getTime());
+				pettyCashDtl.setDtmUpd(dtmupd.getTime());
+				session.save(pettyCashDtl);
+			}
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
-
 
 	@Override
 	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<PettyCashHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	@Override
-	public List<PettyCashDtl> Paging(int CurrentPage, String WhereCond,
+	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<PettyCashHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	@Override
@@ -102,7 +168,26 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 	@Override
 	public List<PettyCashDtl> ViewDetail(PettyCashHdr pettyCashHdr) {
 		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<PettyCashHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.othertransactions.*;
 
@@ -58,6 +59,10 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
+			String transno = TransactionNo(session, TransactionType.otherreceive, otherRcvHdr
+					.getPartner().getPartnerCode(), otherRcvHdr.getOffice()
+					.getId());
+			otherRcvHdr.setOtherRcvNo(transno);
 			otherRcvHdr.setDtmCrt(dtmupd.getTime());
 			otherRcvHdr.setDtmUpd(dtmupd.getTime());
 			session.save(otherRcvHdr);

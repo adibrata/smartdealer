@@ -1,13 +1,13 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,9 +22,11 @@ import javax.persistence.TemporalType;
 public class DanaTunai implements java.io.Serializable {
 
 	private long id;
+	private Employee employee;
 	private Leasing leasing;
+	private Office office;
 	private Partner partner;
-	private Long officeId;
+	private String danaTunaiNo;
 	private String assetBrand;
 	private String assetType;
 	private String assetModel;
@@ -61,7 +63,8 @@ public class DanaTunai implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public DanaTunai(long id, Leasing leasing, Partner partner, Long officeId,
+	public DanaTunai(long id, Employee employee, Leasing leasing,
+			Office office, Partner partner, String danaTunaiNo,
 			String assetBrand, String assetType, String assetModel,
 			Long assetMasterId, String bpkbno, String bpkbname,
 			String bpkbaddress, String vehicleColor, String machineNo,
@@ -73,9 +76,11 @@ public class DanaTunai implements java.io.Serializable {
 			Date stnkdate, Date postingDate, Date valueDate, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
+		this.employee = employee;
 		this.leasing = leasing;
+		this.office = office;
 		this.partner = partner;
-		this.officeId = officeId;
+		this.danaTunaiNo = danaTunaiNo;
 		this.assetBrand = assetBrand;
 		this.assetType = assetType;
 		this.assetModel = assetModel;
@@ -106,7 +111,7 @@ public class DanaTunai implements java.io.Serializable {
 		this.usrCrt = usrCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -114,6 +119,16 @@ public class DanaTunai implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "EmployeeId")
+	public Employee getEmployee() {
+		return this.employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -127,6 +142,16 @@ public class DanaTunai implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeId")
+	public Office getOffice() {
+		return this.office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PartnerCode")
 	public Partner getPartner() {
 		return this.partner;
@@ -136,13 +161,13 @@ public class DanaTunai implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "OfficeId")
-	public Long getOfficeId() {
-		return this.officeId;
+	@Column(name = "DanaTunaiNo", length = 20)
+	public String getDanaTunaiNo() {
+		return this.danaTunaiNo;
 	}
 
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
+	public void setDanaTunaiNo(String danaTunaiNo) {
+		this.danaTunaiNo = danaTunaiNo;
 	}
 
 	@Column(name = "AssetBrand", length = 20)

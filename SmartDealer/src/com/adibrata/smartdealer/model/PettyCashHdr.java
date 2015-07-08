@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,8 +25,9 @@ public class PettyCashHdr implements java.io.Serializable {
 
 	private long id;
 	private Employee employee;
+	private Office office;
 	private Partner partner;
-	private Long officeId;
+	private String pcno;
 	private Date postingDate;
 	private Date valueDate;
 	private Date dtmUpd;
@@ -42,14 +43,15 @@ public class PettyCashHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public PettyCashHdr(long id, Employee employee, Partner partner,
-			Long officeId, Date postingDate, Date valueDate, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt,
+	public PettyCashHdr(long id, Employee employee, Office office,
+			Partner partner, String pcno, Date postingDate, Date valueDate,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 			Set<PettyCashDtl> pettyCashDtls) {
 		this.id = id;
 		this.employee = employee;
+		this.office = office;
 		this.partner = partner;
-		this.officeId = officeId;
+		this.pcno = pcno;
 		this.postingDate = postingDate;
 		this.valueDate = valueDate;
 		this.dtmUpd = dtmUpd;
@@ -59,7 +61,7 @@ public class PettyCashHdr implements java.io.Serializable {
 		this.pettyCashDtls = pettyCashDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -80,6 +82,16 @@ public class PettyCashHdr implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeId")
+	public Office getOffice() {
+		return this.office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PartnerCode")
 	public Partner getPartner() {
 		return this.partner;
@@ -89,13 +101,13 @@ public class PettyCashHdr implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "OfficeId")
-	public Long getOfficeId() {
-		return this.officeId;
+	@Column(name = "PCNo", length = 20)
+	public String getPcno() {
+		return this.pcno;
 	}
 
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
+	public void setPcno(String pcno) {
+		this.pcno = pcno;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

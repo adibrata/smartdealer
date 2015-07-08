@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.SeviceBase;
 public interface EntrustService extends SeviceBase  {
-	public void Save(EntrustHdr entrustHdr, EntrustDtl entrustDtl);
+	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl);
 	
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
 	public long TotalRecord(String WherCond);

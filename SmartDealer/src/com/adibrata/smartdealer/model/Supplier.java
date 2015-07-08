@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -46,6 +46,7 @@ public class Supplier implements java.io.Serializable {
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
+	private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 	private Set<Stock> stocks = new HashSet<Stock>(0);
 	private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(
 			0);
@@ -67,7 +68,8 @@ public class Supplier implements java.io.Serializable {
 			String phoneNo1, String areaPhone2, String phoneNo2,
 			String areaFax, String faxNo, String handphone, String fullAddress,
 			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<Stock> stocks, Set<PurchaseOrderHdr> purchaseOrderHdrs,
+			Set<EntrustHdr> entrustHdrs, Set<Stock> stocks,
+			Set<PurchaseOrderHdr> purchaseOrderHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<PurchaseInvoice> purchaseInvoices) {
 		this.id = id;
@@ -93,13 +95,14 @@ public class Supplier implements java.io.Serializable {
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
+		this.entrustHdrs = entrustHdrs;
 		this.stocks = stocks;
 		this.purchaseOrderHdrs = purchaseOrderHdrs;
 		this.returPurchaseHdrs = returPurchaseHdrs;
 		this.purchaseInvoices = purchaseInvoices;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -308,6 +311,15 @@ public class Supplier implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+	public Set<EntrustHdr> getEntrustHdrs() {
+		return this.entrustHdrs;
+	}
+
+	public void setEntrustHdrs(Set<EntrustHdr> entrustHdrs) {
+		this.entrustHdrs = entrustHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")

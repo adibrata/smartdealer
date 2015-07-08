@@ -18,6 +18,7 @@ import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.sales.*;
 
@@ -63,11 +64,11 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 			List<SalesOrderDtl> lstsalesOrderDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
-		String transno = "";
+
 		try {
-			transno = GetTransNo.GenerateTransactionNo(session, salesOrderHdr
+			String transno = TransactionNo(session, TransactionType.salesorder, salesOrderHdr
 					.getPartner().getPartnerCode(), salesOrderHdr.getOffice()
-					.getId(), "SOR", dtmupd.getTime());
+					.getId());
 			salesOrderHdr.setSono(transno);
 			salesOrderHdr.setDtmCrt(dtmupd.getTime());
 			salesOrderHdr.setDtmUpd(dtmupd.getTime());

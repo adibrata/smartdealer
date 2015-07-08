@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -53,6 +53,7 @@ public class BankAccount implements java.io.Serializable {
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
+	private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 	private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 
 	public BankAccount() {
@@ -70,7 +71,8 @@ public class BankAccount implements java.io.Serializable {
 			String areaFax, String faxNo, String fullAddress,
 			BigDecimal endingBalance, String coacode, Long seqNo,
 			Character resetFlag, String formatSeqNo, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt, Set<PayReqHdr> payReqHdrs) {
+			String usrUpd, Date dtmCrt, String usrCrt,
+			Set<AdvanceCash> advanceCashes, Set<PayReqHdr> payReqHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
@@ -100,10 +102,11 @@ public class BankAccount implements java.io.Serializable {
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
+		this.advanceCashes = advanceCashes;
 		this.payReqHdrs = payReqHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -366,6 +369,15 @@ public class BankAccount implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankAccount")
+	public Set<AdvanceCash> getAdvanceCashes() {
+		return this.advanceCashes;
+	}
+
+	public void setAdvanceCashes(Set<AdvanceCash> advanceCashes) {
+		this.advanceCashes = advanceCashes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankAccount")

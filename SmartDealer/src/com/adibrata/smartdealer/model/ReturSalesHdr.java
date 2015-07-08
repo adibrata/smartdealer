@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,9 +24,10 @@ import javax.persistence.TemporalType;
 public class ReturSalesHdr implements java.io.Serializable {
 
 	private long id;
+	private Office office;
+	private Partner partner;
 	private SalesOrderHdr salesOrderHdr;
-	private String partnerCode;
-	private Long officeId;
+	private String returSalesNo;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -40,13 +41,15 @@ public class ReturSalesHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public ReturSalesHdr(long id, SalesOrderHdr salesOrderHdr,
-			String partnerCode, Long officeId, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<ReturSalesDtl> returSalesDtls) {
+	public ReturSalesHdr(long id, Office office, Partner partner,
+			SalesOrderHdr salesOrderHdr, String returSalesNo, Date dtmUpd,
+			String usrUpd, Date dtmCrt, String usrCrt,
+			Set<ReturSalesDtl> returSalesDtls) {
 		this.id = id;
+		this.office = office;
+		this.partner = partner;
 		this.salesOrderHdr = salesOrderHdr;
-		this.partnerCode = partnerCode;
-		this.officeId = officeId;
+		this.returSalesNo = returSalesNo;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -54,7 +57,7 @@ public class ReturSalesHdr implements java.io.Serializable {
 		this.returSalesDtls = returSalesDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -62,6 +65,26 @@ public class ReturSalesHdr implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeID")
+	public Office getOffice() {
+		return this.office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PartnerCode")
+	public Partner getPartner() {
+		return this.partner;
+	}
+
+	public void setPartner(Partner partner) {
+		this.partner = partner;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -74,22 +97,13 @@ public class ReturSalesHdr implements java.io.Serializable {
 		this.salesOrderHdr = salesOrderHdr;
 	}
 
-	@Column(name = "PartnerCode", length = 20)
-	public String getPartnerCode() {
-		return this.partnerCode;
+	@Column(name = "ReturSalesNo", length = 20)
+	public String getReturSalesNo() {
+		return this.returSalesNo;
 	}
 
-	public void setPartnerCode(String partnerCode) {
-		this.partnerCode = partnerCode;
-	}
-
-	@Column(name = "OfficeID")
-	public Long getOfficeId() {
-		return this.officeId;
-	}
-
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
+	public void setReturSalesNo(String returSalesNo) {
+		this.returSalesNo = returSalesNo;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

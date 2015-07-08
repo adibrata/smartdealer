@@ -1,14 +1,15 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,11 +25,13 @@ import javax.persistence.TemporalType;
 public class EntrustHdr implements java.io.Serializable {
 
 	private long id;
+	private Office office;
 	private Partner partner;
-	private Long officeId;
-	private Long daelerIdto;
+	private Supplier supplier;
 	private String entrustNo;
-	private Date entrustDate;
+	private Date postingDate;
+	private Date valueDate;
+	private BigDecimal totalAmount;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -42,15 +45,18 @@ public class EntrustHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public EntrustHdr(long id, Partner partner, Long officeId, Long daelerIdto,
-			String entrustNo, Date entrustDate, Date dtmUpd, String usrUpd,
+	public EntrustHdr(long id, Office office, Partner partner,
+			Supplier supplier, String entrustNo, Date postingDate,
+			Date valueDate, BigDecimal totalAmount, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls) {
 		this.id = id;
+		this.office = office;
 		this.partner = partner;
-		this.officeId = officeId;
-		this.daelerIdto = daelerIdto;
+		this.supplier = supplier;
 		this.entrustNo = entrustNo;
-		this.entrustDate = entrustDate;
+		this.postingDate = postingDate;
+		this.valueDate = valueDate;
+		this.totalAmount = totalAmount;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -58,7 +64,7 @@ public class EntrustHdr implements java.io.Serializable {
 		this.entrustDtls = entrustDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -66,6 +72,16 @@ public class EntrustHdr implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeID")
+	public Office getOffice() {
+		return this.office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -78,22 +94,14 @@ public class EntrustHdr implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "OfficeID")
-	public Long getOfficeId() {
-		return this.officeId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SupplierId")
+	public Supplier getSupplier() {
+		return this.supplier;
 	}
 
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
-	}
-
-	@Column(name = "DaelerIDTo")
-	public Long getDaelerIdto() {
-		return this.daelerIdto;
-	}
-
-	public void setDaelerIdto(Long daelerIdto) {
-		this.daelerIdto = daelerIdto;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 	@Column(name = "EntrustNo", length = 50)
@@ -106,13 +114,32 @@ public class EntrustHdr implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "EntrustDate", length = 23)
-	public Date getEntrustDate() {
-		return this.entrustDate;
+	@Column(name = "PostingDate", length = 23)
+	public Date getPostingDate() {
+		return this.postingDate;
 	}
 
-	public void setEntrustDate(Date entrustDate) {
-		this.entrustDate = entrustDate;
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "ValueDate", length = 23)
+	public Date getValueDate() {
+		return this.valueDate;
+	}
+
+	public void setValueDate(Date valueDate) {
+		this.valueDate = valueDate;
+	}
+
+	@Column(name = "TotalAmount", precision = 17)
+	public BigDecimal getTotalAmount() {
+		return this.totalAmount;
+	}
+
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

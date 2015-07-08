@@ -6,6 +6,7 @@ package com.adibrata.smartdealer.service.cashtransactions;
 import java.util.List;
 
 
+
 /**
  * @author Henry
  *
@@ -15,12 +16,12 @@ import com.adibrata.smartdealer.service.SeviceBase;
 
 public interface PettyCashService  extends SeviceBase {
 	public void SavePettyCash(PettyCashHdr pettycashhdr,
-			PettyCashDtl pettycashdtl);
+			List<PettyCashDtl> pettycashdtl);
 
 	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy);
 
-	public List<PettyCashDtl> Paging(int CurrentPage, String WhereCond,
+	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast);
 
 	public PettyCashHdr View(long id);

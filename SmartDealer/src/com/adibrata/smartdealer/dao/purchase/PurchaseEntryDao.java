@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 
@@ -65,10 +66,10 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 		String pono;
 		session.getTransaction().begin();
 		try {
-			pono = GetTransNo.GenerateTransactionNo(session, purchaseOrderHdr
-					.getPartner().getPartnerCode(), purchaseOrderHdr
-					.getOffice().getId(), "PO", dtmupd.getTime());
-			purchaseOrderHdr.setPono(pono);
+			String transno = TransactionNo(session, TransactionType.purchaseorder, purchaseOrderHdr
+					.getPartner().getPartnerCode(), purchaseOrderHdr.getOffice()
+					.getId());
+			purchaseOrderHdr.setPono(transno);
 			purchaseOrderHdr.setDtmCrt(dtmupd.getTime());
 			purchaseOrderHdr.setDtmUpd(dtmupd.getTime());
 			session.save(purchaseOrderHdr);
@@ -145,46 +146,110 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.purchase.PurchaseOrder#TotalRecord(java
-	 * .lang.String)
-	 */
+	
 	@Override
-	public long TotalRecord(String WherCond) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
-	@Override
-	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage,
+	public List<PurchaseOrderHdr> Paging(int CurrentPage,
 			String WhereCond, String SortBy) {
+		
 		// TODO Auto-generated method stub
-		return null;
+				StringBuilder hql = new StringBuilder();
+				List<PurchaseOrderHdr> list = null;
+				try {
+					hql.append(strStatement);
+					if (WhereCond != "")
+						hql.append(WhereCond);
+
+					Query selectQuery = session.createQuery(hql.toString());
+					selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+					selectQuery.setMaxResults(pagesize);
+					list = selectQuery.list();
+
+				} catch (Exception exp) {
+
+					ExceptionEntities lEntExp = new ExceptionEntities();
+					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+							.getClassName());
+					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+							.getMethodName());
+					ExceptionHelper.WriteException(lEntExp, exp);
+				}
+				return list;
 	}
 
 	@Override
-	public List<PurchaseOrderHdr> POHdrPaging(int CurrentPage,
+	public List<PurchaseOrderHdr> Paging(int CurrentPage,
 			String WhereCond, String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<PurchaseOrderHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	@Override
 	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(
 			PurchaseOrderHdr purchaseOrderHdr) {
 		// TODO Auto-generated method stub
-		return null;
+		StringBuilder hql = new StringBuilder();
+		List<PurchaseOrderDtl> list = null;
+
+		try {
+			hql.append("from PurchaseOrderDtl " );
+			
+			Query selectQuery = session.createQuery(hql.toString());
+			
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 	@Override
 	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		PurchaseOrderHdr purchaseOrderHdr = null;
+		try {
+			purchaseOrderHdr = (PurchaseOrderHdr) session.get(PurchaseOrderHdr.class, id);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return purchaseOrderHdr;
 	}
 
 }

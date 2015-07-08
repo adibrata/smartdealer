@@ -16,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.purchase.*;
 
@@ -65,12 +66,11 @@ public class PurchaseReturnDao extends DaoBase implements PurchaseReturnService 
 		String retpurchaseno;
 		session.getTransaction().begin();
 		try {
-			retpurchaseno = GetTransNo.GenerateTransactionNo(session,
-					returPurchaseHdr.getPartner().getPartnerCode(),
-					returPurchaseHdr.getOffice().getId(), "REP",
-					dtmupd.getTime());
+			String transno = TransactionNo(session, TransactionType.purchasereturn, returPurchaseHdr
+					.getPartner().getPartnerCode(), returPurchaseHdr.getOffice()
+					.getId());
 
-			returPurchaseHdr.setReturPurchaseNo(retpurchaseno);
+			returPurchaseHdr.setReturPurchaseNo(transno);
 
 			returPurchaseHdr.setDtmCrt(dtmupd.getTime());
 			returPurchaseHdr.setDtmUpd(dtmupd.getTime());

@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 7, 2015 6:00:32 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,7 +26,8 @@ public class OtherRcvHdr implements java.io.Serializable {
 
 	private long id;
 	private Office office;
-	private String partnerCode;
+	private Partner partner;
+	private String otherRcvNo;
 	private String rcvFrom;
 	private BigDecimal rcvAmount;
 	private String reffNo;
@@ -47,14 +48,15 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public OtherRcvHdr(long id, Office office, String partnerCode,
-			String rcvFrom, BigDecimal rcvAmount, String reffNo,
-			Date postingDate, Date valueDate, Long bankAccountId, String notes,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<OtherRcvDtl> otherRcvDtls) {
+	public OtherRcvHdr(long id, Office office, Partner partner,
+			String otherRcvNo, String rcvFrom, BigDecimal rcvAmount,
+			String reffNo, Date postingDate, Date valueDate,
+			Long bankAccountId, String notes, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<OtherRcvDtl> otherRcvDtls) {
 		this.id = id;
 		this.office = office;
-		this.partnerCode = partnerCode;
+		this.partner = partner;
+		this.otherRcvNo = otherRcvNo;
 		this.rcvFrom = rcvFrom;
 		this.rcvAmount = rcvAmount;
 		this.reffNo = reffNo;
@@ -69,7 +71,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.otherRcvDtls = otherRcvDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -89,13 +91,23 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.office = office;
 	}
 
-	@Column(name = "PartnerCode", length = 20)
-	public String getPartnerCode() {
-		return this.partnerCode;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PartnerCode")
+	public Partner getPartner() {
+		return this.partner;
 	}
 
-	public void setPartnerCode(String partnerCode) {
-		this.partnerCode = partnerCode;
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	@Column(name = "OtherRcvNo", length = 20)
+	public String getOtherRcvNo() {
+		return this.otherRcvNo;
+	}
+
+	public void setOtherRcvNo(String otherRcvNo) {
+		this.otherRcvNo = otherRcvNo;
 	}
 
 	@Column(name = "RcvFrom", length = 50)
