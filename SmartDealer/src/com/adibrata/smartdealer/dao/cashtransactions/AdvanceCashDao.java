@@ -62,12 +62,14 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	public void Save(AdvanceCash advancecash) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = advancecash.getPartner();
+		Office office = advancecash.getOffice();
 
 		try {
-			
-			String transno = TransactionNo(session, TransactionType.advancerequest, advancecash
-					.getPartner().getPartnerCode(), advancecash.getOffice()
-					.getId());
+
+			String transno = TransactionNo(session,
+					TransactionType.advancerequest, partner.getPartnerCode(),
+					office.getId());
 			advancecash.setAdvanceNo(transno);
 			advancecash.setDtmCrt(dtmupd.getTime());
 			advancecash.setDtmUpd(dtmupd.getTime());

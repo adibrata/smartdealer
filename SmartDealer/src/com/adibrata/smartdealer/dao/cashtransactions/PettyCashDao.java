@@ -64,13 +64,14 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 			List<PettyCashDtl> lstpettycashdtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = pettycashhdr.getPartner();
+		Office office = pettycashhdr.getOffice();
 
 		try {
 
 			String transno = TransactionNo(session,
-					TransactionType.pettycashtransaction, pettycashhdr
-							.getPartner().getPartnerCode(), pettycashhdr
-							.getOffice().getId());
+					TransactionType.pettycashtransaction,
+					partner.getPartnerCode(), office.getId());
 			pettycashhdr.setPcno(transno);
 			pettycashhdr.setDtmCrt(dtmupd.getTime());
 			pettycashhdr.setDtmUpd(dtmupd.getTime());
@@ -170,7 +171,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
-		List<PettyCashHdr> list = null;
+		List<PettyCashDtl> list = null;
 
 		try {
 			hql.append(strStatement);

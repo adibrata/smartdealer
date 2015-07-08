@@ -15,7 +15,8 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface EntrustService extends SeviceBase  {
 	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl);
 	
-	public List Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<EntrustHdr>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<EntrustHdr>  Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	public long TotalRecord(String WherCond);
 	public EntrustHdr viewEntrusHdr(long id);
 	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr);

@@ -74,103 +74,31 @@ public class DaoBase implements SeviceBase {
 	}
 
 	public enum TransactionType {
-		accountpayable, advancerequest, advancereturn, danatunai, 
-		entrustout, entrustreceive, otherdisburse, otherreceive, paymentrequest, 
-		paymentvoucher, pettycashcorretion, pettycashreimburse, pettycashtransaction, prepaidreceive, purchaseinvoice, purchaseorder, purchasereturn, 
-		salesorder, salesorderreturn, service
+		accountpayable("APD"), advancerequest("ADV"), advancereturn("ADR"), danatunai(
+				"DTN"), entrustout("ENTO"), entrustreceive("ENTR"), otherdisburse(
+				"OTD"), otherreceive("OTR"), paymentrequest("PYR"), paymentvoucher(
+				"PVD"), pettycashcorretion("PCO"), pettycashreimburse("PCR"), pettycashtransaction(
+				"PCT"), prepaidreceive("PRV"), purchaseinvoice("PRI"), purchaseorder(
+				"PRO"), purchasereturn("PRR"), salesorder("SAO"), salesorderreturn(
+				"SAR"), service("SVC");
+
+		private String transactiontype;
+
+		private TransactionType(String s) {
+			transactiontype = s;
+		}
+
+		public String getTransactionType() {
+			return transactiontype;
+		}
 	}
 
 	public static String TransactionNo(Session session, TransactionType trans,
 			String partnercode, long officeid) {
 		String transno = "";
-
-		switch (trans) {
-		case accountpayable:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "APD", dtmupd.getTime());
-			break;
-		case advancerequest:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "ADV", dtmupd.getTime());
-			break;
-		case advancereturn:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "ADR", dtmupd.getTime());
-			break;
-		case danatunai:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "DTN", dtmupd.getTime());
-			break;
-		case entrustout:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "ENTO", dtmupd.getTime());
-			break;
-
-		case entrustreceive:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "ENTR", dtmupd.getTime());
-			break;
-		case otherdisburse:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "OTD", dtmupd.getTime());
-			break;
-
-		case otherreceive:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "OTR", dtmupd.getTime());
-			break;
-		case paymentrequest:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PYR", dtmupd.getTime());
-			break;
-		case paymentvoucher:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PVD", dtmupd.getTime());
-			break;
-		case pettycashcorretion:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PCO", dtmupd.getTime());
-			break;
-		case pettycashreimburse:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PCR", dtmupd.getTime());
-			break;
-
-		case pettycashtransaction:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PCT", dtmupd.getTime());
-			break;
-		case prepaidreceive:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PRV", dtmupd.getTime());
-			break;
-		case purchaseinvoice:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PRI", dtmupd.getTime());
-			break;
-		case purchaseorder:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PRO", dtmupd.getTime());
-			break;
-		case purchasereturn:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "PRR", dtmupd.getTime());
-			break;
-		case salesorder:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "SAO", dtmupd.getTime());
-			break;
-		case salesorderreturn:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "SAR", dtmupd.getTime());
-			break;
-		case service:
-			transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-					officeid, "SVC", dtmupd.getTime());
-			break;
-		default:
-			break;
-		}
+		transno = GetTransNo.GenerateTransactionNo(session, partnercode,
+				officeid, trans.getTransactionType(), dtmupd.getTime());
 		return transno;
 	}
+
 }

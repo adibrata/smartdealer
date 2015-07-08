@@ -1,18 +1,15 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,8 +31,6 @@ public class AssetServiceMaster implements java.io.Serializable {
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
-	private Set<AssetServiceDtl> assetServiceDtls = new HashSet<AssetServiceDtl>(
-			0);
 
 	public AssetServiceMaster() {
 	}
@@ -46,8 +41,7 @@ public class AssetServiceMaster implements java.io.Serializable {
 
 	public AssetServiceMaster(long id, Partner partner, String serviceCode,
 			String serviceName, BigDecimal priceMaximum, String assetType,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<AssetServiceDtl> assetServiceDtls) {
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.partner = partner;
 		this.serviceCode = serviceCode;
@@ -58,10 +52,9 @@ public class AssetServiceMaster implements java.io.Serializable {
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
-		this.assetServiceDtls = assetServiceDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -153,15 +146,6 @@ public class AssetServiceMaster implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetServiceMaster")
-	public Set<AssetServiceDtl> getAssetServiceDtls() {
-		return this.assetServiceDtls;
-	}
-
-	public void setAssetServiceDtls(Set<AssetServiceDtl> assetServiceDtls) {
-		this.assetServiceDtls = assetServiceDtls;
 	}
 
 }

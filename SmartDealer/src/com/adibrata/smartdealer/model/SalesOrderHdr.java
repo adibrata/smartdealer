@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,13 +25,15 @@ import javax.persistence.TemporalType;
 public class SalesOrderHdr implements java.io.Serializable {
 
 	private long id;
+	private CoaSchmHdr coaSchmHdr;
 	private Customer customer;
 	private Employee employee;
 	private Leasing leasing;
 	private Office office;
 	private Partner partner;
 	private String sono;
-	private Date sodate;
+	private Date postingDate;
+	private Date valueDate;
 	private BigDecimal soamount;
 	private BigDecimal sotaxPercent;
 	private BigDecimal sotaxAmount;
@@ -40,6 +42,7 @@ public class SalesOrderHdr implements java.io.Serializable {
 	private BigDecimal dp;
 	private BigDecimal ntf;
 	private byte[] signature;
+	private Long jobId;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -55,22 +58,25 @@ public class SalesOrderHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public SalesOrderHdr(long id, Customer customer, Employee employee,
-			Leasing leasing, Office office, Partner partner, String sono,
-			Date sodate, BigDecimal soamount, BigDecimal sotaxPercent,
-			BigDecimal sotaxAmount, BigDecimal netSalesAmount, BigDecimal tdp,
-			BigDecimal dp, BigDecimal ntf, byte[] signature, Date dtmUpd,
+	public SalesOrderHdr(long id, CoaSchmHdr coaSchmHdr, Customer customer,
+			Employee employee, Leasing leasing, Office office, Partner partner,
+			String sono, Date postingDate, Date valueDate, BigDecimal soamount,
+			BigDecimal sotaxPercent, BigDecimal sotaxAmount,
+			BigDecimal netSalesAmount, BigDecimal tdp, BigDecimal dp,
+			BigDecimal ntf, byte[] signature, Long jobId, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt,
 			Set<SalesOrderDtl> salesOrderDtls,
 			Set<ReturSalesHdr> returSalesHdrs, Set<SalesInvoice> salesInvoices) {
 		this.id = id;
+		this.coaSchmHdr = coaSchmHdr;
 		this.customer = customer;
 		this.employee = employee;
 		this.leasing = leasing;
 		this.office = office;
 		this.partner = partner;
 		this.sono = sono;
-		this.sodate = sodate;
+		this.postingDate = postingDate;
+		this.valueDate = valueDate;
 		this.soamount = soamount;
 		this.sotaxPercent = sotaxPercent;
 		this.sotaxAmount = sotaxAmount;
@@ -79,6 +85,7 @@ public class SalesOrderHdr implements java.io.Serializable {
 		this.dp = dp;
 		this.ntf = ntf;
 		this.signature = signature;
+		this.jobId = jobId;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -88,7 +95,7 @@ public class SalesOrderHdr implements java.io.Serializable {
 		this.salesInvoices = salesInvoices;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -96,6 +103,16 @@ public class SalesOrderHdr implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CoaSchmID")
+	public CoaSchmHdr getCoaSchmHdr() {
+		return this.coaSchmHdr;
+	}
+
+	public void setCoaSchmHdr(CoaSchmHdr coaSchmHdr) {
+		this.coaSchmHdr = coaSchmHdr;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -158,13 +175,23 @@ public class SalesOrderHdr implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "SODate", length = 23)
-	public Date getSodate() {
-		return this.sodate;
+	@Column(name = "PostingDate", length = 23)
+	public Date getPostingDate() {
+		return this.postingDate;
 	}
 
-	public void setSodate(Date sodate) {
-		this.sodate = sodate;
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "ValueDate", length = 23)
+	public Date getValueDate() {
+		return this.valueDate;
+	}
+
+	public void setValueDate(Date valueDate) {
+		this.valueDate = valueDate;
 	}
 
 	@Column(name = "SOAmount", precision = 17)
@@ -237,6 +264,15 @@ public class SalesOrderHdr implements java.io.Serializable {
 
 	public void setSignature(byte[] signature) {
 		this.signature = signature;
+	}
+
+	@Column(name = "JobId")
+	public Long getJobId() {
+		return this.jobId;
+	}
+
+	public void setJobId(Long jobId) {
+		this.jobId = jobId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

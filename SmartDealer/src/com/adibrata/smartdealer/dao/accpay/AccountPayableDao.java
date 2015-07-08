@@ -11,6 +11,7 @@ import java.util.List;
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+
 import com.adibrata.smartdealer.service.accpay.*;
 
 import org.hibernate.Query;
@@ -67,6 +68,8 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	public void Save(AccountPayable accountPayable) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+	
+
 		try {
 			accountPayable.setDtmCrt(dtmupd.getTime());
 			accountPayable.setDtmUpd(dtmupd.getTime());

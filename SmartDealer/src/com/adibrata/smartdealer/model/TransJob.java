@@ -1,12 +1,12 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -23,15 +23,15 @@ public class TransJob implements java.io.Serializable {
 	private long id;
 	private Partner partner;
 	private Long officeId;
-	private String jobCode;
+	private String jobNo;
 	private String trxConfigCode;
 	private String coaSchmCode;
 	private Date jobDate;
 	private Date jobPost;
 	private String jobStatus;
 	private Date jobExecuteDate;
-	private Long trxId;
-	private String transCodeNo;
+	private String journalNo;
+	private String voucherNo;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -44,30 +44,30 @@ public class TransJob implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TransJob(long id, Partner partner, Long officeId, String jobCode,
+	public TransJob(long id, Partner partner, Long officeId, String jobNo,
 			String trxConfigCode, String coaSchmCode, Date jobDate,
-			Date jobPost, String jobStatus, Date jobExecuteDate, Long trxId,
-			String transCodeNo, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt) {
+			Date jobPost, String jobStatus, Date jobExecuteDate,
+			String journalNo, String voucherNo, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
-		this.jobCode = jobCode;
+		this.jobNo = jobNo;
 		this.trxConfigCode = trxConfigCode;
 		this.coaSchmCode = coaSchmCode;
 		this.jobDate = jobDate;
 		this.jobPost = jobPost;
 		this.jobStatus = jobStatus;
 		this.jobExecuteDate = jobExecuteDate;
-		this.trxId = trxId;
-		this.transCodeNo = transCodeNo;
+		this.journalNo = journalNo;
+		this.voucherNo = voucherNo;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -96,13 +96,13 @@ public class TransJob implements java.io.Serializable {
 		this.officeId = officeId;
 	}
 
-	@Column(name = "JobCode", length = 50)
-	public String getJobCode() {
-		return this.jobCode;
+	@Column(name = "JobNo", length = 50)
+	public String getJobNo() {
+		return this.jobNo;
 	}
 
-	public void setJobCode(String jobCode) {
-		this.jobCode = jobCode;
+	public void setJobNo(String jobNo) {
+		this.jobNo = jobNo;
 	}
 
 	@Column(name = "TrxConfigCode", length = 20)
@@ -143,7 +143,7 @@ public class TransJob implements java.io.Serializable {
 		this.jobPost = jobPost;
 	}
 
-	@Column(name = "JobStatus", length = 50)
+	@Column(name = "JobStatus", length = 2)
 	public String getJobStatus() {
 		return this.jobStatus;
 	}
@@ -162,22 +162,22 @@ public class TransJob implements java.io.Serializable {
 		this.jobExecuteDate = jobExecuteDate;
 	}
 
-	@Column(name = "TrxID")
-	public Long getTrxId() {
-		return this.trxId;
+	@Column(name = "JournalNo", length = 50)
+	public String getJournalNo() {
+		return this.journalNo;
 	}
 
-	public void setTrxId(Long trxId) {
-		this.trxId = trxId;
+	public void setJournalNo(String journalNo) {
+		this.journalNo = journalNo;
 	}
 
-	@Column(name = "TransCodeNo", length = 50)
-	public String getTransCodeNo() {
-		return this.transCodeNo;
+	@Column(name = "VoucherNo", length = 50)
+	public String getVoucherNo() {
+		return this.voucherNo;
 	}
 
-	public void setTransCodeNo(String transCodeNo) {
-		this.transCodeNo = transCodeNo;
+	public void setVoucherNo(String voucherNo) {
+		this.voucherNo = voucherNo;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

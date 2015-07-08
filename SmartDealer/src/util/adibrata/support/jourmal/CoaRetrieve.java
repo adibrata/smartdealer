@@ -14,6 +14,7 @@ public class CoaRetrieve {
 	Session session;
 
 	/**
+
 	 * 
 	 */
 	public CoaRetrieve() {
@@ -21,5 +22,29 @@ public class CoaRetrieve {
 		session = HibernateHelper.getSessionFactory().openSession();
 	}
 
+	public enum CoaType
+	{
+		CoaSchm, CoaBank, CoaInsur, CoaFunding
+	}
+	
+	public static String CoaCode(CoaType coatype, String coaname)
+	{
+		String coacode = "";
+		switch (coatype) {
+		case CoaSchm:
+			break;
+		case CoaBank:
+			break;
+		default:
+			break;
+		}
+		return coacode;
+	}
+	
+	private static String CoaCodeScheme()
+	{
+		return null;
+		
+	}
 	
 }

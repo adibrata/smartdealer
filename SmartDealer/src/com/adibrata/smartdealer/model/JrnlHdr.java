@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,7 +27,7 @@ public class JrnlHdr implements java.io.Serializable {
 	private long id;
 	private Partner partner;
 	private long officeId;
-	private String jrnlCode;
+	private String jrnlNo;
 	private String periodYear;
 	private String periodMonth;
 	private Date trxDate;
@@ -51,12 +51,12 @@ public class JrnlHdr implements java.io.Serializable {
 	public JrnlHdr() {
 	}
 
-	public JrnlHdr(long id, long officeId, String jrnlCode, String periodYear,
+	public JrnlHdr(long id, long officeId, String jrnlNo, String periodYear,
 			String periodMonth, Date trxDate, String trxDesc,
 			BigDecimal jrnlAmt, String statusTr, char flag) {
 		this.id = id;
 		this.officeId = officeId;
-		this.jrnlCode = jrnlCode;
+		this.jrnlNo = jrnlNo;
 		this.periodYear = periodYear;
 		this.periodMonth = periodMonth;
 		this.trxDate = trxDate;
@@ -66,7 +66,7 @@ public class JrnlHdr implements java.io.Serializable {
 		this.flag = flag;
 	}
 
-	public JrnlHdr(long id, Partner partner, long officeId, String jrnlCode,
+	public JrnlHdr(long id, Partner partner, long officeId, String jrnlNo,
 			String periodYear, String periodMonth, Date trxDate, String reffNo,
 			Date reffDate, String trxDesc, BigDecimal jrnlAmt, String statusTr,
 			char flag, Character isActive, Character isValid,
@@ -75,7 +75,7 @@ public class JrnlHdr implements java.io.Serializable {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
-		this.jrnlCode = jrnlCode;
+		this.jrnlNo = jrnlNo;
 		this.periodYear = periodYear;
 		this.periodMonth = periodMonth;
 		this.trxDate = trxDate;
@@ -97,7 +97,7 @@ public class JrnlHdr implements java.io.Serializable {
 		this.jrnlDtls = jrnlDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -126,13 +126,13 @@ public class JrnlHdr implements java.io.Serializable {
 		this.officeId = officeId;
 	}
 
-	@Column(name = "JrnlCode", nullable = false, length = 50)
-	public String getJrnlCode() {
-		return this.jrnlCode;
+	@Column(name = "JrnlNo", nullable = false, length = 50)
+	public String getJrnlNo() {
+		return this.jrnlNo;
 	}
 
-	public void setJrnlCode(String jrnlCode) {
-		this.jrnlCode = jrnlCode;
+	public void setJrnlNo(String jrnlNo) {
+		this.jrnlNo = jrnlNo;
 	}
 
 	@Column(name = "PeriodYear", nullable = false, length = 4)

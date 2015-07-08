@@ -65,6 +65,8 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 	@Override
 	public void Save(Customer customer) {
 		// TODO Auto-generated method stub
+
+
 		session.getTransaction().begin();
 		try {
 			customer.setDtmCrt(dtmupd.getTime());

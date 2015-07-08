@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -33,6 +33,8 @@ public class CoaSchmHdr implements java.io.Serializable {
 	private Date dtmCrt;
 	private String usrCrt;
 	private Set<CoaSchmDtl> coaSchmDtls = new HashSet<CoaSchmDtl>(0);
+	private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
+	private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
 
 	public CoaSchmHdr() {
 	}
@@ -43,7 +45,8 @@ public class CoaSchmHdr implements java.io.Serializable {
 
 	public CoaSchmHdr(long id, Partner partner, String coaSchmCode,
 			String coaSchmDesc, Integer isActive, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls) {
+			Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls,
+			Set<ReturSalesHdr> returSalesHdrs, Set<SalesOrderHdr> salesOrderHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.coaSchmCode = coaSchmCode;
@@ -54,9 +57,11 @@ public class CoaSchmHdr implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 		this.coaSchmDtls = coaSchmDtls;
+		this.returSalesHdrs = returSalesHdrs;
+		this.salesOrderHdrs = salesOrderHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -148,6 +153,24 @@ public class CoaSchmHdr implements java.io.Serializable {
 
 	public void setCoaSchmDtls(Set<CoaSchmDtl> coaSchmDtls) {
 		this.coaSchmDtls = coaSchmDtls;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "coaSchmHdr")
+	public Set<ReturSalesHdr> getReturSalesHdrs() {
+		return this.returSalesHdrs;
+	}
+
+	public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs) {
+		this.returSalesHdrs = returSalesHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "coaSchmHdr")
+	public Set<SalesOrderHdr> getSalesOrderHdrs() {
+		return this.salesOrderHdrs;
+	}
+
+	public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs) {
+		this.salesOrderHdrs = salesOrderHdrs;
 	}
 
 }

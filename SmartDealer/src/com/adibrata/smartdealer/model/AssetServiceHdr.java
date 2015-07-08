@@ -1,17 +1,14 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,14 +22,12 @@ public class AssetServiceHdr implements java.io.Serializable {
 
 	private long id;
 	private Partner partner;
-	private Stock stock;
 	private Long officeId;
+	private Long stockId;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
-	private Set<AssetServiceDtl> assetServiceDtls = new HashSet<AssetServiceDtl>(
-			0);
 
 	public AssetServiceHdr() {
 	}
@@ -41,21 +36,19 @@ public class AssetServiceHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public AssetServiceHdr(long id, Partner partner, Stock stock,
-			Long officeId, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<AssetServiceDtl> assetServiceDtls) {
+	public AssetServiceHdr(long id, Partner partner, Long officeId,
+			Long stockId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.partner = partner;
-		this.stock = stock;
 		this.officeId = officeId;
+		this.stockId = stockId;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
-		this.assetServiceDtls = assetServiceDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -75,16 +68,6 @@ public class AssetServiceHdr implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "StockID")
-	public Stock getStock() {
-		return this.stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
-	}
-
 	@Column(name = "OfficeID")
 	public Long getOfficeId() {
 		return this.officeId;
@@ -92,6 +75,15 @@ public class AssetServiceHdr implements java.io.Serializable {
 
 	public void setOfficeId(Long officeId) {
 		this.officeId = officeId;
+	}
+
+	@Column(name = "StockID")
+	public Long getStockId() {
+		return this.stockId;
+	}
+
+	public void setStockId(Long stockId) {
+		this.stockId = stockId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -130,15 +122,6 @@ public class AssetServiceHdr implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetServiceHdr")
-	public Set<AssetServiceDtl> getAssetServiceDtls() {
-		return this.assetServiceDtls;
-	}
-
-	public void setAssetServiceDtls(Set<AssetServiceDtl> assetServiceDtls) {
-		this.assetServiceDtls = assetServiceDtls;
 	}
 
 }

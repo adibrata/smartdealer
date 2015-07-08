@@ -65,7 +65,7 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 			String transno = TransactionNo(session, TransactionType.purchaseinvoice, purchaseInvoice
 					.getPartner().getPartnerCode(), purchaseInvoice.getOffice()
 					.getId());
-			purchaseInvoice.setPurchaseInvoiceNo(transno);
+			purchaseInvoice.setPoinvNo(transno);
 			purchaseInvoice.setDtmCrt(dtmupd.getTime());
 			purchaseInvoice.setDtmUpd(dtmupd.getTime());
 			session.save(purchaseInvoice);
@@ -84,22 +84,9 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 		}
 	}
 
-	@Override
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public PurchaseInvoice View(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
 		return null;
 	}

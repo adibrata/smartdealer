@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,6 +26,7 @@ public class Customer implements java.io.Serializable {
 
 	private long id;
 	private Partner partner;
+	private String customerNo;
 	private String name;
 	private String address;
 	private String rt;
@@ -60,16 +61,18 @@ public class Customer implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Customer(long id, Partner partner, String name, String address,
-			String rt, String rw, String kelurahan, String city,
-			String zipcode, String type, String areaPhone1, String phoneNo1,
-			String areaPhone2, String phoneNo2, String areaFax, String faxNo,
-			String handphone, String fullAddress, BigDecimal prepaidAmount,
-			BigDecimal aramount, BigDecimal arpaid, BigDecimal arwaived,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs) {
+	public Customer(long id, Partner partner, String customerNo, String name,
+			String address, String rt, String rw, String kelurahan,
+			String city, String zipcode, String type, String areaPhone1,
+			String phoneNo1, String areaPhone2, String phoneNo2,
+			String areaFax, String faxNo, String handphone, String fullAddress,
+			BigDecimal prepaidAmount, BigDecimal aramount, BigDecimal arpaid,
+			BigDecimal arwaived, Date dtmUpd, String usrUpd, Date dtmCrt,
+			String usrCrt, Set<SalesInvoice> salesInvoices,
+			Set<SalesOrderHdr> salesOrderHdrs) {
 		this.id = id;
 		this.partner = partner;
+		this.customerNo = customerNo;
 		this.name = name;
 		this.address = address;
 		this.rt = rt;
@@ -98,7 +101,7 @@ public class Customer implements java.io.Serializable {
 		this.salesOrderHdrs = salesOrderHdrs;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -116,6 +119,15 @@ public class Customer implements java.io.Serializable {
 
 	public void setPartner(Partner partner) {
 		this.partner = partner;
+	}
+
+	@Column(name = "CustomerNo", length = 50)
+	public String getCustomerNo() {
+		return this.customerNo;
+	}
+
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
 	@Column(name = "Name", length = 50)

@@ -29,9 +29,9 @@ public class JobPostTest {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String strDate = "2012-12-26";
 		Date trxdate = formatter.parse(strDate);
-		JobPost a = new JobPost(session);
-		a.JobSave("001", 1, "PO", "Default", trxdate, trxdate, "pt", 1,
-				"Henry");
+
+		JobPost.JobSave(session, "001", 1, JobPost.JobCode.accountpayable,
+				"Default", trxdate, trxdate, "Henry");
 	}
 
 }

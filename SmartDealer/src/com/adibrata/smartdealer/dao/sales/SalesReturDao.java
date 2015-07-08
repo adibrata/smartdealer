@@ -15,6 +15,7 @@ import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
+import util.adibrata.support.job.JobPost;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.dao.DaoBase;
@@ -67,10 +68,19 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 			List<ReturSalesDtl> lstreturSalesDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = returSalesHdr.getPartner();
+		Office office = returSalesHdr.getOffice();
+		long jobid;
 		try {
-			String transno = TransactionNo(session, TransactionType.salesorderreturn, returSalesHdr
-					.getPartner().getPartnerCode(), returSalesHdr.getOffice()
-					.getId());
+			jobid = JobPost.JobSave(session, partner.getPartnerCode(), 
+					office.getId(),
+					JobPost.JobCode.salesorder, returSalesHdr.getCoaSchmHdr().getCoaSchmCode(),
+					returSalesHdr.getValueDate(),
+					returSalesHdr.getPostingDate(), returSalesHdr.getUsrCrt()).getId();
+
+			returSalesHdr.setJobId(jobid);
+			String transno = TransactionNo(session, TransactionType.salesorderreturn, 
+					partner.getPartnerCode(), office.getId());
 			
 			returSalesHdr.setDtmCrt(dtmupd.getTime());
 			returSalesHdr.setDtmUpd(dtmupd.getTime());

@@ -3,6 +3,7 @@
  */
 package util.adibrata.support.job;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,7 +25,9 @@ import util.adibrata.support.transno.GetTransNo;
  *
  */
 public class JobPost {
-
+	private static DateFormat dateFormat = new SimpleDateFormat(
+			"yyyy/MM/dd HH:mm:ss");
+	private static Calendar dtmupd = Calendar.getInstance();
 	static Session session;
 
 	public JobPost() {
@@ -35,38 +38,54 @@ public class JobPost {
 		this.session = session;
 	}
 
-	public String JobSave(String partnercode, long officeid,
-			String configcode, String coaSchemeCode, Date valueDate,
-			Date postingDate, String transCodeNo, // code yang digenerate dari
-													// transaksi seperti PONo
-			long transId, String userCrt// identity dari transaksi, seperti POID
-	) {
+	public enum JobCode {
+		accountpayable("APD"), advancerequest("ADV"), advancereturn("ADR"), danatunai(
+				"DTN"), entrustout("ENTO"), entrustreceive("ENTR"), otherdisburse(
+				"OTD"), otherreceive("OTR"), paymentrequest("PYR"), paymentvoucher(
+				"PVD"), pettycashcorretion("PCO"), pettycashreimburse("PCR"), pettycashtransaction(
+				"PCT"), prepaidreceive("PRV"), purchaseinvoice("PRI"), purchaseorder(
+				"PRO"), purchasereturn("PRR"), salesorder("SAO"), salesorderreturn(
+				"SAR"), service("SVC");
+
+		private String statusCode;
+
+		private JobCode(String s) {
+			statusCode = s;
+		}
+
+		public String getJobCode() {
+			return statusCode;
+		}
+
+	}
+
+	public static TransJob JobSave(Session session, String partnercode,
+			long officeid, JobCode jobcode, String coaSchemeCode,
+			Date valueDate, Date postingDate, String userCrt) {
 
 		TransJob transjob = new TransJob();
 		Partner partner = new Partner();
 		TrxConfigHdr trxconfighdr = new TrxConfigHdr();
-	
-		String jobcode = GetTransNo.GenerateTransactionNo(session,
-				partnercode, officeid, "JOB", postingDate);
-		Date dtmUpd = Calendar.getInstance().getTime();
-		
+
+		String transno = GetTransNo.GenerateTransactionNo(session, partnercode,
+				officeid, "JOB", postingDate);
+
 		partner.setPartnerCode(partnercode);
 		transjob.setPartner(partner);
 		transjob.setOfficeId(officeid);
+
+		transjob.setJobNo(transno);
 		transjob.setCoaSchmCode(coaSchemeCode);
-		transjob.setJobCode(jobcode);
-		
 		transjob.setJobDate(valueDate);
 		transjob.setJobPost(postingDate);
-		transjob.setTrxId(transId);
-		transjob.setTransCodeNo(transCodeNo);
+
 		transjob.setJobStatus("NE");
 		transjob.setUsrUpd(userCrt);
 		transjob.setUsrCrt(userCrt);
-		transjob.setTrxConfigCode(configcode);
-		transjob.setDtmCrt(dtmUpd);
-		transjob.setDtmUpd(dtmUpd);
-	
+		transjob.setTrxConfigCode(jobcode.getJobCode());
+		transjob.setDtmCrt(dtmupd.getTime());
+		transjob.setDtmUpd(dtmupd.getTime());
+
 		session.getTransaction().begin();
 		try {
 			session.save(transjob);
@@ -74,6 +93,6 @@ public class JobPost {
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 		}
-		return jobcode;
+		return transjob;
 	}
 }

@@ -1,13 +1,13 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -24,6 +24,7 @@ public class PaymentVoucher implements java.io.Serializable {
 	private long id;
 	private Office office;
 	private Partner partner;
+	private String pvno;
 	private BigDecimal pvamount;
 	private String pvstatus;
 	private Long transJobId;
@@ -39,12 +40,13 @@ public class PaymentVoucher implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public PaymentVoucher(long id, Office office, Partner partner,
+	public PaymentVoucher(long id, Office office, Partner partner, String pvno,
 			BigDecimal pvamount, String pvstatus, Long transJobId, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.office = office;
 		this.partner = partner;
+		this.pvno = pvno;
 		this.pvamount = pvamount;
 		this.pvstatus = pvstatus;
 		this.transJobId = transJobId;
@@ -54,7 +56,7 @@ public class PaymentVoucher implements java.io.Serializable {
 		this.usrCrt = usrCrt;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -82,6 +84,15 @@ public class PaymentVoucher implements java.io.Serializable {
 
 	public void setPartner(Partner partner) {
 		this.partner = partner;
+	}
+
+	@Column(name = "PVNo", length = 50)
+	public String getPvno() {
+		return this.pvno;
+	}
+
+	public void setPvno(String pvno) {
+		this.pvno = pvno;
 	}
 
 	@Column(name = "PVAmount", precision = 17)

@@ -15,6 +15,7 @@ import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
+import util.adibrata.support.job.JobPost;
 import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.dao.DaoBase;
@@ -64,11 +65,20 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 			List<SalesOrderDtl> lstsalesOrderDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = salesOrderHdr.getPartner();
+		Office office = salesOrderHdr.getOffice();
+		long jobid = 0;
 
 		try {
-			String transno = TransactionNo(session, TransactionType.salesorder, salesOrderHdr
-					.getPartner().getPartnerCode(), salesOrderHdr.getOffice()
-					.getId());
+			jobid = JobPost.JobSave(session, partner.getPartnerCode(), 
+					office.getId(),
+					JobPost.JobCode.salesorder, salesOrderHdr.getCoaSchmHdr().getCoaSchmCode(),
+					salesOrderHdr.getValueDate(),
+					salesOrderHdr.getPostingDate(), salesOrderHdr.getUsrCrt()).getId();
+
+			salesOrderHdr.setJobId(jobid);
+			String transno = TransactionNo(session, TransactionType.salesorder,
+					partner.getPartnerCode(), office.getId());
 			salesOrderHdr.setSono(transno);
 			salesOrderHdr.setDtmCrt(dtmupd.getTime());
 			salesOrderHdr.setDtmUpd(dtmupd.getTime());
@@ -192,7 +202,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	@Override
 	public List<Customer> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
-		/// TODO Auto-generated method stub
+		// / TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Customer> list = null;
 

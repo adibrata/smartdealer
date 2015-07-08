@@ -70,7 +70,6 @@
         <mapping class="com.adibrata.smartdealer.model.PaymentVoucher" />
         <mapping class="com.adibrata.smartdealer.model.AdvanceCash" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderHdr" />
-        <mapping class="com.adibrata.smartdealer.model.AssetServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.DanaTunai" />
         <mapping class="com.adibrata.smartdealer.model.Employee" />
         <mapping class="com.adibrata.smartdealer.model.ServiceItem" />

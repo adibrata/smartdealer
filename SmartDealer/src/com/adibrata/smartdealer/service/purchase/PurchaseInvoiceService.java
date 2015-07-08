@@ -11,10 +11,7 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface PurchaseInvoiceService  extends SeviceBase {
 	public void Save(PurchaseInvoice purchaseInvoice);
 
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy);
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
-	public long TotalRecord(String WherCond);
+	
 	public SalesOrderHdr viewSalesOrderHdr (long id);
 	public PurchaseInvoice View(long id);
 

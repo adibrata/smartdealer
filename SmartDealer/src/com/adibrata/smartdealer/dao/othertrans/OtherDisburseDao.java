@@ -65,11 +65,13 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	@Override
 	public void Save(OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> lstotherDsbDtl) {
 		// TODO Auto-generated method stub
+		Partner partner = otherDsbHdr.getPartner();
+		Office office = otherDsbHdr.getOffice();
+
 		session.getTransaction().begin();
 		try {
-			String transno = TransactionNo(session, TransactionType.otherdisburse, otherDsbHdr
-					.getPartner().getPartnerCode(), otherDsbHdr.getOffice()
-					.getId());
+			String transno = TransactionNo(session, TransactionType.otherdisburse, 
+					partner.getPartnerCode(), office.getId());
 			otherDsbHdr.setOtherDisbNo(transno);
 			otherDsbHdr.setDtmCrt(dtmupd.getTime());
 			otherDsbHdr.setDtmUpd(dtmupd.getTime());
@@ -102,9 +104,63 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	 * (int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<OtherDsbHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
 		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<OtherDsbHdr> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "")
+				hql.append(WhereCond);
+
+			Query selectQuery = session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	
+	@Override
+	public List<OtherDsbHdr> Paging(int CurrentPage, String WhereCond, String SortBy,
+			boolean islast) {
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		List<OtherDsbHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

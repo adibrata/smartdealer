@@ -64,11 +64,13 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 	@Override
 	public void Save(DanaTunai danaTunai) {
 		// TODO Auto-generated method stub
+		Partner partner = danaTunai.getPartner();
+		Office office = danaTunai.getOffice();
+
 		session.getTransaction().begin();
 		try {
-			String transno = TransactionNo(session, TransactionType.danatunai, danaTunai
-					.getPartner().getPartnerCode(), danaTunai.getOffice()
-					.getId());
+			String transno = TransactionNo(session, TransactionType.danatunai, 
+					partner.getPartnerCode(), office.getId());
 			danaTunai.setDanaTunaiNo (transno);
 			danaTunai.setDtmCrt(dtmupd.getTime());
 			danaTunai.setDtmUpd(dtmupd.getTime());

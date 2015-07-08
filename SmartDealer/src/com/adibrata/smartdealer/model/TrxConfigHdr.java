@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,9 +25,8 @@ public class TrxConfigHdr implements java.io.Serializable {
 	private long id;
 	private String trxConfigCode;
 	private String trxConfigDesc;
-	private String trxSeqCode;
-	private String tableTrans;
-	private String officeId;
+	private String trxNo;
+	private String trxTable;
 	private String officeIdX;
 	private String reffNo;
 	private String bankAccId;
@@ -44,7 +43,6 @@ public class TrxConfigHdr implements java.io.Serializable {
 	private Character isCreatePaymentHistory;
 	private Character isCreateJournal;
 	private Character isCreateCashBankMutation;
-	private String jrnlTrxCode;
 	private String usrCrt;
 	private Date dtmCrt;
 	private String usrUpd;
@@ -60,21 +58,19 @@ public class TrxConfigHdr implements java.io.Serializable {
 	}
 
 	public TrxConfigHdr(long id, String trxConfigCode, String trxConfigDesc,
-			String trxSeqCode, String tableTrans, String officeId,
-			String officeIdX, String reffNo, String bankAccId, String currId,
-			String currRate, Integer bankPortion, Character rcvDisbFlag,
-			String cashierId, String cashierOpen, String amountTrx, String wop,
+			String trxNo, String trxTable, String officeIdX, String reffNo,
+			String bankAccId, String currId, String currRate,
+			Integer bankPortion, Character rcvDisbFlag, String cashierId,
+			String cashierOpen, String amountTrx, String wop,
 			String receivedFrom, String receiptNo,
 			Character isCreatePaymentHistory, Character isCreateJournal,
-			Character isCreateCashBankMutation, String jrnlTrxCode,
-			String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd,
-			Set<TrxConfigDtl> trxConfigDtls) {
+			Character isCreateCashBankMutation, String usrCrt, Date dtmCrt,
+			String usrUpd, Date dtmUpd, Set<TrxConfigDtl> trxConfigDtls) {
 		this.id = id;
 		this.trxConfigCode = trxConfigCode;
 		this.trxConfigDesc = trxConfigDesc;
-		this.trxSeqCode = trxSeqCode;
-		this.tableTrans = tableTrans;
-		this.officeId = officeId;
+		this.trxNo = trxNo;
+		this.trxTable = trxTable;
 		this.officeIdX = officeIdX;
 		this.reffNo = reffNo;
 		this.bankAccId = bankAccId;
@@ -91,7 +87,6 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.isCreatePaymentHistory = isCreatePaymentHistory;
 		this.isCreateJournal = isCreateJournal;
 		this.isCreateCashBankMutation = isCreateCashBankMutation;
-		this.jrnlTrxCode = jrnlTrxCode;
 		this.usrCrt = usrCrt;
 		this.dtmCrt = dtmCrt;
 		this.usrUpd = usrUpd;
@@ -99,7 +94,7 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.trxConfigDtls = trxConfigDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -127,31 +122,22 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.trxConfigDesc = trxConfigDesc;
 	}
 
-	@Column(name = "TrxSeqCode", length = 20)
-	public String getTrxSeqCode() {
-		return this.trxSeqCode;
+	@Column(name = "TrxNo", length = 20)
+	public String getTrxNo() {
+		return this.trxNo;
 	}
 
-	public void setTrxSeqCode(String trxSeqCode) {
-		this.trxSeqCode = trxSeqCode;
+	public void setTrxNo(String trxNo) {
+		this.trxNo = trxNo;
 	}
 
-	@Column(name = "TableTrans", length = 100)
-	public String getTableTrans() {
-		return this.tableTrans;
+	@Column(name = "TrxTable", length = 100)
+	public String getTrxTable() {
+		return this.trxTable;
 	}
 
-	public void setTableTrans(String tableTrans) {
-		this.tableTrans = tableTrans;
-	}
-
-	@Column(name = "OfficeID", length = 50)
-	public String getOfficeId() {
-		return this.officeId;
-	}
-
-	public void setOfficeId(String officeId) {
-		this.officeId = officeId;
+	public void setTrxTable(String trxTable) {
+		this.trxTable = trxTable;
 	}
 
 	@Column(name = "OfficeID_X", length = 50)
@@ -296,15 +282,6 @@ public class TrxConfigHdr implements java.io.Serializable {
 
 	public void setIsCreateCashBankMutation(Character isCreateCashBankMutation) {
 		this.isCreateCashBankMutation = isCreateCashBankMutation;
-	}
-
-	@Column(name = "JrnlTrxCode", length = 20)
-	public String getJrnlTrxCode() {
-		return this.jrnlTrxCode;
-	}
-
-	public void setJrnlTrxCode(String jrnlTrxCode) {
-		this.jrnlTrxCode = jrnlTrxCode;
 	}
 
 	@Column(name = "UsrCrt", length = 50)

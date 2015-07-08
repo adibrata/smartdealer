@@ -68,11 +68,13 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService 
 			List<PayReqDtl> lstpayReqDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = payReqHdr.getPartner();
+		Office office = payReqHdr.getOffice();
+
 		try {
 			
-			String transno = TransactionNo(session, TransactionType.paymentrequest, payReqHdr
-					.getPartner().getPartnerCode(), payReqHdr.getOffice()
-					.getId());
+			String transno = TransactionNo(session, TransactionType.paymentrequest, 
+					partner.getPartnerCode(), office.getId());
 			payReqHdr.setPayReqNo(transno);
 			payReqHdr.setDtmCrt(dtmupd.getTime());
 			payReqHdr.setDtmUpd(dtmupd.getTime());

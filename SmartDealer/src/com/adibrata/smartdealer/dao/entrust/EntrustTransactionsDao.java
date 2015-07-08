@@ -61,11 +61,12 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl) {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
+		Partner partner = entrustHdr.getPartner();
+		Office office = entrustHdr.getOffice();
 
 		try {
-			String transno = GetTransNo.GenerateTransactionNo(session, entrustHdr
-					.getPartner().getPartnerCode(), entrustHdr.getOffice()
-					.getId(), "ENTO", dtmupd.getTime());
+			String transno = GetTransNo.GenerateTransactionNo(session, partner.getPartnerCode(), 
+					office.getId(), "ENTO", dtmupd.getTime());
 			entrustHdr.setEntrustNo(transno);
 			entrustHdr.setDtmCrt(dtmupd.getTime());
 			entrustHdr.setDtmUpd(dtmupd.getTime());
@@ -99,11 +100,11 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Supplier> Paging(int CurrentPage, String WhereCond,
+	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
-		List<Supplier> list = null;
+		List<EntrustHdr> list = null;
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "")
@@ -154,6 +155,37 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 			hql.append(strStatement);
 	
 			Query selectQuery = session.createQuery(hql.toString());
+			list = selectQuery.list();
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	
+	@Override
+	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) {
+		StringBuilder hql = new StringBuilder();
+		List<EntrustHdr> list = null;
+
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
 		} catch (Exception exp) {

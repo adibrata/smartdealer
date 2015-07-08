@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,6 +31,7 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 	private String pono;
 	private Date podate;
 	private BigDecimal poamount;
+	private Long jobId;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -51,7 +52,7 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 
 	public PurchaseOrderHdr(long id, Office office, Partner partner,
 			Supplier supplier, String pono, Date podate, BigDecimal poamount,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<PurchaseOrderDtl> purchaseOrderDtls) {
@@ -62,6 +63,7 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 		this.pono = pono;
 		this.podate = podate;
 		this.poamount = poamount;
+		this.jobId = jobId;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -71,7 +73,7 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 		this.purchaseOrderDtls = purchaseOrderDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -102,7 +104,7 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DaelerId")
+	@JoinColumn(name = "SupplierId")
 	public Supplier getSupplier() {
 		return this.supplier;
 	}
@@ -137,6 +139,15 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 
 	public void setPoamount(BigDecimal poamount) {
 		this.poamount = poamount;
+	}
+
+	@Column(name = "JobId")
+	public Long getJobId() {
+		return this.jobId;
+	}
+
+	public void setJobId(Long jobId) {
+		this.jobId = jobId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

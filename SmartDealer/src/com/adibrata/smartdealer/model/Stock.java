@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 11:12:47 AM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -58,8 +58,6 @@ public class Stock implements java.io.Serializable {
 	private Set<SalesOrderDtl> salesOrderDtls = new HashSet<SalesOrderDtl>(0);
 	private Set<StockDocument> stockDocuments = new HashSet<StockDocument>(0);
 	private Set<ReturSalesDtl> returSalesDtls = new HashSet<ReturSalesDtl>(0);
-	private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(
-			0);
 	private Set<ReturPurchaseDtl> returPurchaseDtls = new HashSet<ReturPurchaseDtl>(
 			0);
 
@@ -83,7 +81,6 @@ public class Stock implements java.io.Serializable {
 			String usrCrt, Set<SalesOrderDtl> salesOrderDtls,
 			Set<StockDocument> stockDocuments,
 			Set<ReturSalesDtl> returSalesDtls,
-			Set<AssetServiceHdr> assetServiceHdrs,
 			Set<ReturPurchaseDtl> returPurchaseDtls) {
 		this.id = id;
 		this.assetMaster = assetMaster;
@@ -119,11 +116,10 @@ public class Stock implements java.io.Serializable {
 		this.salesOrderDtls = salesOrderDtls;
 		this.stockDocuments = stockDocuments;
 		this.returSalesDtls = returSalesDtls;
-		this.assetServiceHdrs = assetServiceHdrs;
 		this.returPurchaseDtls = returPurchaseDtls;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -437,15 +433,6 @@ public class Stock implements java.io.Serializable {
 
 	public void setReturSalesDtls(Set<ReturSalesDtl> returSalesDtls) {
 		this.returSalesDtls = returSalesDtls;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
-	public Set<AssetServiceHdr> getAssetServiceHdrs() {
-		return this.assetServiceHdrs;
-	}
-
-	public void setAssetServiceHdrs(Set<AssetServiceHdr> assetServiceHdrs) {
-		this.assetServiceHdrs = assetServiceHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
