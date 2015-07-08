@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -35,6 +35,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 	private Date valueDate;
 	private Long bankAccountId;
 	private String notes;
+	private Long jobId;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -51,8 +52,9 @@ public class OtherRcvHdr implements java.io.Serializable {
 	public OtherRcvHdr(long id, Office office, Partner partner,
 			String otherRcvNo, String rcvFrom, BigDecimal rcvAmount,
 			String reffNo, Date postingDate, Date valueDate,
-			Long bankAccountId, String notes, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<OtherRcvDtl> otherRcvDtls) {
+			Long bankAccountId, String notes, Long jobId, Date dtmUpd,
+			String usrUpd, Date dtmCrt, String usrCrt,
+			Set<OtherRcvDtl> otherRcvDtls) {
 		this.id = id;
 		this.office = office;
 		this.partner = partner;
@@ -64,6 +66,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.valueDate = valueDate;
 		this.bankAccountId = bankAccountId;
 		this.notes = notes;
+		this.jobId = jobId;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -71,7 +74,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.otherRcvDtls = otherRcvDtls;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -173,6 +176,15 @@ public class OtherRcvHdr implements java.io.Serializable {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	@Column(name = "JobId")
+	public Long getJobId() {
+		return this.jobId;
+	}
+
+	public void setJobId(Long jobId) {
+		this.jobId = jobId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

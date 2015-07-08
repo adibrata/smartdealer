@@ -1,12 +1,12 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -33,6 +33,7 @@ public class TrxSeqNo implements java.io.Serializable {
 	private String prefix;
 	private String suffix;
 	private String configNumber;
+	private Short isJrnlTrans;
 	private String usrUpd;
 	private Date dtmUpd;
 	private String usrCrt;
@@ -54,8 +55,8 @@ public class TrxSeqNo implements java.io.Serializable {
 	public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode,
 			long officeId, String seqName, Integer seqNo, Integer lengthNumber,
 			Character resetFlag, String prefix, String suffix,
-			String configNumber, String usrUpd, Date dtmUpd, String usrCrt,
-			Date dtmCrt) {
+			String configNumber, Short isJrnlTrans, String usrUpd, Date dtmUpd,
+			String usrCrt, Date dtmCrt) {
 		this.msseqId = msseqId;
 		this.partner = partner;
 		this.mssequenceCode = mssequenceCode;
@@ -67,13 +68,14 @@ public class TrxSeqNo implements java.io.Serializable {
 		this.prefix = prefix;
 		this.suffix = suffix;
 		this.configNumber = configNumber;
+		this.isJrnlTrans = isJrnlTrans;
 		this.usrUpd = usrUpd;
 		this.dtmUpd = dtmUpd;
 		this.usrCrt = usrCrt;
 		this.dtmCrt = dtmCrt;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "MSSeqID", unique = true, nullable = false)
 	public long getMsseqId() {
 		return this.msseqId;
@@ -93,7 +95,7 @@ public class TrxSeqNo implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "MSSequenceCode", nullable = false, length = 10)
+	@Column(name = "MSSequenceCode", nullable = false, length = 50)
 	public String getMssequenceCode() {
 		return this.mssequenceCode;
 	}
@@ -172,6 +174,15 @@ public class TrxSeqNo implements java.io.Serializable {
 
 	public void setConfigNumber(String configNumber) {
 		this.configNumber = configNumber;
+	}
+
+	@Column(name = "IsJrnlTrans")
+	public Short getIsJrnlTrans() {
+		return this.isJrnlTrans;
+	}
+
+	public void setIsJrnlTrans(Short isJrnlTrans) {
+		this.isJrnlTrans = isJrnlTrans;
 	}
 
 	@Column(name = "UsrUpd", nullable = false, length = 50)

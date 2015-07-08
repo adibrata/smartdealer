@@ -1,11 +1,11 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,7 +48,7 @@ public class MsBigMenuList implements java.io.Serializable {
 		this.usrCrt = usrCrt;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;

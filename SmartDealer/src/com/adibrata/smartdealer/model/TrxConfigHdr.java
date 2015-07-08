@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,6 +28,7 @@ public class TrxConfigHdr implements java.io.Serializable {
 	private String trxNo;
 	private String trxTable;
 	private String officeIdX;
+	private String jrnlNoCode;
 	private String reffNo;
 	private String bankAccId;
 	private String currId;
@@ -58,8 +59,8 @@ public class TrxConfigHdr implements java.io.Serializable {
 	}
 
 	public TrxConfigHdr(long id, String trxConfigCode, String trxConfigDesc,
-			String trxNo, String trxTable, String officeIdX, String reffNo,
-			String bankAccId, String currId, String currRate,
+			String trxNo, String trxTable, String officeIdX, String jrnlNoCode,
+			String reffNo, String bankAccId, String currId, String currRate,
 			Integer bankPortion, Character rcvDisbFlag, String cashierId,
 			String cashierOpen, String amountTrx, String wop,
 			String receivedFrom, String receiptNo,
@@ -72,6 +73,7 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.trxNo = trxNo;
 		this.trxTable = trxTable;
 		this.officeIdX = officeIdX;
+		this.jrnlNoCode = jrnlNoCode;
 		this.reffNo = reffNo;
 		this.bankAccId = bankAccId;
 		this.currId = currId;
@@ -94,7 +96,7 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.trxConfigDtls = trxConfigDtls;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
@@ -147,6 +149,15 @@ public class TrxConfigHdr implements java.io.Serializable {
 
 	public void setOfficeIdX(String officeIdX) {
 		this.officeIdX = officeIdX;
+	}
+
+	@Column(name = "JrnlNoCode", length = 10)
+	public String getJrnlNoCode() {
+		return this.jrnlNoCode;
+	}
+
+	public void setJrnlNoCode(String jrnlNoCode) {
+		this.jrnlNoCode = jrnlNoCode;
 	}
 
 	@Column(name = "ReffNo", length = 50)

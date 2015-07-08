@@ -1,13 +1,13 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 1:59:39 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 2:12:08 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -69,7 +69,7 @@ public class CashBankDtl implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 	}
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
