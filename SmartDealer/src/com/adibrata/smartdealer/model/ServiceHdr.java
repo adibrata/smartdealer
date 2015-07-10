@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 2:17:27 PM by Hibernate Tools 4.3.1
+// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;

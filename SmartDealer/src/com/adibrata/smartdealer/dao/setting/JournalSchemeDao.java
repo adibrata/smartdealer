@@ -9,11 +9,18 @@ package com.adibrata.smartdealer.dao.setting;
  */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.type.LongType;
+import org.hibernate.type.StringType;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.*;
@@ -144,7 +151,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<CoaSchmHdr> PagingHeader(int CurrentPage, String WhereCond,
+	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy) {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
@@ -193,24 +200,51 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	}
 
 	@Override
-	public void SaveDetail(CoaSchmHdr coaSchmHdr, List<Coamaster> coamaster) {
+	public void SaveDetail(CoaSchmHdr coaSchmHdr,
+			List<ListCoaSchmDtl> lstCoaSchmDtl, String usrUpd) {
 		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+		session.getTransaction().begin();
+		SQLQuery selectQuery;
 		try {
-			for (Coamaster aRow : coamaster) {
-				CoaSchmDtl coaschmdtl = new CoaSchmDtl();
-				coaschmdtl.setCoacode(aRow.getCoacode());
-				coaschmdtl.setCoaMasterId(aRow.getId());
-				coaschmdtl.setCoaSchmHdr(coaSchmHdr);
 
-				coaschmdtl.setUsrCrt(coaSchmHdr.getUsrCrt());
-				coaschmdtl.setUsrUpd(coaSchmHdr.getUsrUpd());
-				coaschmdtl.setDtmCrt(dtmupd.getTime());
-				coaschmdtl.setDtmUpd(dtmupd.getTime());
-				session.save(coaschmdtl);
-				session.getTransaction().commit();
+			hql.append("Delete From CoaSchmDtl Where CoaSchmHdrId = :coaschmhdrid ");
+			selectQuery = session.createSQLQuery(hql.toString());
+			selectQuery.setParameter("coaschmhdrid", coaSchmHdr.getId());
+			selectQuery.executeUpdate();
+			
+			if (lstCoaSchmDtl.size() != 0) {
+				for (ListCoaSchmDtl arow : lstCoaSchmDtl) {
+					
+					CoaSchmDtl coaSchmDtl = new CoaSchmDtl();
+					Coamaster coamaster = new Coamaster();
+					hql.delete(0,  hql.length());
+					
+					hql.append("Insert Into CoaSchmDtl (CoaSchmHdrID, CoaMasterID, CoaCode)"
+							+ " Values (:coaschmhdrid, :coamasterid, :coacode) ");
+					selectQuery = session.createSQLQuery(hql.toString());
+					selectQuery.setParameter("coaschmhdrid", coaSchmHdr.getId());
+					selectQuery.setParameter("coamasterid", arow.getCoamasterid());
+					selectQuery.setParameter("coacode", arow.getCoacode());
+					selectQuery.executeUpdate();
+					
+					/*
+					coaSchmDtl.setCoaSchmHdr(coaSchmHdr);
+					coaSchmDtl.setCoacode(arow.getCoacode());
+					coamaster.setId(arow.getCoamasterid());
+					coaSchmDtl.setCoamaster(coamaster);
+					coaSchmDtl.setUsrUpd(usrUpd);
+					coaSchmDtl.setUsrCrt(usrUpd);
+					coaSchmDtl.setDtmCrt(dtmupd.getTime());
+					coaSchmDtl.setDtmUpd(dtmupd.getTime());
+					session.merge(coaSchmDtl);*/
+					
+				}
 			}
-		} catch (Exception exp) {
+			session.getTransaction().rollback();
 
+		} catch (Exception exp) {
+			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -221,9 +255,57 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	}
 
 	@Override
-	public List<Coamaster> ListCoaMaster() {
+	public List<ListCoaSchmDtl> ListCoaSchmDtl(CoaSchmHdr coaSchmHdr) {
 		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub
+		StringBuilder hql = new StringBuilder();
+
+		List<ListCoaSchmDtl> lstCoaSchmDtl = new ArrayList<ListCoaSchmDtl>();
+		SQLQuery selectQuery;
+		try {
+
+			hql.append("Select Id, CoaName, CoaDescription, "
+					+ "IsNull((Select CoaSchmDtl.CoaCode From CoaSchmDtl Inner Join CoaSchmHdr on CoaSchmDtl.CoaSchmHdrID = CoaSchmHdr.ID "
+					+ "where CoaSchmDtl.CoaMasterID = CoaMaster.ID and CoaSchmHdr.Id = :coaschmhdrid "
+					+ " and CoaSchmHdr.PartnerCode = :partnercode),'0') as CoaCode "
+					+ "from Coamaster "
+					+ "where CoaMaster.PartnerCode = :partnercode and IsScheme = 1 and IsActive = 1 ");
+
+			selectQuery = session.createSQLQuery(hql.toString());
+			selectQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+			selectQuery.setParameter("partnercode", coaSchmHdr.getPartner()
+					.getPartnerCode());
+			selectQuery.setParameter("coaschmhdrid", coaSchmHdr.getId());
+			selectQuery.addScalar("Id", new LongType());
+			selectQuery.addScalar("CoaName", new StringType());
+			selectQuery.addScalar("CoaDescription", new StringType());
+			selectQuery.addScalar("CoaCode", new StringType());
+
+			List list = selectQuery.list();
+			if (list.size() != 0) {
+				for (Object object : list) {
+					Map row = (Map) object;
+					ListCoaSchmDtl listCoaSchmDtl = new ListCoaSchmDtl();
+					listCoaSchmDtl.setCoamasterid((long)row.get("Id"));
+			
+					listCoaSchmDtl.setCoaname(row.get("CoaName").toString());
+					listCoaSchmDtl.setCoadesc(row.get("CoaDescription")
+							.toString());
+					listCoaSchmDtl.setCoacode(row.get("CoaCode").toString());
+					lstCoaSchmDtl.add(listCoaSchmDtl);
+					System.out.print((long)row.get("Id"));
+				}
+			}
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return lstCoaSchmDtl;
 	}
 
 	@Override
@@ -236,31 +318,31 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<CoaSchmHdr> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<CoaSchmHdr> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord (WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

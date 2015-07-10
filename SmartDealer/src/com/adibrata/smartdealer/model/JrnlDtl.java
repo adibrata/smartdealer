@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 2:17:27 PM by Hibernate Tools 4.3.1
+// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -32,7 +32,8 @@ public class JrnlDtl implements java.io.Serializable {
 	private char post;
 	private Long currId;
 	private BigDecimal currRate;
-	private BigDecimal amt;
+	private BigDecimal debtAmt;
+	private BigDecimal creditAmt;
 	private BigDecimal amtOri;
 	private String coaCodeX;
 	private String coaOfficeX;
@@ -48,22 +49,22 @@ public class JrnlDtl implements java.io.Serializable {
 	}
 
 	public JrnlDtl(long id, int sequenceNo, String coaOffice, int jrnlTrxId,
-			char post, BigDecimal currRate, BigDecimal amt) {
+			char post, BigDecimal currRate, BigDecimal debtAmt) {
 		this.id = id;
 		this.sequenceNo = sequenceNo;
 		this.coaOffice = coaOffice;
 		this.jrnlTrxId = jrnlTrxId;
 		this.post = post;
 		this.currRate = currRate;
-		this.amt = amt;
+		this.debtAmt = debtAmt;
 	}
 
 	public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy,
 			String coaOffice, String coaCode, int jrnlTrxId, String trDesc,
-			char post, Long currId, BigDecimal currRate, BigDecimal amt,
-			BigDecimal amtOri, String coaCodeX, String coaOfficeX,
-			String coaName, Long productId, Long departId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt) {
+			char post, Long currId, BigDecimal currRate, BigDecimal debtAmt,
+			BigDecimal creditAmt, BigDecimal amtOri, String coaCodeX,
+			String coaOfficeX, String coaName, Long productId, Long departId,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.jrnlHdr = jrnlHdr;
 		this.sequenceNo = sequenceNo;
@@ -75,7 +76,8 @@ public class JrnlDtl implements java.io.Serializable {
 		this.post = post;
 		this.currId = currId;
 		this.currRate = currRate;
-		this.amt = amt;
+		this.debtAmt = debtAmt;
+		this.creditAmt = creditAmt;
 		this.amtOri = amtOri;
 		this.coaCodeX = coaCodeX;
 		this.coaOfficeX = coaOfficeX;
@@ -189,13 +191,22 @@ public class JrnlDtl implements java.io.Serializable {
 		this.currRate = currRate;
 	}
 
-	@Column(name = "Amt", nullable = false, precision = 17)
-	public BigDecimal getAmt() {
-		return this.amt;
+	@Column(name = "DebtAmt", nullable = false, precision = 17)
+	public BigDecimal getDebtAmt() {
+		return this.debtAmt;
 	}
 
-	public void setAmt(BigDecimal amt) {
-		this.amt = amt;
+	public void setDebtAmt(BigDecimal debtAmt) {
+		this.debtAmt = debtAmt;
+	}
+
+	@Column(name = "CreditAmt", precision = 17)
+	public BigDecimal getCreditAmt() {
+		return this.creditAmt;
+	}
+
+	public void setCreditAmt(BigDecimal creditAmt) {
+		this.creditAmt = creditAmt;
 	}
 
 	@Column(name = "AmtOri", precision = 17)

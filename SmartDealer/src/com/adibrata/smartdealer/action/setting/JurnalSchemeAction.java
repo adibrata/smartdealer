@@ -35,6 +35,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 	private Office office;
 	private List<CoaSchmDtl> lstCoaSchmDtl;
 	private List<CoaSchmHdr> lstcoaSchmHdr;
+	private List<ListCoaSchmDtl> listcoaschmdtl;
 	private String searchcriteria;
 	private String searchvalue;
 	private int pageNumber;
@@ -91,8 +92,8 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 				wherecond = this.getSearchvalue() + " = "
 						+ this.getSearchcriteria();
 
-			this.lstcoaSchmHdr = this.jourSchemeService.PagingHeader(
-					this.getPageNumber(), wherecond, "");
+		/*	this.lstcoaSchmHdr = this.jourSchemeService.PagingHeader(
+					this.getPageNumber(), wherecond, "");*/
 
 			status = "Success";
 		} catch (Exception exp) {

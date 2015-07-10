@@ -20,15 +20,15 @@ public interface JournalSchemeService {
 
 	public void SaveDelHeader(CoaSchmHdr coaSchmHdr);
 
-	public void SaveDetail(CoaSchmHdr coaSchmHdr, List<Coamaster> coamaster);
+	public void SaveDetail(CoaSchmHdr coaSchmHdr, List<ListCoaSchmDtl> lstCoaSchmDtl, String usrUpd);
 
-	public List<CoaSchmHdr> PagingHeader(int CurrentPage, String WhereCond,
+	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy);
 
 	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast);
 
-	public List<Coamaster> ListCoaMaster();
+	public List<ListCoaSchmDtl> ListCoaSchmDtl(CoaSchmHdr coaSchmHdr);
 
 	public CoaSchmHdr ViewHeader(long id);
 

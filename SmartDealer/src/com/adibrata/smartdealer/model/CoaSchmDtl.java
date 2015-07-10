@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 2:17:27 PM by Hibernate Tools 4.3.1
+// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,8 +21,8 @@ import javax.persistence.TemporalType;
 public class CoaSchmDtl implements java.io.Serializable {
 
 	private long id;
+	private Coamaster coamaster;
 	private CoaSchmHdr coaSchmHdr;
-	private Long coaMasterId;
 	private String coacode;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -36,12 +36,12 @@ public class CoaSchmDtl implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public CoaSchmDtl(long id, CoaSchmHdr coaSchmHdr, Long coaMasterId,
+	public CoaSchmDtl(long id, Coamaster coamaster, CoaSchmHdr coaSchmHdr,
 			String coacode, Date dtmUpd, String usrUpd, Date dtmCrt,
 			String usrCrt) {
 		this.id = id;
+		this.coamaster = coamaster;
 		this.coaSchmHdr = coaSchmHdr;
-		this.coaMasterId = coaMasterId;
 		this.coacode = coacode;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
@@ -60,6 +60,16 @@ public class CoaSchmDtl implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CoaMasterID")
+	public Coamaster getCoamaster() {
+		return this.coamaster;
+	}
+
+	public void setCoamaster(Coamaster coamaster) {
+		this.coamaster = coamaster;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CoaSchmHdrID")
 	public CoaSchmHdr getCoaSchmHdr() {
 		return this.coaSchmHdr;
@@ -67,15 +77,6 @@ public class CoaSchmDtl implements java.io.Serializable {
 
 	public void setCoaSchmHdr(CoaSchmHdr coaSchmHdr) {
 		this.coaSchmHdr = coaSchmHdr;
-	}
-
-	@Column(name = "CoaMasterID")
-	public Long getCoaMasterId() {
-		return this.coaMasterId;
-	}
-
-	public void setCoaMasterId(Long coaMasterId) {
-		this.coaMasterId = coaMasterId;
 	}
 
 	@Column(name = "COACode", length = 50)

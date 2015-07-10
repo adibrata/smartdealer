@@ -1,14 +1,17 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 8, 2015 2:17:27 PM by Hibernate Tools 4.3.1
+// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,10 +30,12 @@ public class Coamaster implements java.io.Serializable {
 	private String coacode;
 	private Integer isSystem;
 	private Integer isActive;
+	private Integer isScheme;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
+	private Set<CoaSchmDtl> coaSchmDtls = new HashSet<CoaSchmDtl>(0);
 
 	public Coamaster() {
 	}
@@ -41,8 +46,8 @@ public class Coamaster implements java.io.Serializable {
 
 	public Coamaster(long id, Partner partner, String coaName,
 			String coaDescription, String coacode, Integer isSystem,
-			Integer isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt) {
+			Integer isActive, Integer isScheme, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls) {
 		this.id = id;
 		this.partner = partner;
 		this.coaName = coaName;
@@ -50,10 +55,12 @@ public class Coamaster implements java.io.Serializable {
 		this.coacode = coacode;
 		this.isSystem = isSystem;
 		this.isActive = isActive;
+		this.isScheme = isScheme;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
+		this.coaSchmDtls = coaSchmDtls;
 	}
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -121,6 +128,15 @@ public class Coamaster implements java.io.Serializable {
 		this.isActive = isActive;
 	}
 
+	@Column(name = "IsScheme")
+	public Integer getIsScheme() {
+		return this.isScheme;
+	}
+
+	public void setIsScheme(Integer isScheme) {
+		this.isScheme = isScheme;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DtmUpd", length = 23)
 	public Date getDtmUpd() {
@@ -157,6 +173,15 @@ public class Coamaster implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "coamaster")
+	public Set<CoaSchmDtl> getCoaSchmDtls() {
+		return this.coaSchmDtls;
+	}
+
+	public void setCoaSchmDtls(Set<CoaSchmDtl> coaSchmDtls) {
+		this.coaSchmDtls = coaSchmDtls;
 	}
 
 }
