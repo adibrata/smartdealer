@@ -13,10 +13,9 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 
 public interface PVDisbursementService extends SeviceBase{
-	public void Save(PaymentVoucher paymentVoucher);
+	public void Save(PaymentVoucher paymentVoucher)throws Exception;
 
-	public List<PaymentVoucher>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<PaymentVoucher>  Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
 
-	public long TotalRecord(String WherCond);
-	public PaymentVoucher View(long id);
+		public PaymentVoucher View(long id)throws Exception;
 }

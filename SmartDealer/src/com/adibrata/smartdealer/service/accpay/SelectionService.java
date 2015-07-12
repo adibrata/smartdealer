@@ -13,12 +13,12 @@ import com.adibrata.smartdealer.service.SeviceBase;
  *
  */
 
-public interface SelectionService  extends SeviceBase{
-	public void Save(AccountPayable accountPayable);
+public interface SelectionService extends SeviceBase {
+	public void Save(AccountPayable accountPayable) throws Exception;
 
-	public List<AccountPayable> Paging(int CurrentPage, String WhereCond, String SortBy);
+	public List<AccountPayable> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception;
 
-	public AccountPayable View(long id);
+	public AccountPayable View(long id) throws Exception;
 
-	public long TotalRecord(String WherCond);
 }

@@ -3,7 +3,7 @@ import util.adibrata.framework.cachehelper.*;
 @SuppressWarnings("unused")
 public class TestClass {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		 
 		TestClass crunchifyCache = new TestClass();
  
@@ -15,7 +15,7 @@ public class TestClass {
         crunchifyCache.crunchifyTestObjectsCleanupTime();
     }
  
-    private void crunchifyTestAddRemoveObjects() {
+    private void crunchifyTestAddRemoveObjects() throws Exception {
  
         // Test with timeToLiveInSeconds = 200 seconds
         // timerIntervalInSeconds = 500 seconds
@@ -39,7 +39,7 @@ public class TestClass {
  
     }
  
-    private void crunchifyTestExpiredCacheObjects() throws InterruptedException {
+    private void crunchifyTestExpiredCacheObjects() throws Exception {
  
         // Test with timeToLiveInSeconds = 1 second
         // timerIntervalInSeconds = 1 second
@@ -56,7 +56,7 @@ public class TestClass {
  
     }
  
-    private void crunchifyTestObjectsCleanupTime() throws InterruptedException {
+    private void crunchifyTestObjectsCleanupTime() throws Exception {
         int size = 500000;
  
         // Test with timeToLiveInSeconds = 100 seconds

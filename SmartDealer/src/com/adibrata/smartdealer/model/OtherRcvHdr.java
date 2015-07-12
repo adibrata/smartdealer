@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +28,7 @@ public class OtherRcvHdr implements java.io.Serializable {
 	private Partner partner;
 	private String otherRcvNo;
 	private String rcvFrom;
-	private BigDecimal rcvAmount;
+	private Double rcvAmount;
 	private String reffNo;
 	private Date postingDate;
 	private Date valueDate;
@@ -50,10 +49,9 @@ public class OtherRcvHdr implements java.io.Serializable {
 	}
 
 	public OtherRcvHdr(long id, Office office, Partner partner,
-			String otherRcvNo, String rcvFrom, BigDecimal rcvAmount,
-			String reffNo, Date postingDate, Date valueDate,
-			Long bankAccountId, String notes, Long jobId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt,
+			String otherRcvNo, String rcvFrom, Double rcvAmount, String reffNo,
+			Date postingDate, Date valueDate, Long bankAccountId, String notes,
+			Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 			Set<OtherRcvDtl> otherRcvDtls) {
 		this.id = id;
 		this.office = office;
@@ -122,12 +120,12 @@ public class OtherRcvHdr implements java.io.Serializable {
 		this.rcvFrom = rcvFrom;
 	}
 
-	@Column(name = "RcvAmount", precision = 17)
-	public BigDecimal getRcvAmount() {
+	@Column(name = "RcvAmount", precision = 53, scale = 0)
+	public Double getRcvAmount() {
 		return this.rcvAmount;
 	}
 
-	public void setRcvAmount(BigDecimal rcvAmount) {
+	public void setRcvAmount(Double rcvAmount) {
 		this.rcvAmount = rcvAmount;
 	}
 

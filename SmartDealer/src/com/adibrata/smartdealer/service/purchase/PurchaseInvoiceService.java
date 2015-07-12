@@ -9,10 +9,12 @@ import com.adibrata.smartdealer.model.SalesOrderHdr;
 import com.adibrata.smartdealer.service.SeviceBase;
 
 public interface PurchaseInvoiceService  extends SeviceBase {
-	public void Save(PurchaseInvoice purchaseInvoice);
+	public void Save(String usrupd, PurchaseInvoice purchaseInvoice) throws Exception;
 
 	
-	public SalesOrderHdr viewSalesOrderHdr (long id);
-	public PurchaseInvoice View(long id);
+	public SalesOrderHdr viewSalesOrderHdr (long id)throws Exception;
+
+	public PurchaseInvoice View(long id)throws Exception;
+
 
 }

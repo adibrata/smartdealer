@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +28,7 @@ public class PayReqHdr implements java.io.Serializable {
 	private Office office;
 	private Partner partner;
 	private String payReqNo;
-	private BigDecimal pettyCashAmount;
+	private Double pettyCashAmount;
 	private Date valueDate;
 	private Date postingDate;
 	private String jobCode;
@@ -47,7 +46,7 @@ public class PayReqHdr implements java.io.Serializable {
 	}
 
 	public PayReqHdr(long id, BankAccount bankAccount, Office office,
-			Partner partner, String payReqNo, BigDecimal pettyCashAmount,
+			Partner partner, String payReqNo, Double pettyCashAmount,
 			Date valueDate, Date postingDate, String jobCode, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt, Set<PayReqDtl> payReqDtls) {
 		this.id = id;
@@ -115,12 +114,12 @@ public class PayReqHdr implements java.io.Serializable {
 		this.payReqNo = payReqNo;
 	}
 
-	@Column(name = "PettyCashAmount", precision = 17)
-	public BigDecimal getPettyCashAmount() {
+	@Column(name = "PettyCashAmount", precision = 53, scale = 0)
+	public Double getPettyCashAmount() {
 		return this.pettyCashAmount;
 	}
 
-	public void setPettyCashAmount(BigDecimal pettyCashAmount) {
+	public void setPettyCashAmount(Double pettyCashAmount) {
 		this.pettyCashAmount = pettyCashAmount;
 	}
 

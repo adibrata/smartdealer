@@ -22,7 +22,7 @@ public class AccRcvDao {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	public AccRcvDao() {
+	public AccRcvDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -47,7 +47,7 @@ public class AccRcvDao {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 
-	public AccRcvDao(String userupd) {
+	public AccRcvDao(String userupd) throws Exception {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();

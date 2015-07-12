@@ -32,9 +32,10 @@ public class DaoBase implements SeviceBase {
 	int pagesize;
 
 	/**
+	 * @throws Exception 
 	 * 
 	 */
-	public DaoBase() {
+	public DaoBase() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -53,7 +54,7 @@ public class DaoBase implements SeviceBase {
 	}
 
 	@Override
-	public long TotalRecord(String WherCond) {
+	public long TotalRecord(String WherCond) throws Exception {
 		// TODO Auto-generated method stub
 		long countResults = 0;
 		try {

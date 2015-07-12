@@ -1,8 +1,8 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,10 +43,10 @@ public class Customer implements java.io.Serializable {
 	private String faxNo;
 	private String handphone;
 	private String fullAddress;
-	private BigDecimal prepaidAmount;
-	private BigDecimal aramount;
-	private BigDecimal arpaid;
-	private BigDecimal arwaived;
+	private double prepaidAmount;
+	private double aramount;
+	private double arpaid;
+	private double arwaived;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -66,8 +66,8 @@ public class Customer implements java.io.Serializable {
 			String city, String zipcode, String type, String areaPhone1,
 			String phoneNo1, String areaPhone2, String phoneNo2,
 			String areaFax, String faxNo, String handphone, String fullAddress,
-			BigDecimal prepaidAmount, BigDecimal aramount, BigDecimal arpaid,
-			BigDecimal arwaived, Date dtmUpd, String usrUpd, Date dtmCrt,
+			double prepaidAmount, double aramount, double arpaid,
+			double arwaived, Date dtmUpd, String usrUpd, Date dtmCrt,
 			String usrCrt, Set<SalesInvoice> salesInvoices,
 			Set<SalesOrderHdr> salesOrderHdrs) {
 		this.id = id;
@@ -275,38 +275,38 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@Column(name = "PrepaidAmount", precision = 17)
-	public BigDecimal getPrepaidAmount() {
+	public double getPrepaidAmount() {
 		return this.prepaidAmount;
 	}
 
-	public void setPrepaidAmount(BigDecimal prepaidAmount) {
+	public void setPrepaidAmount(double prepaidAmount) {
 		this.prepaidAmount = prepaidAmount;
 	}
 
 	@Column(name = "ARAmount", precision = 17)
-	public BigDecimal getAramount() {
+	public double getAramount() {
 		return this.aramount;
 	}
 
-	public void setAramount(BigDecimal aramount) {
+	public void setAramount(double aramount) {
 		this.aramount = aramount;
 	}
 
 	@Column(name = "ARPaid", precision = 17)
-	public BigDecimal getArpaid() {
+	public double getArpaid() {
 		return this.arpaid;
 	}
 
-	public void setArpaid(BigDecimal arpaid) {
+	public void setArpaid(double arpaid) {
 		this.arpaid = arpaid;
 	}
 
 	@Column(name = "ARWaived", precision = 17)
-	public BigDecimal getArwaived() {
+	public double getArwaived() {
 		return this.arwaived;
 	}
 
-	public void setArwaived(BigDecimal arwaived) {
+	public void setArwaived(double arwaived) {
 		this.arwaived = arwaived;
 	}
 

@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -28,6 +28,7 @@ public class AssetDocMaster implements java.io.Serializable {
 	private String documentCode;
 	private String documentName;
 	private String assetType;
+	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -42,13 +43,15 @@ public class AssetDocMaster implements java.io.Serializable {
 	}
 
 	public AssetDocMaster(long id, Partner partner, String documentCode,
-			String documentName, String assetType, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<StockDocument> stockDocuments) {
+			String documentName, String assetType, Short isActive, Date dtmUpd,
+			String usrUpd, Date dtmCrt, String usrCrt,
+			Set<StockDocument> stockDocuments) {
 		this.id = id;
 		this.partner = partner;
 		this.documentCode = documentCode;
 		this.documentName = documentName;
 		this.assetType = assetType;
+		this.isActive = isActive;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -101,6 +104,15 @@ public class AssetDocMaster implements java.io.Serializable {
 
 	public void setAssetType(String assetType) {
 		this.assetType = assetType;
+	}
+
+	@Column(name = "IsActive")
+	public Short getIsActive() {
+		return this.isActive;
+	}
+
+	public void setIsActive(Short isActive) {
+		this.isActive = isActive;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

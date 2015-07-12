@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,20 +25,18 @@ public class JrnlDtl implements java.io.Serializable {
 	private int sequenceNo;
 	private String coaCoy;
 	private String coaOffice;
+	private String coaName;
 	private String coaCode;
-	private int jrnlTrxId;
 	private String trDesc;
-	private char post;
+	private String post;
 	private Long currId;
-	private BigDecimal currRate;
-	private BigDecimal debtAmt;
-	private BigDecimal creditAmt;
-	private BigDecimal amtOri;
+	private double currRate;
+	private double debtAmt;
+	private Double credAmt;
+	private Double oriAmt;
 	private String coaCodeX;
 	private String coaOfficeX;
-	private String coaName;
-	private Long productId;
-	private Long departId;
+	private String departCode;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -48,42 +45,39 @@ public class JrnlDtl implements java.io.Serializable {
 	public JrnlDtl() {
 	}
 
-	public JrnlDtl(long id, int sequenceNo, String coaOffice, int jrnlTrxId,
-			char post, BigDecimal currRate, BigDecimal debtAmt) {
+	public JrnlDtl(long id, int sequenceNo, String coaOffice, String post,
+			double currRate, double debtAmt) {
 		this.id = id;
 		this.sequenceNo = sequenceNo;
 		this.coaOffice = coaOffice;
-		this.jrnlTrxId = jrnlTrxId;
 		this.post = post;
 		this.currRate = currRate;
 		this.debtAmt = debtAmt;
 	}
 
 	public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy,
-			String coaOffice, String coaCode, int jrnlTrxId, String trDesc,
-			char post, Long currId, BigDecimal currRate, BigDecimal debtAmt,
-			BigDecimal creditAmt, BigDecimal amtOri, String coaCodeX,
-			String coaOfficeX, String coaName, Long productId, Long departId,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
+			String coaOffice, String coaName, String coaCode, String trDesc,
+			String post, Long currId, double currRate, double debtAmt,
+			Double credAmt, Double oriAmt, String coaCodeX, String coaOfficeX,
+			String departCode, Date dtmUpd, String usrUpd, Date dtmCrt,
+			String usrCrt) {
 		this.id = id;
 		this.jrnlHdr = jrnlHdr;
 		this.sequenceNo = sequenceNo;
 		this.coaCoy = coaCoy;
 		this.coaOffice = coaOffice;
+		this.coaName = coaName;
 		this.coaCode = coaCode;
-		this.jrnlTrxId = jrnlTrxId;
 		this.trDesc = trDesc;
 		this.post = post;
 		this.currId = currId;
 		this.currRate = currRate;
 		this.debtAmt = debtAmt;
-		this.creditAmt = creditAmt;
-		this.amtOri = amtOri;
+		this.credAmt = credAmt;
+		this.oriAmt = oriAmt;
 		this.coaCodeX = coaCodeX;
 		this.coaOfficeX = coaOfficeX;
-		this.coaName = coaName;
-		this.productId = productId;
-		this.departId = departId;
+		this.departCode = departCode;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -137,6 +131,15 @@ public class JrnlDtl implements java.io.Serializable {
 		this.coaOffice = coaOffice;
 	}
 
+	@Column(name = "CoaName", length = 50)
+	public String getCoaName() {
+		return this.coaName;
+	}
+
+	public void setCoaName(String coaName) {
+		this.coaName = coaName;
+	}
+
 	@Column(name = "CoaCode", length = 50)
 	public String getCoaCode() {
 		return this.coaCode;
@@ -144,15 +147,6 @@ public class JrnlDtl implements java.io.Serializable {
 
 	public void setCoaCode(String coaCode) {
 		this.coaCode = coaCode;
-	}
-
-	@Column(name = "JrnlTrxID", nullable = false)
-	public int getJrnlTrxId() {
-		return this.jrnlTrxId;
-	}
-
-	public void setJrnlTrxId(int jrnlTrxId) {
-		this.jrnlTrxId = jrnlTrxId;
 	}
 
 	@Column(name = "Tr_Desc")
@@ -165,11 +159,11 @@ public class JrnlDtl implements java.io.Serializable {
 	}
 
 	@Column(name = "Post", nullable = false, length = 1)
-	public char getPost() {
+	public String getPost() {
 		return this.post;
 	}
 
-	public void setPost(char post) {
+	public void setPost(String post) {
 		this.post = post;
 	}
 
@@ -182,40 +176,40 @@ public class JrnlDtl implements java.io.Serializable {
 		this.currId = currId;
 	}
 
-	@Column(name = "Curr_Rate", nullable = false, precision = 17)
-	public BigDecimal getCurrRate() {
+	@Column(name = "Curr_Rate", nullable = false, precision = 53, scale = 0)
+	public double getCurrRate() {
 		return this.currRate;
 	}
 
-	public void setCurrRate(BigDecimal currRate) {
+	public void setCurrRate(double currRate) {
 		this.currRate = currRate;
 	}
 
-	@Column(name = "DebtAmt", nullable = false, precision = 17)
-	public BigDecimal getDebtAmt() {
+	@Column(name = "DebtAmt", nullable = false, precision = 53, scale = 0)
+	public double getDebtAmt() {
 		return this.debtAmt;
 	}
 
-	public void setDebtAmt(BigDecimal debtAmt) {
+	public void setDebtAmt(double debtAmt) {
 		this.debtAmt = debtAmt;
 	}
 
-	@Column(name = "CreditAmt", precision = 17)
-	public BigDecimal getCreditAmt() {
-		return this.creditAmt;
+	@Column(name = "CredAmt", precision = 53, scale = 0)
+	public Double getCredAmt() {
+		return this.credAmt;
 	}
 
-	public void setCreditAmt(BigDecimal creditAmt) {
-		this.creditAmt = creditAmt;
+	public void setCredAmt(Double credAmt) {
+		this.credAmt = credAmt;
 	}
 
-	@Column(name = "AmtOri", precision = 17)
-	public BigDecimal getAmtOri() {
-		return this.amtOri;
+	@Column(name = "OriAmt", precision = 53, scale = 0)
+	public Double getOriAmt() {
+		return this.oriAmt;
 	}
 
-	public void setAmtOri(BigDecimal amtOri) {
-		this.amtOri = amtOri;
+	public void setOriAmt(Double oriAmt) {
+		this.oriAmt = oriAmt;
 	}
 
 	@Column(name = "CoaCode_X", length = 25)
@@ -236,31 +230,13 @@ public class JrnlDtl implements java.io.Serializable {
 		this.coaOfficeX = coaOfficeX;
 	}
 
-	@Column(name = "CoaName", length = 50)
-	public String getCoaName() {
-		return this.coaName;
+	@Column(name = "DepartCode", length = 50)
+	public String getDepartCode() {
+		return this.departCode;
 	}
 
-	public void setCoaName(String coaName) {
-		this.coaName = coaName;
-	}
-
-	@Column(name = "ProductId")
-	public Long getProductId() {
-		return this.productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	@Column(name = "DepartID")
-	public Long getDepartId() {
-		return this.departId;
-	}
-
-	public void setDepartId(Long departId) {
-		this.departId = departId;
+	public void setDepartCode(String departCode) {
+		this.departCode = departCode;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

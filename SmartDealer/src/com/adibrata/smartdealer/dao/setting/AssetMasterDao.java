@@ -33,7 +33,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 	
-	public AssetMasterDao() {
+	public AssetMasterDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +60,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Paging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<AssetMaster> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<AssetMaster> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception{
 
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
@@ -91,7 +91,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	
 	@Override
 	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 
 		// TODO Auto-generated method stub
@@ -126,7 +126,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveAdd(com.adibrata.smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void SaveAdd(AssetMaster assetMaster) {
+	public void SaveAdd(AssetMaster assetMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -149,7 +149,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveEdit(com.adibrata.smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void SaveEdit(AssetMaster assetMaster) {
+	public void SaveEdit(AssetMaster assetMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -172,7 +172,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata.smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void SaveDel(AssetMaster assetMaster) {
+	public void SaveDel(AssetMaster assetMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -192,7 +192,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 
 	
 	@Override
-	public AssetMaster View(long id) {
+	public AssetMaster View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		AssetMaster assetmaster = null;
 		try {

@@ -35,7 +35,7 @@ public class PurchaseReturnDao extends DaoBase implements PurchaseReturnService 
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public PurchaseReturnDao() {
+	public PurchaseReturnDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -59,8 +59,8 @@ public class PurchaseReturnDao extends DaoBase implements PurchaseReturnService 
 	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Save()
 	 */
 	@Override
-	public void Save(ReturPurchaseHdr returPurchaseHdr,
-			List<ReturPurchaseDtl> returPurchaseDtl) {
+	public void Save(String usrupd, ReturPurchaseHdr returPurchaseHdr,
+			List<ReturPurchaseDtl> returPurchaseDtl) throws Exception {
 		// TODO Auto-generated method stub
 
 		String retpurchaseno;

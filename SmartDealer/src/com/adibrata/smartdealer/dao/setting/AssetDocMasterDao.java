@@ -34,7 +34,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public AssetDocMasterDao() {
+	public AssetDocMasterDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +60,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	 */
 	@Override
 	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AssetDocMaster> list = null;
@@ -89,7 +89,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 
 	@Override
 	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AssetDocMaster> list = null;
@@ -127,7 +127,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	 * .smartdealer.service.setting.AssetDocument)
 	 */
 	@Override
-	public void SaveAdd(AssetDocMaster assetDocMaster) {
+	public void SaveAdd(AssetDocMaster assetDocMaster) throws Exception{
 		// TODO Auto-generated method stub
 
 		session.getTransaction().begin();
@@ -157,7 +157,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	 * .smartdealer.service.setting.AssetDocument)
 	 */
 	@Override
-	public void SaveEdit(AssetDocMaster assetDocMaster) {
+	public void SaveEdit(AssetDocMaster assetDocMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -185,7 +185,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	 * .adibrata.smartdealer.service.setting.AssetDocument)
 	 */
 	@Override
-	public void SaveDel(AssetDocMaster assetDocMaster) {
+	public void SaveDel(AssetDocMaster assetDocMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -205,7 +205,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService 
 	}
 
 	@Override
-	public AssetDocMaster View(long id) {
+	public AssetDocMaster View(long id) throws Exception{
 		AssetDocMaster assetDocMaster = null;
 		try {
 			assetDocMaster = (AssetDocMaster) session.get(AssetDocMaster.class,

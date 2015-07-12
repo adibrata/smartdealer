@@ -37,7 +37,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public BankAccountDao() {
+	public BankAccountDao() throws Exception {
 
 		// TODO Auto-generated constructor stub
 		try {
@@ -64,7 +64,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	 */
 	@Override
 	public List<BankAccount> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<BankAccount> list = null;
@@ -94,7 +94,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 
 	@Override
 	public List<BankAccount> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<BankAccount> list = null;
@@ -131,7 +131,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	 * .smartdealer.service.setting.BankAccount)
 	 */
 	@Override
-	public void SaveAdd(BankAccount bankAccount) {
+	public void SaveAdd(BankAccount bankAccount) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -160,7 +160,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	 * .smartdealer.service.setting.BankAccount)
 	 */
 	@Override
-	public void SaveEdit(BankAccount bankAccount) {
+	public void SaveEdit(BankAccount bankAccount) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -189,7 +189,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	 * .smartdealer.service.setting.BankAccount)
 	 */
 	@Override
-	public void SaveDel(BankAccount bankAccount) {
+	public void SaveDel(BankAccount bankAccount) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -210,7 +210,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService {
 	}
 
 	@Override
-	public BankAccount View(long id) {
+	public BankAccount View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		BankAccount bankaccount = null;
 		try {

@@ -63,7 +63,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 
 	}
 
-	public String execute() {
+	public String execute() throws Exception {
 		String strMode;
 		strMode = mode;
 
@@ -93,7 +93,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 		return strMode;
 	}
 
-	private String Paging() {
+	private String Paging() throws Exception {
 
 		String status = "";
 		try {
@@ -121,7 +121,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveAdd() {
+	private String SaveAdd() throws Exception {
 		String status = "";
 		try {
 
@@ -155,7 +155,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveEdit() {
+	private String SaveEdit() throws Exception {
 		String status = "";
 		try {
 
@@ -190,7 +190,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveDelete() {
+	private String SaveDelete() throws Exception {
 		String status = "";
 		try {
 

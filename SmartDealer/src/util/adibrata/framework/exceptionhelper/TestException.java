@@ -4,7 +4,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class TestException {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		//				ExceptionEntities _entExp = new ExceptionEntities();
 		//				_entExp.setJavaClass("TestException");
@@ -30,7 +30,7 @@ public class TestException {
 
 	}
 
-	private static void saya() {
+	private static void saya() throws Exception {
 		try
 		{
 			int i =0;

@@ -34,7 +34,7 @@ public class MasterDao extends DaoBase implements MasterService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public MasterDao() {
+	public MasterDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +60,7 @@ public class MasterDao extends DaoBase implements MasterService {
 	 * smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveAdd(MasterType masterType, MasterTable masterTable) {
+	public void SaveAdd(MasterType masterType, MasterTable masterTable) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -90,7 +90,7 @@ public class MasterDao extends DaoBase implements MasterService {
 	 * com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveEdit(MasterType masterType, MasterTable masterTable) {
+	public void SaveEdit(MasterType masterType, MasterTable masterTable) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -119,7 +119,7 @@ public class MasterDao extends DaoBase implements MasterService {
 	 * smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveDel(MasterTable masterTable) {
+	public void SaveDel(MasterTable masterTable) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -147,7 +147,7 @@ public class MasterDao extends DaoBase implements MasterService {
 	 */
 	@Override
 	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MasterTable> list = null;
@@ -189,7 +189,7 @@ public class MasterDao extends DaoBase implements MasterService {
 
 	@Override
 	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 				StringBuilder hql = new StringBuilder();
 				List<MasterTable> list = null;

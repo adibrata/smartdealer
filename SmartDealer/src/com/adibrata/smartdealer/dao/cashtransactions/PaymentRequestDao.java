@@ -35,7 +35,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService 
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public PaymentRequestDao() {
+	public PaymentRequestDao() throws Exception{
 
 		// TODO Auto-generated constructor stub
 		try {
@@ -64,8 +64,8 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService 
 	 */
 
 	@Override
-	public void SavePaymentRequest(PayReqHdr payReqHdr,
-			List<PayReqDtl> lstpayReqDtl) {
+	public void SavePaymentRequest(String usrupd, PayReqHdr payReqHdr,
+			List<PayReqDtl> lstpayReqDtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = payReqHdr.getPartner();
@@ -107,7 +107,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService 
 	 * #PurchaseInvoicePaging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 				StringBuilder hql = new StringBuilder();

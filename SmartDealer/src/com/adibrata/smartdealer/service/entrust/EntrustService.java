@@ -12,13 +12,20 @@ import com.adibrata.smartdealer.model.*;
  */
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.SeviceBase;
-public interface EntrustService extends SeviceBase  {
-	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl);
-	
-	public List<EntrustHdr>  Paging(int CurrentPage, String WhereCond, String SortBy);
-	public List<EntrustHdr>  Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
-	public long TotalRecord(String WherCond);
-	public EntrustHdr viewEntrusHdr(long id);
-	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr);
-	
+
+public interface EntrustService extends SeviceBase {
+	public void Save(String usrupd, EntrustHdr entrustHdr,
+			List<EntrustDtl> lstentrustDtl) throws Exception;
+
+	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception;
+
+	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public EntrustHdr viewEntrusHdr(long id) throws Exception;
+
+	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr)
+			throws Exception;
+
 }

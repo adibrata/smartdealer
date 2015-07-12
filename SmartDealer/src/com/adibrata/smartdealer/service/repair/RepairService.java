@@ -16,13 +16,16 @@ import com.adibrata.smartdealer.service.SeviceBase;
  * @author Henry Setiap perbaikan menyimpan account payable untuk ditagih
  *
  */
-public interface RepairService  extends SeviceBase {
-	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstServiceItem);
+public interface RepairService extends SeviceBase {
+	public void Save(String usrupd, ServiceHdr serviceHdr,
+			List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstServiceItem)
+			throws Exception;
 
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
-			String SortBy);
-	public List<Workshop> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
-	public long TotalRecord(String WherCond);
+			String SortBy) throws Exception;
 
-	public ServiceHdr View(long id);
+	public List<Workshop> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public ServiceHdr View(long id) throws Exception;
 }

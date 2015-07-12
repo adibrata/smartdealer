@@ -33,7 +33,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	public OtherReceiveDao() {
+	public OtherReceiveDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -55,7 +55,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save(com.adibrata.smartdealer.model.OtherRcvHdr, com.adibrata.smartdealer.model.OtherRcvDtl)
 	 */
 	@Override
-	public void Save(OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> lstotherRcvDtl) {
+	public void Save(String usrupd, OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> lstotherRcvDtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -90,7 +90,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Paging(int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<OtherRcvHdr> list = null;
@@ -122,7 +122,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	
 	@Override
 	public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<OtherRcvHdr> list = null;

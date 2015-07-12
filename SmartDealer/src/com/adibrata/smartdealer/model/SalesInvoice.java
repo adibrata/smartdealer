@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +25,8 @@ public class SalesInvoice implements java.io.Serializable {
 	private Office office;
 	private Partner partner;
 	private SalesOrderHdr salesOrderHdr;
-	private BigDecimal invoiceAmount;
-	private BigDecimal invoicePaid;
+	private Double invoiceAmount;
+	private Double invoicePaid;
 	private Date invoiceDate;
 	private String usrCrt;
 	private Date dtmUpd;
@@ -42,9 +41,9 @@ public class SalesInvoice implements java.io.Serializable {
 	}
 
 	public SalesInvoice(long id, Customer customer, Office office,
-			Partner partner, SalesOrderHdr salesOrderHdr,
-			BigDecimal invoiceAmount, BigDecimal invoicePaid, Date invoiceDate,
-			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt) {
+			Partner partner, SalesOrderHdr salesOrderHdr, Double invoiceAmount,
+			Double invoicePaid, Date invoiceDate, String usrCrt, Date dtmUpd,
+			String usrUpd, Date dtmCrt) {
 		this.id = id;
 		this.customer = customer;
 		this.office = office;
@@ -109,21 +108,21 @@ public class SalesInvoice implements java.io.Serializable {
 		this.salesOrderHdr = salesOrderHdr;
 	}
 
-	@Column(name = "InvoiceAmount", precision = 17)
-	public BigDecimal getInvoiceAmount() {
+	@Column(name = "InvoiceAmount", precision = 53, scale = 0)
+	public Double getInvoiceAmount() {
 		return this.invoiceAmount;
 	}
 
-	public void setInvoiceAmount(BigDecimal invoiceAmount) {
+	public void setInvoiceAmount(Double invoiceAmount) {
 		this.invoiceAmount = invoiceAmount;
 	}
 
-	@Column(name = "InvoicePaid", precision = 17)
-	public BigDecimal getInvoicePaid() {
+	@Column(name = "InvoicePaid", precision = 53, scale = 0)
+	public Double getInvoicePaid() {
 		return this.invoicePaid;
 	}
 
-	public void setInvoicePaid(BigDecimal invoicePaid) {
+	public void setInvoicePaid(Double invoicePaid) {
 		this.invoicePaid = invoicePaid;
 	}
 

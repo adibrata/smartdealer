@@ -32,7 +32,7 @@ public class MenuDao extends DaoBase implements MenuService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public MenuDao() {
+	public MenuDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -59,7 +59,7 @@ public class MenuDao extends DaoBase implements MenuService {
 	 * .adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
-	public void SaveAdd(MsMenu msMenu) {
+	public void SaveAdd(MsMenu msMenu) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -89,7 +89,7 @@ public class MenuDao extends DaoBase implements MenuService {
 	 * com.adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
-	public void SaveEdit(MsMenu msMenu) {
+	public void SaveEdit(MsMenu msMenu) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -118,7 +118,7 @@ public class MenuDao extends DaoBase implements MenuService {
 	 * .adibrata.smartdealer.model.MsMenu)
 	 */
 	@Override
-	public void SaveDel(MsMenu msMenu) {
+	public void SaveDel(MsMenu msMenu) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

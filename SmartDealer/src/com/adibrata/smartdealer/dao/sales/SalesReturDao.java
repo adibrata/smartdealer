@@ -37,7 +37,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public SalesReturDao() {
+	public SalesReturDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -64,8 +64,8 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 	 */
 	
 	@Override
-	public void Save(ReturSalesHdr returSalesHdr,
-			List<ReturSalesDtl> lstreturSalesDtl) {
+	public void Save(String usrupd, ReturSalesHdr returSalesHdr,
+			List<ReturSalesDtl> lstreturSalesDtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = returSalesHdr.getPartner();
@@ -108,7 +108,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 
 	@Override
 	public List<ReturSalesHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<ReturSalesHdr> list = null;
@@ -136,7 +136,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 
 	@Override
 	public List<ReturSalesHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 				StringBuilder hql = new StringBuilder();
 				List<ReturSalesHdr> list = null;

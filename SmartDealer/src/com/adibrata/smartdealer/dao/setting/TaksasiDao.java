@@ -32,7 +32,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public TaksasiDao() {
+	public TaksasiDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -57,7 +57,8 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Taksasi> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Taksasi> Paging(int CurrentPage, String WhereCond, String SortBy)
+			throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Taksasi> list = null;
@@ -93,7 +94,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	 * .smartdealer.model.Taksasi)
 	 */
 	@Override
-	public void SaveAdd(Taksasi taksasi) {
+	public void SaveAdd(Taksasi taksasi) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -122,7 +123,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	 * adibrata.smartdealer.model.Taksasi)
 	 */
 	@Override
-	public void SaveEdit(Taksasi taksasi) {
+	public void SaveEdit(Taksasi taksasi) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -151,7 +152,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	 * .smartdealer.model.Taksasi)
 	 */
 	@Override
-	public void SaveDel(Taksasi taksasi) {
+	public void SaveDel(Taksasi taksasi) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -172,7 +173,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 	}
 
 	@Override
-	public Taksasi View(long id) {
+	public Taksasi View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		Taksasi taksasi = null;
 		try {
@@ -192,7 +193,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService {
 
 	@Override
 	public List<Taksasi> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Taksasi> list = null;

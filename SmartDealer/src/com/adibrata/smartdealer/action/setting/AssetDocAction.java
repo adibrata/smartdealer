@@ -78,7 +78,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	 * Auto-generated constructor stub }
 	 */
 
-	public String execute() {
+	public String execute() throws Exception{
 		String strMode;
 		strMode = mode;
 
@@ -157,7 +157,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		return wherecond;
 	}
 
-	private void LastPage() {
+	private void LastPage() throws Exception {
 		try {
 			/* int lastPageNumber = (int) ((countResults / pageSize) + 1); */
 
@@ -177,11 +177,11 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		}
 	}
 
-	private void Paging() {
+	private void Paging() throws Exception {
 		try {
 			this.lstAssetDocMasters = this.assetDocMasterService.Paging(
 					this.getPageNumber(), this.WhereCond(), "");
-			
+
 		}
 
 		catch (Exception exp) {
@@ -196,7 +196,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 
 	}
 
-	private String SaveAdd() {
+	private String SaveAdd() throws Exception {
 		String status = "";
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -218,7 +218,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		return status;
 	}
 
-	private String SaveEdit() {
+	private String SaveEdit() throws Exception {
 		String status = "";
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -241,7 +241,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 		return status;
 	}
 
-	private String SaveDelete() {
+	private String SaveDelete() throws Exception {
 		String status = "";
 		try {
 			AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -264,8 +264,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	}
 
 	/** Getter Setter */
-	
-	
+
 	/**
 	 * @return the serialversionuid
 	 */
@@ -522,7 +521,7 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	/**
 	 * @return the wherecond
 	 */

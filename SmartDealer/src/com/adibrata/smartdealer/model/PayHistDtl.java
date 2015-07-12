@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,9 +27,9 @@ public class PayHistDtl implements java.io.Serializable {
 	private short assetSeqNo;
 	private int yearNum;
 	private String description;
-	private BigDecimal debitAmt;
-	private BigDecimal creditAmt;
-	private BigDecimal lcamt;
+	private double debitAmt;
+	private double creditAmt;
+	private double lcamt;
 	private short lcdays;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -41,9 +40,8 @@ public class PayHistDtl implements java.io.Serializable {
 	}
 
 	public PayHistDtl(long id, String coaName, short instSeqNo,
-			short assetSeqNo, int yearNum, String description,
-			BigDecimal debitAmt, BigDecimal creditAmt, BigDecimal lcamt,
-			short lcdays) {
+			short assetSeqNo, int yearNum, String description, double debitAmt,
+			double creditAmt, double lcamt, short lcdays) {
 		this.id = id;
 		this.coaName = coaName;
 		this.instSeqNo = instSeqNo;
@@ -58,8 +56,8 @@ public class PayHistDtl implements java.io.Serializable {
 
 	public PayHistDtl(long id, PayHistHdr payHistHdr, String coaName,
 			short instSeqNo, short assetSeqNo, int yearNum, String description,
-			BigDecimal debitAmt, BigDecimal creditAmt, BigDecimal lcamt,
-			short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
+			double debitAmt, double creditAmt, double lcamt, short lcdays,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.payHistHdr = payHistHdr;
 		this.coaName = coaName;
@@ -142,30 +140,30 @@ public class PayHistDtl implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "DebitAmt", nullable = false, precision = 17)
-	public BigDecimal getDebitAmt() {
+	@Column(name = "DebitAmt", nullable = false, precision = 53, scale = 0)
+	public double getDebitAmt() {
 		return this.debitAmt;
 	}
 
-	public void setDebitAmt(BigDecimal debitAmt) {
+	public void setDebitAmt(double debitAmt) {
 		this.debitAmt = debitAmt;
 	}
 
-	@Column(name = "CreditAmt", nullable = false, precision = 17)
-	public BigDecimal getCreditAmt() {
+	@Column(name = "CreditAmt", nullable = false, precision = 53, scale = 0)
+	public double getCreditAmt() {
 		return this.creditAmt;
 	}
 
-	public void setCreditAmt(BigDecimal creditAmt) {
+	public void setCreditAmt(double creditAmt) {
 		this.creditAmt = creditAmt;
 	}
 
-	@Column(name = "LCAmt", nullable = false, precision = 17)
-	public BigDecimal getLcamt() {
+	@Column(name = "LCAmt", nullable = false, precision = 53, scale = 0)
+	public double getLcamt() {
 		return this.lcamt;
 	}
 
-	public void setLcamt(BigDecimal lcamt) {
+	public void setLcamt(double lcamt) {
 		this.lcamt = lcamt;
 	}
 

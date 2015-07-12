@@ -35,7 +35,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public DanaTunaiTransDao() {
+	public DanaTunaiTransDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -62,7 +62,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 	 * (com.adibrata.smartdealer.model.Customer)
 	 */
 	@Override
-	public void Save(DanaTunai danaTunai) {
+	public void Save(String usrupd, DanaTunai danaTunai) throws Exception {
 		// TODO Auto-generated method stub
 		Partner partner = danaTunai.getPartner();
 		Office office = danaTunai.getOffice();
@@ -97,7 +97,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 	 */
 
 	@Override
-	public DanaTunai viewDanaTunai(long id) {
+	public DanaTunai viewDanaTunai(long id) throws Exception {
 		// TODO Auto-generated method stub
 		DanaTunai danaTunai = null;
 		try {
@@ -115,10 +115,9 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 		return danaTunai;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
-	public List<DanaTunai> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<DanaTunai> list = null;
@@ -148,7 +147,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DanaTunai> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean isLast) {
+			String SortBy, boolean isLast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<DanaTunai> list = null;

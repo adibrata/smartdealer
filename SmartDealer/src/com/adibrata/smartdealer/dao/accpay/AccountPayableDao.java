@@ -40,7 +40,7 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 
-	public AccountPayableDao() {
+	public AccountPayableDao() throws Exception {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
@@ -65,7 +65,7 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	 * smartdealer.model.Customer)
 	 */
 	@Override
-	public void Save(AccountPayable accountPayable) {
+	public void Save(AccountPayable accountPayable) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 	
@@ -95,7 +95,7 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	 */
 	@Override
 	public List<AccountPayable> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AccountPayable> list = null;
@@ -130,7 +130,7 @@ public class AccountPayableDao extends DaoBase implements SelectionService {
 	 */
 
 	@Override
-	public AccountPayable View(long id) {
+	public AccountPayable View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		AccountPayable accountPayable = null;
 		try {

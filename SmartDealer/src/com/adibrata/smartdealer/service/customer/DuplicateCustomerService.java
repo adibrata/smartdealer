@@ -16,7 +16,7 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface DuplicateCustomerService  extends SeviceBase {
 
 	public List Paging(int CurrentPage, String WhereCond, String SortBy);
-	public long TotalRecord(String WherCond);
+	
 	public List<Customer> View(long id);
 	public List<Customer> SearchDuplicate (String name, String IdNo, String MotherName);
 	

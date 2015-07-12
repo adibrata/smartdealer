@@ -15,18 +15,18 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 public interface AssetDocMasterService extends SeviceBase {
 
-	public void SaveAdd(AssetDocMaster assetDocMaster);
+	public void SaveAdd(AssetDocMaster assetDocMaster) throws Exception;
 
-	public void SaveEdit(AssetDocMaster assetDocMaster);
+	public void SaveEdit(AssetDocMaster assetDocMaster) throws Exception;
 
-	public void SaveDel(AssetDocMaster assetDocMaster);
-
-	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy);
+	public void SaveDel(AssetDocMaster assetDocMaster) throws Exception;
 
 	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast);
+			String SortBy) throws Exception;
 
-	public AssetDocMaster View(long id);
+	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public AssetDocMaster View(long id) throws Exception;
 
 }

@@ -36,7 +36,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public OtherDisburseDao() {
+	public OtherDisburseDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -63,7 +63,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	 * com.adibrata.smartdealer.model.OtherDsbDtl)
 	 */
 	@Override
-	public void Save(OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> lstotherDsbDtl) {
+	public void Save(String usrupd, OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> lstotherDsbDtl) throws Exception {
 		// TODO Auto-generated method stub
 		Partner partner = otherDsbHdr.getPartner();
 		Office office = otherDsbHdr.getOffice();
@@ -104,7 +104,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	 * (int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<OtherDsbHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<OtherDsbHdr> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
@@ -134,7 +134,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService {
 	
 	@Override
 	public List<OtherDsbHdr> Paging(int CurrentPage, String WhereCond, String SortBy,
-			boolean islast) {
+			boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<OtherDsbHdr> list = null;

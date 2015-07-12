@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,10 +42,10 @@ public class Stock implements java.io.Serializable {
 	private String licensePlate;
 	private String manufacturingMonth;
 	private String manufacturingYear;
-	private BigDecimal purchasePrice;
-	private BigDecimal servicePrice;
-	private BigDecimal taxPrice;
-	private Long netSalesPrice;
+	private Double purchasePrice;
+	private Double servicePrice;
+	private Double taxPrice;
+	private Double netSalesPrice;
 	private Date receiveDate;
 	private Date purchaseDate;
 	private Date serviceDate;
@@ -74,8 +73,8 @@ public class Stock implements java.io.Serializable {
 			String bpkbno, String bpkbname, String bpkbaddress,
 			String vehicleColor, String machineNo, String chasisNo,
 			String cylinder, String licensePlate, String manufacturingMonth,
-			String manufacturingYear, BigDecimal purchasePrice,
-			BigDecimal servicePrice, BigDecimal taxPrice, Long netSalesPrice,
+			String manufacturingYear, Double purchasePrice,
+			Double servicePrice, Double taxPrice, Double netSalesPrice,
 			Date receiveDate, Date purchaseDate, Date serviceDate,
 			String stockStatus, Date dtmUpd, String usrUpd, Date dtmCrt,
 			String usrCrt, Set<SalesOrderDtl> salesOrderDtls,
@@ -295,39 +294,39 @@ public class Stock implements java.io.Serializable {
 		this.manufacturingYear = manufacturingYear;
 	}
 
-	@Column(name = "PurchasePrice", precision = 17)
-	public BigDecimal getPurchasePrice() {
+	@Column(name = "PurchasePrice", precision = 53, scale = 0)
+	public Double getPurchasePrice() {
 		return this.purchasePrice;
 	}
 
-	public void setPurchasePrice(BigDecimal purchasePrice) {
+	public void setPurchasePrice(Double purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	@Column(name = "ServicePrice", precision = 17)
-	public BigDecimal getServicePrice() {
+	@Column(name = "ServicePrice", precision = 53, scale = 0)
+	public Double getServicePrice() {
 		return this.servicePrice;
 	}
 
-	public void setServicePrice(BigDecimal servicePrice) {
+	public void setServicePrice(Double servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 
-	@Column(name = "TaxPrice", precision = 17)
-	public BigDecimal getTaxPrice() {
+	@Column(name = "TaxPrice", precision = 53, scale = 0)
+	public Double getTaxPrice() {
 		return this.taxPrice;
 	}
 
-	public void setTaxPrice(BigDecimal taxPrice) {
+	public void setTaxPrice(Double taxPrice) {
 		this.taxPrice = taxPrice;
 	}
 
-	@Column(name = "NetSalesPrice")
-	public Long getNetSalesPrice() {
+	@Column(name = "NetSalesPrice", precision = 53, scale = 0)
+	public Double getNetSalesPrice() {
 		return this.netSalesPrice;
 	}
 
-	public void setNetSalesPrice(Long netSalesPrice) {
+	public void setNetSalesPrice(Double netSalesPrice) {
 		this.netSalesPrice = netSalesPrice;
 	}
 

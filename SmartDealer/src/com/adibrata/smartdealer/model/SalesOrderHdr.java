@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,13 +33,13 @@ public class SalesOrderHdr implements java.io.Serializable {
 	private String sono;
 	private Date postingDate;
 	private Date valueDate;
-	private BigDecimal soamount;
-	private BigDecimal sotaxPercent;
-	private BigDecimal sotaxAmount;
-	private BigDecimal netSalesAmount;
-	private BigDecimal tdp;
-	private BigDecimal dp;
-	private BigDecimal ntf;
+	private Double soamount;
+	private Double sotaxPercent;
+	private Double sotaxAmount;
+	private Double netSalesAmount;
+	private Double tdp;
+	private Double dp;
+	private Double ntf;
 	private byte[] signature;
 	private Long jobId;
 	private Date dtmUpd;
@@ -60,11 +59,10 @@ public class SalesOrderHdr implements java.io.Serializable {
 
 	public SalesOrderHdr(long id, CoaSchmHdr coaSchmHdr, Customer customer,
 			Employee employee, Leasing leasing, Office office, Partner partner,
-			String sono, Date postingDate, Date valueDate, BigDecimal soamount,
-			BigDecimal sotaxPercent, BigDecimal sotaxAmount,
-			BigDecimal netSalesAmount, BigDecimal tdp, BigDecimal dp,
-			BigDecimal ntf, byte[] signature, Long jobId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt,
+			String sono, Date postingDate, Date valueDate, Double soamount,
+			Double sotaxPercent, Double sotaxAmount, Double netSalesAmount,
+			Double tdp, Double dp, Double ntf, byte[] signature, Long jobId,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 			Set<SalesOrderDtl> salesOrderDtls,
 			Set<ReturSalesHdr> returSalesHdrs, Set<SalesInvoice> salesInvoices) {
 		this.id = id;
@@ -194,66 +192,66 @@ public class SalesOrderHdr implements java.io.Serializable {
 		this.valueDate = valueDate;
 	}
 
-	@Column(name = "SOAmount", precision = 17)
-	public BigDecimal getSoamount() {
+	@Column(name = "SOAmount", precision = 53, scale = 0)
+	public Double getSoamount() {
 		return this.soamount;
 	}
 
-	public void setSoamount(BigDecimal soamount) {
+	public void setSoamount(Double soamount) {
 		this.soamount = soamount;
 	}
 
-	@Column(name = "SOTaxPercent", precision = 17)
-	public BigDecimal getSotaxPercent() {
+	@Column(name = "SOTaxPercent", precision = 53, scale = 0)
+	public Double getSotaxPercent() {
 		return this.sotaxPercent;
 	}
 
-	public void setSotaxPercent(BigDecimal sotaxPercent) {
+	public void setSotaxPercent(Double sotaxPercent) {
 		this.sotaxPercent = sotaxPercent;
 	}
 
-	@Column(name = "SOTaxAmount", precision = 17)
-	public BigDecimal getSotaxAmount() {
+	@Column(name = "SOTaxAmount", precision = 53, scale = 0)
+	public Double getSotaxAmount() {
 		return this.sotaxAmount;
 	}
 
-	public void setSotaxAmount(BigDecimal sotaxAmount) {
+	public void setSotaxAmount(Double sotaxAmount) {
 		this.sotaxAmount = sotaxAmount;
 	}
 
-	@Column(name = "NetSalesAmount", precision = 17)
-	public BigDecimal getNetSalesAmount() {
+	@Column(name = "NetSalesAmount", precision = 53, scale = 0)
+	public Double getNetSalesAmount() {
 		return this.netSalesAmount;
 	}
 
-	public void setNetSalesAmount(BigDecimal netSalesAmount) {
+	public void setNetSalesAmount(Double netSalesAmount) {
 		this.netSalesAmount = netSalesAmount;
 	}
 
-	@Column(name = "TDP", precision = 17)
-	public BigDecimal getTdp() {
+	@Column(name = "TDP", precision = 53, scale = 0)
+	public Double getTdp() {
 		return this.tdp;
 	}
 
-	public void setTdp(BigDecimal tdp) {
+	public void setTdp(Double tdp) {
 		this.tdp = tdp;
 	}
 
-	@Column(name = "DP", precision = 17)
-	public BigDecimal getDp() {
+	@Column(name = "DP", precision = 53, scale = 0)
+	public Double getDp() {
 		return this.dp;
 	}
 
-	public void setDp(BigDecimal dp) {
+	public void setDp(Double dp) {
 		this.dp = dp;
 	}
 
-	@Column(name = "NTF", precision = 17)
-	public BigDecimal getNtf() {
+	@Column(name = "NTF", precision = 53, scale = 0)
+	public Double getNtf() {
 		return this.ntf;
 	}
 
-	public void setNtf(BigDecimal ntf) {
+	public void setNtf(Double ntf) {
 		this.ntf = ntf;
 	}
 

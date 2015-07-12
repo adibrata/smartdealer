@@ -34,7 +34,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public CoaMasterDao() {
+	public CoaMasterDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -68,7 +68,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 */
 	@Override
 	public List<Coamaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Coamaster> list = null;
@@ -103,7 +103,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveAdd(Coamaster coamaster) {
+	public void SaveAdd(Coamaster coamaster) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -155,7 +155,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveDel(Coamaster coamaster) {
+	public void SaveDel(Coamaster coamaster) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -176,7 +176,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	}
 
 	@Override
-	public Coamaster View(long id) {
+	public Coamaster View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		Coamaster coamaster = null;
 		try {
@@ -196,7 +196,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 
 	@Override
 	public List<Coamaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Coamaster> list = null;

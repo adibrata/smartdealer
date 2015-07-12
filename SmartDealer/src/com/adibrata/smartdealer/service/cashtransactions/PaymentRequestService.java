@@ -13,12 +13,11 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 
 public interface PaymentRequestService  extends SeviceBase {
-	public void SavePaymentRequest (PayReqHdr payReqHdr, List<PayReqDtl> payReqDtl);
-	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy);
-	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
-	public List<PayReqDtl> lstPayReqDtl(int CurrentPage, String WhereCond, String SortBy);
-	public PayReqDtl View (long id);
-	
-	public long TotalRecord(String WherCond);
+	public void SavePaymentRequest (String usrupd, PayReqHdr payReqHdr, List<PayReqDtl> payReqDtl)throws Exception;
+	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
+	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast)throws Exception;
+	public List<PayReqDtl> lstPayReqDtl(int CurrentPage, String WhereCond, String SortBy)throws Exception;
+	public PayReqDtl View (long id)throws Exception;
+
 	
 }

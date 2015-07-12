@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +23,7 @@ public class EntrustDtl implements java.io.Serializable {
 	private long id;
 	private EntrustHdr entrustHdr;
 	private Long stockId;
-	private BigDecimal unitPrice;
+	private Double unitPrice;
 	private String assetType;
 	private String assetBrand;
 	private String assetModel;
@@ -52,7 +51,7 @@ public class EntrustDtl implements java.io.Serializable {
 	}
 
 	public EntrustDtl(long id, EntrustHdr entrustHdr, Long stockId,
-			BigDecimal unitPrice, String assetType, String assetBrand,
+			Double unitPrice, String assetType, String assetBrand,
 			String assetModel, String assetCode, String bpkbno,
 			String bpkbname, String bpkbaddress, String vehicleColor,
 			String machineNo, String chasisNo, String cylinder,
@@ -112,12 +111,12 @@ public class EntrustDtl implements java.io.Serializable {
 		this.stockId = stockId;
 	}
 
-	@Column(name = "UnitPrice", precision = 17)
-	public BigDecimal getUnitPrice() {
+	@Column(name = "UnitPrice", precision = 53, scale = 0)
+	public Double getUnitPrice() {
 		return this.unitPrice;
 	}
 
-	public void setUnitPrice(BigDecimal unitPrice) {
+	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 

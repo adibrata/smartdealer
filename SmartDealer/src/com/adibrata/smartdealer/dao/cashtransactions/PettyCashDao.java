@@ -33,7 +33,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public PettyCashDao() {
+	public PettyCashDao() throws Exception {
 
 		// TODO Auto-generated constructor stub
 		try {
@@ -60,8 +60,8 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 	 * com.adibrata.smartdealer.model.PettyCashDtl)
 	 */
 	@Override
-	public void SavePettyCash(PettyCashHdr pettycashhdr,
-			List<PettyCashDtl> lstpettycashdtl) {
+	public void SavePettyCash(String usrupd, PettyCashHdr pettycashhdr,
+			List<PettyCashDtl> lstpettycashdtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = pettycashhdr.getPartner();
@@ -100,7 +100,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 
 	@Override
 	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<PettyCashHdr> list = null;
@@ -131,7 +131,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 
 	@Override
 	public List<PettyCashHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<PettyCashHdr> list = null;
@@ -167,7 +167,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService {
 	}
 
 	@Override
-	public List<PettyCashDtl> ViewDetail(PettyCashHdr pettyCashHdr) {
+	public List<PettyCashDtl> ViewDetail(PettyCashHdr pettyCashHdr) throws Exception {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();

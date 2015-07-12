@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +25,7 @@ public class ServiceDtl implements java.io.Serializable {
 
 	private long id;
 	private ServiceHdr serviceHdr;
-	private BigDecimal servicePrice;
+	private Double servicePrice;
 	private String assetType;
 	private String assetBrand;
 	private String assetModel;
@@ -54,7 +53,7 @@ public class ServiceDtl implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public ServiceDtl(long id, ServiceHdr serviceHdr, BigDecimal servicePrice,
+	public ServiceDtl(long id, ServiceHdr serviceHdr, Double servicePrice,
 			String assetType, String assetBrand, String assetModel,
 			String assetCode, String bpkbno, String bpkbname,
 			String bpkbaddress, String vehicleColor, String machineNo,
@@ -106,12 +105,12 @@ public class ServiceDtl implements java.io.Serializable {
 		this.serviceHdr = serviceHdr;
 	}
 
-	@Column(name = "ServicePrice", precision = 17)
-	public BigDecimal getServicePrice() {
+	@Column(name = "ServicePrice", precision = 53, scale = 0)
+	public Double getServicePrice() {
 		return this.servicePrice;
 	}
 
-	public void setServicePrice(BigDecimal servicePrice) {
+	public void setServicePrice(Double servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 
@@ -223,7 +222,7 @@ public class ServiceDtl implements java.io.Serializable {
 		this.licensePlate = licensePlate;
 	}
 
-	@Column(name = "ManufacturingMonth", length = 50)
+	@Column(name = "ManufacturingMonth", length = 4)
 	public String getManufacturingMonth() {
 		return this.manufacturingMonth;
 	}

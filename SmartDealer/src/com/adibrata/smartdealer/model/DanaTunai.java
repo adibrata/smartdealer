@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,12 +40,12 @@ public class DanaTunai implements java.io.Serializable {
 	private String licensePlate;
 	private String manufacturingMonth;
 	private String manufacturingYear;
-	private BigDecimal otramount;
-	private BigDecimal dpamount;
-	private BigDecimal fundingAmount;
-	private BigDecimal tdpamount;
-	private BigDecimal adminFee;
-	private BigDecimal asuransiAmount;
+	private Double otramount;
+	private Double dpamount;
+	private Double fundingAmount;
+	private Double tdpamount;
+	private Double adminFee;
+	private Double asuransiAmount;
 	private String noStnk;
 	private Date stnkdate;
 	private Date postingDate;
@@ -70,11 +69,10 @@ public class DanaTunai implements java.io.Serializable {
 			String bpkbaddress, String vehicleColor, String machineNo,
 			String chasisNo, String cylinder, String licensePlate,
 			String manufacturingMonth, String manufacturingYear,
-			BigDecimal otramount, BigDecimal dpamount,
-			BigDecimal fundingAmount, BigDecimal tdpamount,
-			BigDecimal adminFee, BigDecimal asuransiAmount, String noStnk,
-			Date stnkdate, Date postingDate, Date valueDate, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt) {
+			Double otramount, Double dpamount, Double fundingAmount,
+			Double tdpamount, Double adminFee, Double asuransiAmount,
+			String noStnk, Date stnkdate, Date postingDate, Date valueDate,
+			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.employee = employee;
 		this.leasing = leasing;
@@ -296,57 +294,57 @@ public class DanaTunai implements java.io.Serializable {
 		this.manufacturingYear = manufacturingYear;
 	}
 
-	@Column(name = "OTRAmount", precision = 17)
-	public BigDecimal getOtramount() {
+	@Column(name = "OTRAmount", precision = 53, scale = 0)
+	public Double getOtramount() {
 		return this.otramount;
 	}
 
-	public void setOtramount(BigDecimal otramount) {
+	public void setOtramount(Double otramount) {
 		this.otramount = otramount;
 	}
 
-	@Column(name = "DPAmount", precision = 17)
-	public BigDecimal getDpamount() {
+	@Column(name = "DPAmount", precision = 53, scale = 0)
+	public Double getDpamount() {
 		return this.dpamount;
 	}
 
-	public void setDpamount(BigDecimal dpamount) {
+	public void setDpamount(Double dpamount) {
 		this.dpamount = dpamount;
 	}
 
-	@Column(name = "FundingAmount", precision = 17)
-	public BigDecimal getFundingAmount() {
+	@Column(name = "FundingAmount", precision = 53, scale = 0)
+	public Double getFundingAmount() {
 		return this.fundingAmount;
 	}
 
-	public void setFundingAmount(BigDecimal fundingAmount) {
+	public void setFundingAmount(Double fundingAmount) {
 		this.fundingAmount = fundingAmount;
 	}
 
-	@Column(name = "TDPAmount", precision = 17)
-	public BigDecimal getTdpamount() {
+	@Column(name = "TDPAmount", precision = 53, scale = 0)
+	public Double getTdpamount() {
 		return this.tdpamount;
 	}
 
-	public void setTdpamount(BigDecimal tdpamount) {
+	public void setTdpamount(Double tdpamount) {
 		this.tdpamount = tdpamount;
 	}
 
-	@Column(name = "AdminFee", precision = 17)
-	public BigDecimal getAdminFee() {
+	@Column(name = "AdminFee", precision = 53, scale = 0)
+	public Double getAdminFee() {
 		return this.adminFee;
 	}
 
-	public void setAdminFee(BigDecimal adminFee) {
+	public void setAdminFee(Double adminFee) {
 		this.adminFee = adminFee;
 	}
 
-	@Column(name = "AsuransiAmount", precision = 17)
-	public BigDecimal getAsuransiAmount() {
+	@Column(name = "AsuransiAmount", precision = 53, scale = 0)
+	public Double getAsuransiAmount() {
 		return this.asuransiAmount;
 	}
 
-	public void setAsuransiAmount(BigDecimal asuransiAmount) {
+	public void setAsuransiAmount(Double asuransiAmount) {
 		this.asuransiAmount = asuransiAmount;
 	}
 

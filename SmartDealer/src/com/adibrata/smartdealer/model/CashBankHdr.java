@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,9 +28,9 @@ public class CashBankHdr implements java.io.Serializable {
 	private Date valueDt;
 	private Date postingDt;
 	private String description;
-	private Character rcvDsbFlag;
+	private String rcvDsbFlag;
 	private String wop;
-	private BigDecimal amount;
+	private Double amount;
 	private String rcvFrom;
 	private String reffNo;
 	private String receiptNo;
@@ -45,9 +44,7 @@ public class CashBankHdr implements java.io.Serializable {
 	private String reconcileBy;
 	private Integer jrnlTrxId;
 	private Long agrmntId;
-	private Integer jrnlShmHdrId;
-	private String jrnlCode;
-	private Long jrnlJobId;
+	private Long jobId;
 	private String usrUpd;
 	private Date dtmUpd;
 	private String usrCrt;
@@ -63,13 +60,12 @@ public class CashBankHdr implements java.io.Serializable {
 
 	public CashBankHdr(long id, String partnerCode, Long officeId,
 			String voucherNo, Date valueDt, Date postingDt, String description,
-			Character rcvDsbFlag, String wop, BigDecimal amount,
-			String rcvFrom, String reffNo, String receiptNo, Long bankAccId,
-			Long currId, Long cashierId, Integer openingSequence,
-			Long officeIdX, Character isReconcile, Date reconcileDate,
-			String reconcileBy, Integer jrnlTrxId, Long agrmntId,
-			Integer jrnlShmHdrId, String jrnlCode, Long jrnlJobId,
-			String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt,
+			String rcvDsbFlag, String wop, Double amount, String rcvFrom,
+			String reffNo, String receiptNo, Long bankAccId, Long currId,
+			Long cashierId, Integer openingSequence, Long officeIdX,
+			Character isReconcile, Date reconcileDate, String reconcileBy,
+			Integer jrnlTrxId, Long agrmntId, Long jobId, String usrUpd,
+			Date dtmUpd, String usrCrt, Date dtmCrt,
 			Set<CashBankDtl> cashBankDtls) {
 		this.id = id;
 		this.partnerCode = partnerCode;
@@ -94,9 +90,7 @@ public class CashBankHdr implements java.io.Serializable {
 		this.reconcileBy = reconcileBy;
 		this.jrnlTrxId = jrnlTrxId;
 		this.agrmntId = agrmntId;
-		this.jrnlShmHdrId = jrnlShmHdrId;
-		this.jrnlCode = jrnlCode;
-		this.jrnlJobId = jrnlJobId;
+		this.jobId = jobId;
 		this.usrUpd = usrUpd;
 		this.dtmUpd = dtmUpd;
 		this.usrCrt = usrCrt;
@@ -171,15 +165,15 @@ public class CashBankHdr implements java.io.Serializable {
 	}
 
 	@Column(name = "RcvDsbFlag", length = 1)
-	public Character getRcvDsbFlag() {
+	public String getRcvDsbFlag() {
 		return this.rcvDsbFlag;
 	}
 
-	public void setRcvDsbFlag(Character rcvDsbFlag) {
+	public void setRcvDsbFlag(String rcvDsbFlag) {
 		this.rcvDsbFlag = rcvDsbFlag;
 	}
 
-	@Column(name = "WOP", length = 50)
+	@Column(name = "WOP", length = 5)
 	public String getWop() {
 		return this.wop;
 	}
@@ -188,12 +182,12 @@ public class CashBankHdr implements java.io.Serializable {
 		this.wop = wop;
 	}
 
-	@Column(name = "Amount", precision = 17)
-	public BigDecimal getAmount() {
+	@Column(name = "Amount", precision = 53, scale = 0)
+	public Double getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -315,31 +309,13 @@ public class CashBankHdr implements java.io.Serializable {
 		this.agrmntId = agrmntId;
 	}
 
-	@Column(name = "JrnlShmHdrID")
-	public Integer getJrnlShmHdrId() {
-		return this.jrnlShmHdrId;
+	@Column(name = "JobId")
+	public Long getJobId() {
+		return this.jobId;
 	}
 
-	public void setJrnlShmHdrId(Integer jrnlShmHdrId) {
-		this.jrnlShmHdrId = jrnlShmHdrId;
-	}
-
-	@Column(name = "JrnlCode", length = 50)
-	public String getJrnlCode() {
-		return this.jrnlCode;
-	}
-
-	public void setJrnlCode(String jrnlCode) {
-		this.jrnlCode = jrnlCode;
-	}
-
-	@Column(name = "JrnlJobID")
-	public Long getJrnlJobId() {
-		return this.jrnlJobId;
-	}
-
-	public void setJrnlJobId(Long jrnlJobId) {
-		this.jrnlJobId = jrnlJobId;
+	public void setJobId(Long jobId) {
+		this.jobId = jobId;
 	}
 
 	@Column(name = "UsrUpd", length = 50)

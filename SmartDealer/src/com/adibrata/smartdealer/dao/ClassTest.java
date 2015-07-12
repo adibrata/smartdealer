@@ -38,7 +38,7 @@ public class ClassTest {
 	 * }
 	 */
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		@SuppressWarnings("unused")

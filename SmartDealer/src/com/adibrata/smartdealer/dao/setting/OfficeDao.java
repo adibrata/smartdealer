@@ -35,7 +35,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public OfficeDao() {
+	public OfficeDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +60,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Office> list = null;
@@ -96,7 +96,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	 * .smartdealer.model.Office)
 	 */
 	@Override
-	public void SaveAdd(Office office) {
+	public void SaveAdd(Office office) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -143,7 +143,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	 * .smartdealer.model.Office)
 	 */
 	@Override
-	public void SaveEdit(Office office) {
+	public void SaveEdit(Office office)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -189,7 +189,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	 * .adibrata.smartdealer.model.Office)
 	 */
 	@Override
-	public void SaveDel(Office office) {
+	public void SaveDel(Office office)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -210,7 +210,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	}
 
 	@Override
-	public Office View(long id) {
+	public Office View(long id)throws Exception {
 		// TODO Auto-generated method stub
 		Office office = null;
 		try {
@@ -230,7 +230,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 
 	@Override
 	public List<Office> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Office> list = null;

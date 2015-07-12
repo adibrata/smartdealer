@@ -12,10 +12,10 @@ import com.adibrata.smartdealer.service.SeviceBase;
  *
  */
 public interface MenuService  extends SeviceBase {
-	public void SaveAdd(MsMenu msMenu);
-	public void SaveEdit(MsMenu msMenu);
-	public void SaveDel(MsMenu msMenu);
-	public List<MsMenu>  Paging(int CurrentPage, String WhereCond, String SortBy);
+	public void SaveAdd(MsMenu msMenu)throws Exception;
+	public void SaveEdit(MsMenu msMenu)throws Exception;
+	public void SaveDel(MsMenu msMenu) throws Exception;
+	public List<MsMenu>  Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
 	
-	public String MenuRender ();
+	public String MenuRender ()throws Exception;
 }

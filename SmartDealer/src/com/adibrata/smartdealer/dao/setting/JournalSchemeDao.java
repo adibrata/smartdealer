@@ -41,7 +41,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public JournalSchemeDao() {
+	public JournalSchemeDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -67,7 +67,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	 * .smartdealer.service.setting.JournalScheme)
 	 */
 	@Override
-	public void SaveAddHeader(CoaSchmHdr coaSchmHdr) {
+	public void SaveAddHeader(CoaSchmHdr coaSchmHdr)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -96,7 +96,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	 * .smartdealer.service.setting.JournalScheme)
 	 */
 	@Override
-	public void SaveEditHeader(CoaSchmHdr coaSchmHdr) {
+	public void SaveEditHeader(CoaSchmHdr coaSchmHdr) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -123,7 +123,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	 * .adibrata.smartdealer.service.setting.JournalScheme)
 	 */
 	@Override
-	public void SaveDelHeader(CoaSchmHdr coaSchmHdr) {
+	public void SaveDelHeader(CoaSchmHdr coaSchmHdr)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -152,7 +152,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	 */
 	@Override
 	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<CoaSchmHdr> list = null;
@@ -181,7 +181,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	}
 
 	@Override
-	public CoaSchmHdr ViewHeader(long id) {
+	public CoaSchmHdr ViewHeader(long id)throws Exception {
 		// TODO Auto-generated method stub
 		CoaSchmHdr coaSchmHdr = null;
 		try {
@@ -201,7 +201,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 
 	@Override
 	public void SaveDetail(CoaSchmHdr coaSchmHdr,
-			List<ListCoaSchmDtl> lstCoaSchmDtl, String usrUpd) {
+			List<ListCoaSchmDtl> lstCoaSchmDtl, String usrUpd) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		session.getTransaction().begin();
@@ -255,7 +255,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	}
 
 	@Override
-	public List<ListCoaSchmDtl> ListCoaSchmDtl(CoaSchmHdr coaSchmHdr) {
+	public List<ListCoaSchmDtl> ListCoaSchmDtl(CoaSchmHdr coaSchmHdr) throws Exception{
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
@@ -309,14 +309,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService {
 	}
 
 	@Override
-	public List<CoaSchmDtl> ViewDetail(CoaSchmHdr coaSchmHdr) {
+	public List<CoaSchmDtl> ViewDetail(CoaSchmHdr coaSchmHdr)throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<CoaSchmHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<CoaSchmHdr> list = null;

@@ -13,6 +13,11 @@ import java.util.ArrayList;
 
 
 
+
+
+
+
+
 import org.apache.commons.collections.MapIterator;
 import org.apache.commons.collections.map.LRUMap;
 
@@ -37,7 +42,7 @@ public class Caching <K, T>{
 		}
 	}
 
-	public Caching(long crunchifyTimeToLive, final long crunchifyTimerInterval, int maxItems) {
+	public Caching(long crunchifyTimeToLive, final long crunchifyTimerInterval, int maxItems) throws Exception{
 		try
 		{
 			this.lngtimeToLive = crunchifyTimeToLive * 1000;
@@ -53,7 +58,12 @@ public class Caching <K, T>{
 								Thread.sleep(crunchifyTimerInterval * 1000);
 							} catch (InterruptedException ex) {
 							}
-							cleanup();
+							try {
+								cleanup();
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 					}
 				});
@@ -71,7 +81,7 @@ public class Caching <K, T>{
 		}
 	}
 
-	public Caching() {
+	public Caching() throws Exception{
 		try
 		{
 			long crunchifyTimeToLive = 86400; 
@@ -91,7 +101,12 @@ public class Caching <K, T>{
 								Thread.sleep(crunchifyTimerInterval * 1000);
 							} catch (InterruptedException ex) {
 							}
-							cleanup();
+							try {
+								cleanup();
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 					}
 				});
@@ -142,7 +157,7 @@ public class Caching <K, T>{
 	}
 
 	@SuppressWarnings("unchecked")
-	public void cleanup() {
+	public void cleanup()throws Exception {
 		try
 		{
 			long now = System.currentTimeMillis();

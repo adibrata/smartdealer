@@ -24,20 +24,18 @@ import com.adibrata.smartdealer.model.TrxSeqNo;
 
 public class GetTransNo {
 	String strFormatNumber;
-	static Session session; 
-	
-	public GetTransNo()
-	{
+	static Session session;
+
+	public GetTransNo() {
 		session = HibernateHelper.getSessionFactory().openSession();
 	}
 
-	public GetTransNo (Session session)
-	{
+	public GetTransNo(Session session) {
 		this.session = session;
 	}
-	
-	public static String GenerateTransactionNo(Session session, String partnercode,
-			Long officeid, String seqcode, Date trxdate) {
+
+	public static String GenerateTransactionNo(Session session,
+			String partnercode, Long officeid, String seqcode, Date trxdate) {
 		String confignumber = "";
 
 		String strMonth;
@@ -125,14 +123,96 @@ public class GetTransNo {
 		return confignumber;
 	}
 
-	public String GenerateJournalNo(String partner, String office) {
-		Session session = HibernateHelper.getSessionFactory().openSession();
-		List<TransJob> lstTransJob = session.createQuery(
-				"from TransJob a WHERE JobStatus = 'NE'").list();
-		return "";
+	@SuppressWarnings("unchecked")
+	public static String GenerateJournalNo(Session session, String partnercode,
+			Long officeid, String seqcode, Date trxdate) {
+		String confignumber = "";
+
+		String strMonth;
+		String strYear;
+		String strPrefix;
+		String strSuffix;
+		String strSeqno;
+		DateFormat monthformat = new SimpleDateFormat("MM");
+		DateFormat yearformat = new SimpleDateFormat("yyyy");
+		Query qryTrxSeqNo = session
+				/*
+				 * .createQuery(
+				 * "Select a from  TrxSeqNo a inner join  Office b WITH " +
+				 * " a.officeId = b.id " + "inner join " +
+				 * " Partner c WITH a.partner = c.partnerCode and b.partner = c.partnerCode "
+				 * );
+				 */
+				.createQuery(
+						"from  TrxSeqNo a, Office b,  Partner c  "
+								+ " Where a.officeId = b.id and "
+								+ " a.partner = c.partnerCode and b.partner = c.partnerCode "
+								+ " and c.partnerCode = :partnercode "
+								+ " and b.id = :officeid and a.mssequenceCode = :seqcode")
+				.setParameter("partnercode", partnercode)
+				.setParameter("officeid", officeid)
+				.setParameter("seqcode", seqcode);
+
+		List<Object[]> lstSeqNo = (List<Object[]>) qryTrxSeqNo.list();
+
+		for (Object[] aRow : lstSeqNo) {
+			TrxSeqNo trxseqno = (TrxSeqNo) aRow[0];
+			Office office = (Office) aRow[1];
+			Partner partner = (Partner) aRow[2];
+			confignumber = trxseqno.getJrnlConfigNumber();
+
+			strSeqno = trxseqno.getJrnlSeqNo().toString();
+			int lengthseqno;
+			lengthseqno = trxseqno.getJrnlLengthNo() - strSeqno.length();
+			strSeqno = String.format("%" + lengthseqno + "s", "").replace(' ',
+					'0')
+					+ strSeqno;
+
+			strMonth = monthformat.format(trxdate);
+			strYear = yearformat.format(trxdate);
+			strPrefix = "";
+			strSuffix = "";
+			// strSuffix = trxseqno.getSuffix();
+
+			if (trxseqno.getJrnlPrefix() == null)
+				strPrefix = "";
+			else
+				strPrefix = trxseqno.getJrnlPrefix();
+
+			if (trxseqno.getJrnlSuffix() == null)
+				strSuffix = "";
+			else
+				strSuffix = trxseqno.getJrnlSuffix();
+
+			confignumber = confignumber
+					.replace("{Office}", office.getOfficeCode())
+					.replace("{Month}", strMonth).replace("{Year}", strYear)
+					.replace("{Suffix}", strSuffix)
+					.replace("{Prefix}", strPrefix)
+					.replace("{SeqNo}", strSeqno);
+
+			Query qryUpd = session
+					.createQuery(
+							"update TrxSeqNo a set jrnl_seq_no = jrnl_seq_no + 1 "
+									+ " Where  PartnerCode  = :partnercode"
+									+ " and a.officeId = :officeid and a.mssequenceCode = :seqcode")
+					.setParameter("partnercode", partner.getPartnerCode())
+					.setParameter("officeid", office.getId())
+					.setParameter("seqcode", seqcode);
+
+			/*
+			 * trxseqno.setPartner(partner);
+			 * trxseqno.setOfficeId(office.getId());
+			 * trxseqno.setMssequenceCode(seqcode);
+			 * trxseqno.setSeqNo(trxseqno.getSeqNo() + 1);
+			 * session.update(trxseqno);
+			 */
+			int result = qryUpd.executeUpdate();
+		}
+		return confignumber;
 	}
 
-	public String GenerateVoucherNo(String partner, String office) {
+	public static String GenerateVoucherNo(String partner, String office) {
 		Session session = HibernateHelper.getSessionFactory().openSession();
 		List<TransJob> lstTransJob = session.createQuery(
 				"from TransJob a WHERE JobStatus = 'NE'").list();

@@ -35,7 +35,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public PurchaseEntryDao() {
+	public PurchaseEntryDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -59,8 +59,8 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 	 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Save()
 	 */
 	@Override
-	public void Save(PurchaseOrderHdr purchaseOrderHdr,
-			List<PurchaseOrderDtl> lstpurchaseOrderDtl) {
+	public void Save(String usrupd, PurchaseOrderHdr purchaseOrderHdr,
+			List<PurchaseOrderDtl> lstpurchaseOrderDtl) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder assetcode = new StringBuilder();
 		String pono;
@@ -149,7 +149,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 	
 	@Override
 	public List<PurchaseOrderHdr> Paging(int CurrentPage,
-			String WhereCond, String SortBy) {
+			String WhereCond, String SortBy) throws Exception {
 		
 		// TODO Auto-generated method stub
 				StringBuilder hql = new StringBuilder();
@@ -178,7 +178,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 
 	@Override
 	public List<PurchaseOrderHdr> Paging(int CurrentPage,
-			String WhereCond, String SortBy, boolean islast) {
+			String WhereCond, String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<PurchaseOrderHdr> list = null;
@@ -209,7 +209,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 
 	@Override
 	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(
-			PurchaseOrderHdr purchaseOrderHdr) {
+			PurchaseOrderHdr purchaseOrderHdr) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<PurchaseOrderDtl> list = null;
@@ -234,7 +234,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService {
 	}
 
 	@Override
-	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) {
+	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) throws Exception {
 		// TODO Auto-generated method stub
 		PurchaseOrderHdr purchaseOrderHdr = null;
 		try {

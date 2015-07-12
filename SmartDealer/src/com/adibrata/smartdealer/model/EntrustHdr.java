@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +30,7 @@ public class EntrustHdr implements java.io.Serializable {
 	private String entrustNo;
 	private Date postingDate;
 	private Date valueDate;
-	private BigDecimal totalAmount;
+	private Double totalAmount;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -47,7 +46,7 @@ public class EntrustHdr implements java.io.Serializable {
 
 	public EntrustHdr(long id, Office office, Partner partner,
 			Supplier supplier, String entrustNo, Date postingDate,
-			Date valueDate, BigDecimal totalAmount, Date dtmUpd, String usrUpd,
+			Date valueDate, Double totalAmount, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls) {
 		this.id = id;
 		this.office = office;
@@ -133,12 +132,12 @@ public class EntrustHdr implements java.io.Serializable {
 		this.valueDate = valueDate;
 	}
 
-	@Column(name = "TotalAmount", precision = 17)
-	public BigDecimal getTotalAmount() {
+	@Column(name = "TotalAmount", precision = 53, scale = 0)
+	public Double getTotalAmount() {
 		return this.totalAmount;
 	}
 
-	public void setTotalAmount(BigDecimal totalAmount) {
+	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 

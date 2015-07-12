@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -28,9 +28,9 @@ public class Coamaster implements java.io.Serializable {
 	private String coaName;
 	private String coaDescription;
 	private String coacode;
-	private Integer isSystem;
-	private Integer isActive;
-	private Integer isScheme;
+	private Short isSystem;
+	private Short isActive;
+	private Short isScheme;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -45,8 +45,8 @@ public class Coamaster implements java.io.Serializable {
 	}
 
 	public Coamaster(long id, Partner partner, String coaName,
-			String coaDescription, String coacode, Integer isSystem,
-			Integer isActive, Integer isScheme, Date dtmUpd, String usrUpd,
+			String coaDescription, String coacode, Short isSystem,
+			Short isActive, Short isScheme, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls) {
 		this.id = id;
 		this.partner = partner;
@@ -111,29 +111,29 @@ public class Coamaster implements java.io.Serializable {
 	}
 
 	@Column(name = "IsSystem")
-	public Integer getIsSystem() {
+	public Short getIsSystem() {
 		return this.isSystem;
 	}
 
-	public void setIsSystem(Integer isSystem) {
+	public void setIsSystem(Short isSystem) {
 		this.isSystem = isSystem;
 	}
 
 	@Column(name = "IsActive")
-	public Integer getIsActive() {
+	public Short getIsActive() {
 		return this.isActive;
 	}
 
-	public void setIsActive(Integer isActive) {
+	public void setIsActive(Short isActive) {
 		this.isActive = isActive;
 	}
 
 	@Column(name = "IsScheme")
-	public Integer getIsScheme() {
+	public Short getIsScheme() {
 		return this.isScheme;
 	}
 
-	public void setIsScheme(Integer isScheme) {
+	public void setIsScheme(Short isScheme) {
 		this.isScheme = isScheme;
 	}
 

@@ -38,7 +38,7 @@ public class EncryptionHelper {
 	private static String myEncryptionScheme;
 	private static SecretKey key;
 
-	public static String Encrypt3Des(String unencryptedString) {
+	public static String Encrypt3Des(String unencryptedString) throws Exception {
 		String encryptedString = null;
 		try {
 			Initial();
@@ -57,7 +57,7 @@ public class EncryptionHelper {
 		return encryptedString;
 	}
 
-	public static String Decrypt3Des(String encryptedString) {
+	public static String Decrypt3Des(String encryptedString) throws Exception {
 		String decryptedText=null;
 		try {
 			Initial();
@@ -77,7 +77,7 @@ public class EncryptionHelper {
 		return decryptedText;
 	}
 
-	private static void Initial() 
+	private static void Initial() throws Exception 
 	{
 		try {
 			myEncryptionKey = "#Copyright Adibrata 2015";
@@ -97,7 +97,7 @@ public class EncryptionHelper {
 		}
 	}
 
-	public static String EncryptSHA (String unencryptedString)
+	public static String EncryptSHA (String unencryptedString) throws Exception
 	{
 		MessageDigest md;
 		String strEncrypt = "";

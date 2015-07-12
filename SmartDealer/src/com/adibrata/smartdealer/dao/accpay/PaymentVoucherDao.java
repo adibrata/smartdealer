@@ -36,7 +36,7 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public PaymentVoucherDao() {
+	public PaymentVoucherDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +60,7 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 	 * @see com.adibrata.smartdealer.service.accpay.PVDisbursement#Save()
 	 */
 	@Override
-	public void Save(PaymentVoucher paymentVoucher) {
+	public void Save(PaymentVoucher paymentVoucher) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -68,8 +68,9 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 			paymentVoucher.setDtmUpd(dtmupd.getTime());
 
 			session.save(paymentVoucher);
-		/*	JobPost jobpost = new JobPost(session);
-			String PartnerCode;*/
+			/*
+			 * JobPost jobpost = new JobPost(session); String PartnerCode;
+			 */
 
 			session.getTransaction().commit();
 
@@ -91,7 +92,8 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<PaymentVoucher> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<PaymentVoucher> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -103,20 +105,22 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService 
 	 * com.adibrata.smartdealer.service.accpay.PVDisbursement#TotalRecord(java
 	 * .lang.String)
 	 */
-	
 
 	@Override
-	public PaymentVoucher View(long id) {
+	public PaymentVoucher View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		PaymentVoucher paymentVoucher = null;
 		try {
-			paymentVoucher =  (PaymentVoucher) session.get(PaymentVoucher.class, id);
-			
+			paymentVoucher = (PaymentVoucher) session.get(PaymentVoucher.class,
+					id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return paymentVoucher;

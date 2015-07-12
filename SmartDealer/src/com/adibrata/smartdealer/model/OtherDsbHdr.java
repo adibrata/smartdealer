@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +27,7 @@ public class OtherDsbHdr implements java.io.Serializable {
 	private Office office;
 	private Partner partner;
 	private String otherDisbNo;
-	private BigDecimal disbAmount;
+	private Double disbAmount;
 	private Date postingDate;
 	private Date valueDate;
 	private Long bankAccountId;
@@ -50,7 +49,7 @@ public class OtherDsbHdr implements java.io.Serializable {
 	}
 
 	public OtherDsbHdr(long id, Office office, Partner partner,
-			String otherDisbNo, BigDecimal disbAmount, Date postingDate,
+			String otherDisbNo, Double disbAmount, Date postingDate,
 			Date valueDate, Long bankAccountId, String refNo, String notes,
 			String destination, Long jobId, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<OtherDsbDtl> otherDsbDtls) {
@@ -112,12 +111,12 @@ public class OtherDsbHdr implements java.io.Serializable {
 		this.otherDisbNo = otherDisbNo;
 	}
 
-	@Column(name = "DisbAmount", precision = 17)
-	public BigDecimal getDisbAmount() {
+	@Column(name = "DisbAmount", precision = 53, scale = 0)
+	public Double getDisbAmount() {
 		return this.disbAmount;
 	}
 
-	public void setDisbAmount(BigDecimal disbAmount) {
+	public void setDisbAmount(Double disbAmount) {
 		this.disbAmount = disbAmount;
 	}
 

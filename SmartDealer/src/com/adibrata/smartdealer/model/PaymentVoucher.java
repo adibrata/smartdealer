@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +24,7 @@ public class PaymentVoucher implements java.io.Serializable {
 	private Office office;
 	private Partner partner;
 	private String pvno;
-	private BigDecimal pvamount;
+	private Double pvamount;
 	private String pvstatus;
 	private Long transJobId;
 	private Date dtmUpd;
@@ -41,7 +40,7 @@ public class PaymentVoucher implements java.io.Serializable {
 	}
 
 	public PaymentVoucher(long id, Office office, Partner partner, String pvno,
-			BigDecimal pvamount, String pvstatus, Long transJobId, Date dtmUpd,
+			Double pvamount, String pvstatus, Long transJobId, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.office = office;
@@ -95,16 +94,16 @@ public class PaymentVoucher implements java.io.Serializable {
 		this.pvno = pvno;
 	}
 
-	@Column(name = "PVAmount", precision = 17)
-	public BigDecimal getPvamount() {
+	@Column(name = "PVAmount", precision = 53, scale = 0)
+	public Double getPvamount() {
 		return this.pvamount;
 	}
 
-	public void setPvamount(BigDecimal pvamount) {
+	public void setPvamount(Double pvamount) {
 		this.pvamount = pvamount;
 	}
 
-	@Column(name = "PVStatus", length = 5)
+	@Column(name = "PVStatus", length = 50)
 	public String getPvstatus() {
 		return this.pvstatus;
 	}

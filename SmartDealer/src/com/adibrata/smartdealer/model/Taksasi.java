@@ -1,8 +1,8 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +29,8 @@ public class Taksasi implements java.io.Serializable {
 	private String assetMasterCode;
 	private String taksasiCode;
 	private String taksasiName;
-	private BigDecimal taksasiPriceMin;
+	private double taksasiPriceMin;
+	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -44,15 +45,16 @@ public class Taksasi implements java.io.Serializable {
 	}
 
 	public Taksasi(long id, Partner partner, String assetMasterCode,
-			String taksasiCode, String taksasiName, BigDecimal taksasiPriceMin,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<ServiceItem> serviceItems) {
+			String taksasiCode, String taksasiName, double taksasiPriceMin,
+			Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
+			String usrCrt, Set<ServiceItem> serviceItems) {
 		this.id = id;
 		this.partner = partner;
 		this.assetMasterCode = assetMasterCode;
 		this.taksasiCode = taksasiCode;
 		this.taksasiName = taksasiName;
 		this.taksasiPriceMin = taksasiPriceMin;
+		this.isActive = isActive;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -108,12 +110,21 @@ public class Taksasi implements java.io.Serializable {
 	}
 
 	@Column(name = "TaksasiPriceMin", precision = 17)
-	public BigDecimal getTaksasiPriceMin() {
+	public double getTaksasiPriceMin() {
 		return this.taksasiPriceMin;
 	}
 
-	public void setTaksasiPriceMin(BigDecimal taksasiPriceMin) {
+	public void setTaksasiPriceMin(double taksasiPriceMin) {
 		this.taksasiPriceMin = taksasiPriceMin;
+	}
+
+	@Column(name = "IsActive")
+	public Short getIsActive() {
+		return this.isActive;
+	}
+
+	public void setIsActive(Short isActive) {
+		this.isActive = isActive;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

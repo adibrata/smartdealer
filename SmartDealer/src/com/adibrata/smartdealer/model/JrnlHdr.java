@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,11 +33,11 @@ public class JrnlHdr implements java.io.Serializable {
 	private String reffNo;
 	private Date reffDate;
 	private String trxDesc;
-	private BigDecimal jrnlAmt;
+	private double jrnlAmt;
 	private String statusTr;
-	private char flag;
-	private Character isActive;
-	private Character isValid;
+	private String flag;
+	private Short isActive;
+	private Short isValid;
 	private String jrnlTrxCode;
 	private String coaSchmCode;
 	private Long jobId;
@@ -52,8 +51,8 @@ public class JrnlHdr implements java.io.Serializable {
 	}
 
 	public JrnlHdr(long id, long officeId, String jrnlNo, String periodYear,
-			String periodMonth, Date trxDate, String trxDesc,
-			BigDecimal jrnlAmt, String statusTr, char flag) {
+			String periodMonth, Date trxDate, String trxDesc, double jrnlAmt,
+			String statusTr, String flag) {
 		this.id = id;
 		this.officeId = officeId;
 		this.jrnlNo = jrnlNo;
@@ -68,10 +67,10 @@ public class JrnlHdr implements java.io.Serializable {
 
 	public JrnlHdr(long id, Partner partner, long officeId, String jrnlNo,
 			String periodYear, String periodMonth, Date trxDate, String reffNo,
-			Date reffDate, String trxDesc, BigDecimal jrnlAmt, String statusTr,
-			char flag, Character isActive, Character isValid,
-			String jrnlTrxCode, String coaSchmCode, Long jobId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt, Set<JrnlDtl> jrnlDtls) {
+			Date reffDate, String trxDesc, double jrnlAmt, String statusTr,
+			String flag, Short isActive, Short isValid, String jrnlTrxCode,
+			String coaSchmCode, Long jobId, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<JrnlDtl> jrnlDtls) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
@@ -144,7 +143,7 @@ public class JrnlHdr implements java.io.Serializable {
 		this.periodYear = periodYear;
 	}
 
-	@Column(name = "PeriodMonth", nullable = false, length = 2)
+	@Column(name = "PeriodMonth", nullable = false, length = 50)
 	public String getPeriodMonth() {
 		return this.periodMonth;
 	}
@@ -191,12 +190,12 @@ public class JrnlHdr implements java.io.Serializable {
 		this.trxDesc = trxDesc;
 	}
 
-	@Column(name = "JrnlAmt", nullable = false, precision = 17)
-	public BigDecimal getJrnlAmt() {
+	@Column(name = "JrnlAmt", nullable = false, precision = 53, scale = 0)
+	public double getJrnlAmt() {
 		return this.jrnlAmt;
 	}
 
-	public void setJrnlAmt(BigDecimal jrnlAmt) {
+	public void setJrnlAmt(double jrnlAmt) {
 		this.jrnlAmt = jrnlAmt;
 	}
 
@@ -209,30 +208,30 @@ public class JrnlHdr implements java.io.Serializable {
 		this.statusTr = statusTr;
 	}
 
-	@Column(name = "Flag", nullable = false, length = 1)
-	public char getFlag() {
+	@Column(name = "Flag", nullable = false, length = 50)
+	public String getFlag() {
 		return this.flag;
 	}
 
-	public void setFlag(char flag) {
+	public void setFlag(String flag) {
 		this.flag = flag;
 	}
 
-	@Column(name = "IsActive", length = 1)
-	public Character getIsActive() {
+	@Column(name = "IsActive")
+	public Short getIsActive() {
 		return this.isActive;
 	}
 
-	public void setIsActive(Character isActive) {
+	public void setIsActive(Short isActive) {
 		this.isActive = isActive;
 	}
 
-	@Column(name = "IsValid", length = 1)
-	public Character getIsValid() {
+	@Column(name = "IsValid")
+	public Short getIsValid() {
 		return this.isValid;
 	}
 
-	public void setIsValid(Character isValid) {
+	public void setIsValid(Short isValid) {
 		this.isValid = isValid;
 	}
 

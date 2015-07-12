@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,18 +23,18 @@ public class TrxConfigDtl implements java.io.Serializable {
 	private long id;
 	private TrxConfigHdr trxConfigHdr;
 	private Long sequenceNo;
-	private String coaName;
 	private String coaSourceTable;
-	private Character isCoaHeader;
-	private Character post;
-	private Character isMultipleDtl;
+	private String coaName;
+	private String isCoaHeader;
+	private String post;
+	private Short isMultipleDtl;
 	private String tblSourceDtl;
-	private String colSourceDtl;
-	private String colFilterDtlId;
-	private Character isCreatePaymentHistoryDetail;
-	private Character isCreateCashBankMutationDetail;
-	private Character isCreateJournalDetail;
+	private String headerId;
+	private String amountTrx;
 	private Long departId;
+	private Short isCreatePaymentHistoryDetail;
+	private Short isCreateCashBankMutationDetail;
+	private Short isCreateJournalDetail;
 	private String usrCrt;
 	private Date dtmCrt;
 	private String usrUpd;
@@ -48,28 +48,27 @@ public class TrxConfigDtl implements java.io.Serializable {
 	}
 
 	public TrxConfigDtl(long id, TrxConfigHdr trxConfigHdr, Long sequenceNo,
-			String coaName, String coaSourceTable, Character isCoaHeader,
-			Character post, Character isMultipleDtl, String tblSourceDtl,
-			String colSourceDtl, String colFilterDtlId,
-			Character isCreatePaymentHistoryDetail,
-			Character isCreateCashBankMutationDetail,
-			Character isCreateJournalDetail, Long departId, String usrCrt,
-			Date dtmCrt, String usrUpd, Date dtmUpd) {
+			String coaSourceTable, String coaName, String isCoaHeader,
+			String post, Short isMultipleDtl, String tblSourceDtl,
+			String headerId, String amountTrx, Long departId,
+			Short isCreatePaymentHistoryDetail,
+			Short isCreateCashBankMutationDetail, Short isCreateJournalDetail,
+			String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd) {
 		this.id = id;
 		this.trxConfigHdr = trxConfigHdr;
 		this.sequenceNo = sequenceNo;
-		this.coaName = coaName;
 		this.coaSourceTable = coaSourceTable;
+		this.coaName = coaName;
 		this.isCoaHeader = isCoaHeader;
 		this.post = post;
 		this.isMultipleDtl = isMultipleDtl;
 		this.tblSourceDtl = tblSourceDtl;
-		this.colSourceDtl = colSourceDtl;
-		this.colFilterDtlId = colFilterDtlId;
+		this.headerId = headerId;
+		this.amountTrx = amountTrx;
+		this.departId = departId;
 		this.isCreatePaymentHistoryDetail = isCreatePaymentHistoryDetail;
 		this.isCreateCashBankMutationDetail = isCreateCashBankMutationDetail;
 		this.isCreateJournalDetail = isCreateJournalDetail;
-		this.departId = departId;
 		this.usrCrt = usrCrt;
 		this.dtmCrt = dtmCrt;
 		this.usrUpd = usrUpd;
@@ -105,15 +104,6 @@ public class TrxConfigDtl implements java.io.Serializable {
 		this.sequenceNo = sequenceNo;
 	}
 
-	@Column(name = "CoaName", length = 50)
-	public String getCoaName() {
-		return this.coaName;
-	}
-
-	public void setCoaName(String coaName) {
-		this.coaName = coaName;
-	}
-
 	@Column(name = "CoaSourceTable", length = 50)
 	public String getCoaSourceTable() {
 		return this.coaSourceTable;
@@ -123,30 +113,39 @@ public class TrxConfigDtl implements java.io.Serializable {
 		this.coaSourceTable = coaSourceTable;
 	}
 
-	@Column(name = "IsCoaHeader", length = 1)
-	public Character getIsCoaHeader() {
+	@Column(name = "CoaName", length = 50)
+	public String getCoaName() {
+		return this.coaName;
+	}
+
+	public void setCoaName(String coaName) {
+		this.coaName = coaName;
+	}
+
+	@Column(name = "IsCoaHeader", length = 50)
+	public String getIsCoaHeader() {
 		return this.isCoaHeader;
 	}
 
-	public void setIsCoaHeader(Character isCoaHeader) {
+	public void setIsCoaHeader(String isCoaHeader) {
 		this.isCoaHeader = isCoaHeader;
 	}
 
-	@Column(name = "Post", length = 1)
-	public Character getPost() {
+	@Column(name = "Post", length = 50)
+	public String getPost() {
 		return this.post;
 	}
 
-	public void setPost(Character post) {
+	public void setPost(String post) {
 		this.post = post;
 	}
 
-	@Column(name = "IsMultipleDtl", length = 1)
-	public Character getIsMultipleDtl() {
+	@Column(name = "IsMultipleDtl")
+	public Short getIsMultipleDtl() {
 		return this.isMultipleDtl;
 	}
 
-	public void setIsMultipleDtl(Character isMultipleDtl) {
+	public void setIsMultipleDtl(Short isMultipleDtl) {
 		this.isMultipleDtl = isMultipleDtl;
 	}
 
@@ -159,51 +158,22 @@ public class TrxConfigDtl implements java.io.Serializable {
 		this.tblSourceDtl = tblSourceDtl;
 	}
 
-	@Column(name = "ColSourceDtl", length = 50)
-	public String getColSourceDtl() {
-		return this.colSourceDtl;
+	@Column(name = "HeaderID", length = 50)
+	public String getHeaderId() {
+		return this.headerId;
 	}
 
-	public void setColSourceDtl(String colSourceDtl) {
-		this.colSourceDtl = colSourceDtl;
+	public void setHeaderId(String headerId) {
+		this.headerId = headerId;
 	}
 
-	@Column(name = "ColFilterDtlID", length = 50)
-	public String getColFilterDtlId() {
-		return this.colFilterDtlId;
+	@Column(name = "AmountTrx", length = 50)
+	public String getAmountTrx() {
+		return this.amountTrx;
 	}
 
-	public void setColFilterDtlId(String colFilterDtlId) {
-		this.colFilterDtlId = colFilterDtlId;
-	}
-
-	@Column(name = "IsCreatePaymentHistoryDetail", length = 1)
-	public Character getIsCreatePaymentHistoryDetail() {
-		return this.isCreatePaymentHistoryDetail;
-	}
-
-	public void setIsCreatePaymentHistoryDetail(
-			Character isCreatePaymentHistoryDetail) {
-		this.isCreatePaymentHistoryDetail = isCreatePaymentHistoryDetail;
-	}
-
-	@Column(name = "IsCreateCashBankMutationDetail", length = 1)
-	public Character getIsCreateCashBankMutationDetail() {
-		return this.isCreateCashBankMutationDetail;
-	}
-
-	public void setIsCreateCashBankMutationDetail(
-			Character isCreateCashBankMutationDetail) {
-		this.isCreateCashBankMutationDetail = isCreateCashBankMutationDetail;
-	}
-
-	@Column(name = "IsCreateJournalDetail", length = 1)
-	public Character getIsCreateJournalDetail() {
-		return this.isCreateJournalDetail;
-	}
-
-	public void setIsCreateJournalDetail(Character isCreateJournalDetail) {
-		this.isCreateJournalDetail = isCreateJournalDetail;
+	public void setAmountTrx(String amountTrx) {
+		this.amountTrx = amountTrx;
 	}
 
 	@Column(name = "DepartID")
@@ -213,6 +183,35 @@ public class TrxConfigDtl implements java.io.Serializable {
 
 	public void setDepartId(Long departId) {
 		this.departId = departId;
+	}
+
+	@Column(name = "IsCreatePaymentHistoryDetail")
+	public Short getIsCreatePaymentHistoryDetail() {
+		return this.isCreatePaymentHistoryDetail;
+	}
+
+	public void setIsCreatePaymentHistoryDetail(
+			Short isCreatePaymentHistoryDetail) {
+		this.isCreatePaymentHistoryDetail = isCreatePaymentHistoryDetail;
+	}
+
+	@Column(name = "IsCreateCashBankMutationDetail")
+	public Short getIsCreateCashBankMutationDetail() {
+		return this.isCreateCashBankMutationDetail;
+	}
+
+	public void setIsCreateCashBankMutationDetail(
+			Short isCreateCashBankMutationDetail) {
+		this.isCreateCashBankMutationDetail = isCreateCashBankMutationDetail;
+	}
+
+	@Column(name = "IsCreateJournalDetail")
+	public Short getIsCreateJournalDetail() {
+		return this.isCreateJournalDetail;
+	}
+
+	public void setIsCreateJournalDetail(Short isCreateJournalDetail) {
+		this.isCreateJournalDetail = isCreateJournalDetail;
 	}
 
 	@Column(name = "UsrCrt", length = 50)

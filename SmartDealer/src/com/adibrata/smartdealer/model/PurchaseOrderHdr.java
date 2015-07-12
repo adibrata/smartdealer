@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +29,9 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 	private Supplier supplier;
 	private String pono;
 	private Date podate;
-	private BigDecimal poamount;
+	private Long currencyId;
+	private Double currencyRate;
+	private Double poamount;
 	private Long jobId;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -51,8 +52,9 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 	}
 
 	public PurchaseOrderHdr(long id, Office office, Partner partner,
-			Supplier supplier, String pono, Date podate, BigDecimal poamount,
-			Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+			Supplier supplier, String pono, Date podate, Long currencyId,
+			Double currencyRate, Double poamount, Long jobId, Date dtmUpd,
+			String usrUpd, Date dtmCrt, String usrCrt,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<PurchaseOrderDtl> purchaseOrderDtls) {
@@ -62,6 +64,8 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 		this.supplier = supplier;
 		this.pono = pono;
 		this.podate = podate;
+		this.currencyId = currencyId;
+		this.currencyRate = currencyRate;
 		this.poamount = poamount;
 		this.jobId = jobId;
 		this.dtmUpd = dtmUpd;
@@ -132,12 +136,30 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 		this.podate = podate;
 	}
 
-	@Column(name = "POAmount", precision = 17)
-	public BigDecimal getPoamount() {
+	@Column(name = "CurrencyID")
+	public Long getCurrencyId() {
+		return this.currencyId;
+	}
+
+	public void setCurrencyId(Long currencyId) {
+		this.currencyId = currencyId;
+	}
+
+	@Column(name = "CurrencyRate", precision = 53, scale = 0)
+	public Double getCurrencyRate() {
+		return this.currencyRate;
+	}
+
+	public void setCurrencyRate(Double currencyRate) {
+		this.currencyRate = currencyRate;
+	}
+
+	@Column(name = "POAmount", precision = 53, scale = 0)
+	public Double getPoamount() {
 		return this.poamount;
 	}
 
-	public void setPoamount(BigDecimal poamount) {
+	public void setPoamount(Double poamount) {
 		this.poamount = poamount;
 	}
 

@@ -32,7 +32,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	public UserRegisterDao() {
+	public UserRegisterDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -58,7 +58,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * (com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void SaveAdd(MsUser msUser) {
+	public void SaveAdd(MsUser msUser) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -88,7 +88,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * (com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void SaveEdit(MsUser msUser) {
+	public void SaveEdit(MsUser msUser) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -117,7 +117,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * SaveDel(com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void SaveDel(MsUser msUser) {
+	public void SaveDel(MsUser msUser) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -145,7 +145,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * (int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<MsUser> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<MsUser> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception  {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MsUser> list = null;
@@ -173,7 +173,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 		return list;
 	}
 
-	public boolean PasswordVerification(MsUser msUser) {
+	public boolean PasswordVerification(MsUser msUser)throws Exception  {
 		boolean isValid = false;
 
 		String unVerifiedPassowrd = EncryptionHelper.EncryptSHA(msUser
@@ -205,7 +205,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * @see com.adibrata.smartdealer.service.usermanagement.UserService#ResetPassword(com.adibrata.smartdealer.model.MsUser)
 	 */
 	@Override
-	public void ResetPassword(MsUser msUser) {
+	public void ResetPassword(MsUser msUser) throws Exception {
 		// TODO Auto-generated method stub
 		ResetPasswordLog resetpasswordlog =new ResetPasswordLog();
 		
@@ -241,7 +241,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	}
 
 	@Override
-	public MsUser View(long id) {
+	public MsUser View(long id)throws Exception  {
 		// TODO Auto-generated method stub
 		MsUser msUser = null;
 		try {
@@ -259,7 +259,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 
 	@Override
 	public List<MsUser> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 				StringBuilder hql = new StringBuilder();
 				List<MsUser> list = null;

@@ -32,7 +32,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public RoleDao() {
+	public RoleDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -58,7 +58,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	 * .adibrata.smartdealer.model.MsRole)
 	 */
 	@Override
-	public void SaveAdd(MsRole msRole) {
+	public void SaveAdd(MsRole msRole) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -88,7 +88,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	 * com.adibrata.smartdealer.model.MsRole)
 	 */
 	@Override
-	public void SaveEdit(MsRole msRole) {
+	public void SaveEdit(MsRole msRole) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -117,7 +117,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	 * .adibrata.smartdealer.model.MsRole)
 	 */
 	@Override
-	public void SaveDel(MsRole msRole) {
+	public void SaveDel(MsRole msRole) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -145,7 +145,8 @@ public class RoleDao extends DaoBase implements RoleService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy)
+			throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MsRole> list = null;
@@ -157,7 +158,7 @@ public class RoleDao extends DaoBase implements RoleService {
 			}
 
 			Query selectQuery = session.createQuery(hql.toString());
-			
+
 			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
@@ -175,7 +176,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	}
 
 	@Override
-	public MsRole View(long Id) {
+	public MsRole View(long Id) throws Exception {
 		// TODO Auto-generated method stub
 		MsRole msRole = null;
 		try {
@@ -195,33 +196,33 @@ public class RoleDao extends DaoBase implements RoleService {
 
 	@Override
 	public List<MsRole> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<MsRole> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<MsRole> list = null;
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord(WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

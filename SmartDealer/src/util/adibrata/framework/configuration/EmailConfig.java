@@ -18,7 +18,7 @@ import util.adibrata.framework.cachehelper.*;
 public class EmailConfig {
 	private Properties symbolmap;
 
-	public EmailConfig() {
+	public EmailConfig() throws Exception {
 		symbolmap = new Properties();
 		File file;
 		Caching<String, Properties> cache = new Caching<String, Properties>();
@@ -52,7 +52,7 @@ public class EmailConfig {
 
 	//variable length arguments are packed into an array
 	//which can be accessed and passed just like any array
-	public String Properties(String symbol, String... variables) {
+	public String Properties(String symbol, String... variables) throws Exception {
 		//Retrieve the value of the associated key
 		String message = null;
 		Caching<String, String> cache = new Caching<String, String>();

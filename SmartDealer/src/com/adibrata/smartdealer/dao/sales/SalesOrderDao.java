@@ -37,7 +37,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public SalesOrderDao() {
+	public SalesOrderDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -61,8 +61,8 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Save()
 	 */
 	@Override
-	public void Save(SalesOrderHdr salesOrderHdr,
-			List<SalesOrderDtl> lstsalesOrderDtl) {
+	public void Save(String usrupd, SalesOrderHdr salesOrderHdr,
+			List<SalesOrderDtl> lstsalesOrderDtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = salesOrderHdr.getPartner();
@@ -111,7 +111,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	 */
 	@Override
 	public List<Customer> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Customer> list = null;
@@ -138,7 +138,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	}
 
 	@Override
-	public SalesOrderHdr viewSalesOrderHdr(long id) {
+	public SalesOrderHdr viewSalesOrderHdr(long id) throws Exception {
 		// TODO Auto-generated method stub
 		SalesOrderHdr salesOrderHdr = null;
 		try {
@@ -158,7 +158,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	}
 
 	@Override
-	public Customer viewCustomer(long id) {
+	public Customer viewCustomer(long id) throws Exception {
 		// TODO Auto-generated method stub
 		Customer customer = null;
 		try {
@@ -177,7 +177,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 	}
 
 	@Override
-	public List<SalesOrderDtl> viewSalesOrderDtls(SalesOrderHdr salesOrderHdr) {
+	public List<SalesOrderDtl> viewSalesOrderDtls(SalesOrderHdr salesOrderHdr) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<SalesOrderDtl> list = null;
@@ -201,7 +201,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService {
 
 	@Override
 	public List<Customer> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// / TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Customer> list = null;

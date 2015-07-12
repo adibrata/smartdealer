@@ -12,18 +12,18 @@ import com.adibrata.smartdealer.service.SeviceBase;
  * @author Henry
  *
  */
-public interface AssetMasterService  extends SeviceBase {
-	public void SaveAdd(AssetMaster stock);
+public interface AssetMasterService extends SeviceBase {
+	public void SaveAdd(AssetMaster stock) throws Exception;
 
-	public void SaveEdit(AssetMaster stock);
+	public void SaveEdit(AssetMaster stock) throws Exception;
 
-	public void SaveDel(AssetMaster stock);
-
-	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy);
+	public void SaveDel(AssetMaster stock) throws Exception;
 
 	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast);
+			String SortBy) throws Exception;
 
-	public AssetMaster View(long id);
+	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public AssetMaster View(long id) throws Exception;
 }

@@ -8,5 +8,5 @@ package com.adibrata.smartdealer.service;
  *
  */
 public interface SeviceBase  {
-	public long TotalRecord(String WherCond);
+	public long TotalRecord(String WherCond) throws Exception;
 }

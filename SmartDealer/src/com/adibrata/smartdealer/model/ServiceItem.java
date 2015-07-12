@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +24,7 @@ public class ServiceItem implements java.io.Serializable {
 	private ServiceDtl serviceDtl;
 	private Taksasi taksasi;
 	private Integer seqNo;
-	private BigDecimal servicePrice;
+	private Double servicePrice;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -39,7 +38,7 @@ public class ServiceItem implements java.io.Serializable {
 	}
 
 	public ServiceItem(long id, ServiceDtl serviceDtl, Taksasi taksasi,
-			Integer seqNo, BigDecimal servicePrice, Date dtmUpd, String usrUpd,
+			Integer seqNo, Double servicePrice, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.serviceDtl = serviceDtl;
@@ -91,12 +90,12 @@ public class ServiceItem implements java.io.Serializable {
 		this.seqNo = seqNo;
 	}
 
-	@Column(name = "ServicePrice", precision = 17)
-	public BigDecimal getServicePrice() {
+	@Column(name = "ServicePrice", precision = 53, scale = 0)
+	public Double getServicePrice() {
 		return this.servicePrice;
 	}
 
-	public void setServicePrice(BigDecimal servicePrice) {
+	public void setServicePrice(Double servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 

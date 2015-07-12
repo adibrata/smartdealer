@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +30,7 @@ public class AssetMaster implements java.io.Serializable {
 	private String assetModel;
 	private String assetCode;
 	private Integer assetLevel;
+	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -48,8 +49,8 @@ public class AssetMaster implements java.io.Serializable {
 
 	public AssetMaster(long id, Partner partner, String assetType,
 			String assetBrand, String assetModel, String assetCode,
-			Integer assetLevel, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<ServiceHdr> serviceHdrs,
+			Integer assetLevel, Short isActive, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<ServiceHdr> serviceHdrs,
 			Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks) {
 		this.id = id;
 		this.partner = partner;
@@ -58,6 +59,7 @@ public class AssetMaster implements java.io.Serializable {
 		this.assetModel = assetModel;
 		this.assetCode = assetCode;
 		this.assetLevel = assetLevel;
+		this.isActive = isActive;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -130,6 +132,15 @@ public class AssetMaster implements java.io.Serializable {
 
 	public void setAssetLevel(Integer assetLevel) {
 		this.assetLevel = assetLevel;
+	}
+
+	@Column(name = "IsActive")
+	public Short getIsActive() {
+		return this.isActive;
+	}
+
+	public void setIsActive(Short isActive) {
+		this.isActive = isActive;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -7,17 +7,24 @@ import java.util.List;
 
 import com.adibrata.smartdealer.model.*;
 import com.adibrata.smartdealer.service.SeviceBase;
+
 /**
  * @author Henry
  *
  */
-public interface PurchaseOrderService  extends SeviceBase {
+public interface PurchaseOrderService extends SeviceBase {
 
-	public void Save(PurchaseOrderHdr purchaseOrderHdr, List<PurchaseOrderDtl> lstpurchaseOrderDtl);
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy);
-	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
-	
-	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(PurchaseOrderHdr purchaseOrderHdr);
-	public long TotalRecord(String WherCond);
-	public PurchaseOrderHdr viewPurchaseOrderHdr (long id);
+	public void Save(String usrupd, PurchaseOrderHdr purchaseOrderHdr,
+			List<PurchaseOrderDtl> lstpurchaseOrderDtl) throws Exception;
+
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception;
+
+	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(
+			PurchaseOrderHdr purchaseOrderHdr) throws Exception;
+
+	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) throws Exception;
 }

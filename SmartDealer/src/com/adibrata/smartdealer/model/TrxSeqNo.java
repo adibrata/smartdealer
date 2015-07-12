@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -33,7 +33,13 @@ public class TrxSeqNo implements java.io.Serializable {
 	private String prefix;
 	private String suffix;
 	private String configNumber;
-	private Short isJrnlTrans;
+	private String jrnlSeqName;
+	private Integer jrnlSeqNo;
+	private Integer jrnlLengthNo;
+	private Character jrnlResetFlag;
+	private String jrnlPrefix;
+	private String jrnlSuffix;
+	private String jrnlConfigNumber;
 	private String usrUpd;
 	private Date dtmUpd;
 	private String usrCrt;
@@ -55,8 +61,10 @@ public class TrxSeqNo implements java.io.Serializable {
 	public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode,
 			long officeId, String seqName, Integer seqNo, Integer lengthNumber,
 			Character resetFlag, String prefix, String suffix,
-			String configNumber, Short isJrnlTrans, String usrUpd, Date dtmUpd,
-			String usrCrt, Date dtmCrt) {
+			String configNumber, String jrnlSeqName, Integer jrnlSeqNo,
+			Integer jrnlLengthNo, Character jrnlResetFlag, String jrnlPrefix,
+			String jrnlSuffix, String jrnlConfigNumber, String usrUpd,
+			Date dtmUpd, String usrCrt, Date dtmCrt) {
 		this.msseqId = msseqId;
 		this.partner = partner;
 		this.mssequenceCode = mssequenceCode;
@@ -68,7 +76,13 @@ public class TrxSeqNo implements java.io.Serializable {
 		this.prefix = prefix;
 		this.suffix = suffix;
 		this.configNumber = configNumber;
-		this.isJrnlTrans = isJrnlTrans;
+		this.jrnlSeqName = jrnlSeqName;
+		this.jrnlSeqNo = jrnlSeqNo;
+		this.jrnlLengthNo = jrnlLengthNo;
+		this.jrnlResetFlag = jrnlResetFlag;
+		this.jrnlPrefix = jrnlPrefix;
+		this.jrnlSuffix = jrnlSuffix;
+		this.jrnlConfigNumber = jrnlConfigNumber;
 		this.usrUpd = usrUpd;
 		this.dtmUpd = dtmUpd;
 		this.usrCrt = usrCrt;
@@ -176,13 +190,67 @@ public class TrxSeqNo implements java.io.Serializable {
 		this.configNumber = configNumber;
 	}
 
-	@Column(name = "IsJrnlTrans")
-	public Short getIsJrnlTrans() {
-		return this.isJrnlTrans;
+	@Column(name = "Jrnl_Seq_Name", length = 50)
+	public String getJrnlSeqName() {
+		return this.jrnlSeqName;
 	}
 
-	public void setIsJrnlTrans(Short isJrnlTrans) {
-		this.isJrnlTrans = isJrnlTrans;
+	public void setJrnlSeqName(String jrnlSeqName) {
+		this.jrnlSeqName = jrnlSeqName;
+	}
+
+	@Column(name = "Jrnl_Seq_No")
+	public Integer getJrnlSeqNo() {
+		return this.jrnlSeqNo;
+	}
+
+	public void setJrnlSeqNo(Integer jrnlSeqNo) {
+		this.jrnlSeqNo = jrnlSeqNo;
+	}
+
+	@Column(name = "Jrnl_Length_No")
+	public Integer getJrnlLengthNo() {
+		return this.jrnlLengthNo;
+	}
+
+	public void setJrnlLengthNo(Integer jrnlLengthNo) {
+		this.jrnlLengthNo = jrnlLengthNo;
+	}
+
+	@Column(name = "Jrnl_ResetFlag", length = 1)
+	public Character getJrnlResetFlag() {
+		return this.jrnlResetFlag;
+	}
+
+	public void setJrnlResetFlag(Character jrnlResetFlag) {
+		this.jrnlResetFlag = jrnlResetFlag;
+	}
+
+	@Column(name = "Jrnl_Prefix", length = 10)
+	public String getJrnlPrefix() {
+		return this.jrnlPrefix;
+	}
+
+	public void setJrnlPrefix(String jrnlPrefix) {
+		this.jrnlPrefix = jrnlPrefix;
+	}
+
+	@Column(name = "Jrnl_Suffix", length = 10)
+	public String getJrnlSuffix() {
+		return this.jrnlSuffix;
+	}
+
+	public void setJrnlSuffix(String jrnlSuffix) {
+		this.jrnlSuffix = jrnlSuffix;
+	}
+
+	@Column(name = "JrnlConfigNumber", length = 100)
+	public String getJrnlConfigNumber() {
+		return this.jrnlConfigNumber;
+	}
+
+	public void setJrnlConfigNumber(String jrnlConfigNumber) {
+		this.jrnlConfigNumber = jrnlConfigNumber;
 	}
 
 	@Column(name = "UsrUpd", nullable = false, length = 50)

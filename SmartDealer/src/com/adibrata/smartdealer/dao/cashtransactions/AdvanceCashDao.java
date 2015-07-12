@@ -34,7 +34,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public AdvanceCashDao() {
+	public AdvanceCashDao() throws Exception {
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
 			pagesize = HibernateHelper.getPagesize();
@@ -59,7 +59,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	 * Save(com.adibrata.smartdealer.model.AdvanceCash)
 	 */
 	@Override
-	public void Save(AdvanceCash advancecash) {
+	public void Save(String usrupd, AdvanceCash advancecash) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = advancecash.getPartner();
@@ -97,7 +97,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	 */
 	@Override
 	public List<AdvanceCash> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AdvanceCash> list = null;
@@ -127,7 +127,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 	}
 
 	@Override
-	public AdvanceCash View(long id) {
+	public AdvanceCash View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		AdvanceCash advanceCash = new AdvanceCash();
 		try {
@@ -147,7 +147,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService {
 
 	@Override
 	public List<AdvanceCash> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<AdvanceCash> list = null;

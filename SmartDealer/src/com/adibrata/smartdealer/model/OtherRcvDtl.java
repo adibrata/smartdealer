@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +24,7 @@ public class OtherRcvDtl implements java.io.Serializable {
 	private OtherRcvHdr otherRcvHdr;
 	private String coaName;
 	private String coaCode;
-	private BigDecimal amount;
+	private Double amount;
 	private String description;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -40,7 +39,7 @@ public class OtherRcvDtl implements java.io.Serializable {
 	}
 
 	public OtherRcvDtl(long id, OtherRcvHdr otherRcvHdr, String coaName,
-			String coaCode, BigDecimal amount, String description, Date dtmUpd,
+			String coaCode, Double amount, String description, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.otherRcvHdr = otherRcvHdr;
@@ -92,12 +91,12 @@ public class OtherRcvDtl implements java.io.Serializable {
 		this.coaCode = coaCode;
 	}
 
-	@Column(name = "Amount", precision = 17)
-	public BigDecimal getAmount() {
+	@Column(name = "Amount", precision = 53, scale = 0)
+	public Double getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

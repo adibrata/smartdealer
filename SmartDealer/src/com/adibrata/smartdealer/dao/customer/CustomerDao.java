@@ -35,7 +35,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public CustomerDao() {
+	public CustomerDao() throws Exception {
 
 		// TODO Auto-generated constructor stub
 		try {
@@ -63,7 +63,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 	 * .adibrata.smartdealer.model.Customer)
 	 */
 	@Override
-	public void Save(Customer customer) {
+	public void Save(String usrupd, Customer customer) throws Exception {
 		// TODO Auto-generated method stub
 
 
@@ -95,7 +95,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 	 */
 	@Override
 	public List<Customer> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Customer> list = null;
@@ -123,7 +123,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 	}
 
 	@Override
-	public Customer View(long id) {
+	public Customer View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		Customer customer = null;
 		try {
@@ -143,7 +143,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService {
 
 	@Override
 	public List<Customer> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Customer> list = null;

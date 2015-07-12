@@ -7,7 +7,7 @@ package com.adibrata.smartdealer.action.setting;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-import java.math.BigDecimal;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +45,7 @@ public class TaksasiAction extends ActionSupport implements Preparable {
 	private String assetMasterCode;
 	private String taksasiCode;
 	private String taksasiName;
-	private BigDecimal taksasiPriceMin;
+	private double taksasiPriceMin;
 	
 
 	public String execute() {
@@ -360,7 +360,7 @@ public class TaksasiAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the taksasiPriceMin
 	 */
-	public BigDecimal getTaksasiPriceMin() {
+	public double getTaksasiPriceMin() {
 		return taksasiPriceMin;
 	}
 	/**
@@ -390,7 +390,7 @@ public class TaksasiAction extends ActionSupport implements Preparable {
 	/**
 	 * @param taksasiPriceMin the taksasiPriceMin to set
 	 */
-	public void setTaksasiPriceMin(BigDecimal taksasiPriceMin) {
+	public void setTaksasiPriceMin(double taksasiPriceMin) {
 		this.taksasiPriceMin = taksasiPriceMin;
 	}
 

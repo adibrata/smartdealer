@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +30,7 @@ public class Employee implements java.io.Serializable {
 	private String employeeName;
 	private String employeePosition;
 	private byte[] signature;
+	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -48,8 +49,8 @@ public class Employee implements java.io.Serializable {
 
 	public Employee(long id, Office office, Partner partner,
 			String employeeCode, String employeeName, String employeePosition,
-			byte[] signature, Date dtmUpd, String usrUpd, Date dtmCrt,
-			String usrCrt, Set<PettyCashHdr> pettyCashHdrs,
+			byte[] signature, Short isActive, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<PettyCashHdr> pettyCashHdrs,
 			Set<DanaTunai> danaTunais, Set<AdvanceCash> advanceCashes,
 			Set<SalesOrderHdr> salesOrderHdrs) {
 		this.id = id;
@@ -59,6 +60,7 @@ public class Employee implements java.io.Serializable {
 		this.employeeName = employeeName;
 		this.employeePosition = employeePosition;
 		this.signature = signature;
+		this.isActive = isActive;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -133,6 +135,15 @@ public class Employee implements java.io.Serializable {
 
 	public void setSignature(byte[] signature) {
 		this.signature = signature;
+	}
+
+	@Column(name = "IsActive")
+	public Short getIsActive() {
+		return this.isActive;
+	}
+
+	public void setIsActive(Short isActive) {
+		this.isActive = isActive;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

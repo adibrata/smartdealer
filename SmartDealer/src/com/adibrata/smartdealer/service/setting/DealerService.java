@@ -13,19 +13,19 @@ import com.adibrata.smartdealer.service.SeviceBase;
  * @author Henry
  *
  */
-public interface DealerService  extends SeviceBase {
+public interface DealerService extends SeviceBase {
 
-	public void SaveAdd(Supplier supplier);
+	public void SaveAdd(Supplier supplier) throws Exception;
 
-	public void SaveEdit(Supplier supplier);
+	public void SaveEdit(Supplier supplier) throws Exception;
 
-	public void SaveDel(Supplier supplier);
-
-	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy);
+	public void SaveDel(Supplier supplier) throws Exception;
 
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast);
+			String SortBy) throws Exception;
 
-	public Supplier View(long id);
+	public List<Supplier> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception;
+
+	public Supplier View(long id) throws Exception;
 }

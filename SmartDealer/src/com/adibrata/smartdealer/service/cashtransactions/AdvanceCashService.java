@@ -12,9 +12,9 @@ import com.adibrata.smartdealer.service.SeviceBase;
  *
  */
 public interface AdvanceCashService  extends SeviceBase {
-	public void Save (AdvanceCash advancecash);
-	public List<AdvanceCash>  Paging(int CurrentPage, String WhereCond, String SortBy);
-	public List<AdvanceCash>  Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
+	public void Save (String usrupd, AdvanceCash advancecash)throws Exception;
+	public List<AdvanceCash>  Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
+	public List<AdvanceCash>  Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast)throws Exception;
 	
-	public AdvanceCash View(long id);
+	public AdvanceCash View(long id) throws Exception;
 }

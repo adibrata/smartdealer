@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,8 +27,8 @@ public class AccountPayable implements java.io.Serializable {
 	private String apno;
 	private String aptype;
 	private String apstatus;
-	private BigDecimal apamount;
-	private BigDecimal apdisburse;
+	private Double apamount;
+	private Double apdisburse;
 	private String apto;
 	private String apaccount;
 	private String usrCrt;
@@ -46,9 +45,9 @@ public class AccountPayable implements java.io.Serializable {
 
 	public AccountPayable(long id, Office officeByOfficeId,
 			Office officeByOfficeDisbId, Partner partner, String apno,
-			String aptype, String apstatus, BigDecimal apamount,
-			BigDecimal apdisburse, String apto, String apaccount,
-			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt) {
+			String aptype, String apstatus, Double apamount, Double apdisburse,
+			String apto, String apaccount, String usrCrt, Date dtmUpd,
+			String usrUpd, Date dtmCrt) {
 		this.id = id;
 		this.officeByOfficeId = officeByOfficeId;
 		this.officeByOfficeDisbId = officeByOfficeDisbId;
@@ -133,21 +132,21 @@ public class AccountPayable implements java.io.Serializable {
 		this.apstatus = apstatus;
 	}
 
-	@Column(name = "APAmount", precision = 17)
-	public BigDecimal getApamount() {
+	@Column(name = "APAmount", precision = 53, scale = 0)
+	public Double getApamount() {
 		return this.apamount;
 	}
 
-	public void setApamount(BigDecimal apamount) {
+	public void setApamount(Double apamount) {
 		this.apamount = apamount;
 	}
 
-	@Column(name = "APDisburse", precision = 17)
-	public BigDecimal getApdisburse() {
+	@Column(name = "APDisburse", precision = 53, scale = 0)
+	public Double getApdisburse() {
 		return this.apdisburse;
 	}
 
-	public void setApdisburse(BigDecimal apdisburse) {
+	public void setApdisburse(Double apdisburse) {
 		this.apdisburse = apdisburse;
 	}
 

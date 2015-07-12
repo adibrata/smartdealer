@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +36,7 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 	private String licensePlate;
 	private String manufacturingMonth;
 	private String manufacturingYear;
-	private BigDecimal assetPrice;
+	private Double assetPrice;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -56,7 +55,7 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 			String bpkbname, String bpkbaddress, String vehicleColor,
 			String machineNo, String chasisNo, String cylinder,
 			String licensePlate, String manufacturingMonth,
-			String manufacturingYear, BigDecimal assetPrice, Date dtmUpd,
+			String manufacturingYear, Double assetPrice, Date dtmUpd,
 			String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.assetMaster = assetMaster;
@@ -210,7 +209,7 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 		this.licensePlate = licensePlate;
 	}
 
-	@Column(name = "ManufacturingMonth", length = 50)
+	@Column(name = "ManufacturingMonth", length = 2)
 	public String getManufacturingMonth() {
 		return this.manufacturingMonth;
 	}
@@ -228,12 +227,12 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 		this.manufacturingYear = manufacturingYear;
 	}
 
-	@Column(name = "AssetPrice", precision = 17)
-	public BigDecimal getAssetPrice() {
+	@Column(name = "AssetPrice", precision = 53, scale = 0)
+	public Double getAssetPrice() {
 		return this.assetPrice;
 	}
 
-	public void setAssetPrice(BigDecimal assetPrice) {
+	public void setAssetPrice(Double assetPrice) {
 		this.assetPrice = assetPrice;
 	}
 

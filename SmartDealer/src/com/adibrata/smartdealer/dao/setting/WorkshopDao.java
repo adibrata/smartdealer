@@ -32,7 +32,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public WorkshopDao() {
+	public WorkshopDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -58,7 +58,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	 * adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
-	public void SaveAdd(Workshop workshop) {
+	public void SaveAdd(Workshop workshop) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -106,7 +106,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	 * .adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
-	public void SaveEdit(Workshop workshop) {
+	public void SaveEdit(Workshop workshop) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -153,7 +153,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	 * adibrata.smartdealer.model.Workshop)
 	 */
 	@Override
-	public void SaveDel(Workshop workshop) {
+	public void SaveDel(Workshop workshop) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -181,7 +181,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	 */
 	@Override
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Workshop> list = null;
@@ -210,7 +210,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 	}
 
 	@Override
-	public Workshop View(long id) {
+	public Workshop View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		Workshop workshop = null;
 		try {
@@ -230,7 +230,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService {
 
 	@Override
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Workshop> list = null;

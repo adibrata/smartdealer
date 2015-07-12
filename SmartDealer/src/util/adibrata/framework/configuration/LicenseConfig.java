@@ -10,7 +10,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class LicenseConfig {
 	private Properties symbolmap;
 
-	public LicenseConfig() {
+	public LicenseConfig() throws Exception {
 
 		symbolmap = new Properties();
 		Caching<String, Properties> cache = new Caching<String, Properties>();
@@ -41,7 +41,7 @@ public class LicenseConfig {
 
 	//variable length arguments are packed into an array
 	//which can be accessed and passed just like any array
-	public String Properties(String symbol, String... variables) {
+	public String Properties(String symbol, String... variables) throws Exception {
 		//Retrieve the value of the associated key
 		String message = null;
 		Caching<String, String> cache = new Caching<String, String>();

@@ -12,11 +12,11 @@ import com.adibrata.smartdealer.service.SeviceBase;
  *
  */
 public interface RoleService  extends SeviceBase {
-	public void SaveAdd(MsRole msRole);
-	public void SaveEdit(MsRole msRole);
-	public void SaveDel(MsRole msRole);
-	public List<MsRole>  Paging(int CurrentPage, String WhereCond, String SortBy);
-	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
+	public void SaveAdd(MsRole msRole)throws Exception;
+	public void SaveEdit(MsRole msRole)throws Exception;
+	public void SaveDel(MsRole msRole)throws Exception;
+	public List<MsRole>  Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
+	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 	
-	public MsRole View(long Id);
+	public MsRole View(long Id)throws Exception;
 }

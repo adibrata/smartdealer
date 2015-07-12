@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -42,6 +42,7 @@ public class Workshop implements java.io.Serializable {
 	private String faxNo;
 	private String handphone;
 	private String fullAddress;
+	private Short isActive;
 	private String usrCrt;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -60,8 +61,8 @@ public class Workshop implements java.io.Serializable {
 			String kecamatan, String city, String zipCode, String areaPhone1,
 			String phoneNo1, String areaPhone2, String phoneNo2,
 			String areaFax, String faxNo, String handphone, String fullAddress,
-			String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
-			Set<ServiceHdr> serviceHdrs) {
+			Short isActive, String usrCrt, Date dtmUpd, String usrUpd,
+			Date dtmCrt, Set<ServiceHdr> serviceHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.workshopCode = workshopCode;
@@ -81,6 +82,7 @@ public class Workshop implements java.io.Serializable {
 		this.faxNo = faxNo;
 		this.handphone = handphone;
 		this.fullAddress = fullAddress;
+		this.isActive = isActive;
 		this.usrCrt = usrCrt;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
@@ -259,6 +261,15 @@ public class Workshop implements java.io.Serializable {
 
 	public void setFullAddress(String fullAddress) {
 		this.fullAddress = fullAddress;
+	}
+
+	@Column(name = "IsActive")
+	public Short getIsActive() {
+		return this.isActive;
+	}
+
+	public void setIsActive(Short isActive) {
+		this.isActive = isActive;
 	}
 
 	@Column(name = "UsrCrt", length = 50)

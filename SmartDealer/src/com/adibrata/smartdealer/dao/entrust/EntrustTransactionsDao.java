@@ -34,7 +34,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public EntrustTransactionsDao() {
+	public EntrustTransactionsDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -58,7 +58,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	 * @see com.adibrata.smartdealer.service.entrust.EntrustTransactions#Save()
 	 */
 	@Override
-	public void Save(EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl) {
+	public void Save(String usrupd, EntrustHdr entrustHdr, List<EntrustDtl> lstentrustDtl) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		Partner partner = entrustHdr.getPartner();
@@ -101,7 +101,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	 */
 	@Override
 	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<EntrustHdr> list = null;
@@ -128,7 +128,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	}
 
 	@Override
-	public EntrustHdr viewEntrusHdr(long id) {
+	public EntrustHdr viewEntrusHdr(long id) throws Exception {
 		// TODO Auto-generated method stub
 		EntrustHdr entrustHdr = null;
 		try {
@@ -147,7 +147,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	}
 
 	@Override
-	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr) {
+	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<EntrustDtl> list = null;
@@ -172,7 +172,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService {
 	
 	@Override
 	public List<EntrustHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		StringBuilder hql = new StringBuilder();
 		List<EntrustHdr> list = null;
 

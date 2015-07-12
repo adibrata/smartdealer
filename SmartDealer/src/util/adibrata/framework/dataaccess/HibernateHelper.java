@@ -17,10 +17,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.SessionFactory;
 import util.adibrata.framework.cachehelper.Caching;
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class HibernateHelper {
 
@@ -114,8 +111,20 @@ public class HibernateHelper {
 
 	private static SessionFactory buildSessionFactory() {
 		sessionFactory = null;
-		Caching<String, SessionFactory> cache = new Caching<String, SessionFactory>();
-		Caching<String, Configuration> configurationcache = new Caching<String, Configuration>();
+		Caching<String, SessionFactory> cache = null;
+		try {
+			cache = new Caching<String, SessionFactory>();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Caching<String, Configuration> configurationcache = null;
+		try {
+			configurationcache = new Caching<String, Configuration>();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Configuration configuration;
 		try {
 			if (configurationcache.get("configurationcache") == null) {

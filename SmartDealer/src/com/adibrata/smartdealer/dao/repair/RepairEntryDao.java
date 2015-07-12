@@ -11,6 +11,7 @@ package com.adibrata.smartdealer.dao.repair;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -36,12 +37,12 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	Calendar dtmupd = Calendar.getInstance();
+	Date dtmupd = Calendar.getInstance().getTime();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public RepairEntryDao() {
+	public RepairEntryDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -60,7 +61,7 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 	}
 
 	@Override
-	public void Save(ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstserviceItem) {
+	public void Save(String usrupd, ServiceHdr serviceHdr, List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstserviceItem) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -68,23 +69,23 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 					.getPartner().getPartnerCode(), serviceHdr.getOffice()
 					.getId());
 			serviceHdr.setServiceNo(transno);
-			serviceHdr.setDtmCrt(dtmupd.getTime());
-			serviceHdr.setDtmUpd(dtmupd.getTime());
+			serviceHdr.setDtmCrt(dtmupd);
+			serviceHdr.setDtmUpd(dtmupd);
 			session.save(serviceHdr);
 			for (ServiceDtl arow : lstserviceDtls) {
 				ServiceDtl serviceDtl = new ServiceDtl();
 				
 				serviceDtl = arow;
 				serviceDtl.setServiceHdr(serviceHdr);
-				serviceDtl.setDtmCrt(dtmupd.getTime());
-				serviceDtl.setDtmUpd(dtmupd.getTime());
+				serviceDtl.setDtmCrt(dtmupd);
+				serviceDtl.setDtmUpd(dtmupd);
 				session.save(serviceDtl);
 				for (ServiceItem arow1 : lstserviceItem) {
 					ServiceItem serviceItem = new ServiceItem();
 					serviceItem = arow1;
 					serviceItem.setServiceDtl(serviceDtl);
-					serviceItem.setDtmCrt(dtmupd.getTime());
-					serviceItem.setDtmUpd(dtmupd.getTime());
+					serviceItem.setDtmCrt(dtmupd);
+					serviceItem.setDtmUpd(dtmupd);
 					session.save(serviceItem);
 				}
 			}
@@ -108,7 +109,7 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 	}
 
 	@Override
-	public ServiceHdr View(long id) {
+	public ServiceHdr View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		ServiceHdr serviceHdr = null;
 		try {
@@ -128,7 +129,7 @@ public class RepairEntryDao  extends DaoBase implements RepairService {
 
 	@Override
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		/// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Workshop> list = null;

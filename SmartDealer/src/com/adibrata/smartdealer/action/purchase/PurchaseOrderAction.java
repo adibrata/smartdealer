@@ -7,7 +7,7 @@ package com.adibrata.smartdealer.action.purchase;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-import java.math.BigDecimal;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -67,10 +67,10 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 	private String licensePlate;
 	private String manufacturingMonth;
 	private String manufacturingYear;
-	private BigDecimal assetPrice;
+	private double assetPrice;
 	private Date UsrUpd;
 
-	public PurchaseOrderAction() {
+	public PurchaseOrderAction() throws Exception{
 		try {
 			PurchaseOrderService purchaseOrderService = new PurchaseEntryDao();
 
@@ -98,7 +98,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 
 	}
 
-	public String execute() {
+	public String execute() throws Exception{
 		String strMode;
 		strMode = mode;
 
@@ -114,7 +114,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 		return strMode;
 	}
 
-	private String AddDetail() {
+	private String AddDetail()throws Exception {
 
 		PurchaseOrderDtl orderDtl = new PurchaseOrderDtl();
 		orderDtl.setAssetBrand(assetBrand);
@@ -454,7 +454,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 	/**
 	 * @return the assetPrice
 	 */
-	public BigDecimal getAssetPrice() {
+	public double getAssetPrice() {
 		return assetPrice;
 	}
 
@@ -665,7 +665,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 	 * @param assetPrice
 	 *            the assetPrice to set
 	 */
-	public void setAssetPrice(BigDecimal assetPrice) {
+	public void setAssetPrice(double assetPrice) {
 		this.assetPrice = assetPrice;
 	}
 

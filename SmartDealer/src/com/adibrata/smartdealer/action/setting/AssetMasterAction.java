@@ -40,7 +40,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 	private String usrUpd;
 	private String usrCrt;
 	private String message;
-	
+
 	private long id;
 	private String assetType;
 	private String assetBrand;
@@ -48,12 +48,12 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 	private String assetCode;
 	private Integer assetLevel;
 
-	public String execute() {
+	public String execute() throws Exception {
 		String strMode;
 		strMode = mode;
 
 		if (mode != null) {
-		
+
 			switch (strMode) {
 			case "search":
 				strMode = Paging();
@@ -79,7 +79,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		return strMode;
 	}
 
-	private String Paging() {
+	private String Paging() throws Exception {
 
 		String status = "";
 		try {
@@ -107,7 +107,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveAdd() {
+	private String SaveAdd() throws Exception {
 		String status = "";
 		try {
 			AssetMaster assetMaster = new AssetMaster();
@@ -129,7 +129,7 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveEdit() {
+	private String SaveEdit() throws Exception {
 		String status = "";
 		try {
 			AssetMaster assetMaster = new AssetMaster();
@@ -151,11 +151,11 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveDelete() {
+	private String SaveDelete() throws Exception {
 		String status = "";
 		try {
 			AssetMaster assetMaster = new AssetMaster();
-		
+
 			assetMaster.setId(this.getId());
 			this.assetMasterService.SaveDel(assetMaster);
 			status = SUCCESS;
@@ -170,7 +170,6 @@ public class AssetMasterAction extends ActionSupport implements Preparable {
 		}
 		return status;
 	}
-	
 
 	/**
 	 * @return the serialversionuid

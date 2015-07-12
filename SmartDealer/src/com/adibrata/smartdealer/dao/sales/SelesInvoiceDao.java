@@ -44,7 +44,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 
-	public SelesInvoiceDao() {
+	public SelesInvoiceDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -63,9 +63,10 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 	}
 
 	@Override
-	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond, String SortBy) {
+	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 		StringBuilder hql = new StringBuilder();
 		List<SalesOrderHdr> list = null;
 		try {
@@ -92,12 +93,11 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 	}
 
 	@Override
-	public void Save(SalesInvoice salesInvoice) {
+	public void Save(String usrupd, SalesInvoice salesInvoice) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
-			
+
 			salesInvoice.setDtmCrt(dtmupd.getTime());
 			salesInvoice.setDtmUpd(dtmupd.getTime());
 			session.save(salesInvoice);
@@ -116,7 +116,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 	}
 
 	@Override
-	public SalesOrderHdr View(long id) {
+	public SalesOrderHdr View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		SalesOrderHdr salesOrderHdr = null;
 		try {
@@ -136,33 +136,33 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService {
 
 	@Override
 	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<SalesOrderHdr> list = null;
+		StringBuilder hql = new StringBuilder();
+		List<SalesOrderHdr> list = null;
 
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord(WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			long totalrecord = TotalRecord(WhereCond);
+			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-				} catch (Exception exp) {
+		} catch (Exception exp) {
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
 	}
 
 }

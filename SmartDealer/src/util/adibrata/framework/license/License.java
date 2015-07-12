@@ -5,6 +5,7 @@ package util.adibrata.framework.license;
 
 import java.io.File;
 import java.util.Properties;
+
 import util.adibrata.framework.configuration.*;
 /**
  * @author Henry
@@ -16,14 +17,14 @@ public class License {
 	private static Properties configfiles;
 	@SuppressWarnings("unused")
 	private static LicenseConfig lLicenseConfig;
-	public License()
+	public License() throws Exception
 	{
 		lLicenseConfig= new LicenseConfig();
 	}
 	
 	
 	
-	public static Boolean UserLicense(int intUser)
+	public static Boolean UserLicense(int intUser) throws Exception
 	{
 		String lLicenseSetting;
 		try
@@ -46,7 +47,7 @@ public class License {
 				
 	}
 	
-	public static Boolean OfficeLicense(int intUser)
+	public static Boolean OfficeLicense(int intUser) throws Exception
 	{
 		String lLicenseSetting;
 		try
@@ -69,7 +70,7 @@ public class License {
 				
 	}
 	
-	public static Boolean ExpiredLicense(int intUser)
+	public static Boolean ExpiredLicense(int intUser) throws Exception
 	{
 		String lLicenseSetting;
 		try

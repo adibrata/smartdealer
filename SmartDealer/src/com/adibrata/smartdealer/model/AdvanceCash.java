@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +26,7 @@ public class AdvanceCash implements java.io.Serializable {
 	private Office office;
 	private Partner partner;
 	private String advanceNo;
-	private BigDecimal advanceAmount;
+	private Double advanceAmount;
 	private Date postingDate;
 	private Date valueDate;
 	private Date dtmUpd;
@@ -44,7 +43,7 @@ public class AdvanceCash implements java.io.Serializable {
 
 	public AdvanceCash(long id, BankAccount bankAccount, Employee employee,
 			Office office, Partner partner, String advanceNo,
-			BigDecimal advanceAmount, Date postingDate, Date valueDate,
+			Double advanceAmount, Date postingDate, Date valueDate,
 			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt) {
 		this.id = id;
 		this.bankAccount = bankAccount;
@@ -120,12 +119,12 @@ public class AdvanceCash implements java.io.Serializable {
 		this.advanceNo = advanceNo;
 	}
 
-	@Column(name = "AdvanceAmount", precision = 17)
-	public BigDecimal getAdvanceAmount() {
+	@Column(name = "AdvanceAmount", precision = 53, scale = 0)
+	public Double getAdvanceAmount() {
 		return this.advanceAmount;
 	}
 
-	public void setAdvanceAmount(BigDecimal advanceAmount) {
+	public void setAdvanceAmount(Double advanceAmount) {
 		this.advanceAmount = advanceAmount;
 	}
 

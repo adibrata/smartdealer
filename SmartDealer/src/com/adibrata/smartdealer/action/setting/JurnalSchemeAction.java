@@ -4,21 +4,19 @@ package com.adibrata.smartdealer.action.setting;
  * @author Henry
  *
  */
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Preparable;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
 
-import com.adibrata.smartdealer.model.*;
-import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
+import com.adibrata.smartdealer.model.CoaSchmDtl;
+import com.adibrata.smartdealer.model.CoaSchmHdr;
+import com.adibrata.smartdealer.model.ListCoaSchmDtl;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.JournalSchemeService;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 
 public class JurnalSchemeAction extends ActionSupport implements Preparable {
 
@@ -35,7 +33,6 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 	private Office office;
 	private List<CoaSchmDtl> lstCoaSchmDtl;
 	private List<CoaSchmHdr> lstcoaSchmHdr;
-	private List<ListCoaSchmDtl> listcoaschmdtl;
 	private String searchcriteria;
 	private String searchvalue;
 	private int pageNumber;
@@ -50,7 +47,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 
 	}
 
-	public String execute() {
+	public String execute()throws Exception  {
 		String strMode;
 		strMode = mode;
 
@@ -80,7 +77,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 		return strMode;
 	}
 
-	private String Paging() {
+	private String Paging() throws Exception {
 
 		String status = "";
 		try {
@@ -92,8 +89,10 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 				wherecond = this.getSearchvalue() + " = "
 						+ this.getSearchcriteria();
 
-		/*	this.lstcoaSchmHdr = this.jourSchemeService.PagingHeader(
-					this.getPageNumber(), wherecond, "");*/
+			/*
+			 * this.lstcoaSchmHdr = this.jourSchemeService.PagingHeader(
+			 * this.getPageNumber(), wherecond, "");
+			 */
 
 			status = "Success";
 		} catch (Exception exp) {
@@ -108,7 +107,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveAdd() {
+	private String SaveAdd() throws Exception {
 		String status = "";
 		try {
 			CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
@@ -132,7 +131,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveEdit() {
+	private String SaveEdit() throws Exception {
 		String status = "";
 		try {
 			CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
@@ -156,7 +155,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 		return status;
 	}
 
-	private String SaveDelete() {
+	private String SaveDelete() throws Exception {
 		String status = "";
 		try {
 			CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
@@ -398,7 +397,8 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;

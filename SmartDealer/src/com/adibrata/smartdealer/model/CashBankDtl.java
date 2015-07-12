@@ -1,8 +1,7 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,8 +27,8 @@ public class CashBankDtl implements java.io.Serializable {
 	private String coaName;
 	private String coaCode;
 	private String description;
-	private BigDecimal debitAmt;
-	private BigDecimal creditAmt;
+	private double debitAmt;
+	private double creditAmt;
 	private String usrUpd;
 	private Date dtmUpd;
 	private String usrCrt;
@@ -39,8 +38,8 @@ public class CashBankDtl implements java.io.Serializable {
 	}
 
 	public CashBankDtl(long id, CashBankHdr cashBankHdr, String coaName,
-			String coaCode, String description, BigDecimal debitAmt,
-			BigDecimal creditAmt) {
+			String coaCode, String description, double debitAmt,
+			double creditAmt) {
 		this.id = id;
 		this.cashBankHdr = cashBankHdr;
 		this.coaName = coaName;
@@ -52,7 +51,7 @@ public class CashBankDtl implements java.io.Serializable {
 
 	public CashBankDtl(long id, CashBankHdr cashBankHdr, Partner partner,
 			Integer departId, String coaName, String coaCode,
-			String description, BigDecimal debitAmt, BigDecimal creditAmt,
+			String description, double debitAmt, double creditAmt,
 			String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt) {
 		this.id = id;
 		this.cashBankHdr = cashBankHdr;
@@ -135,21 +134,21 @@ public class CashBankDtl implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "DebitAmt", nullable = false, precision = 17)
-	public BigDecimal getDebitAmt() {
+	@Column(name = "DebitAmt", nullable = false, precision = 53, scale = 0)
+	public double getDebitAmt() {
 		return this.debitAmt;
 	}
 
-	public void setDebitAmt(BigDecimal debitAmt) {
+	public void setDebitAmt(double debitAmt) {
 		this.debitAmt = debitAmt;
 	}
 
-	@Column(name = "CreditAmt", nullable = false, precision = 17)
-	public BigDecimal getCreditAmt() {
+	@Column(name = "CreditAmt", nullable = false, precision = 53, scale = 0)
+	public double getCreditAmt() {
 		return this.creditAmt;
 	}
 
-	public void setCreditAmt(BigDecimal creditAmt) {
+	public void setCreditAmt(double creditAmt) {
 		this.creditAmt = creditAmt;
 	}
 

@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +30,8 @@ public class PettyCashHdr implements java.io.Serializable {
 	private String pcno;
 	private Date postingDate;
 	private Date valueDate;
+	private Double pcamount;
+	private Long jobId;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -45,8 +47,8 @@ public class PettyCashHdr implements java.io.Serializable {
 
 	public PettyCashHdr(long id, Employee employee, Office office,
 			Partner partner, String pcno, Date postingDate, Date valueDate,
-			Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-			Set<PettyCashDtl> pettyCashDtls) {
+			Double pcamount, Long jobId, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt, Set<PettyCashDtl> pettyCashDtls) {
 		this.id = id;
 		this.employee = employee;
 		this.office = office;
@@ -54,6 +56,8 @@ public class PettyCashHdr implements java.io.Serializable {
 		this.pcno = pcno;
 		this.postingDate = postingDate;
 		this.valueDate = valueDate;
+		this.pcamount = pcamount;
+		this.jobId = jobId;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -128,6 +132,24 @@ public class PettyCashHdr implements java.io.Serializable {
 
 	public void setValueDate(Date valueDate) {
 		this.valueDate = valueDate;
+	}
+
+	@Column(name = "PCAmount", precision = 53, scale = 0)
+	public Double getPcamount() {
+		return this.pcamount;
+	}
+
+	public void setPcamount(Double pcamount) {
+		this.pcamount = pcamount;
+	}
+
+	@Column(name = "JobId")
+	public Long getJobId() {
+		return this.jobId;
+	}
+
+	public void setJobId(Long jobId) {
+		this.jobId = jobId;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

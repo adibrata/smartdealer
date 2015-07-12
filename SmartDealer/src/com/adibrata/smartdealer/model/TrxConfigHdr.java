@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 10, 2015 3:33:50 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,17 +33,17 @@ public class TrxConfigHdr implements java.io.Serializable {
 	private String bankAccId;
 	private String currId;
 	private String currRate;
-	private Integer bankPortion;
-	private Character rcvDisbFlag;
+	private String bankPortion;
+	private String rcvDisbFlag;
 	private String cashierId;
 	private String cashierOpen;
 	private String amountTrx;
 	private String wop;
 	private String receivedFrom;
 	private String receiptNo;
-	private Character isCreatePaymentHistory;
-	private Character isCreateJournal;
-	private Character isCreateCashBankMutation;
+	private Short isCreatePaymentHistory;
+	private Short isCreateJournal;
+	private Short isCreateCashBankMutation;
 	private String usrCrt;
 	private Date dtmCrt;
 	private String usrUpd;
@@ -61,11 +61,11 @@ public class TrxConfigHdr implements java.io.Serializable {
 	public TrxConfigHdr(long id, String trxConfigCode, String trxConfigDesc,
 			String trxNo, String trxTable, String officeIdX, String jrnlNoCode,
 			String reffNo, String bankAccId, String currId, String currRate,
-			Integer bankPortion, Character rcvDisbFlag, String cashierId,
+			String bankPortion, String rcvDisbFlag, String cashierId,
 			String cashierOpen, String amountTrx, String wop,
 			String receivedFrom, String receiptNo,
-			Character isCreatePaymentHistory, Character isCreateJournal,
-			Character isCreateCashBankMutation, String usrCrt, Date dtmCrt,
+			Short isCreatePaymentHistory, Short isCreateJournal,
+			Short isCreateCashBankMutation, String usrCrt, Date dtmCrt,
 			String usrUpd, Date dtmUpd, Set<TrxConfigDtl> trxConfigDtls) {
 		this.id = id;
 		this.trxConfigCode = trxConfigCode;
@@ -196,21 +196,21 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.currRate = currRate;
 	}
 
-	@Column(name = "BankPortion")
-	public Integer getBankPortion() {
+	@Column(name = "BankPortion", length = 50)
+	public String getBankPortion() {
 		return this.bankPortion;
 	}
 
-	public void setBankPortion(Integer bankPortion) {
+	public void setBankPortion(String bankPortion) {
 		this.bankPortion = bankPortion;
 	}
 
-	@Column(name = "RcvDisbFlag", length = 1)
-	public Character getRcvDisbFlag() {
+	@Column(name = "RcvDisbFlag", length = 50)
+	public String getRcvDisbFlag() {
 		return this.rcvDisbFlag;
 	}
 
-	public void setRcvDisbFlag(Character rcvDisbFlag) {
+	public void setRcvDisbFlag(String rcvDisbFlag) {
 		this.rcvDisbFlag = rcvDisbFlag;
 	}
 
@@ -268,30 +268,30 @@ public class TrxConfigHdr implements java.io.Serializable {
 		this.receiptNo = receiptNo;
 	}
 
-	@Column(name = "IsCreatePaymentHistory", length = 1)
-	public Character getIsCreatePaymentHistory() {
+	@Column(name = "IsCreatePaymentHistory")
+	public Short getIsCreatePaymentHistory() {
 		return this.isCreatePaymentHistory;
 	}
 
-	public void setIsCreatePaymentHistory(Character isCreatePaymentHistory) {
+	public void setIsCreatePaymentHistory(Short isCreatePaymentHistory) {
 		this.isCreatePaymentHistory = isCreatePaymentHistory;
 	}
 
-	@Column(name = "IsCreateJournal", length = 1)
-	public Character getIsCreateJournal() {
+	@Column(name = "IsCreateJournal")
+	public Short getIsCreateJournal() {
 		return this.isCreateJournal;
 	}
 
-	public void setIsCreateJournal(Character isCreateJournal) {
+	public void setIsCreateJournal(Short isCreateJournal) {
 		this.isCreateJournal = isCreateJournal;
 	}
 
-	@Column(name = "IsCreateCashBankMutation", length = 1)
-	public Character getIsCreateCashBankMutation() {
+	@Column(name = "IsCreateCashBankMutation")
+	public Short getIsCreateCashBankMutation() {
 		return this.isCreateCashBankMutation;
 	}
 
-	public void setIsCreateCashBankMutation(Character isCreateCashBankMutation) {
+	public void setIsCreateCashBankMutation(Short isCreateCashBankMutation) {
 		this.isCreateCashBankMutation = isCreateCashBankMutation;
 	}
 

@@ -12,10 +12,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @SuppressWarnings("unused")
-public class ExceptionHelper {
+public class ExceptionHelper extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static Logger logger = Logger.getLogger(ExceptionHelper.class);
 	
-	public static void WriteException(ExceptionEntities _ent, Exception pException) {
+	public static void WriteException(ExceptionEntities _ent, Exception pException) throws Exception{
 		BasicConfigurator.configure();
 		ExceptionHelper obj = new ExceptionHelper();
 		String Message;
@@ -36,7 +40,7 @@ public class ExceptionHelper {
 		strMessage.append(pException.getMessage());
 		Message = strMessage.toString();
 		logger.error(Message, pException);
-		
+		throw new ExceptionHelper();
 		/*
 		switch (_ent.getExceptionType().toLowerCase()) {
 		case "warning":

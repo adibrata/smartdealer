@@ -39,7 +39,7 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
 	
-	public PuchaseInvoiceDao() {
+	public PuchaseInvoiceDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -58,7 +58,7 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 	}
 
 	@Override
-	public void Save(PurchaseInvoice purchaseInvoice) {
+	public void Save(String usrupd, PurchaseInvoice purchaseInvoice) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {

@@ -37,7 +37,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	/**
 	 * 
 	 */
-	public DealerDao() {
+	public DealerDao()throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -63,7 +63,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 * .smartdealer.model.Supplier)
 	 */
 	@Override
-	public void SaveAdd(Supplier supplier) {
+	public void SaveAdd(Supplier supplier)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -110,7 +110,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 * .smartdealer.model.Supplier)
 	 */
 	@Override
-	public void SaveEdit(Supplier supplier) {
+	public void SaveEdit(Supplier supplier) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		StringBuilder fulladdress = new StringBuilder();
@@ -158,7 +158,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 */
 
 	@Override
-	public void SaveDel(Supplier supplier) {
+	public void SaveDel(Supplier supplier) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -186,7 +186,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 */
 	@Override
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy) {
+			String SortBy)throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Supplier> list = null;
@@ -215,7 +215,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	}
 
 	@Override
-	public Supplier View(long id) {
+	public Supplier View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		Supplier supplier = null;
 		try {
@@ -235,7 +235,7 @@ public class DealerDao extends DaoBase implements DealerService {
 
 	@Override
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) {
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Supplier> list = null;
