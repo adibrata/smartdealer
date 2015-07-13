@@ -32,67 +32,64 @@ public class CashBankPosting {
 	private DateFormat yearformat = new SimpleDateFormat("yyyy");
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private Date dtmUpd = Calendar.getInstance().getTime();
+
 	/**
 	 * 
 	 */
 	public CashBankPosting() {
-	
+
 		// TODO Auto-generated constructor stub
 	}
 
-	public void CashBankSave(Session session, TransJob transjob,
-			Office office, Partner partner, JrnlHdrModel jrnlHdrModel)throws Exception 
-	{
-	
-			CashBankHdr bankHdr = new CashBankHdr();
-			try {
-				String periodyear = "", periodmonth = "";
+	public CashBankHdr CashBankSave(Session session, TransJob transjob,
+			Office office, Partner partner, JrnlHdrModel jrnlHdrModel,
+			String usrupd) throws Exception {
 
-				periodmonth = monthformat.format(transjob.getJobPost());
-				periodyear = yearformat.format(transjob.getJobPost());
+		CashBankHdr bankHdr = new CashBankHdr();
+		try {
+			String periodyear = "", periodmonth = "";
 
-				bankHdr.setPartner(partner);
-				bankHdr.setOffice(office);
-				this.JournalNo = GetTransNo.GenerateJournalNo(session,
-						partner.getPartnerCode(), office.getId(),
-						this.hdrModel.getJrnlNoCode(), transjob.getJobPost());
+			periodmonth = monthformat.format(transjob.getJobPost());
+			periodyear = yearformat.format(transjob.getJobPost());
 
-				bankHdr.setJrnlNo(this.JournalNo);
+			bankHdr.setPartner(partner);
+			bankHdr.setOffice(office);
+			this.voucherNo = GetTransNo.GenerateVoucherNo(session,
+					partner.getPartnerCode(), office.getId(),
+					this.hdrModel.getJrnlNoCode(), transjob.getJobPost());
 
-				bankHdr.setPeriodYear(periodyear);
-				bankHdr.setPeriodMonth(periodmonth);
-				bankHdr.setTrxDate(transjob.getJobPost());
-				bankHdr.setReffDate(transjob.getJobDate());
-				bankHdr.setReffNo(this.hdrModel.getReffNo());
+			bankHdr.setJrnlNo(this.voucherNo);
 
-				bankHdr.setTrxDesc(this.hdrModel.getReffNo());
-				bankHdr.setJrnlAmt(this.hdrModel.getAmountTrx());
-				bankHdr.setStatusTr("OP");
-				bankHdr.setFlag("M");
-				bankHdr.setIsActive((short) 1);
+			bankHdr.setPostingDt(transjob.getJobPost());
+			bankHdr.setValueDt(transjob.getJobDate());
 
-				// jrnlhdr.setJrnlTrxCode(trxconfighdr.getJrnlTrxCode());
-				bankHdr.setCoaSchmCode(transjob.getCoaSchmCode());
+			bankHdr.setDescription("");
+			bankHdr.setRcvDsbFlag("");
+			bankHdr.setWop("");
 
-				bankHdr.setJobId(transjob.getId());
-				bankHdr.setUsrUpd(userupd);
-				bankHdr.setUsrCrt(this.userupd);
-				bankHdr.setDtmUpd(dtmUpd);
-				bankHdr.setDtmCrt(dtmUpd);
+			bankHdr.setAmount(0.00);
+			bankHdr.setRcvFrom("");
 
-				session.save(bankHdr);
+			bankHdr.setReffNo("");
+			bankHdr.setReceiptNo("");
 
-			} catch (Exception exp) {
+			bankHdr.setUsrUpd(usrupd);
+			bankHdr.setUsrCrt(usrupd);
+			bankHdr.setDtmUpd(dtmUpd);
+			bankHdr.setDtmCrt(dtmUpd);
 
-				ExceptionEntities lEntExp = new ExceptionEntities();
-				lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-						.getClassName());
-				lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-						.getMethodName());
-				ExceptionHelper.WriteException(lEntExp, exp);
-			}
-			return jrnlhdr;
+			session.save(bankHdr);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
 		}
-		
+		return bankHdr;
 	}
+
 }

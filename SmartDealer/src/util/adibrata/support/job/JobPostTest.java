@@ -19,9 +19,9 @@ public class JobPostTest {
 
 	/**
 	 * @param args
-	 * @throws ParseException
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		Session session = HibernateHelper.getSessionFactory().openSession();

@@ -10,7 +10,7 @@ import util.adibrata.framework.dataaccess.HibernateHelper;
 
 public class TransactionNoTest {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Session session = HibernateHelper.getSessionFactory().openSession();
 		GetTransNo a = new GetTransNo(session);
@@ -21,8 +21,7 @@ public class TransactionNoTest {
 		try {
 			session.getTransaction().begin();
 			/* for(int x = 1; x < 2000; x = x+1) { */
-			System.out.println(GetTransNo.GenerateTransactionNo(session, "001",
-					(long)1, "PO", trxdate));
+			System.out.println(GetTransNo.GenerateVoucherNo(session, 1, trxdate));
 			session.getTransaction().commit();
 	
 			

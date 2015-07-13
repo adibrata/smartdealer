@@ -3,30 +3,22 @@
  */
 package util.adibrata.support.job;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
+
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.support.transno.GetTransNo;
 
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.TransJob;
-import com.adibrata.smartdealer.model.TrxConfigHdr;
-
-import util.adibrata.framework.dataaccess.HibernateHelper;
-import util.adibrata.support.common.GetCoaScheme;
-import util.adibrata.support.common.GetOffice;
-import util.adibrata.support.transno.GetTransNo;
 
 /**
  * @author Henry
  *
  */
 public class JobPost {
-	private static DateFormat dateFormat = new SimpleDateFormat(
-			"yyyy/MM/dd HH:mm:ss");
 	private static Calendar dtmupd = Calendar.getInstance();
 	static Session session;
 
@@ -34,6 +26,7 @@ public class JobPost {
 		session = HibernateHelper.getSessionFactory().openSession();
 	}
 
+	@SuppressWarnings("static-access")
 	public JobPost(Session session) {
 		this.session = session;
 	}
@@ -61,12 +54,10 @@ public class JobPost {
 
 	public static TransJob JobSave(Session session, String partnercode,
 			long officeid, JobCode jobcode, String coaSchemeCode,
-			Date valueDate, Date postingDate, String userCrt) {
+			Date valueDate, Date postingDate, String userCrt) throws Exception {
 
 		TransJob transjob = new TransJob();
 		Partner partner = new Partner();
-		TrxConfigHdr trxconfighdr = new TrxConfigHdr();
-
 		String transno = GetTransNo.GenerateTransactionNo(session, partnercode,
 				officeid, "JOB", postingDate);
 
