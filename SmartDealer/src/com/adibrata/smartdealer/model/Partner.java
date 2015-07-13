@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -75,9 +75,9 @@ public class Partner implements java.io.Serializable {
 	private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 	private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
 	private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
-	private Set<CashBankDtl> cashBankDtls = new HashSet<CashBankDtl>(0);
 	private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(
 			0);
+	private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 	private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(
 			0);
 	private Set<CoaSchmHdr> coaSchmHdrs = new HashSet<CoaSchmHdr>(0);
@@ -116,8 +116,8 @@ public class Partner implements java.io.Serializable {
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 			Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs,
 			Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs,
-			Set<CashBankDtl> cashBankDtls,
 			Set<PurchaseInvoice> purchaseInvoices,
+			Set<CashBankHdr> cashBankHdrs,
 			Set<AssetServiceMaster> assetServiceMasters,
 			Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees,
 			Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles,
@@ -174,8 +174,8 @@ public class Partner implements java.io.Serializable {
 		this.entrustHdrs = entrustHdrs;
 		this.otherDsbHdrs = otherDsbHdrs;
 		this.otherRcvHdrs = otherRcvHdrs;
-		this.cashBankDtls = cashBankDtls;
 		this.purchaseInvoices = purchaseInvoices;
+		this.cashBankHdrs = cashBankHdrs;
 		this.assetServiceMasters = assetServiceMasters;
 		this.coaSchmHdrs = coaSchmHdrs;
 		this.employees = employees;
@@ -657,21 +657,21 @@ public class Partner implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-	public Set<CashBankDtl> getCashBankDtls() {
-		return this.cashBankDtls;
-	}
-
-	public void setCashBankDtls(Set<CashBankDtl> cashBankDtls) {
-		this.cashBankDtls = cashBankDtls;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 	public Set<PurchaseInvoice> getPurchaseInvoices() {
 		return this.purchaseInvoices;
 	}
 
 	public void setPurchaseInvoices(Set<PurchaseInvoice> purchaseInvoices) {
 		this.purchaseInvoices = purchaseInvoices;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+	public Set<CashBankHdr> getCashBankHdrs() {
+		return this.cashBankHdrs;
+	}
+
+	public void setCashBankHdrs(Set<CashBankHdr> cashBankHdrs) {
+		this.cashBankHdrs = cashBankHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

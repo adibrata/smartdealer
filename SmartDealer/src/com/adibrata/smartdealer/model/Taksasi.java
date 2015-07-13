@@ -1,8 +1,8 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
-
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +29,7 @@ public class Taksasi implements java.io.Serializable {
 	private String assetMasterCode;
 	private String taksasiCode;
 	private String taksasiName;
-	private double taksasiPriceMin;
+	private BigDecimal taksasiPriceMin;
 	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -45,7 +45,7 @@ public class Taksasi implements java.io.Serializable {
 	}
 
 	public Taksasi(long id, Partner partner, String assetMasterCode,
-			String taksasiCode, String taksasiName, double taksasiPriceMin,
+			String taksasiCode, String taksasiName, BigDecimal taksasiPriceMin,
 			Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
 			String usrCrt, Set<ServiceItem> serviceItems) {
 		this.id = id;
@@ -110,11 +110,11 @@ public class Taksasi implements java.io.Serializable {
 	}
 
 	@Column(name = "TaksasiPriceMin", precision = 17)
-	public double getTaksasiPriceMin() {
+	public BigDecimal getTaksasiPriceMin() {
 		return this.taksasiPriceMin;
 	}
 
-	public void setTaksasiPriceMin(double taksasiPriceMin) {
+	public void setTaksasiPriceMin(BigDecimal taksasiPriceMin) {
 		this.taksasiPriceMin = taksasiPriceMin;
 	}
 

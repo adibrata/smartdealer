@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -54,6 +54,7 @@ public class BankAccount implements java.io.Serializable {
 	private Date dtmCrt;
 	private String usrCrt;
 	private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
+	private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 	private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 
 	public BankAccount() {
@@ -72,7 +73,7 @@ public class BankAccount implements java.io.Serializable {
 			Double endingBalance, String coacode, Long seqNo, String resetFlag,
 			String formatSeqNo, Short isActive, Date dtmUpd, String usrUpd,
 			Date dtmCrt, String usrCrt, Set<AdvanceCash> advanceCashes,
-			Set<PayReqHdr> payReqHdrs) {
+			Set<CashBankHdr> cashBankHdrs, Set<PayReqHdr> payReqHdrs) {
 		this.id = id;
 		this.partner = partner;
 		this.officeId = officeId;
@@ -104,6 +105,7 @@ public class BankAccount implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 		this.advanceCashes = advanceCashes;
+		this.cashBankHdrs = cashBankHdrs;
 		this.payReqHdrs = payReqHdrs;
 	}
 
@@ -388,6 +390,15 @@ public class BankAccount implements java.io.Serializable {
 
 	public void setAdvanceCashes(Set<AdvanceCash> advanceCashes) {
 		this.advanceCashes = advanceCashes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankAccount")
+	public Set<CashBankHdr> getCashBankHdrs() {
+		return this.cashBankHdrs;
+	}
+
+	public void setCashBankHdrs(Set<CashBankHdr> cashBankHdrs) {
+		this.cashBankHdrs = cashBankHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankAccount")

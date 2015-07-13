@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -22,7 +22,6 @@ public class CashBankDtl implements java.io.Serializable {
 
 	private long id;
 	private CashBankHdr cashBankHdr;
-	private Partner partner;
 	private Integer departId;
 	private String coaName;
 	private String coaCode;
@@ -49,13 +48,12 @@ public class CashBankDtl implements java.io.Serializable {
 		this.creditAmt = creditAmt;
 	}
 
-	public CashBankDtl(long id, CashBankHdr cashBankHdr, Partner partner,
-			Integer departId, String coaName, String coaCode,
-			String description, double debitAmt, double creditAmt,
-			String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt) {
+	public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer departId,
+			String coaName, String coaCode, String description,
+			double debitAmt, double creditAmt, String usrUpd, Date dtmUpd,
+			String usrCrt, Date dtmCrt) {
 		this.id = id;
 		this.cashBankHdr = cashBankHdr;
-		this.partner = partner;
 		this.departId = departId;
 		this.coaName = coaName;
 		this.coaCode = coaCode;
@@ -86,16 +84,6 @@ public class CashBankDtl implements java.io.Serializable {
 
 	public void setCashBankHdr(CashBankHdr cashBankHdr) {
 		this.cashBankHdr = cashBankHdr;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PartnerCode")
-	public Partner getPartner() {
-		return this.partner;
-	}
-
-	public void setPartner(Partner partner) {
-		this.partner = partner;
 	}
 
 	@Column(name = "DepartID")

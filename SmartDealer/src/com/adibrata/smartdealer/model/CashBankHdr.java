@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,9 +23,14 @@ import javax.persistence.TemporalType;
 @Table(name = "CashBankHdr", schema = "dbo", catalog = "SmartDealer")
 public class CashBankHdr implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long id;
-	private String partnerCode;
-	private Long officeId;
+	private BankAccount bankAccount;
+	private Office office;
+	private Partner partner;
 	private String voucherNo;
 	private Date valueDt;
 	private Date postingDt;
@@ -34,12 +41,11 @@ public class CashBankHdr implements java.io.Serializable {
 	private String rcvFrom;
 	private String reffNo;
 	private String receiptNo;
-	private Long bankAccId;
 	private Long currId;
 	private Long cashierId;
 	private Integer openingSequence;
 	private Long officeIdX;
-	private Character isReconcile;
+	private String isReconcile;
 	private Date reconcileDate;
 	private String reconcileBy;
 	private Integer jrnlTrxId;
@@ -58,18 +64,19 @@ public class CashBankHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public CashBankHdr(long id, String partnerCode, Long officeId,
-			String voucherNo, Date valueDt, Date postingDt, String description,
-			String rcvDsbFlag, String wop, Double amount, String rcvFrom,
-			String reffNo, String receiptNo, Long bankAccId, Long currId,
+	public CashBankHdr(long id, BankAccount bankAccount, Office office,
+			Partner partner, String voucherNo, Date valueDt, Date postingDt,
+			String description, String rcvDsbFlag, String wop, Double amount,
+			String rcvFrom, String reffNo, String receiptNo, Long currId,
 			Long cashierId, Integer openingSequence, Long officeIdX,
-			Character isReconcile, Date reconcileDate, String reconcileBy,
+			String isReconcile, Date reconcileDate, String reconcileBy,
 			Integer jrnlTrxId, Long agrmntId, Long jobId, String usrUpd,
 			Date dtmUpd, String usrCrt, Date dtmCrt,
 			Set<CashBankDtl> cashBankDtls) {
 		this.id = id;
-		this.partnerCode = partnerCode;
-		this.officeId = officeId;
+		this.bankAccount = bankAccount;
+		this.office = office;
+		this.partner = partner;
 		this.voucherNo = voucherNo;
 		this.valueDt = valueDt;
 		this.postingDt = postingDt;
@@ -80,7 +87,6 @@ public class CashBankHdr implements java.io.Serializable {
 		this.rcvFrom = rcvFrom;
 		this.reffNo = reffNo;
 		this.receiptNo = receiptNo;
-		this.bankAccId = bankAccId;
 		this.currId = currId;
 		this.cashierId = cashierId;
 		this.openingSequence = openingSequence;
@@ -108,22 +114,34 @@ public class CashBankHdr implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "PartnerCode", length = 20)
-	public String getPartnerCode() {
-		return this.partnerCode;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "BankAccID")
+	public BankAccount getBankAccount() {
+		return this.bankAccount;
 	}
 
-	public void setPartnerCode(String partnerCode) {
-		this.partnerCode = partnerCode;
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
 	}
 
-	@Column(name = "OfficeID")
-	public Long getOfficeId() {
-		return this.officeId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OfficeID")
+	public Office getOffice() {
+		return this.office;
 	}
 
-	public void setOfficeId(Long officeId) {
-		this.officeId = officeId;
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PartnerCode")
+	public Partner getPartner() {
+		return this.partner;
+	}
+
+	public void setPartner(Partner partner) {
+		this.partner = partner;
 	}
 
 	@Column(name = "VoucherNo", length = 50)
@@ -218,15 +236,6 @@ public class CashBankHdr implements java.io.Serializable {
 		this.receiptNo = receiptNo;
 	}
 
-	@Column(name = "BankAccID")
-	public Long getBankAccId() {
-		return this.bankAccId;
-	}
-
-	public void setBankAccId(Long bankAccId) {
-		this.bankAccId = bankAccId;
-	}
-
 	@Column(name = "CurrID")
 	public Long getCurrId() {
 		return this.currId;
@@ -264,11 +273,11 @@ public class CashBankHdr implements java.io.Serializable {
 	}
 
 	@Column(name = "IsReconcile", length = 1)
-	public Character getIsReconcile() {
+	public String getIsReconcile() {
 		return this.isReconcile;
 	}
 
-	public void setIsReconcile(Character isReconcile) {
+	public void setIsReconcile(String isReconcile) {
 		this.isReconcile = isReconcile;
 	}
 

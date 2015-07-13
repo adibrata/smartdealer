@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 12:13:05 AM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -58,6 +58,7 @@ public class Office implements java.io.Serializable {
 			0);
 	private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
 	private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+	private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 	private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	private Set<Stock> stocks = new HashSet<Stock>(0);
@@ -92,9 +93,9 @@ public class Office implements java.io.Serializable {
 			Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
-			Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees,
-			Set<Stock> stocks, Set<DanaTunai> danaTunais,
-			Set<PayReqHdr> payReqHdrs,
+			Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs,
+			Set<Employee> employees, Set<Stock> stocks,
+			Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs,
 			Set<AccountPayable> accountPayablesForOfficeId,
 			Set<AccountPayable> accountPayablesForOfficeDisbId,
 			Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs,
@@ -132,6 +133,7 @@ public class Office implements java.io.Serializable {
 		this.purchaseInvoices = purchaseInvoices;
 		this.salesInvoices = salesInvoices;
 		this.salesOrderHdrs = salesOrderHdrs;
+		this.cashBankHdrs = cashBankHdrs;
 		this.returSalesHdrs = returSalesHdrs;
 		this.employees = employees;
 		this.stocks = stocks;
@@ -444,6 +446,15 @@ public class Office implements java.io.Serializable {
 
 	public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs) {
 		this.salesOrderHdrs = salesOrderHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<CashBankHdr> getCashBankHdrs() {
+		return this.cashBankHdrs;
+	}
+
+	public void setCashBankHdrs(Set<CashBankHdr> cashBankHdrs) {
+		this.cashBankHdrs = cashBankHdrs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
