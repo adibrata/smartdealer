@@ -21,7 +21,8 @@ public class TransactionNoTest {
 		try {
 			session.getTransaction().begin();
 			/* for(int x = 1; x < 2000; x = x+1) { */
-			System.out.println(GetTransNo.GenerateVoucherNo(session, 1, trxdate));
+			/*System.out.println(GetTransNo.GenerateVoucherNo(session, 1, trxdate));*/
+			System.out.println(GetTransNo.GetSequenceDesc(session, "001", (long) 1, "PRO"));
 			session.getTransaction().commit();
 	
 			

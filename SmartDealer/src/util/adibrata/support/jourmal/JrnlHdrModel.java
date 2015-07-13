@@ -9,7 +9,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -45,6 +45,8 @@ public class JrnlHdrModel implements java.io.Serializable {
 	private String receiptNo;
 	private String jrnlNoCode;
 	private String rcvDisbFlag;
+	private String trxDesc;
+	
 	/**
 	 * @return the trxNo
 	 */
@@ -236,6 +238,18 @@ public class JrnlHdrModel implements java.io.Serializable {
 	 */
 	public void setHeaderId(long headerId) {
 		HeaderId = headerId;
+	}
+	/**
+	 * @return the trxDesc
+	 */
+	public String getTrxDesc() {
+		return trxDesc;
+	}
+	/**
+	 * @param trxDesc the trxDesc to set
+	 */
+	public void setTrxDesc(String trxDesc) {
+		this.trxDesc = trxDesc;
 	}
 	
 		

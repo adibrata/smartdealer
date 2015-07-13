@@ -301,4 +301,35 @@ public class GetTransNo {
 		}
 		return confignumber;
 	}
+
+	public static String GetSequenceDesc(Session session, String partnercode,
+			Long officeid, String seqcode) throws Exception {
+		String description = "";
+		try {
+			Query qrycoacode = session
+					/*
+					 * .createQuery(
+					 * "Select a from  TrxSeqNo a inner join  Office b WITH " +
+					 * " a.officeId = b.id " + "inner join " +
+					 * " Partner c WITH a.partner = c.partnerCode and b.partner = c.partnerCode "
+					 * );
+					 */
+					.createQuery(" Select jrnlSeqName from  TrxSeqNo "
+							+ " Where partnercode = :partnercode and officeid = :office and mssequencecode = :seqcode");
+			qrycoacode.setParameter("partnercode", partnercode);
+			qrycoacode.setParameter("office", officeid);
+			qrycoacode.setParameter("seqcode", seqcode);
+
+			description = (String) qrycoacode.uniqueResult();
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return description;
+	}
 }

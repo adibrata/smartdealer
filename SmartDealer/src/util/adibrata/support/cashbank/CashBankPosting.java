@@ -14,6 +14,7 @@ import java.util.Date;
 
 import org.hibernate.Session;
 
+import com.adibrata.smartdealer.model.CashBankDtl;
 import com.adibrata.smartdealer.model.CashBankHdr;
 import com.adibrata.smartdealer.model.JrnlHdr;
 import com.adibrata.smartdealer.model.Office;
@@ -22,16 +23,18 @@ import com.adibrata.smartdealer.model.TransJob;
 
 import util.adibrata.framework.cachehelper.*;
 import util.adibrata.framework.exceptionhelper.*;
+import util.adibrata.support.common.GetCoaInfo;
+import util.adibrata.support.jourmal.JrnlDtlModel;
 import util.adibrata.support.jourmal.JrnlHdrModel;
 import util.adibrata.support.transno.GetTransNo;
 
 //import model.adibrata.smartfinance.*;
 
 public class CashBankPosting {
-	private DateFormat monthformat = new SimpleDateFormat("MM");
-	private DateFormat yearformat = new SimpleDateFormat("yyyy");
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	private Date dtmUpd = Calendar.getInstance().getTime();
+	private static Date dtmUpd = Calendar.getInstance().getTime();
+	private static String voucherNo;
+	Session session;
 
 	/**
 	 * 
@@ -41,37 +44,36 @@ public class CashBankPosting {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CashBankHdr CashBankSave(Session session, TransJob transjob,
-			Office office, Partner partner, JrnlHdrModel jrnlHdrModel,
-			String usrupd) throws Exception {
+	public CashBankPosting(Session session) {
+		this.session = session;
+		// TODO Auto-generated constructor stub
+	}
+
+	public static CashBankHdr CashBankHeaderSave(Session session,
+			TransJob transjob, Office office, Partner partner,
+			JrnlHdrModel jrnlHdrModel, String usrupd) throws Exception {
 
 		CashBankHdr bankHdr = new CashBankHdr();
 		try {
-			String periodyear = "", periodmonth = "";
-
-			periodmonth = monthformat.format(transjob.getJobPost());
-			periodyear = yearformat.format(transjob.getJobPost());
-
 			bankHdr.setPartner(partner);
 			bankHdr.setOffice(office);
-			this.voucherNo = GetTransNo.GenerateVoucherNo(session,
-					partner.getPartnerCode(), office.getId(),
-					this.hdrModel.getJrnlNoCode(), transjob.getJobPost());
+			voucherNo = GetTransNo.GenerateVoucherNo(session,
+					jrnlHdrModel.getBankAccId(), transjob.getJobPost());
 
-			bankHdr.setJrnlNo(this.voucherNo);
+			bankHdr.setVoucherNo(voucherNo);
 
 			bankHdr.setPostingDt(transjob.getJobPost());
 			bankHdr.setValueDt(transjob.getJobDate());
 
-			bankHdr.setDescription("");
-			bankHdr.setRcvDsbFlag("");
-			bankHdr.setWop("");
+			bankHdr.setDescription(jrnlHdrModel.getTrxDesc());
+			bankHdr.setRcvDsbFlag(jrnlHdrModel.getRcvDisbFlag());
+			bankHdr.setWop(jrnlHdrModel.getWop());
 
-			bankHdr.setAmount(0.00);
-			bankHdr.setRcvFrom("");
+			bankHdr.setAmount(jrnlHdrModel.getAmountTrx());
+			bankHdr.setRcvFrom(jrnlHdrModel.getReceivedFrom());
 
-			bankHdr.setReffNo("");
-			bankHdr.setReceiptNo("");
+			bankHdr.setReffNo(jrnlHdrModel.getReffNo());
+			bankHdr.setReceiptNo(jrnlHdrModel.getReceiptNo());
 
 			bankHdr.setUsrUpd(usrupd);
 			bankHdr.setUsrCrt(usrupd);
@@ -92,4 +94,56 @@ public class CashBankPosting {
 		return bankHdr;
 	}
 
+	public static void CashBankDtlSave(Session session,
+			TransJob transjob, Office office, Partner partner,
+			CashBankHdr bankHdr, JrnlDtlModel jrnldtlmodel, String usrupd)
+			throws Exception {
+
+		CashBankDtl bankDtl = new CashBankDtl();
+		try {
+
+			bankDtl.setCashBankHdr(bankHdr);
+			bankDtl.setSequenceNo(0);
+			bankDtl.setCoaName(jrnldtlmodel.getCoaName());
+			bankDtl.setCoaCode(jrnldtlmodel.getCoacode());
+
+			bankDtl.setDescription(GetCoaInfo.GetDescription(partner,
+					jrnldtlmodel.getCoaName()));
+			bankDtl.setDebitAmt(0.00);
+			bankDtl.setCreditAmt(0.00);
+			bankDtl.setDepartId(jrnldtlmodel.getDepartId());
+
+			bankDtl.setUsrUpd(usrupd);
+			bankDtl.setUsrCrt(usrupd);
+			bankDtl.setDtmUpd(dtmUpd);
+			bankDtl.setDtmCrt(dtmUpd);
+
+			session.save(bankDtl);
+
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		//return bankDtl;
+	}
+
+	/**
+	 * @return the voucherNo
+	 */
+	public static String getVoucherNo() {
+		return voucherNo;
+	}
+
+	/**
+	 * @param voucherNo
+	 *            the voucherNo to set
+	 */
+	public static void setVoucherNo(String voucherNo) {
+		CashBankPosting.voucherNo = voucherNo;
+	}
 }

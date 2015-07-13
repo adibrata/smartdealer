@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -22,12 +22,13 @@ public class CashBankDtl implements java.io.Serializable {
 
 	private long id;
 	private CashBankHdr cashBankHdr;
-	private Integer departId;
+	private Integer sequenceNo;
 	private String coaName;
 	private String coaCode;
 	private String description;
 	private double debitAmt;
 	private double creditAmt;
+	private Long departId;
 	private String usrUpd;
 	private Date dtmUpd;
 	private String usrCrt;
@@ -48,18 +49,19 @@ public class CashBankDtl implements java.io.Serializable {
 		this.creditAmt = creditAmt;
 	}
 
-	public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer departId,
+	public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer sequenceNo,
 			String coaName, String coaCode, String description,
-			double debitAmt, double creditAmt, String usrUpd, Date dtmUpd,
-			String usrCrt, Date dtmCrt) {
+			double debitAmt, double creditAmt, Long departId, String usrUpd,
+			Date dtmUpd, String usrCrt, Date dtmCrt) {
 		this.id = id;
 		this.cashBankHdr = cashBankHdr;
-		this.departId = departId;
+		this.sequenceNo = sequenceNo;
 		this.coaName = coaName;
 		this.coaCode = coaCode;
 		this.description = description;
 		this.debitAmt = debitAmt;
 		this.creditAmt = creditAmt;
+		this.departId = departId;
 		this.usrUpd = usrUpd;
 		this.dtmUpd = dtmUpd;
 		this.usrCrt = usrCrt;
@@ -86,13 +88,13 @@ public class CashBankDtl implements java.io.Serializable {
 		this.cashBankHdr = cashBankHdr;
 	}
 
-	@Column(name = "DepartID")
-	public Integer getDepartId() {
-		return this.departId;
+	@Column(name = "SequenceNo")
+	public Integer getSequenceNo() {
+		return this.sequenceNo;
 	}
 
-	public void setDepartId(Integer departId) {
-		this.departId = departId;
+	public void setSequenceNo(Integer sequenceNo) {
+		this.sequenceNo = sequenceNo;
 	}
 
 	@Column(name = "CoaName", nullable = false, length = 50)
@@ -138,6 +140,15 @@ public class CashBankDtl implements java.io.Serializable {
 
 	public void setCreditAmt(double creditAmt) {
 		this.creditAmt = creditAmt;
+	}
+
+	@Column(name = "DepartID")
+	public Long getDepartId() {
+		return this.departId;
+	}
+
+	public void setDepartId(Long departId) {
+		this.departId = departId;
 	}
 
 	@Column(name = "UsrUpd", length = 50)

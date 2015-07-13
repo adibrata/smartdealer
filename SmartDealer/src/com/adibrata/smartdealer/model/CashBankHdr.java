@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 2:31:52 PM by Hibernate Tools 4.3.1
+// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,10 +23,6 @@ import javax.persistence.TemporalType;
 @Table(name = "CashBankHdr", schema = "dbo", catalog = "SmartDealer")
 public class CashBankHdr implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private long id;
 	private BankAccount bankAccount;
 	private Office office;
