@@ -50,9 +50,10 @@ public class AssetDocAction extends BaseAction implements Preparable {
 	private String assetType;
 
 	/**
+	 * @throws Exception 
 	 * 
 	 */
-	public AssetDocAction() {
+	public AssetDocAction() throws Exception {
 		// TODO Auto-generated constructor stub
 		AssetDocMasterService assetdocmasterservice = new AssetDocMasterDao();
 

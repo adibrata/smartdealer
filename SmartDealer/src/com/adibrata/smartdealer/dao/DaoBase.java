@@ -95,7 +95,7 @@ public class DaoBase implements SeviceBase {
 	}
 
 	public static String TransactionNo(Session session, TransactionType trans,
-			String partnercode, long officeid) {
+			String partnercode, long officeid) throws Exception {
 		String transno = "";
 		transno = GetTransNo.GenerateTransactionNo(session, partnercode,
 				officeid, trans.getTransactionType(), dtmupd.getTime());
