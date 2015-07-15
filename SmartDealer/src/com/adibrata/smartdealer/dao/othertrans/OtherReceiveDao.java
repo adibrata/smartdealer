@@ -15,16 +15,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.adibrata.smartdealer.dao.DaoBase;
-import com.adibrata.smartdealer.dao.DaoBase.TransactionType;
-import com.adibrata.smartdealer.model.*;
-import com.adibrata.smartdealer.service.othertransactions.*;
-
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
-import util.adibrata.support.transno.GetTransNo;
+
+import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.model.OtherRcvDtl;
+import com.adibrata.smartdealer.model.OtherRcvHdr;
+import com.adibrata.smartdealer.service.othertransactions.OtherReceiveService;
 public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	String userupd; 
 	Session session;
@@ -54,6 +52,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	/* (non-Javadoc)
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save(com.adibrata.smartdealer.model.OtherRcvHdr, com.adibrata.smartdealer.model.OtherRcvDtl)
 	 */
+	@SuppressWarnings("unused")
 	@Override
 	public void Save(String usrupd, OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> lstotherRcvDtl) throws Exception {
 		// TODO Auto-generated method stub
@@ -66,15 +65,14 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 			otherRcvHdr.setDtmCrt(dtmupd.getTime());
 			otherRcvHdr.setDtmUpd(dtmupd.getTime());
 			session.save(otherRcvHdr);
+			
 			for (OtherRcvDtl arow : lstotherRcvDtl) {
 				OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
+				otherRcvDtl.setOtherRcvHdr(otherRcvHdr);
 				otherRcvDtl.setDtmCrt(dtmupd.getTime());
 				otherRcvDtl.setDtmUpd(dtmupd.getTime());
-				
 				session.save(otherRcvDtl);	
 			}
-			
-			
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
@@ -89,6 +87,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	/* (non-Javadoc)
 	 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Paging(int, java.lang.String, java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
@@ -120,6 +119,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService{
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception {
