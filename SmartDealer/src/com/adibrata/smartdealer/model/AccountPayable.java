@@ -1,14 +1,17 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,27 +30,52 @@ public class AccountPayable implements java.io.Serializable {
 	private String apno;
 	private String aptype;
 	private String apstatus;
+	private Date apdate;
+	private String referenceNo;
+	private String description;
+	private Date dueDate;
+	private long currencyId;
+	private double currencyRate;
 	private Double apamount;
 	private Double apdisburse;
 	private String apto;
-	private String apaccount;
+	private String accNameTo;
+	private String accNoTo;
+	private String bankMasterTo;
+	private String bankBranchTo;
 	private String usrCrt;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
+	private Set<Pvdetail> pvdetails = new HashSet<Pvdetail>(0);
 
 	public AccountPayable() {
 	}
 
-	public AccountPayable(long id) {
+	public AccountPayable(long id, String referenceNo, String description,
+			long currencyId, double currencyRate, String apto,
+			String accNameTo, String accNoTo, String bankMasterTo,
+			String bankBranchTo) {
 		this.id = id;
+		this.referenceNo = referenceNo;
+		this.description = description;
+		this.currencyId = currencyId;
+		this.currencyRate = currencyRate;
+		this.apto = apto;
+		this.accNameTo = accNameTo;
+		this.accNoTo = accNoTo;
+		this.bankMasterTo = bankMasterTo;
+		this.bankBranchTo = bankBranchTo;
 	}
 
 	public AccountPayable(long id, Office officeByOfficeId,
 			Office officeByOfficeDisbId, Partner partner, String apno,
-			String aptype, String apstatus, Double apamount, Double apdisburse,
-			String apto, String apaccount, String usrCrt, Date dtmUpd,
-			String usrUpd, Date dtmCrt) {
+			String aptype, String apstatus, Date apdate, String referenceNo,
+			String description, Date dueDate, long currencyId,
+			double currencyRate, Double apamount, Double apdisburse,
+			String apto, String accNameTo, String accNoTo, String bankMasterTo,
+			String bankBranchTo, String usrCrt, Date dtmUpd, String usrUpd,
+			Date dtmCrt, Set<Pvdetail> pvdetails) {
 		this.id = id;
 		this.officeByOfficeId = officeByOfficeId;
 		this.officeByOfficeDisbId = officeByOfficeDisbId;
@@ -55,14 +83,24 @@ public class AccountPayable implements java.io.Serializable {
 		this.apno = apno;
 		this.aptype = aptype;
 		this.apstatus = apstatus;
+		this.apdate = apdate;
+		this.referenceNo = referenceNo;
+		this.description = description;
+		this.dueDate = dueDate;
+		this.currencyId = currencyId;
+		this.currencyRate = currencyRate;
 		this.apamount = apamount;
 		this.apdisburse = apdisburse;
 		this.apto = apto;
-		this.apaccount = apaccount;
+		this.accNameTo = accNameTo;
+		this.accNoTo = accNoTo;
+		this.bankMasterTo = bankMasterTo;
+		this.bankBranchTo = bankBranchTo;
 		this.usrCrt = usrCrt;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
+		this.pvdetails = pvdetails;
 	}
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -132,6 +170,62 @@ public class AccountPayable implements java.io.Serializable {
 		this.apstatus = apstatus;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "APDate", length = 23)
+	public Date getApdate() {
+		return this.apdate;
+	}
+
+	public void setApdate(Date apdate) {
+		this.apdate = apdate;
+	}
+
+	@Column(name = "ReferenceNo", nullable = false, length = 20)
+	public String getReferenceNo() {
+		return this.referenceNo;
+	}
+
+	public void setReferenceNo(String referenceNo) {
+		this.referenceNo = referenceNo;
+	}
+
+	@Column(name = "Description", nullable = false, length = 200)
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "DueDate", length = 23)
+	public Date getDueDate() {
+		return this.dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	@Column(name = "CurrencyID", nullable = false)
+	public long getCurrencyId() {
+		return this.currencyId;
+	}
+
+	public void setCurrencyId(long currencyId) {
+		this.currencyId = currencyId;
+	}
+
+	@Column(name = "CurrencyRate", nullable = false, precision = 53, scale = 0)
+	public double getCurrencyRate() {
+		return this.currencyRate;
+	}
+
+	public void setCurrencyRate(double currencyRate) {
+		this.currencyRate = currencyRate;
+	}
+
 	@Column(name = "APAmount", precision = 53, scale = 0)
 	public Double getApamount() {
 		return this.apamount;
@@ -150,7 +244,7 @@ public class AccountPayable implements java.io.Serializable {
 		this.apdisburse = apdisburse;
 	}
 
-	@Column(name = "APTo", length = 100)
+	@Column(name = "APTo", nullable = false, length = 50)
 	public String getApto() {
 		return this.apto;
 	}
@@ -159,13 +253,40 @@ public class AccountPayable implements java.io.Serializable {
 		this.apto = apto;
 	}
 
-	@Column(name = "APAccount", length = 100)
-	public String getApaccount() {
-		return this.apaccount;
+	@Column(name = "AccNameTo", nullable = false, length = 50)
+	public String getAccNameTo() {
+		return this.accNameTo;
 	}
 
-	public void setApaccount(String apaccount) {
-		this.apaccount = apaccount;
+	public void setAccNameTo(String accNameTo) {
+		this.accNameTo = accNameTo;
+	}
+
+	@Column(name = "AccNoTo", nullable = false, length = 50)
+	public String getAccNoTo() {
+		return this.accNoTo;
+	}
+
+	public void setAccNoTo(String accNoTo) {
+		this.accNoTo = accNoTo;
+	}
+
+	@Column(name = "BankMasterTo", nullable = false, length = 50)
+	public String getBankMasterTo() {
+		return this.bankMasterTo;
+	}
+
+	public void setBankMasterTo(String bankMasterTo) {
+		this.bankMasterTo = bankMasterTo;
+	}
+
+	@Column(name = "BankBranchTo", nullable = false, length = 50)
+	public String getBankBranchTo() {
+		return this.bankBranchTo;
+	}
+
+	public void setBankBranchTo(String bankBranchTo) {
+		this.bankBranchTo = bankBranchTo;
 	}
 
 	@Column(name = "UsrCrt", length = 50)
@@ -204,6 +325,15 @@ public class AccountPayable implements java.io.Serializable {
 
 	public void setDtmCrt(Date dtmCrt) {
 		this.dtmCrt = dtmCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accountPayable")
+	public Set<Pvdetail> getPvdetails() {
+		return this.pvdetails;
+	}
+
+	public void setPvdetails(Set<Pvdetail> pvdetails) {
+		this.pvdetails = pvdetails;
 	}
 
 }

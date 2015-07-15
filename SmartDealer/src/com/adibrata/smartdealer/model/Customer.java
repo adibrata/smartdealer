@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -27,6 +27,7 @@ public class Customer implements java.io.Serializable {
 	private long id;
 	private Partner partner;
 	private String customerNo;
+	private String type;
 	private String name;
 	private String address;
 	private String rt;
@@ -34,7 +35,6 @@ public class Customer implements java.io.Serializable {
 	private String kelurahan;
 	private String city;
 	private String zipcode;
-	private String type;
 	private String areaPhone1;
 	private String phoneNo1;
 	private String areaPhone2;
@@ -52,7 +52,20 @@ public class Customer implements java.io.Serializable {
 	private Date dtmCrt;
 	private String usrCrt;
 	private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
+	private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(
+			0);
+	private Set<CoyCust> coyCusts = new HashSet<CoyCust>(0);
+	private Set<PersCustLegalInfo> persCustLegalInfos = new HashSet<PersCustLegalInfo>(
+			0);
+	private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
+	private Set<PersCustJobInfo> persCustJobInfos = new HashSet<PersCustJobInfo>(
+			0);
+	private Set<PersCustResidenceInfo> persCustResidenceInfos = new HashSet<PersCustResidenceInfo>(
+			0);
 	private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+	private Set<PersCust> persCusts = new HashSet<PersCust>(0);
+	private Set<PersCustEmergencyInfo> persCustEmergencyInfos = new HashSet<PersCustEmergencyInfo>(
+			0);
 
 	public Customer() {
 	}
@@ -61,18 +74,24 @@ public class Customer implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Customer(long id, Partner partner, String customerNo, String name,
-			String address, String rt, String rw, String kelurahan,
-			String city, String zipcode, String type, String areaPhone1,
+	public Customer(long id, Partner partner, String customerNo, String type,
+			String name, String address, String rt, String rw,
+			String kelurahan, String city, String zipcode, String areaPhone1,
 			String phoneNo1, String areaPhone2, String phoneNo2,
 			String areaFax, String faxNo, String handphone, String fullAddress,
 			BigDecimal prepaidAmount, BigDecimal aramount, BigDecimal arpaid,
 			BigDecimal arwaived, Date dtmUpd, String usrUpd, Date dtmCrt,
 			String usrCrt, Set<SalesInvoice> salesInvoices,
-			Set<SalesOrderHdr> salesOrderHdrs) {
+			Set<PersCustTrusteeInfo> persCustTrusteeInfos,
+			Set<CoyCust> coyCusts, Set<PersCustLegalInfo> persCustLegalInfos,
+			Set<Agrmnt> agrmnts, Set<PersCustJobInfo> persCustJobInfos,
+			Set<PersCustResidenceInfo> persCustResidenceInfos,
+			Set<SalesOrderHdr> salesOrderHdrs, Set<PersCust> persCusts,
+			Set<PersCustEmergencyInfo> persCustEmergencyInfos) {
 		this.id = id;
 		this.partner = partner;
 		this.customerNo = customerNo;
+		this.type = type;
 		this.name = name;
 		this.address = address;
 		this.rt = rt;
@@ -80,7 +99,6 @@ public class Customer implements java.io.Serializable {
 		this.kelurahan = kelurahan;
 		this.city = city;
 		this.zipcode = zipcode;
-		this.type = type;
 		this.areaPhone1 = areaPhone1;
 		this.phoneNo1 = phoneNo1;
 		this.areaPhone2 = areaPhone2;
@@ -98,7 +116,15 @@ public class Customer implements java.io.Serializable {
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
 		this.salesInvoices = salesInvoices;
+		this.persCustTrusteeInfos = persCustTrusteeInfos;
+		this.coyCusts = coyCusts;
+		this.persCustLegalInfos = persCustLegalInfos;
+		this.agrmnts = agrmnts;
+		this.persCustJobInfos = persCustJobInfos;
+		this.persCustResidenceInfos = persCustResidenceInfos;
 		this.salesOrderHdrs = salesOrderHdrs;
+		this.persCusts = persCusts;
+		this.persCustEmergencyInfos = persCustEmergencyInfos;
 	}
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -128,6 +154,15 @@ public class Customer implements java.io.Serializable {
 
 	public void setCustomerNo(String customerNo) {
 		this.customerNo = customerNo;
+	}
+
+	@Column(name = "Type", length = 2)
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Column(name = "Name", length = 50)
@@ -191,15 +226,6 @@ public class Customer implements java.io.Serializable {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
-	}
-
-	@Column(name = "Type", length = 2)
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	@Column(name = "AreaPhone1", length = 4)
@@ -358,12 +384,87 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCustTrusteeInfo> getPersCustTrusteeInfos() {
+		return this.persCustTrusteeInfos;
+	}
+
+	public void setPersCustTrusteeInfos(
+			Set<PersCustTrusteeInfo> persCustTrusteeInfos) {
+		this.persCustTrusteeInfos = persCustTrusteeInfos;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<CoyCust> getCoyCusts() {
+		return this.coyCusts;
+	}
+
+	public void setCoyCusts(Set<CoyCust> coyCusts) {
+		this.coyCusts = coyCusts;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCustLegalInfo> getPersCustLegalInfos() {
+		return this.persCustLegalInfos;
+	}
+
+	public void setPersCustLegalInfos(Set<PersCustLegalInfo> persCustLegalInfos) {
+		this.persCustLegalInfos = persCustLegalInfos;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<Agrmnt> getAgrmnts() {
+		return this.agrmnts;
+	}
+
+	public void setAgrmnts(Set<Agrmnt> agrmnts) {
+		this.agrmnts = agrmnts;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCustJobInfo> getPersCustJobInfos() {
+		return this.persCustJobInfos;
+	}
+
+	public void setPersCustJobInfos(Set<PersCustJobInfo> persCustJobInfos) {
+		this.persCustJobInfos = persCustJobInfos;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCustResidenceInfo> getPersCustResidenceInfos() {
+		return this.persCustResidenceInfos;
+	}
+
+	public void setPersCustResidenceInfos(
+			Set<PersCustResidenceInfo> persCustResidenceInfos) {
+		this.persCustResidenceInfos = persCustResidenceInfos;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 	public Set<SalesOrderHdr> getSalesOrderHdrs() {
 		return this.salesOrderHdrs;
 	}
 
 	public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs) {
 		this.salesOrderHdrs = salesOrderHdrs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCust> getPersCusts() {
+		return this.persCusts;
+	}
+
+	public void setPersCusts(Set<PersCust> persCusts) {
+		this.persCusts = persCusts;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	public Set<PersCustEmergencyInfo> getPersCustEmergencyInfos() {
+		return this.persCustEmergencyInfos;
+	}
+
+	public void setPersCustEmergencyInfos(
+			Set<PersCustEmergencyInfo> persCustEmergencyInfos) {
+		this.persCustEmergencyInfos = persCustEmergencyInfos;
 	}
 
 }

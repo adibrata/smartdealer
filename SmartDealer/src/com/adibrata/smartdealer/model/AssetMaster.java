@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,11 +25,13 @@ public class AssetMaster implements java.io.Serializable {
 
 	private long id;
 	private Partner partner;
-	private String assetType;
+	private Long assetTypeId;
 	private String assetBrand;
+	private String assetType;
 	private String assetModel;
 	private String assetCode;
 	private Integer assetLevel;
+	private Double resaleValue;
 	private Short isActive;
 	private Date dtmUpd;
 	private String usrUpd;
@@ -47,18 +49,21 @@ public class AssetMaster implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public AssetMaster(long id, Partner partner, String assetType,
-			String assetBrand, String assetModel, String assetCode,
-			Integer assetLevel, Short isActive, Date dtmUpd, String usrUpd,
-			Date dtmCrt, String usrCrt, Set<ServiceHdr> serviceHdrs,
+	public AssetMaster(long id, Partner partner, Long assetTypeId,
+			String assetBrand, String assetType, String assetModel,
+			String assetCode, Integer assetLevel, Double resaleValue,
+			Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
+			String usrCrt, Set<ServiceHdr> serviceHdrs,
 			Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks) {
 		this.id = id;
 		this.partner = partner;
-		this.assetType = assetType;
+		this.assetTypeId = assetTypeId;
 		this.assetBrand = assetBrand;
+		this.assetType = assetType;
 		this.assetModel = assetModel;
 		this.assetCode = assetCode;
 		this.assetLevel = assetLevel;
+		this.resaleValue = resaleValue;
 		this.isActive = isActive;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
@@ -89,13 +94,13 @@ public class AssetMaster implements java.io.Serializable {
 		this.partner = partner;
 	}
 
-	@Column(name = "AssetType", length = 20)
-	public String getAssetType() {
-		return this.assetType;
+	@Column(name = "AssetTypeId")
+	public Long getAssetTypeId() {
+		return this.assetTypeId;
 	}
 
-	public void setAssetType(String assetType) {
-		this.assetType = assetType;
+	public void setAssetTypeId(Long assetTypeId) {
+		this.assetTypeId = assetTypeId;
 	}
 
 	@Column(name = "AssetBrand", length = 20)
@@ -105,6 +110,15 @@ public class AssetMaster implements java.io.Serializable {
 
 	public void setAssetBrand(String assetBrand) {
 		this.assetBrand = assetBrand;
+	}
+
+	@Column(name = "AssetType", length = 50)
+	public String getAssetType() {
+		return this.assetType;
+	}
+
+	public void setAssetType(String assetType) {
+		this.assetType = assetType;
 	}
 
 	@Column(name = "AssetModel", length = 20)
@@ -132,6 +146,15 @@ public class AssetMaster implements java.io.Serializable {
 
 	public void setAssetLevel(Integer assetLevel) {
 		this.assetLevel = assetLevel;
+	}
+
+	@Column(name = "ResaleValue", precision = 53, scale = 0)
+	public Double getResaleValue() {
+		return this.resaleValue;
+	}
+
+	public void setResaleValue(Double resaleValue) {
+		this.resaleValue = resaleValue;
 	}
 
 	@Column(name = "IsActive")

@@ -1,7 +1,8 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,37 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 	private Double currencyRate;
 	private Double poamount;
 	private Long jobId;
+	private Serializable bankName;
+	private Serializable accountName;
+	private Serializable accountNo;
+	private Short isMainPo;
+	private Date pooriginalExpiredDate;
+	private Date poexpiredDate;
+	private Short isExpired;
+	private Short isEmailSupplier;
+	private Serializable emailSupplier;
+	private Short isFaxSupplier;
+	private String supplierFaxAreaCode;
+	private String supplierFaxNumber;
+	private Short isEmailInsCo;
+	private String emailInsCo;
+	private Short isFaxInsCo;
+	private String insCoFaxAreaCode;
+	private String insCoFaxNumber;
+	private Date supplierBillingDate;
+	private Date deliveryDate;
+	private Short isCancelled;
+	private Date cancellationDate;
+	private Integer poextendCounter;
+	private Short isRcaagain;
+	private String notes;
+	private Serializable bankBranch;
+	private Long apid;
+	private Double contractPrepaidAmount;
+	private Long supplierBankId;
+	private String supplierBankBranch;
+	private String supplierAccountNo;
+	private String supplierAccountName;
 	private Date dtmUpd;
 	private String usrUpd;
 	private Date dtmCrt;
@@ -53,8 +85,21 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 
 	public PurchaseOrderHdr(long id, Office office, Partner partner,
 			Supplier supplier, String pono, Date podate, Long currencyId,
-			Double currencyRate, Double poamount, Long jobId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt,
+			Double currencyRate, Double poamount, Long jobId,
+			Serializable bankName, Serializable accountName,
+			Serializable accountNo, Short isMainPo, Date pooriginalExpiredDate,
+			Date poexpiredDate, Short isExpired, Short isEmailSupplier,
+			Serializable emailSupplier, Short isFaxSupplier,
+			String supplierFaxAreaCode, String supplierFaxNumber,
+			Short isEmailInsCo, String emailInsCo, Short isFaxInsCo,
+			String insCoFaxAreaCode, String insCoFaxNumber,
+			Date supplierBillingDate, Date deliveryDate, Short isCancelled,
+			Date cancellationDate, Integer poextendCounter, Short isRcaagain,
+			String notes, Serializable bankBranch, Long apid,
+			Double contractPrepaidAmount, Long supplierBankId,
+			String supplierBankBranch, String supplierAccountNo,
+			String supplierAccountName, Date dtmUpd, String usrUpd,
+			Date dtmCrt, String usrCrt,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<PurchaseOrderDtl> purchaseOrderDtls) {
@@ -68,6 +113,37 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 		this.currencyRate = currencyRate;
 		this.poamount = poamount;
 		this.jobId = jobId;
+		this.bankName = bankName;
+		this.accountName = accountName;
+		this.accountNo = accountNo;
+		this.isMainPo = isMainPo;
+		this.pooriginalExpiredDate = pooriginalExpiredDate;
+		this.poexpiredDate = poexpiredDate;
+		this.isExpired = isExpired;
+		this.isEmailSupplier = isEmailSupplier;
+		this.emailSupplier = emailSupplier;
+		this.isFaxSupplier = isFaxSupplier;
+		this.supplierFaxAreaCode = supplierFaxAreaCode;
+		this.supplierFaxNumber = supplierFaxNumber;
+		this.isEmailInsCo = isEmailInsCo;
+		this.emailInsCo = emailInsCo;
+		this.isFaxInsCo = isFaxInsCo;
+		this.insCoFaxAreaCode = insCoFaxAreaCode;
+		this.insCoFaxNumber = insCoFaxNumber;
+		this.supplierBillingDate = supplierBillingDate;
+		this.deliveryDate = deliveryDate;
+		this.isCancelled = isCancelled;
+		this.cancellationDate = cancellationDate;
+		this.poextendCounter = poextendCounter;
+		this.isRcaagain = isRcaagain;
+		this.notes = notes;
+		this.bankBranch = bankBranch;
+		this.apid = apid;
+		this.contractPrepaidAmount = contractPrepaidAmount;
+		this.supplierBankId = supplierBankId;
+		this.supplierBankBranch = supplierBankBranch;
+		this.supplierAccountNo = supplierAccountNo;
+		this.supplierAccountName = supplierAccountName;
 		this.dtmUpd = dtmUpd;
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
@@ -170,6 +246,290 @@ public class PurchaseOrderHdr implements java.io.Serializable {
 
 	public void setJobId(Long jobId) {
 		this.jobId = jobId;
+	}
+
+	@Column(name = "BankName")
+	public Serializable getBankName() {
+		return this.bankName;
+	}
+
+	public void setBankName(Serializable bankName) {
+		this.bankName = bankName;
+	}
+
+	@Column(name = "AccountName")
+	public Serializable getAccountName() {
+		return this.accountName;
+	}
+
+	public void setAccountName(Serializable accountName) {
+		this.accountName = accountName;
+	}
+
+	@Column(name = "AccountNo")
+	public Serializable getAccountNo() {
+		return this.accountNo;
+	}
+
+	public void setAccountNo(Serializable accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	@Column(name = "IsMainPO")
+	public Short getIsMainPo() {
+		return this.isMainPo;
+	}
+
+	public void setIsMainPo(Short isMainPo) {
+		this.isMainPo = isMainPo;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "POOriginalExpiredDate", length = 23)
+	public Date getPooriginalExpiredDate() {
+		return this.pooriginalExpiredDate;
+	}
+
+	public void setPooriginalExpiredDate(Date pooriginalExpiredDate) {
+		this.pooriginalExpiredDate = pooriginalExpiredDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "POExpiredDate", length = 23)
+	public Date getPoexpiredDate() {
+		return this.poexpiredDate;
+	}
+
+	public void setPoexpiredDate(Date poexpiredDate) {
+		this.poexpiredDate = poexpiredDate;
+	}
+
+	@Column(name = "IsExpired")
+	public Short getIsExpired() {
+		return this.isExpired;
+	}
+
+	public void setIsExpired(Short isExpired) {
+		this.isExpired = isExpired;
+	}
+
+	@Column(name = "IsEmailSupplier")
+	public Short getIsEmailSupplier() {
+		return this.isEmailSupplier;
+	}
+
+	public void setIsEmailSupplier(Short isEmailSupplier) {
+		this.isEmailSupplier = isEmailSupplier;
+	}
+
+	@Column(name = "EmailSupplier")
+	public Serializable getEmailSupplier() {
+		return this.emailSupplier;
+	}
+
+	public void setEmailSupplier(Serializable emailSupplier) {
+		this.emailSupplier = emailSupplier;
+	}
+
+	@Column(name = "IsFaxSupplier")
+	public Short getIsFaxSupplier() {
+		return this.isFaxSupplier;
+	}
+
+	public void setIsFaxSupplier(Short isFaxSupplier) {
+		this.isFaxSupplier = isFaxSupplier;
+	}
+
+	@Column(name = "SupplierFaxAreaCode", length = 4)
+	public String getSupplierFaxAreaCode() {
+		return this.supplierFaxAreaCode;
+	}
+
+	public void setSupplierFaxAreaCode(String supplierFaxAreaCode) {
+		this.supplierFaxAreaCode = supplierFaxAreaCode;
+	}
+
+	@Column(name = "SupplierFaxNumber", length = 15)
+	public String getSupplierFaxNumber() {
+		return this.supplierFaxNumber;
+	}
+
+	public void setSupplierFaxNumber(String supplierFaxNumber) {
+		this.supplierFaxNumber = supplierFaxNumber;
+	}
+
+	@Column(name = "IsEmailInsCo")
+	public Short getIsEmailInsCo() {
+		return this.isEmailInsCo;
+	}
+
+	public void setIsEmailInsCo(Short isEmailInsCo) {
+		this.isEmailInsCo = isEmailInsCo;
+	}
+
+	@Column(name = "EmailInsCo", length = 50)
+	public String getEmailInsCo() {
+		return this.emailInsCo;
+	}
+
+	public void setEmailInsCo(String emailInsCo) {
+		this.emailInsCo = emailInsCo;
+	}
+
+	@Column(name = "IsFaxInsCo")
+	public Short getIsFaxInsCo() {
+		return this.isFaxInsCo;
+	}
+
+	public void setIsFaxInsCo(Short isFaxInsCo) {
+		this.isFaxInsCo = isFaxInsCo;
+	}
+
+	@Column(name = "InsCoFaxAreaCode", length = 4)
+	public String getInsCoFaxAreaCode() {
+		return this.insCoFaxAreaCode;
+	}
+
+	public void setInsCoFaxAreaCode(String insCoFaxAreaCode) {
+		this.insCoFaxAreaCode = insCoFaxAreaCode;
+	}
+
+	@Column(name = "InsCoFaxNumber", length = 15)
+	public String getInsCoFaxNumber() {
+		return this.insCoFaxNumber;
+	}
+
+	public void setInsCoFaxNumber(String insCoFaxNumber) {
+		this.insCoFaxNumber = insCoFaxNumber;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "SupplierBillingDate", length = 23)
+	public Date getSupplierBillingDate() {
+		return this.supplierBillingDate;
+	}
+
+	public void setSupplierBillingDate(Date supplierBillingDate) {
+		this.supplierBillingDate = supplierBillingDate;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "DeliveryDate", length = 23)
+	public Date getDeliveryDate() {
+		return this.deliveryDate;
+	}
+
+	public void setDeliveryDate(Date deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+
+	@Column(name = "IsCancelled")
+	public Short getIsCancelled() {
+		return this.isCancelled;
+	}
+
+	public void setIsCancelled(Short isCancelled) {
+		this.isCancelled = isCancelled;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CancellationDate", length = 23)
+	public Date getCancellationDate() {
+		return this.cancellationDate;
+	}
+
+	public void setCancellationDate(Date cancellationDate) {
+		this.cancellationDate = cancellationDate;
+	}
+
+	@Column(name = "POExtendCounter")
+	public Integer getPoextendCounter() {
+		return this.poextendCounter;
+	}
+
+	public void setPoextendCounter(Integer poextendCounter) {
+		this.poextendCounter = poextendCounter;
+	}
+
+	@Column(name = "IsRCAAgain")
+	public Short getIsRcaagain() {
+		return this.isRcaagain;
+	}
+
+	public void setIsRcaagain(Short isRcaagain) {
+		this.isRcaagain = isRcaagain;
+	}
+
+	@Column(name = "Notes", length = 8000)
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	@Column(name = "BankBranch")
+	public Serializable getBankBranch() {
+		return this.bankBranch;
+	}
+
+	public void setBankBranch(Serializable bankBranch) {
+		this.bankBranch = bankBranch;
+	}
+
+	@Column(name = "APId")
+	public Long getApid() {
+		return this.apid;
+	}
+
+	public void setApid(Long apid) {
+		this.apid = apid;
+	}
+
+	@Column(name = "ContractPrepaidAmount", precision = 53, scale = 0)
+	public Double getContractPrepaidAmount() {
+		return this.contractPrepaidAmount;
+	}
+
+	public void setContractPrepaidAmount(Double contractPrepaidAmount) {
+		this.contractPrepaidAmount = contractPrepaidAmount;
+	}
+
+	@Column(name = "SupplierBankID")
+	public Long getSupplierBankId() {
+		return this.supplierBankId;
+	}
+
+	public void setSupplierBankId(Long supplierBankId) {
+		this.supplierBankId = supplierBankId;
+	}
+
+	@Column(name = "SupplierBankBranch", length = 30)
+	public String getSupplierBankBranch() {
+		return this.supplierBankBranch;
+	}
+
+	public void setSupplierBankBranch(String supplierBankBranch) {
+		this.supplierBankBranch = supplierBankBranch;
+	}
+
+	@Column(name = "SupplierAccountNo", length = 25)
+	public String getSupplierAccountNo() {
+		return this.supplierAccountNo;
+	}
+
+	public void setSupplierAccountNo(String supplierAccountNo) {
+		this.supplierAccountNo = supplierAccountNo;
+	}
+
+	@Column(name = "SupplierAccountName", length = 50)
+	public String getSupplierAccountName() {
+		return this.supplierAccountName;
+	}
+
+	public void setSupplierAccountName(String supplierAccountName) {
+		this.supplierAccountName = supplierAccountName;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

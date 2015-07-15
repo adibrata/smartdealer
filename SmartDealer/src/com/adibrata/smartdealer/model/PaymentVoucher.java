@@ -1,14 +1,17 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,6 +34,7 @@ public class PaymentVoucher implements java.io.Serializable {
 	private String usrUpd;
 	private Date dtmCrt;
 	private String usrCrt;
+	private Set<Pvdetail> pvdetails = new HashSet<Pvdetail>(0);
 
 	public PaymentVoucher() {
 	}
@@ -41,7 +45,7 @@ public class PaymentVoucher implements java.io.Serializable {
 
 	public PaymentVoucher(long id, Office office, Partner partner, String pvno,
 			Double pvamount, String pvstatus, Long transJobId, Date dtmUpd,
-			String usrUpd, Date dtmCrt, String usrCrt) {
+			String usrUpd, Date dtmCrt, String usrCrt, Set<Pvdetail> pvdetails) {
 		this.id = id;
 		this.office = office;
 		this.partner = partner;
@@ -53,6 +57,7 @@ public class PaymentVoucher implements java.io.Serializable {
 		this.usrUpd = usrUpd;
 		this.dtmCrt = dtmCrt;
 		this.usrCrt = usrCrt;
+		this.pvdetails = pvdetails;
 	}
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -157,6 +162,15 @@ public class PaymentVoucher implements java.io.Serializable {
 
 	public void setUsrCrt(String usrCrt) {
 		this.usrCrt = usrCrt;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paymentVoucher")
+	public Set<Pvdetail> getPvdetails() {
+		return this.pvdetails;
+	}
+
+	public void setPvdetails(Set<Pvdetail> pvdetails) {
+		this.pvdetails = pvdetails;
 	}
 
 }

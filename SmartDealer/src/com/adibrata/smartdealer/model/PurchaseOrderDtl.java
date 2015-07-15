@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,6 +23,9 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 	private long id;
 	private AssetMaster assetMaster;
 	private PurchaseOrderHdr purchaseOrderHdr;
+	private Short sequenceNo;
+	private String podescription;
+	private Double poamountDtl;
 	private String assetBrand;
 	private String assetType;
 	private String assetModel;
@@ -50,7 +53,8 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 	}
 
 	public PurchaseOrderDtl(long id, AssetMaster assetMaster,
-			PurchaseOrderHdr purchaseOrderHdr, String assetBrand,
+			PurchaseOrderHdr purchaseOrderHdr, Short sequenceNo,
+			String podescription, Double poamountDtl, String assetBrand,
 			String assetType, String assetModel, String bpkbno,
 			String bpkbname, String bpkbaddress, String vehicleColor,
 			String machineNo, String chasisNo, String cylinder,
@@ -60,6 +64,9 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 		this.id = id;
 		this.assetMaster = assetMaster;
 		this.purchaseOrderHdr = purchaseOrderHdr;
+		this.sequenceNo = sequenceNo;
+		this.podescription = podescription;
+		this.poamountDtl = poamountDtl;
 		this.assetBrand = assetBrand;
 		this.assetType = assetType;
 		this.assetModel = assetModel;
@@ -108,6 +115,33 @@ public class PurchaseOrderDtl implements java.io.Serializable {
 
 	public void setPurchaseOrderHdr(PurchaseOrderHdr purchaseOrderHdr) {
 		this.purchaseOrderHdr = purchaseOrderHdr;
+	}
+
+	@Column(name = "SequenceNo")
+	public Short getSequenceNo() {
+		return this.sequenceNo;
+	}
+
+	public void setSequenceNo(Short sequenceNo) {
+		this.sequenceNo = sequenceNo;
+	}
+
+	@Column(name = "PODescription", length = 500)
+	public String getPodescription() {
+		return this.podescription;
+	}
+
+	public void setPodescription(String podescription) {
+		this.podescription = podescription;
+	}
+
+	@Column(name = "POAmountDtl", precision = 53, scale = 0)
+	public Double getPoamountDtl() {
+		return this.poamountDtl;
+	}
+
+	public void setPoamountDtl(Double poamountDtl) {
+		this.poamountDtl = poamountDtl;
 	}
 
 	@Column(name = "AssetBrand", length = 20)

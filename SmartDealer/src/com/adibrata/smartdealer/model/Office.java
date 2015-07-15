@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -62,6 +62,7 @@ public class Office implements java.io.Serializable {
 	private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	private Set<Stock> stocks = new HashSet<Stock>(0);
+	private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 	private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 	private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 	private Set<AccountPayable> accountPayablesForOfficeId = new HashSet<AccountPayable>(
@@ -94,7 +95,7 @@ public class Office implements java.io.Serializable {
 			Set<PurchaseInvoice> purchaseInvoices,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 			Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs,
-			Set<Employee> employees, Set<Stock> stocks,
+			Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts,
 			Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs,
 			Set<AccountPayable> accountPayablesForOfficeId,
 			Set<AccountPayable> accountPayablesForOfficeDisbId,
@@ -137,6 +138,7 @@ public class Office implements java.io.Serializable {
 		this.returSalesHdrs = returSalesHdrs;
 		this.employees = employees;
 		this.stocks = stocks;
+		this.agrmnts = agrmnts;
 		this.danaTunais = danaTunais;
 		this.payReqHdrs = payReqHdrs;
 		this.accountPayablesForOfficeId = accountPayablesForOfficeId;
@@ -482,6 +484,15 @@ public class Office implements java.io.Serializable {
 
 	public void setStocks(Set<Stock> stocks) {
 		this.stocks = stocks;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+	public Set<Agrmnt> getAgrmnts() {
+		return this.agrmnts;
+	}
+
+	public void setAgrmnts(Set<Agrmnt> agrmnts) {
+		this.agrmnts = agrmnts;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

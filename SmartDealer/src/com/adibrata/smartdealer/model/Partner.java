@@ -1,6 +1,6 @@
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 13, 2015 5:09:56 PM by Hibernate Tools 4.3.1
+// Generated Jul 15, 2015 5:19:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -65,6 +65,7 @@ public class Partner implements java.io.Serializable {
 	private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 	private Set<MasterTable> masterTables = new HashSet<MasterTable>(0);
 	private Set<Workshop> workshops = new HashSet<Workshop>(0);
+	private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 	private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
 	private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 	private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
@@ -111,7 +112,8 @@ public class Partner implements java.io.Serializable {
 			Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos,
 			Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais,
 			Set<MasterTable> masterTables, Set<Workshop> workshops,
-			Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs,
+			Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers,
+			Set<ServiceHdr> serviceHdrs,
 			Set<ReturPurchaseHdr> returPurchaseHdrs,
 			Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 			Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs,
@@ -165,6 +167,7 @@ public class Partner implements java.io.Serializable {
 		this.danaTunais = danaTunais;
 		this.masterTables = masterTables;
 		this.workshops = workshops;
+		this.agrmnts = agrmnts;
 		this.paymentVouchers = paymentVouchers;
 		this.serviceHdrs = serviceHdrs;
 		this.returPurchaseHdrs = returPurchaseHdrs;
@@ -573,6 +576,15 @@ public class Partner implements java.io.Serializable {
 
 	public void setWorkshops(Set<Workshop> workshops) {
 		this.workshops = workshops;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+	public Set<Agrmnt> getAgrmnts() {
+		return this.agrmnts;
+	}
+
+	public void setAgrmnts(Set<Agrmnt> agrmnts) {
+		this.agrmnts = agrmnts;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
